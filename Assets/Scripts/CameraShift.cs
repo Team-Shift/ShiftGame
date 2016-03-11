@@ -8,13 +8,14 @@ public class CameraShift : MonoBehaviour {
     public GameObject persp;
 
     // for fading in/out
-    Color s_fade;                   // to change alpha
-    SpriteRenderer sprite;          // set color
-    bool canFade;                   // used to fade in update
-    float startTime;                // for pingPonging fade to start at 0
-    public float duration = 0.5f;   // how long to fade
+    Color s_fadePersp, s_fadeOrtho;                     // to change alpha
+    public GameObject spriteP, spriteO;
+    SpriteRenderer spritePersp, spriteOrtho;            // to get/set spriterenderer color
+    bool canFade;                                       // used to fade in update
+    float startTime;                                    // for pingPonging fade to start at 0
+    public float duration = 0.5f;                       // how long to fade
 
-    public bool canShift;           // if player unlocks shift ability
+    public bool canShift;                               // if player unlocks shift ability
 
     void Start()
     {
@@ -22,7 +23,8 @@ public class CameraShift : MonoBehaviour {
         canShift = true;
 
         // get spriterenderer
-        sprite = GetComponentInChildren<SpriteRenderer>();
+        spritePersp = spriteP.GetComponent<SpriteRenderer>();
+        spriteOrtho = spriteO.GetComponent<SpriteRenderer>();
         canFade = false;
         
         // get cameras if not found
@@ -35,13 +37,6 @@ public class CameraShift : MonoBehaviour {
 	void Update () {
 	    if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && canShift)
         {
-            if(ortho.activeInHierarchy == true)
-            {
-                sprite = ortho.GetComponentInChildren<SpriteRenderer>();
-            }
-            else
-                sprite = persp.GetComponentInChildren<SpriteRenderer>();
-            // enable fading in and out and set startTime 
             canFade = true;
             startTime = Time.unscaledTime;
             // change camera at half duration
@@ -60,21 +55,27 @@ public class CameraShift : MonoBehaviour {
         if (ortho.activeInHierarchy == true)
         {
             ortho.SetActive(false);
+            spriteO.SetActive(false);
             persp.SetActive(true);
+            spriteP.SetActive(true);
         }
         else
         {
             ortho.SetActive(true);
+            spriteO.SetActive(true);
             persp.SetActive(false);
+            spriteP.SetActive(false);
         }
     }
 
     void lerpAlpha()
     {
         // change alpha depending on time
-        float lerp = Mathf.PingPong(Time.unscaledTime - startTime, duration)/ duration;
-        s_fade.a = lerp;
-        sprite.color = s_fade;
+        float lerp = Mathf.PingPong(Time.unscaledTime - startTime, duration)/duration;
+            s_fadePersp.a = lerp;
+            spritePersp.color = s_fadePersp;
+            s_fadeOrtho.a = lerp;
+            spriteOrtho.color = s_fadeOrtho;
     }
 
     IEnumerator CameraChange()
@@ -99,8 +100,7 @@ public class CameraShift : MonoBehaviour {
             yield return null;
             //yield return new WaitForSeconds(duration + duration);
         }
-        s_fade.a = 0;
-        sprite.color = s_fade;
+        
         canFade = false;    
         Time.timeScale = 1;
     }
