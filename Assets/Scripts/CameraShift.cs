@@ -23,8 +23,6 @@ public class CameraShift : MonoBehaviour {
 
         // get spriterenderer
         sprite = GetComponentInChildren<SpriteRenderer>();
-        // set s_fade
-        s_fade = sprite.color;
         canFade = false;
         
         // get cameras if not found
@@ -37,6 +35,12 @@ public class CameraShift : MonoBehaviour {
 	void Update () {
 	    if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && canShift)
         {
+            if(ortho.activeInHierarchy == true)
+            {
+                sprite = ortho.GetComponentInChildren<SpriteRenderer>();
+            }
+            else
+                sprite = persp.GetComponentInChildren<SpriteRenderer>();
             // enable fading in and out and set startTime 
             canFade = true;
             startTime = Time.unscaledTime;
