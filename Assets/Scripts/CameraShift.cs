@@ -26,6 +26,7 @@ public class CameraShift : MonoBehaviour {
         spritePersp = spriteP.GetComponent<SpriteRenderer>();
         spriteOrtho = spriteO.GetComponent<SpriteRenderer>();
         canFade = false;
+        spriteP.SetActive(false);
         
         // get cameras if not found
         if(ortho == null)
