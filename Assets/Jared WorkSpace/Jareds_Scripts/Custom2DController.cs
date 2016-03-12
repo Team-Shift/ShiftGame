@@ -7,6 +7,7 @@ public class Custom2DController : MonoBehaviour
 {
     public GameObject player;
     public GameObject rangedTemp;
+    public GameObject meleeWeapon;
     public float turnSpeed = 180f;
     public float speed = 6.0f;
     [SerializeField]
@@ -52,18 +53,26 @@ public class Custom2DController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.W))
         {
             playerDir = FacingDirection.Forward;
+            //player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 0.0f , player.transform.eulerAngles.z);
+            player.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
             playerDir = FacingDirection.Left;
+            //player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 270.0f, player.transform.eulerAngles.z);
+            player.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
             playerDir = FacingDirection.Backward;
+            //player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 180.0f, player.transform.eulerAngles.z);
+            player.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             playerDir = FacingDirection.Right;
+            //player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 90.0f, player.transform.eulerAngles.z);
+            player.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
         }
     }
 
@@ -90,17 +99,17 @@ public class Custom2DController : MonoBehaviour
         else if (playerDir == FacingDirection.Backward)
         {
             GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 1.0f), Quaternion.identity) as GameObject;
-            projectial.GetComponent<Rigidbody>().AddForce((transform.forward * -1.0f) * 2000 * Time.deltaTime);
+            projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
         }
         else if (playerDir == FacingDirection.Left)
         {
             GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x - 1.0f, player.transform.position.y, player.transform.position.z), Quaternion.identity) as GameObject;
-            projectial.GetComponent<Rigidbody>().AddForce((transform.right * -1.0f) * 2000 * Time.deltaTime);
+            projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
         }
         else if (playerDir == FacingDirection.Right)
         {
             GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x + 1.0f, player.transform.position.y, player.transform.position.z), Quaternion.identity) as GameObject;
-            projectial.GetComponent<Rigidbody>().AddForce(transform.right * 2000 * Time.deltaTime);
+            projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
         }
     }
 }
