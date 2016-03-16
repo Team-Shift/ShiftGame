@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c267c59caf29c4e1888469f64717eab7, type: 3}
+  m_Name: Playground Settings
+  m_EditorClassIdentifier: 
+  checkForUpdates: 1
+  enableExtensions: 1
+  presetsHasPrefabConnection: 0
+  hierarchyIcon: 1
+  extensionIconSize: 1
+  settingsFoldout: 0
+  settingsLanguageFoldout: 0
+  settingsPathFoldout: 0
+  extensionsFoldout: 1
+  presetsFoldout: 1
+  playgroundManagerFoldout: 1
+  particleSystemFoldout: 1
+  limitsFoldout: 0
+  particlesFoldout: 1
+  statesFoldout: 1
+  sourceFoldout: 1
+  createNewStateFoldout: 1
+  particleSettingsFoldout: 1
+  forcesFoldout: 1
+  manipulatorsFoldout: 1
+  eventsFoldout: 0
+  collisionFoldout: 0
+  renderingFoldout: 0
+  advancedFoldout: 0
+  saveLoadFoldout: 0
+  toolboxFoldout: 1
+  paintToolboxSettingsFoldout: 1
+  sortingFoldout: 0
+  textureSheetAnimationFoldout: 0
+  splineListFoldout: 1
+  transformListFoldout: 0
+  particleSettingsParticleCountFoldout: 1
+  particleSettingsOverflowOffsetFoldout: 1
+  particleSettingsScatterFoldout: 0
+  particleSettingsEmissionFoldout: 1
+  particleSettingsSizeFoldout: 1
+  particleSettingsRotationFoldout: 0
+  particleSettingsLifetimeFoldout: 1
+  particleSettingsMaskFoldout: 0
+  forceAnnihilationFoldout: 0
+  forceInitialVelocityFoldout: 1
+  forceLifetimeVelocityFoldout: 0
+  forceVelocityBendingFoldout: 0
+  forceTurbulenceFoldout: 1
+  forceConstantForceFoldout: 1
+  forceVelocityScaleFoldout: 0
+  collisionSettingsFoldout: 0
+  collisionPlanesFoldout: 0
+  collisionExclusionFoldout: 0
+  renderingMaterialFoldout: 1
+  renderingColorFoldout: 1
+  renderingRenderModeFoldout: 1
+  renderingShadowsFoldout: 0
+  advancedTimeFoldout: 1
+  advancedSimulationFoldout: 0
+  advancedRebirthOptionsFoldout: 0
+  advancedLocksFoldout: 0
+  advancedOnEnableFoldout: 1
+  advancedAutoPauseFoldout: 0
+  advancedMiscFoldout: 0
+  playgroundFoldout: 1
+  particleSystemsFoldout: 0
+  globalManipulatorsFoldout: 0
+  advancedSettingsFoldout: 0
+  manipulatorTargetsFoldout: 1
+  playgroundSplineFoldout: 1
+  nodesFoldout: 1
+  usedByFoldout: 0
+  splineAdvancedFoldout: 1
+  playgroundPath: 5061727469636c6520506c617967726f756e642f
+  examplePresetPath: 506c617967726f756e64204173736574732f507265736574732f
+  presetPath: 5265736f75726365732f507265736574732f
+  iconPath: 47726170686963732f456469746f722f49636f6e732f
+  brushPath: 506c617967726f756e64204173736574732f427275736865732f
+  languagePath: 506c617967726f756e64204173736574732f53657474696e67732f4c616e6775616765732f
+  scriptPath: 536372697074732f
+  versionUrl: 687474703a2f2f7777772e706f6c79666965642e636f6d2f70726f64756374732f706c617967726f756e6476657273696f6e2e706870
+  extensionsUrl: 687474703a2f2f7777772e706f6c79666965642e636f6d2f70726f64756374732f706c617967726f756e642f657874656e73696f6e732f657874656e73696f6e732e786d6c
+  maximumAllowedLifetime: 100
+  maximumAllowedParticles: 100000
+  maximumAllowedRotation: 360
+  maximumAllowedSize: 10
+  maximumAllowedDeltaMovementStrength: 100
+  maximumAllowedScale: 10
+  maximumAllowedDamping: 10
+  maximumAllowedVelocity: 100
+  maximumAllowedDepth: 100
+  maximumAllowedMass: 100
+  maximumAllowedCollisionRadius: 10
+  maximumAllowedBounciness: 2
+  minimumAllowedUpdateRate: 10
+  maximumAllowedTransitionTime: 10
+  maximumAllowedTimescale: 2
+  maximumAllowedPaintPositions: 100000
+  minimumAllowedBrushScale: 0.001
+  maximumAllowedBrushScale: 1
+  maximumAllowedPaintSpacing: 10
+  maximumAllowedInitialVelocity: 100
+  minimumEraserRadius: 0.001
+  maximumEraserRadius: 100
+  maximumRenderSliders: 10
+  maximumAllowedManipulatorSize: 100
+  maximumAllowedManipulatorStrength: 100
+  maximumAllowedManipulatorStrengthEffectors: 2
+  maximumAllowedManipulatorZeroVelocity: 10
+  maximumAllowedSourceScatter: 10
+  maximumAllowedTurbulenceTimeScale: 10
+  maximumAllowedTurbulenceStrength: 100
+  maximumAllowedTurbulenceScale: 10
+  maximumAllowedStretchSpeed: 10
+  maximumAllowedPrewarmCycles: 128
+  playgroundIcon: {fileID: 2800000, guid: 344d4b0036e1d401e8c6c53be26368f0, type: 3}
+  playgroundIconInactive: {fileID: 2800000, guid: 98f012e51010e4230ab7c549d6a11633,
+    type: 3}
+  playgroundIconHeavy: {fileID: 2800000, guid: 4335d7f605b524c1e993039678611c3e, type: 3}
+  selectedLanguage: 0
+  languages:
+  - {fileID: 11400000, guid: 53495fd148e8545699f77b4d8012fbe2, type: 2}
+  - {fileID: 11400000, guid: bf565a473143845bfae62dfefa19af47, type: 2}
+  - {fileID: 11400000, guid: bf77ded16b6054464828c834b0d92d6c, type: 2}
