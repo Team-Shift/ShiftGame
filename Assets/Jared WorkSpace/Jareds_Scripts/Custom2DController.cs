@@ -16,6 +16,9 @@ public class Custom2DController : MonoBehaviour
     private Rigidbody body;
     [HideInInspector]
     public int health = 3;
+    private GameObject sword;
+    [HideInInspector]
+    public bool CameraSwitch;
     
     public enum FacingDirection { Forward, Backward, Left, Right };
     public FacingDirection playerDir;
@@ -31,7 +34,7 @@ public class Custom2DController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        Move3D();
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -43,7 +46,7 @@ public class Custom2DController : MonoBehaviour
         }
     }
 
-    void Move()
+    void Move2D()
     {
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
@@ -76,9 +79,32 @@ public class Custom2DController : MonoBehaviour
         }
     }
 
-    void DamageFallback()
+    void Move3D()
+    {
+        Vector3 cameraWorldPos = Camera.main.ScreenToWorldPoint(Camera.main.transform.position);
+
+        Vector3 direction = (cameraWorldPos - transform.position).normalized;
+        direction.y = 0;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        lookRotation.y = 0;
+
+        //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
+        transform.rotation = lookRotation;
+
+        float horizontal = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
+        //transform.Rotate(0, horizontal, 0);
+
+        float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        transform.Translate(horizontal, 0, vertical);
+
+
+    }
+
+    public void DamageFallback(Vector3 damageSource)
     {
         health--;
+
+        Vector3 pushBack = new Vector3();
 
         //Push the player back in the opposite direction from damage source
         transform.Translate(new Vector3());
@@ -87,6 +113,9 @@ public class Custom2DController : MonoBehaviour
     void MeleeAttack()
     {
         Debug.Log("Player swung their sword");
+
+        //run animation for sword swinging
+        //Add script for damage on the weapon itself maybe?
     }
 
     void RangedAttack()
