@@ -8,6 +8,7 @@ public class Custom2DController : MonoBehaviour
     public GameObject player;
     public GameObject rangedTemp;
     public GameObject meleeWeapon;
+    public GameObject mousePointer_Debug;
     public float turnSpeed = 180f;
     public float speed = 6.0f;
     [SerializeField]
@@ -18,7 +19,7 @@ public class Custom2DController : MonoBehaviour
     public int health = 3;
     private GameObject sword;
     [HideInInspector]
-    public bool CameraSwitch;
+    public bool CameraSwitch = false;
     
     public enum FacingDirection { Forward, Backward, Left, Right };
     public FacingDirection playerDir;
@@ -34,7 +35,14 @@ public class Custom2DController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move3D();
+        if (CameraSwitch == true)
+        {
+            Move2D();
+        }
+        else if (CameraSwitch == false)
+        {
+            Move3D();
+        }
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -44,6 +52,10 @@ public class Custom2DController : MonoBehaviour
         {
             RangedAttack();
         }
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            CameraSwitch = !CameraSwitch;
+        }
     }
 
     void Move2D()
@@ -51,7 +63,6 @@ public class Custom2DController : MonoBehaviour
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         transform.Translate(moveDirection * Time.deltaTime * speed, Space.World);
-
 
         if(Input.GetKeyDown(KeyCode.W))
         {
@@ -81,23 +92,19 @@ public class Custom2DController : MonoBehaviour
 
     void Move3D()
     {
-        Vector3 cameraWorldPos = Camera.main.ScreenToWorldPoint(Camera.main.transform.position);
+        Vector3 cameraWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+        cameraWorldPos.y = 1f;
+
+        //Debug.Log("Current mouse position = " + cameraWorldPos.x + ", " + cameraWorldPos.y + ", " + cameraWorldPos.z);
+        mousePointer_Debug.transform.position = cameraWorldPos;
 
         Vector3 direction = (cameraWorldPos - transform.position).normalized;
-        direction.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        lookRotation.y = 0;
 
-        //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
-        transform.rotation = lookRotation;
-
-        float horizontal = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
-        //transform.Rotate(0, horizontal, 0);
+        player.transform.rotation = lookRotation;
 
         float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        transform.Translate(horizontal, 0, vertical);
-
-
+        player.transform.Translate(0, 0, vertical);
     }
 
     public void DamageFallback(Vector3 damageSource)
