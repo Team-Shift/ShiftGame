@@ -61,17 +61,17 @@ public class MapGenerator : MonoBehaviour
 
 
         //Spawning Tiles
-        for (int x = 0; x < currentMap.mapSize.x; x++)
-        {
-            for (int y = 0; y < currentMap.mapSize.y; y++)
-            {
-                Vector3 tilePosition = CoordToPosition(x, y);
-                Transform newTile = Instantiate(tilePrefab, tilePosition, Quaternion.Euler(90,0,0)) as Transform;
-                newTile.localScale = Vector3.one * (1 - outlinePercent) * tileSize;
-                newTile.parent = mapHolder;
-                tileMap[x, y] = newTile;
-            }
-        }
+        //for (int x = 0; x < currentMap.mapSize.x; x++)
+        //{
+        //    for (int y = 0; y < currentMap.mapSize.y; y++)
+        //    {
+        //        Vector3 tilePosition = CoordToPosition(x, y);
+        //        Transform newTile = Instantiate(tilePrefab, tilePosition, Quaternion.Euler(90,0,0)) as Transform;
+        //        newTile.localScale = Vector3.one * (1 - outlinePercent) * tileSize;
+        //        newTile.parent = mapHolder;
+        //        tileMap[x, y] = newTile;
+        //    }
+        //}
 
         //Spawning Obstacles
         bool[,] obstacleMap = new bool[(int)currentMap.mapSize.x, (int)currentMap.mapSize.y];
@@ -80,6 +80,10 @@ public class MapGenerator : MonoBehaviour
         int currentObstacleCount = 0;
         List<Coord> allOpenCoords = new List<Coord>(allTileCoords);
 
+        //Get a Random Coord
+        //If the coord is not the center room
+        //Remove the Room from that coord
+        //
         for (int i = 0; i < obstacleCount; i++)
         {
             Coord randomCoord = GetRandomCoord();
@@ -89,7 +93,7 @@ public class MapGenerator : MonoBehaviour
             {
                 Vector3 obstaclePosition = CoordToPosition(randomCoord.x, randomCoord.y);
 
-                Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition + new Vector3(0, 0.1f, 0) , Quaternion.Euler(90, 0, 0)) as Transform;
+                Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition + new Vector3(0, 0.1f, 0), Quaternion.Euler(180, 0, 0)) as Transform;
                 newObstacle.parent = mapHolder;
 
                 Renderer obstacleRenderer = newObstacle.GetComponent<Renderer>();
@@ -110,6 +114,17 @@ public class MapGenerator : MonoBehaviour
         }
 
         shuffleOpenTileCoords = new Queue<Coord>(Utility.ShuffleArray(allOpenCoords.ToArray(), currentMap.seed));
+
+        //SpawnRooms?
+        foreach (Coord openCoord in allOpenCoords)
+        {
+            Vector3 tilePosition = CoordToPosition(openCoord);
+            Transform newTile = Instantiate(tilePrefab, tilePosition, Quaternion.Euler(90, 0, 0)) as Transform;
+            newTile.localScale = Vector3.one * (1 - outlinePercent) * tileSize;
+            newTile.parent = mapHolder;
+            tileMap[openCoord.x, openCoord.y] = newTile;
+        }
+
     }
 
     bool MapIsAccessible(bool[,] obstacleMap, int currentObstacleCount)
@@ -158,6 +173,11 @@ public class MapGenerator : MonoBehaviour
     Vector3 CoordToPosition(int x, int y)
     {
         return new Vector3(-currentMap.mapSize.x / 2f + 0.5f + x, 0, -currentMap.mapSize.y / 2f + 0.5f + y) * tileSize;
+    }
+
+    Vector3 CoordToPosition(Coord coordinate)
+    {
+        return new Vector3(-currentMap.mapSize.x / 2f + 0.5f + coordinate.x, 0, -currentMap.mapSize.y / 2f + 0.5f + coordinate.y) * tileSize;
     }
 
     public Coord GetRandomCoord()

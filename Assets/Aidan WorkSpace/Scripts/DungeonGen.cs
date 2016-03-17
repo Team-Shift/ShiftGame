@@ -1,66 +1,94 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
+using Random = System.Random;
 
-namespace Shift { 
+namespace Shift
+{
+    [RequireComponent(typeof (BoxCollider))]
     public class DungeonGen : MonoBehaviour
     {
+        private Dungeon currentDungeon;
+        public int dungeonIndex;
 
         public Dungeon[] dungeons;
-        public int dungeonIndex;
+
+        private List<Coord> possibleRoomCoords;
+
+        private Transform[,] RoomMap;
 
         public Transform RoomPrefab;
 
-        private List<Coord> possibleRoomCoords;
-        private Queue<Coord> shuffleRoomCoords;
+        public float roomSize;
         private Queue<Coord> shuffleOpenRoomCoords;
+        private Queue<Coord> shuffleRoomCoords;
+        public Transform TilePrefab;
 
-        private Transform[,] RoomMap;
-        private Dungeon currentDungeon;
+        private float roomWidth;
 
+        private void Reset()
+        {
+        }
 
 
         // Use this for initialization
-        void Start () {
-	
-	    }
+        private void Start()
+        {
+
+        }
 
         public void GenerateDungeon()
         {
             currentDungeon = dungeons[dungeonIndex];
             RoomMap = new Transform[currentDungeon.dungeonSize.x, currentDungeon.dungeonSize.y];
-            System.Random prng = new System.Random(currentDungeon.seed);
+            var prng = new Random(currentDungeon.seed);
+
             //TODO: May need room size multiplier
-            GetComponent<BoxCollider>().size = new Vector3(currentDungeon.dungeonSize.x , .05f, currentDungeon.dungeonSize.y);
+            GetComponent<BoxCollider>().size = new Vector3(currentDungeon.dungeonSize.x*roomSize, .05f,
+                currentDungeon.dungeonSize.y*roomSize);
 
             //Generating Coordinates
             possibleRoomCoords = new List<Coord>();
-            for (int x = 0; x < currentDungeon.dungeonSize.x; x++)
+            for (var x = 0; x < currentDungeon.dungeonSize.x; x++)
             {
-                for (int y = 0; y < currentDungeon.dungeonSize.y; y++)
+                for (var y = 0; y < currentDungeon.dungeonSize.y; y++)
                 {
-                    possibleRoomCoords.Add((new Coord(x,y)));
+                    possibleRoomCoords.Add((new Coord(x, y)));
                 }
             }
 
             shuffleRoomCoords = new Queue<Coord>(Utility.ShuffleArray(possibleRoomCoords.ToArray(), currentDungeon.seed));
 
             //Create Dungeon Parent Object
-            string holderName = "Generated Dungeon";
+            var holderName = "Generated Dungeon";
             if (transform.FindChild(holderName))
             {
                 DestroyImmediate(transform.FindChild(holderName).gameObject);
             }
 
-            Transform dungeonHolder = new GameObject(holderName).transform;
-            dungeonHolder.parent = transform;
+            var dungeonHolder = new GameObject(holderName).transform;
+            dungeonHolder.SetParent(transform, false);
+
+            //Spawn Tiles
+            for (var x = 0; x < currentDungeon.dungeonSize.x; x++)
+            {
+                for (var y = 0; y < currentDungeon.dungeonSize.y; y++)
+                {
+                    var tilePosition = CoordToPosition(x, y);
+                    var newTile = Instantiate(TilePrefab);
+                    newTile.SetParent(dungeonHolder, false);
+                    newTile.localPosition = tilePosition;
+                    newTile.localRotation = Quaternion.Euler(90, 0, 0);
+                    newTile.localScale = Vector3.one * roomSize;
+                    RoomMap[x, y] = newTile;
+                }
+            }
+
 
             //Spawn Rooms
-
-            //
             bool[,] roomMap = new bool[(int)currentDungeon.dungeonSize.x, (int)currentDungeon.dungeonSize.y];
 
-            int roomCount = (int) (currentDungeon.dungeonSize.x * currentDungeon.dungeonSize.y * currentDungeon.roomDensity);
+            int roomCount = (int)(currentDungeon.dungeonSize.x * currentDungeon.dungeonSize.y * currentDungeon.roomDensity);
             int currentRoomCount = roomCount;
 
             List<Coord> allOpenCoords = new List<Coord>(possibleRoomCoords);
@@ -69,7 +97,7 @@ namespace Shift {
             {
                 Coord randomCoord = GetRandomCoord();
                 roomMap[randomCoord.x, randomCoord.y] = false;
-                currentRoomCount--;
+                currentRoomCount++;
                 if (randomCoord != currentDungeon.dungeonCenter && MapIsAccessible(roomMap, currentRoomCount))
                 {
                     Vector3 emptyRoomPosition = CoordToPosition(randomCoord.x, randomCoord.y);
@@ -79,37 +107,38 @@ namespace Shift {
                 else
                 {
                     roomMap[randomCoord.x, randomCoord.y] = true;
-                    currentRoomCount++;
+                    currentRoomCount--;
                 }
             }
 
-
+            shuffleOpenRoomCoords = new Queue<Coord>(Utility.ShuffleArray(allOpenCoords.ToArray(), currentDungeon.seed));
         }
 
-        bool MapIsAccessible(bool[,] roomMap, int currentObstacleCount)
+        private bool MapIsAccessible(bool[,] roomMap, int currentObstacleCount)
         {
             //Flood Fill to check for accessible counts
-            bool[,] mapFlags = new bool[roomMap.GetLength(0), roomMap.GetLength(1)];
-            Queue<Coord> queue = new Queue<Coord>();
+            var mapFlags = new bool[roomMap.GetLength(0), roomMap.GetLength(1)];
+            var queue = new Queue<Coord>();
             queue.Enqueue(currentDungeon.dungeonCenter);
 
             mapFlags[currentDungeon.dungeonCenter.x, currentDungeon.dungeonSize.y] = true;
 
-            int accessibleTileCount = 1;
+            var accessibleTileCount = 1;
 
             while (queue.Count > 0)
             {
-                Coord tile = queue.Dequeue();
+                var tile = queue.Dequeue();
 
-                for (int x = -1; x <= 1; x++)
+                for (var x = -1; x <= 1; x++)
                 {
-                    for (int y = -1; y <= 1; y++)
+                    for (var y = -1; y <= 1; y++)
                     {
-                        int neighborX = tile.x + x;
-                        int neighborY = tile.y + y;
+                        var neighborX = tile.x + x;
+                        var neighborY = tile.y + y;
                         if (x == 0 || y == 0)
                         {
-                            if (neighborX >= 0 && neighborX < roomMap.GetLength(0) && neighborY >= 0 && neighborY < roomMap.GetLength(1))
+                            if (neighborX >= 0 && neighborX < roomMap.GetLength(0) && neighborY >= 0 &&
+                                neighborY < roomMap.GetLength(1))
                             {
                                 if (!mapFlags[neighborX, neighborY] && !roomMap[neighborX, neighborY])
                                 {
@@ -124,25 +153,25 @@ namespace Shift {
                 }
             }
 
-            int targetAccessibleTileCount = (int)(currentDungeon.dungeonSize.x * currentDungeon.dungeonSize.y - currentObstacleCount);
+            var targetAccessibleTileCount = currentDungeon.dungeonSize.x*currentDungeon.dungeonSize.y -
+                                            currentObstacleCount;
             return targetAccessibleTileCount == accessibleTileCount;
-
         }
 
         public Coord GetRandomCoord()
         {
-            Coord randomCoord = shuffleRoomCoords.Dequeue();
+            var randomCoord = shuffleRoomCoords.Dequeue();
             shuffleRoomCoords.Enqueue(randomCoord);
             return randomCoord;
         }
 
-        Vector3 CoordToPosition(int x, int y)
+        private Vector3 CoordToPosition(int x, int y)
         {
             //TODO: May need room size multiplier
-            return new Vector3(-currentDungeon.dungeonSize.x / 2f + 0.5f + x, 0, -currentDungeon.dungeonSize.y / 2f + 0.5f + y);
+            return new Vector3(-currentDungeon.dungeonSize.x/2f + 0.5f + x, 0, -currentDungeon.dungeonSize.y/2f + 0.5f + y) * roomSize;
         }
 
-        [System.Serializable]
+        [Serializable]
         public struct Coord
         {
             public int x;
@@ -165,16 +194,16 @@ namespace Shift {
             }
         }
 
-        [System.Serializable]
+        [Serializable]
         public class Dungeon
         {
             #region Core
+
             //Defines the map size on a grid (i.e. 5x5)
             public Coord dungeonSize;
 
             //Defines how many rooms are available in the grid
-            [Range(0,1)]
-            public float roomDensity;
+            [Range(0, 1)] public float roomDensity;
 
             //Seed the random nature of the map
             public int seed;
@@ -183,23 +212,21 @@ namespace Shift {
             //Used to ensure all rooms can be reached
             public Coord dungeonCenter
             {
-                get
-                {
-                    return new Coord(dungeonSize.x / 2, dungeonSize.y / 2);
-                }
+                get { return new Coord(dungeonSize.x/2, dungeonSize.y/2); }
             }
+
             #endregion
-            
+
             #region TBD
+
             //Contents of region are being debated in usefulness
 
             //List of Rooms
-            
 
             #endregion
         }
 
-        [System.Serializable]
+        [Serializable]
         public class Room
         {
             //Base structure of a room
