@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour {
 
+    public float speed;
+
 	void Start () {
 	
 	}
@@ -22,6 +24,8 @@ public class EnemyMovement : MonoBehaviour {
     void Seek()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+      ///  gameObject.transform.position = ;   
     }
 
     void OnTriggerEnter()
