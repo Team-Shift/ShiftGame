@@ -23,6 +23,8 @@ public class Custom2DController : MonoBehaviour
     
     public enum FacingDirection { Forward, Backward, Left, Right };
     public FacingDirection playerDir;
+    public enum CurrentItemType { Melee, Range, Scroll, Spell, None};
+    public CurrentItemType currentHeld = CurrentItemType.None;
 
 
     // Use this for initialization
