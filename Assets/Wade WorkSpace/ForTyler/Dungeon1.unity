@@ -15591,9 +15591,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 1482109428}
   - 95: {fileID: 1482109427}
-  - 114: {fileID: 1482109431}
   - 54: {fileID: 1482109430}
   - 135: {fileID: 1482109429}
+  - 114: {fileID: 1482109432}
+  - 114: {fileID: 1482109433}
+  - 114: {fileID: 1482109431}
   m_Layer: 0
   m_Name: Flyer
   m_TagString: Untagged
@@ -15667,10 +15669,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 1482109426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97b0f89c58986b348adf037af1e15409, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ad1921a0d53ae44f938dc306420c553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVel: 10
+--- !u!114 &1482109432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1482109426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71dbe9531a8ba86478dada0dbfa064a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathList:
+  - {x: 0, y: 0, z: 10}
+  - {x: 12, y: 0, z: 10}
+  - {x: 7, y: 0, z: 15}
+  speed: 2
+  showPath: 0
+  shouldWander: 0
+--- !u!114 &1482109433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1482109426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17258435be8c5e34fa0c52f2bdd20377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVel: 20
   shouldSeek: 0
 --- !u!1 &1482254931
 GameObject:
