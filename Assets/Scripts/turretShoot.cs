@@ -50,5 +50,6 @@ public class turretShoot : MonoBehaviour {
         rot *= Quaternion.Euler(0, 90, 0); // rotating wierdly 
         // instantiate fire
         Instantiate(fireball, pos, rot);
+        Debug.Log("uivgbhreiuhiueh");
     }
 }
