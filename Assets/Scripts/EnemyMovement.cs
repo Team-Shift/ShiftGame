@@ -21,6 +21,11 @@ public class EnemyMovement : MonoBehaviour {
 
     void Seek()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+    }
 
+    void OnTriggerEnter()
+    {
+        Seek();
     }
 }
