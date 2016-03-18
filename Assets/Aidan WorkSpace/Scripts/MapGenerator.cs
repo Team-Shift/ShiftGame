@@ -119,7 +119,7 @@ public class MapGenerator : MonoBehaviour
         foreach (Coord openCoord in allOpenCoords)
         {
             Vector3 tilePosition = CoordToPosition(openCoord);
-            Transform newTile = Instantiate(tilePrefab, tilePosition, Quaternion.Euler(90, 0, 0)) as Transform;
+            Transform newTile = Instantiate(tilePrefab, tilePosition, Quaternion.Euler(0, 0, 0)) as Transform;
             newTile.localScale = Vector3.one * (1 - outlinePercent) * tileSize;
             newTile.parent = mapHolder;
             tileMap[openCoord.x, openCoord.y] = newTile;
