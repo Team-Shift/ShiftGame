@@ -1,37 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Rigidbody))]
-
 public class Custom2DController : MonoBehaviour
 {
     public GameObject player;
     public GameObject rangedTemp;
     public GameObject meleeWeapon;
     public GameObject mousePointer_Debug;
+    private GameObject sword;
     public float turnSpeed = 180f;
     public float speed = 6.0f;
-    [SerializeField]
+    public float playerGroundLevel = 0;
+    [HideInInspector]
     private Vector3 moveDirection = Vector3.zero;
     [HideInInspector]
-    private Rigidbody body;
-    [HideInInspector]
     public int health = 3;
-    private GameObject sword;
     [HideInInspector]
     public bool CameraSwitch = false;
     
     public enum FacingDirection { Forward, Backward, Left, Right };
     public FacingDirection playerDir;
     public enum CurrentItemType { Melee, Range, Scroll, Spell, None};
-    public CurrentItemType currentHeld = CurrentItemType.None;
+    public CurrentItemType currentHeld;
 
 
     // Use this for initialization
     void Start()
     {
-        body = GetComponent<Rigidbody>();
         playerDir = FacingDirection.Forward;
+        currentHeld = CurrentItemType.None;
+        playerGroundLevel = playerGroundLevel + player.GetComponent<Collider>().bounds.size.y / 2;
     }
 
     // Update is called once per frame
@@ -95,18 +93,30 @@ public class Custom2DController : MonoBehaviour
     void Move3D()
     {
         Vector3 cameraWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
-        cameraWorldPos.y = 1f;
+        cameraWorldPos.y = playerGroundLevel;
 
         //Debug.Log("Current mouse position = " + cameraWorldPos.x + ", " + cameraWorldPos.y + ", " + cameraWorldPos.z);
         mousePointer_Debug.transform.position = cameraWorldPos;
 
         Vector3 direction = (cameraWorldPos - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-
+        
         player.transform.rotation = lookRotation;
 
         float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         player.transform.Translate(0, 0, vertical);
+
+
+        /*
+        ||==================================================================================================||
+        || Note: The below if statement will prevent the player from being able to jump so if you're adding ||
+        ||       jump then don't forget to fix the last issue of the player being able to fly by backing up.||
+        ||==================================================================================================||
+        */
+        if(player.transform.position.y > playerGroundLevel)
+        {
+            player.transform.position = new Vector3(player.transform.position.x, playerGroundLevel, player.transform.position.z);
+        }
     }
 
     public void DamageFallback(Vector3 damageSource)
