@@ -44,8 +44,7 @@ namespace Shift
             var prng = new Random(currentDungeon.seed);
 
             //TODO: May need room size multiplier
-            GetComponent<BoxCollider>().size = new Vector3(currentDungeon.dungeonSize.x*roomSize, .05f,
-                currentDungeon.dungeonSize.y*roomSize);
+            GetComponent<BoxCollider>().size = new Vector3(currentDungeon.dungeonSize.x*roomSize, .05f,currentDungeon.dungeonSize.y*roomSize);
 
             //Generating Coordinates
             possibleRoomCoords = new List<Coord>();

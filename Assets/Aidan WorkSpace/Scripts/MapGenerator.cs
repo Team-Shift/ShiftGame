@@ -4,26 +4,25 @@ using System.Collections.Generic;
 
 public class MapGenerator : MonoBehaviour
 {
+    //ToDo Remove array of maps/dungeons
+    //Only need the single dungeon per generation
+    //Unless we want to do something like reset/shuffle dungeon while inside?
+    //ToDo Rename from MapGen to DungeonGen
+    public Dungeon[] dungeons;
+    public int dungeonIndex;
 
-    public Map[] maps;
-    public int mapIndex;
-
-    public Transform tilePrefab;
+    public Transform roomPrefab;
     public Transform obstaclePrefab;
 
-    public Vector2 maxMapSize;
+    public float gridScale;
 
-    [Range(0, 1)]
-    public float outlinePercent;
+    List<Coord> allRoomCoords;
+    Queue<Coord> shuffleRoomCoords;
+    Queue<Coord> shuffleOpenRoomCoords;
 
-    public float tileSize;
-
-    List<Coord> allTileCoords;
-    Queue<Coord> shuffleTileCoords;
-    Queue<Coord> shuffleOpenTileCoords;
-
-    Transform[,] tileMap;
-    Map currentMap;
+    //Transform[,] roomMap;
+    Room[,] roomLayout;
+    Dungeon currentDungeon;
 
     void Start()
     {
@@ -31,54 +30,41 @@ public class MapGenerator : MonoBehaviour
 
     public void GenerateMap()
     {
-        currentMap = maps[mapIndex];
-        tileMap = new Transform[currentMap.mapSize.x, currentMap.mapSize.y];
-        System.Random prng = new System.Random(currentMap.seed);
-        GetComponent<BoxCollider>().size = new Vector3(currentMap.mapSize.x * tileSize, .05f, currentMap.mapSize.y * tileSize);
+        //Grabs the initial map from the array
+        currentDungeon = dungeons[dungeonIndex];
 
-        //Generating Coord
-        allTileCoords = new List<Coord>();
-        for (int x = 0; x < currentMap.mapSize.x; x++)
+        roomLayout = new Room[currentDungeon.dungeonSize.x, currentDungeon.dungeonSize.y];
+
+        System.Random prng = new System.Random(currentDungeon.seed);
+
+        //Generates a list of possible room coordinates
+        allRoomCoords = new List<Coord>();
+        for (int x = 0; x < currentDungeon.dungeonSize.x; x++)
         {
-            for (int y = 0; y < currentMap.mapSize.y; y++)
+            for (int y = 0; y < currentDungeon.dungeonSize.y; y++)
             {
-                allTileCoords.Add(new Coord(x, y));
+                allRoomCoords.Add(new Coord(x, y));
             }
         }
 
-        shuffleTileCoords = new Queue<Coord>(Utility.ShuffleArray(allTileCoords.ToArray(), currentMap.seed));
+        shuffleRoomCoords = new Queue<Coord>(Utility.ShuffleArray(allRoomCoords.ToArray(), currentDungeon.seed));
 
-        //Create MapHolder
-        string holderName = "Generated Map";
+        //Create the parent object for the Dungeon
+        string holderName = "Generated Dungeon";
         if (transform.FindChild(holderName))
         {
             DestroyImmediate(transform.FindChild(holderName).gameObject);
-
         }
 
-        Transform mapHolder = new GameObject(holderName).transform;
-        mapHolder.parent = transform;
+        Transform dungeonHolder = new GameObject(holderName).transform;
+        dungeonHolder.SetParent(transform, false);
 
+        //Create an array of removable coordinates for rooms
+        bool[,] obstacleMap = new bool[(int)currentDungeon.dungeonSize.x, (int)currentDungeon.dungeonSize.y];
 
-        //Spawning Tiles
-        //for (int x = 0; x < currentMap.mapSize.x; x++)
-        //{
-        //    for (int y = 0; y < currentMap.mapSize.y; y++)
-        //    {
-        //        Vector3 tilePosition = CoordToPosition(x, y);
-        //        Transform newTile = Instantiate(tilePrefab, tilePosition, Quaternion.Euler(90,0,0)) as Transform;
-        //        newTile.localScale = Vector3.one * (1 - outlinePercent) * tileSize;
-        //        newTile.parent = mapHolder;
-        //        tileMap[x, y] = newTile;
-        //    }
-        //}
-
-        //Spawning Obstacles
-        bool[,] obstacleMap = new bool[(int)currentMap.mapSize.x, (int)currentMap.mapSize.y];
-
-        int obstacleCount = (int)(currentMap.mapSize.x * currentMap.mapSize.y * currentMap.obstaclePercent);
+        int obstacleCount = (int)(currentDungeon.dungeonSize.x * currentDungeon.dungeonSize.y * currentDungeon.emptyRoomPercent);
         int currentObstacleCount = 0;
-        List<Coord> allOpenCoords = new List<Coord>(allTileCoords);
+        List<Coord> currentOpenCoords = new List<Coord>(allRoomCoords);
 
         //Get a Random Coord
         //If the coord is not the center room
@@ -89,21 +75,11 @@ public class MapGenerator : MonoBehaviour
             Coord randomCoord = GetRandomCoord();
             obstacleMap[randomCoord.x, randomCoord.y] = true;
             currentObstacleCount++;
-            if (randomCoord != currentMap.mapCenter && MapIsAccessible(obstacleMap, currentObstacleCount))
+            if (randomCoord != currentDungeon.dungeonCenter && MapIsAccessible(obstacleMap, currentObstacleCount))
             {
-                Vector3 obstaclePosition = CoordToPosition(randomCoord.x, randomCoord.y);
+                Vector3 obstaclePosition = CoordToPosition(randomCoord);
 
-                Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition + new Vector3(0, 0.1f, 0), Quaternion.Euler(180, 0, 0)) as Transform;
-                newObstacle.parent = mapHolder;
-
-                Renderer obstacleRenderer = newObstacle.GetComponent<Renderer>();
-                Material obstacleMaterial = new Material(obstacleRenderer.sharedMaterial);
-
-                float colorPercent = randomCoord.y / (float)currentMap.mapSize.y;
-                obstacleMaterial.color = Color.Lerp(currentMap.foreground, currentMap.background, colorPercent);
-                obstacleRenderer.sharedMaterial = obstacleMaterial;
-
-                allOpenCoords.Remove(randomCoord);
+                currentOpenCoords.Remove(randomCoord);
             }
             else
             {
@@ -113,28 +89,64 @@ public class MapGenerator : MonoBehaviour
 
         }
 
-        shuffleOpenTileCoords = new Queue<Coord>(Utility.ShuffleArray(allOpenCoords.ToArray(), currentMap.seed));
+        shuffleOpenRoomCoords = new Queue<Coord>(Utility.ShuffleArray(currentOpenCoords.ToArray(), currentDungeon.seed));
 
-        //SpawnRooms?
-        foreach (Coord openCoord in allOpenCoords)
+        //Instantiate rooms based on the final list of available coordinates
+        foreach (Coord openCoord in currentOpenCoords)
         {
-            Vector3 tilePosition = CoordToPosition(openCoord);
-            Transform newTile = Instantiate(tilePrefab, tilePosition, Quaternion.Euler(0, 0, 0)) as Transform;
-            newTile.localScale = Vector3.one * (1 - outlinePercent) * tileSize;
-            newTile.parent = mapHolder;
-            tileMap[openCoord.x, openCoord.y] = newTile;
-        }
+            Vector3 roomPosition = CoordToPosition(openCoord);
+            Transform newRoom = Instantiate(roomPrefab) as Transform;
 
+            newRoom.SetParent(dungeonHolder, false);
+            newRoom.localPosition = roomPosition;
+            newRoom.localRotation = Quaternion.identity;
+            newRoom.localScale = Vector3.one;
+
+            Room createRoom = new Room(openCoord, newRoom);
+
+            //Find neighboors
+            foreach (Coord open in currentOpenCoords)
+            {
+
+                //If Left Neighboor
+                Coord neighborCoord = new Coord(openCoord.x - 1, openCoord.y);
+                if (neighborCoord == open)
+                {
+                    createRoom.AddNeighbor(neighborCoord);
+                }
+                //If Right Neighboor
+                neighborCoord = new Coord(openCoord.x + 1, openCoord.y);
+                if (neighborCoord == open)
+                {
+                    createRoom.AddNeighbor(neighborCoord);
+                }
+                //If Bottom Neighboor
+                neighborCoord = new Coord(openCoord.x, openCoord.y - 1);
+                if (neighborCoord == open)
+                {
+                    createRoom.AddNeighbor(neighborCoord);
+                }
+                //If Top Neighboor
+                neighborCoord = new Coord(openCoord.x, openCoord.y + 1);
+                if (neighborCoord == open)
+                {
+                    createRoom.AddNeighbor(neighborCoord);
+                }
+            }
+
+            roomLayout[openCoord.x, openCoord.y] = createRoom;
+        }
     }
 
+    //A* based check to ensure that the removable rooms allow remaining rooms to be accessed
     bool MapIsAccessible(bool[,] obstacleMap, int currentObstacleCount)
     {
         //Flood Fill to check for accessible counts
         bool[,] mapFlags = new bool[obstacleMap.GetLength(0), obstacleMap.GetLength(1)];
         Queue<Coord> queue = new Queue<Coord>();
-        queue.Enqueue(currentMap.mapCenter);
+        queue.Enqueue(currentDungeon.dungeonCenter);
 
-        mapFlags[currentMap.mapCenter.x, currentMap.mapCenter.y] = true;
+        mapFlags[currentDungeon.dungeonCenter.x, currentDungeon.dungeonCenter.y] = true;
 
         int accessibleTileCount = 1;
 
@@ -165,33 +177,35 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-        int targetAccessibleTileCount = (int)(currentMap.mapSize.x * currentMap.mapSize.y - currentObstacleCount);
+        int targetAccessibleTileCount = (int)(currentDungeon.dungeonSize.x * currentDungeon.dungeonSize.y - currentObstacleCount);
         return targetAccessibleTileCount == accessibleTileCount;
 
     }
 
+    //Converts a grid/array coordinate to a position in space
     Vector3 CoordToPosition(int x, int y)
     {
-        return new Vector3(-currentMap.mapSize.x / 2f + 0.5f + x, 0, -currentMap.mapSize.y / 2f + 0.5f + y) * tileSize;
+        return new Vector3(-currentDungeon.dungeonSize.x / 2f + 0.5f + (x * gridScale) - gridScale, 0, -currentDungeon.dungeonSize.y / 2f + 0.5f + (y * gridScale) - gridScale);
     }
 
     Vector3 CoordToPosition(Coord coordinate)
     {
-        return new Vector3(-currentMap.mapSize.x / 2f + 0.5f + coordinate.x, 0, -currentMap.mapSize.y / 2f + 0.5f + coordinate.y) * tileSize;
+        return new Vector3(-currentDungeon.dungeonSize.x / 2f + 0.5f + (coordinate.x * gridScale) - gridScale, 0, -currentDungeon.dungeonSize.y / 2f + 0.5f + (coordinate.y * gridScale) - gridScale);
     }
 
     public Coord GetRandomCoord()
     {
-        Coord randomCoord = shuffleTileCoords.Dequeue();
-        shuffleTileCoords.Enqueue(randomCoord);
+        Coord randomCoord = shuffleRoomCoords.Dequeue();
+        shuffleRoomCoords.Enqueue(randomCoord);
         return randomCoord;
     }
 
-    public Transform GetRandomOpenTile()
+    public Room GetRandomOpenRoom()
     {
-        Coord randomCoord = shuffleOpenTileCoords.Dequeue();
-        shuffleOpenTileCoords.Enqueue(randomCoord);
-        return tileMap[randomCoord.x, randomCoord.y];
+        Coord randomCoord = shuffleOpenRoomCoords.Dequeue();
+        shuffleOpenRoomCoords.Enqueue(randomCoord);
+
+        return roomLayout[randomCoord.x, randomCoord.y];
     }
 
     [System.Serializable]
@@ -218,24 +232,50 @@ public class MapGenerator : MonoBehaviour
     }
 
     [System.Serializable]
-    public class Map
+    public class Dungeon
     {
-        public Coord mapSize;
+        public Coord dungeonSize;
         [Range(0, 1)]
-        public float obstaclePercent;
-        public float maxObstacleHeight;
+        public float emptyRoomPercent;
 
         public int seed;
 
-        public Color foreground;
-        public Color background;
-
-        public Coord mapCenter
+        public Coord dungeonCenter
         {
             get
             {
-                return new Coord(mapSize.x / 2, mapSize.y / 2);
+                return new Coord(dungeonSize.x / 2, dungeonSize.y / 2);
             }
         }
+    }
+
+    public class Room
+    {
+        public Coord roomCoord;
+        public List<Coord> neighbors;
+
+        public Transform roomPrefab;
+
+
+        public Room(Coord coord, Transform prefab)
+        {
+            roomCoord = coord;
+            roomPrefab = prefab;
+            neighbors = new List<Coord>();
+        }
+
+        //Functions for adding and removing connected rooms
+        public void AddNeighbor(Coord neighbor)
+        {
+            Coord newNeighbor = neighbor;
+            neighbors.Add(newNeighbor);
+        }
+        public void RemoveNeighbor(Coord neighbor)
+        {
+            neighbors.Remove(neighbor);
+        }
+        
+        //OnEntrance of a room
+        //If First time entered
     }
 }
