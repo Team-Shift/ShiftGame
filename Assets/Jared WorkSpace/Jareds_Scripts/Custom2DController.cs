@@ -122,11 +122,12 @@ public class Custom2DController : MonoBehaviour
     public void DamageFallback(Vector3 damageSource)
     {
         health--;
+        Debug.Log(health);
 
-        Vector3 pushBack = new Vector3();
+        //Vector3 pushBack = new Vector3();
 
         //Push the player back in the opposite direction from damage source
-        transform.Translate(new Vector3());
+        //transform.Translate(transform.position - damageSource);
     }
 
     void MeleeAttack()
