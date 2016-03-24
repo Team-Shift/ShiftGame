@@ -31,7 +31,6 @@ public class turretShoot : MonoBehaviour {
         // only fire if collider is player
         if (other.tag == "Player")
         {
-            Debug.Log(other.name);
             inRange = true;
             objToFollow = GameObject.FindGameObjectWithTag("Player");
         }
@@ -50,6 +49,5 @@ public class turretShoot : MonoBehaviour {
         rot *= Quaternion.Euler(0, 90, 0); // rotating wierdly 
         // instantiate fire
         Instantiate(fireball, pos, rot);
-        Debug.Log("uivgbhreiuhiueh");
     }
 }
