@@ -256,7 +256,6 @@ public class MapGenerator : MonoBehaviour
 
         public Transform roomPrefab;
 
-
         public Room(Coord coord, Transform prefab)
         {
             roomCoord = coord;
@@ -267,8 +266,7 @@ public class MapGenerator : MonoBehaviour
         //Functions for adding and removing connected rooms
         public void AddNeighbor(Coord neighbor)
         {
-            Coord newNeighbor = neighbor;
-            neighbors.Add(newNeighbor);
+            neighbors.Add(neighbor);
         }
         public void RemoveNeighbor(Coord neighbor)
         {
