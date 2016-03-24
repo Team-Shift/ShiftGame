@@ -16,12 +16,14 @@ public class Custom2DController : MonoBehaviour
     [HideInInspector]
     public int health = 3;
     [HideInInspector]
-    public bool CameraSwitch = false;
+    public bool CameraSwitch = true;
     
     public enum FacingDirection { Forward, Backward, Left, Right };
     public FacingDirection playerDir;
     public enum CurrentItemType { Melee, Range, Scroll, Spell, None};
     public CurrentItemType currentHeld;
+    private DimensionalSwitchManager manager;
+    //add private reference of camera change
 
 
     // Use this for initialization
@@ -30,16 +32,19 @@ public class Custom2DController : MonoBehaviour
         playerDir = FacingDirection.Forward;
         currentHeld = CurrentItemType.None;
         playerGroundLevel = playerGroundLevel + player.GetComponent<Collider>().bounds.size.y / 2;
+        manager = GameObject.FindObjectOfType<DimensionalSwitchManager>();
+        //Make sure to finish init by finding it
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CameraSwitch == true)
+        if (CameraSwitch == false)
         {
             Move2D();
         }
-        else if (CameraSwitch == false)
+        else if (CameraSwitch == true)
         {
             Move3D();
         }
@@ -55,6 +60,8 @@ public class Custom2DController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             CameraSwitch = !CameraSwitch;
+            manager.Shift();
+            //last call on LShift down
         }
     }
 
