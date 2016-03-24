@@ -17,6 +17,8 @@ public class PlayerProjectialControl : MonoBehaviour
         {
             Debug.Log("Enemy was hit");
             //Add reference to monster script later to decress health
+
+            Destoy(gameobject);
         }
     }
 }
