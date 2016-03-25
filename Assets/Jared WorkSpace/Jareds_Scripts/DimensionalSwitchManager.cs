@@ -49,7 +49,7 @@ public class DimensionalSwitchManager : MonoBehaviour
     {
         proSwitch = !proSwitch;
 
-        if (proSwitch == true)
+        if (proSwitch == false)
         {
             foreach (GameObject enemy in Enemies)
             {
@@ -62,7 +62,7 @@ public class DimensionalSwitchManager : MonoBehaviour
             }
         }
 
-        else if(proSwitch == false)
+        else if(proSwitch == true)
         {
             foreach (GameObject enemy in Enemies)
             {                                                                   //Y position needs to be saved and brought back later on

@@ -118,18 +118,19 @@ public class Custom2DController : MonoBehaviour
 
     void Move3D()
     {
-        Vector3 cameraWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
-        cameraWorldPos.y = playerGroundLevel;
+        //Vector3 cameraWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+        //cameraWorldPos.y = playerGroundLevel;
 
         //Debug.Log("Current mouse position = " + cameraWorldPos.x + ", " + cameraWorldPos.y + ", " + cameraWorldPos.z);
-        mousePointer_Debug.transform.position = cameraWorldPos;
+        //mousePointer_Debug.transform.position = cameraWorldPos;
 
-        Vector3 direction = (cameraWorldPos - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        //Vector3 direction = (cameraWorldPos - transform.position).normalized;
+        //Quaternion lookRotation = Quaternion.LookRotation(direction);
         
-        player.transform.rotation = lookRotation;
+        //player.transform.rotation = lookRotation;
 
         float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         player.transform.Translate(0, 0, vertical);
 
         if (vertical != 0)
