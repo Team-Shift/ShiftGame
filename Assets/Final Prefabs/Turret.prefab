@@ -74,6 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yPosLock: -1
   projectile: {fileID: 179974, guid: 71a1486ace4ad7e4cae66d9e20f9919a, type: 2}
+  alwaysShoot: 0
   shouldRotate: 0
 --- !u!135 &13551714
 SphereCollider:
