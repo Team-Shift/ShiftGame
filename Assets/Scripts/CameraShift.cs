@@ -2,16 +2,17 @@
 using System.Collections;
 
 public class CameraShift : MonoBehaviour {
-    // need to attach dif cameras in scene
-    // or need to tag persp camera with tag in scene
-    public GameObject ortho;
-    public GameObject persp;
+
+    // player to follow
+    public GameObject player;
 
     // for fading in/out
-    Color s_fadePersp, s_fadeOrtho;                     // to change alpha
-    public GameObject spriteP, spriteO;
-    SpriteRenderer spritePersp, spriteOrtho;            // to get/set spriterenderer color
+    Color s_fade;                                       // to change alpha
+    public GameObject sprite;                           // black sprite
+    SpriteRenderer spriteRend;                          // to get/set spriterenderer color
+    Camera cam;                                         // camera    
     bool canFade;                                       // used to fade in update
+    public bool camActive;                              // false is ortho and true is persp
     float startTime;                                    // for pingPonging fade to start at 0
     public float duration = 0.5f;                       // how long to fade
 
@@ -21,18 +22,12 @@ public class CameraShift : MonoBehaviour {
     {
         // changes if unlocked in game
         canShift = true;
-
-        // get spriterenderer
-        spritePersp = spriteP.GetComponent<SpriteRenderer>();
-        spriteOrtho = spriteO.GetComponent<SpriteRenderer>();
-        canFade = false;
-        spriteP.SetActive(false);
-        
-        // get cameras if not found
-        if(ortho == null)
-            ortho = GameObject.FindGameObjectWithTag("MainCamera");
-        if(persp == null)
-            persp = GameObject.FindGameObjectWithTag("Perspective Camera");
+        camActive = false;  // start in ortho
+        // get camera
+        cam = gameObject.GetComponent<Camera>();
+        // get rend to change
+        spriteRend = sprite.GetComponent<SpriteRenderer>();
+        canFade = false;    // no fading to start
     }
 
 	void Update () {
@@ -45,38 +40,49 @@ public class CameraShift : MonoBehaviour {
             // disable fading after full fade duration
             StartCoroutine("ShiftFade");
         }
+
+        // get players pos
+        float playerPosX = player.transform.position.x;
+        float playerPosZ = player.transform.position.z;
+        float playerPosY = player.transform.position.y;
+
+        // perspective cam position
+        if (camActive)
+        {
+            Vector3 v = new Vector3(playerPosX, playerPosY + 2.0f, playerPosZ - 2.0f);
+            gameObject.transform.position = v;
+            gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
+            cam.orthographic = false;
+        }
+        // ortho camera position
+        else
+        {
+            Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 6.0f);
+            gameObject.transform.position = v;
+            gameObject.transform.rotation = Quaternion.Euler(50.0f, 0, 0);
+            cam.orthographic = true;
+        }
+
         // start fading in and out
-        if(canFade)
+        if (canFade)
             lerpAlpha();
         
     }
     
     void ChangeCamera()
     {
-        if (ortho.activeInHierarchy == true)
-        {
-            ortho.SetActive(false);
-            spriteO.SetActive(false);
-            persp.SetActive(true);
-            spriteP.SetActive(true);
-        }
-        else
-        {
-            ortho.SetActive(true);
-            spriteO.SetActive(true);
-            persp.SetActive(false);
-            spriteP.SetActive(false);
-        }
+        // ortho -> persp
+        if (camActive) camActive = false;
+        // persp -> ortho
+        else camActive = true;
     }
 
     void lerpAlpha()
     {
         // change alpha depending on time
         float lerp = Mathf.PingPong(Time.unscaledTime - startTime, duration)/duration;
-            s_fadePersp.a = lerp;
-            spritePersp.color = s_fadePersp;
-            s_fadeOrtho.a = lerp;
-            spriteOrtho.color = s_fadeOrtho;
+        s_fade.a = lerp;
+        spriteRend.color = s_fade;
     }
 
     IEnumerator CameraChange()

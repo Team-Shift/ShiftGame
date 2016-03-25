@@ -9,6 +9,8 @@ public class CameraFollow : MonoBehaviour
     [HideInInspector]
     private Vector3 cameraFollowPos;
 
+    private Custom2DController playerStatus;
+
     // Use this for initialization
     void Start()
     {

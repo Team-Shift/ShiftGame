@@ -1,0 +1,273 @@
+fileFormatVersion: 2
+guid: 6c2e832ddf473ae4eb3969557f24fa32
+timeCreated: 1458770914
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: char_left_arm
+    100002: char_left_leg1
+    100004: char_right_arm
+    100006: char_right_leg1
+    100008: //RootNode
+    100010: locator1
+    100012: obj_character_body:Mesh
+    400000: char_left_arm
+    400002: char_left_leg1
+    400004: char_right_arm
+    400006: char_right_leg1
+    400008: //RootNode
+    400010: locator1
+    400012: obj_character_body:Mesh
+    2300000: char_left_arm
+    2300002: char_left_leg1
+    2300004: char_right_arm
+    2300006: char_right_leg1
+    2300008: obj_character_body:Mesh
+    3300000: char_left_arm
+    3300002: char_left_leg1
+    3300004: char_right_arm
+    3300006: char_right_leg1
+    3300008: obj_character_body:Mesh
+    4300000: obj_character_body:Mesh
+    4300002: char_right_arm
+    4300004: char_left_arm
+    4300006: char_right_leg1
+    4300008: char_left_leg1
+    7400000: idle
+    7400002: walk
+    7400004: sword_attack
+    7400006: bow_attack
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: Take 001
+      firstFrame: 11
+      lastFrame: 51
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_left_leg1
+        weight: 1
+      - path: char_right_leg1
+        weight: 1
+      - path: obj_character_body:Mesh
+        weight: 1
+      - path: obj_character_body:Mesh/char_left_arm
+        weight: 1
+      - path: obj_character_body:Mesh/char_right_arm
+        weight: 1
+      - path: obj_character_body:Mesh/char_right_arm/locator1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: walk
+      takeName: Take 001
+      firstFrame: 61
+      lastFrame: 81
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_left_leg1
+        weight: 1
+      - path: char_right_leg1
+        weight: 1
+      - path: obj_character_body:Mesh
+        weight: 1
+      - path: obj_character_body:Mesh/char_left_arm
+        weight: 1
+      - path: obj_character_body:Mesh/char_right_arm
+        weight: 1
+      - path: obj_character_body:Mesh/char_right_arm/locator1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: sword_attack
+      takeName: Take 001
+      firstFrame: 83
+      lastFrame: 93
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_left_leg1
+        weight: 1
+      - path: char_right_leg1
+        weight: 1
+      - path: obj_character_body:Mesh
+        weight: 1
+      - path: obj_character_body:Mesh/char_left_arm
+        weight: 1
+      - path: obj_character_body:Mesh/char_right_arm
+        weight: 1
+      - path: obj_character_body:Mesh/char_right_arm/locator1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: bow_attack
+      takeName: Take 001
+      firstFrame: 93
+      lastFrame: 108
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_left_leg1
+        weight: 1
+      - path: char_right_leg1
+        weight: 1
+      - path: obj_character_body:Mesh
+        weight: 1
+      - path: obj_character_body:Mesh/char_left_arm
+        weight: 1
+      - path: obj_character_body:Mesh/char_right_arm
+        weight: 1
+      - path: obj_character_body:Mesh/char_right_arm/locator1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
