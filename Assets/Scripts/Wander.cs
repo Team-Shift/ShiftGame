@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Wander : MonoBehaviour {
-    
+
+    //public List<GameObject> gList;
     public List<Vector3> pathList;
     public float speed = 2;
     private int index = 0;
@@ -14,7 +15,8 @@ public class Wander : MonoBehaviour {
         if (!Application.isPlaying) return;
         showPath = true;
         shouldWander = true;
-	}
+        //pathList = GetComponentInChildren<PathToFollow>().pathList;
+    }
 
     void Update() {
         if (shouldWander)

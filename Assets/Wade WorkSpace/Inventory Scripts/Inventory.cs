@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour {
     public struct eItems
     {
         public Item item;
-        public int quantity;    // so items can stack
+        public int quantity;   // so items can stack
     }
     
     // amount of slots in inventory 
@@ -33,22 +33,33 @@ public class Inventory : MonoBehaviour {
         eItems temp = new eItems();
         bool doesExist = false;
 
-        foreach(eItems e in equippedItems)
+        //eItems things = new eItems();
+        //things.quantity = 2;
+
+        for(int e = 0; e < equippedItems.Count; e++)
         {
-            // not for weapons
-            if(e.item.name == i.name && e.quantity < itemMaxStack)
+            if (equippedItems[e].item.name == i.name && equippedItems[e].quantity < itemMaxStack)
             {
+                Debug.Log(equippedItems[e].quantity);
+                Debug.Log("Item exist");
                 doesExist = true;
                 // if item type exists, increase quantity
-                increaseQuantity(e);
-                Debug.Log("increasing quantity of " + e.item.name);
+                int test = equippedItems[e].quantity;
+                var item = equippedItems[e];
+                item.quantity = test + 1;
+                equippedItems[e] = item;
+
+                
+                //increaseQuantity(equippedItems[e]);
+                Debug.Log("increasing quantity of " + equippedItems[e].item.name);
             }
-            if (e.quantity >= itemMaxStack)
+            else if (equippedItems[e].quantity >= itemMaxStack)
                 Debug.Log("reach max stack");
         }
 
         if (!doesExist)
         {
+            Debug.Log("Item doesnt exist");
             if (equippedItems.Count < invSize)
             {
                 temp.quantity = 1;

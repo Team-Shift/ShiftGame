@@ -12,6 +12,7 @@ GameObject:
   - 95: {fileID: 9594842}
   - 135: {fileID: 13551714}
   - 114: {fileID: 11466424}
+  - 114: {fileID: 11496528}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -59,8 +60,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fefa54b60b29f944baf7284fecb8b60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireball: {fileID: 179974, guid: 71a1486ace4ad7e4cae66d9e20f9919a, type: 2}
-  inRange: 0
+  startHealth: 2
+--- !u!114 &11496528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2ac4c27aa36794294c4478976b2053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yPosLock: -1
+  projectile: {fileID: 179974, guid: 71a1486ace4ad7e4cae66d9e20f9919a, type: 2}
+  shouldRotate: 0
 --- !u!135 &13551714
 SphereCollider:
   m_ObjectHideFlags: 1
