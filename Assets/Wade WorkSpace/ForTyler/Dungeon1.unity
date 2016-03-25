@@ -2821,6 +2821,10 @@ Prefab:
       propertyPath: m_TagString
       value: Weapon
       objectReference: {fileID: 0}
+    - target: {fileID: 11430686, guid: 2342a168ec03a2b4db92fc78b4b3020b, type: 2}
+      propertyPath: playerGroundLevel
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2342a168ec03a2b4db92fc78b4b3020b, type: 2}
   m_IsPrefabParent: 0
@@ -6446,6 +6450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1549746395}
   staticY: 1.1
+  Crosshair: {x: 0, y: 0, z: 0}
 --- !u!1001 &595624397
 Prefab:
   m_ObjectHideFlags: 0
@@ -8735,6 +8740,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 872680165}
   m_Mesh: {fileID: 4300000, guid: 7cf6a2cd7c5abbd4ab94ffd634ee7474, type: 3}
+--- !u!1 &873778038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 873778039}
+  m_Layer: 0
+  m_Name: PivotPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &873778039
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 873778038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1294, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1067781716}
+  m_RootOrder: 4
 --- !u!1 &875764006
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ public class CameraShift : MonoBehaviour {
         canFade = false;    // no fading to start
     }
 
-	void Update () {
+	void Update() {
 
         // get players pos
         playerPosX = player.transform.position.x;
@@ -55,7 +55,6 @@ public class CameraShift : MonoBehaviour {
             // disable fading after full fade duration
             StartCoroutine("ShiftFade");
 
-<<<<<<< d70d1e610456d7f7ac76c4508592451cc940e9c4
             // perspective cam position
             if (camActive)
             {
@@ -72,52 +71,18 @@ public class CameraShift : MonoBehaviour {
                 gameObject.transform.rotation = Quaternion.Euler(50.0f, 0, 0);
                 cam.orthographic = true;
             }
-||||||| merged common ancestors
-        // get players pos
-        float playerPosX = player.transform.position.x;
-        float playerPosZ = player.transform.position.z;
-        float playerPosY = player.transform.position.y;
-
-        // perspective cam position
-        if (camActive)
-        {
-            Vector3 v = new Vector3(playerPosX, playerPosY + 2.0f, playerPosZ - 2.0f);
-            gameObject.transform.position = v;
-            gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
-            cam.orthographic = false;
         }
-        // ortho camera position
-        else
+
+        if(!camActive)
         {
             Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 6.0f);
             gameObject.transform.position = v;
             gameObject.transform.rotation = Quaternion.Euler(50.0f, 0, 0);
             cam.orthographic = true;
-=======
-        // get players pos
-        float playerPosX = player.transform.position.x;
-        float playerPosZ = player.transform.position.z;
-        float playerPosY = player.transform.position.y;
-
-        // perspective cam position
-        if (camActive)
-        {
-            Vector3 v = new Vector3(playerPosX, playerPosY + 2.0f, playerPosZ - 2.0f);
-            gameObject.transform.position = v;
-            gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
-            gameObject.transform.RotateAround(v, Vector3.up, 0);
-             
-
-            cam.orthographic = false;
         }
-        // ortho camera position
         else
         {
-            Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 6.0f);
-            gameObject.transform.position = v;
-            gameObject.transform.rotation = Quaternion.Euler(50.0f, 0, 0);
-            cam.orthographic = true;
->>>>>>> enemy damage
+            cam.orthographic = false;
         }
 
         // start fading in and out
