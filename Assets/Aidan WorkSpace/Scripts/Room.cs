@@ -95,33 +95,18 @@ public class Room : MonoBehaviour {
         }
     }
 
-    private void ActivateHallway(Direction location, bool active)
+    private void ActivateHallway(Direction location, bool isActive)
     {
         for (int i = 0; i < Hallways[(int)location].transform.childCount; i++)
         {
             Transform child = Hallways[(int)location].transform.GetChild(i);
             if (child.gameObject.name == "Active")
             {
-                if (active)
-                {
-                    child.gameObject.SetActive(active);
-                }
-                else
-                {
-                    child.gameObject.SetActive(!active);
-                }
-                //Activate proper hall
+                child.gameObject.SetActive(isActive);
             }
             if (child.gameObject.name == "Inactive")
             {
-                if (active)
-                {
-                    child.gameObject.SetActive(!active);
-                }
-                else
-                {
-                    child.gameObject.SetActive(active);
-                }
+                child.gameObject.SetActive(!isActive);
             }
         }
     }

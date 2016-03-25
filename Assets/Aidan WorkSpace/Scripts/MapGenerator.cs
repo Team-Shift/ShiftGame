@@ -45,7 +45,6 @@ public class MapGenerator : MonoBehaviour
 
         //Generate array of room prefabs
         rooms = Resources.LoadAll("Rooms", typeof(Transform)).Select( o => o as Transform ).ToArray();
-        Debug.Log(rooms.Length);
 
         //Generates a list of possible room coordinates
         allRoomCoords = new List<Coord>();
@@ -117,46 +116,20 @@ public class MapGenerator : MonoBehaviour
             newRoom.localRotation = Quaternion.identity;
             newRoom.localScale = Vector3.one;
 
-            //Room createRoom = new Room(openCoord);
-
-            for (int i = 0; i < newRoom.childCount; i++)
-            {
-                Transform child = newRoom.GetChild(i);
-                if (child.gameObject.name == "North_Hall")
-                {
-                    
-                    //Activate proper hall
-                }
-                if (child.gameObject.name == "North_Hall")
-                {
-
-                    //Activate proper hall
-                }
-                if (child.gameObject.name == "North_Hall")
-                {
-
-                    //Activate proper hall
-                }
-                if (child.gameObject.name == "North_Hall")
-                {
-
-                    //Activate proper hall
-                }
-            }
-
             //Find neighboors
             foreach (Coord open in currentOpenCoords)
             {
                 if (newRoom.GetComponent<Room>() != null)
                 {
-                    //If Left Neighboor
-                    Coord neighborCoord = new Coord(openCoord.x - 1, openCoord.y);
+                    //If Top Neighboor
+                    Coord neighborCoord = new Coord(openCoord.x, openCoord.y + 1);
+                    
                     if (neighborCoord == open)
                     {
                         newRoom.GetComponent<Room>().AddNeighbor(Room.Direction.North, neighborCoord);
                         newRoom.GetComponent<Room>().SetHallwayActive(Room.Direction.North, true);
-                        //createRoom.AddNeighbor(Room.Direction.West, neighborCoord);
                     }
+
                     //If Right Neighboor
                     neighborCoord = new Coord(openCoord.x + 1, openCoord.y);
                     if (neighborCoord == open)
@@ -164,6 +137,7 @@ public class MapGenerator : MonoBehaviour
                         newRoom.GetComponent<Room>().AddNeighbor(Room.Direction.East, neighborCoord);
                         newRoom.GetComponent<Room>().SetHallwayActive(Room.Direction.East, true);
                     }
+
                     //If Bottom Neighboor
                     neighborCoord = new Coord(openCoord.x, openCoord.y - 1);
                     if (neighborCoord == open)
@@ -171,23 +145,34 @@ public class MapGenerator : MonoBehaviour
                         newRoom.GetComponent<Room>().AddNeighbor(Room.Direction.South, neighborCoord);
                         newRoom.GetComponent<Room>().SetHallwayActive(Room.Direction.South, true);
                     }
-                    //If Top Neighboor
-                    neighborCoord = new Coord(openCoord.x, openCoord.y + 1);
+
+                    //If Left Neighboor
+                    neighborCoord = new Coord(openCoord.x - 1, openCoord.y);
                     if (neighborCoord == open)
                     {
                         newRoom.GetComponent<Room>().AddNeighbor(Room.Direction.West, neighborCoord);
                         newRoom.GetComponent<Room>().SetHallwayActive(Room.Direction.West, true);
+                        //createRoom.AddNeighbor(Room.Direction.West, neighborCoord);
                     }
                 }
             }
 
             roomLayout[openCoord.x, openCoord.y] = newRoom;
 
+            //Logging Creations Data
+            Debug.Log("Room at Coord : (" + openCoord.x + "," + openCoord.y + ") " + "has neighbors : " + newRoom.GetComponent<Room>().neighbors.Count);
+            Debug.Log(newRoom.GetComponent<Room>().neighbors);
+
+
             //ToDo Cleanup - Unload Resources and shizz
             Resources.UnloadUnusedAssets();
 
             //Debug
         }
+
+        roomLayout[2, 2].GetComponent<Room>().SetHallwayActive(Room.Direction.South, false);
+        roomLayout[2, 2].GetComponent<Room>().SetHallwayActive(Room.Direction.East, false);
+        roomLayout[2, 2].GetComponent<Room>().SetHallwayActive(Room.Direction.West, false);
     }
 
     //A* based check to ensure that the removable rooms allow remaining rooms to be accessed
