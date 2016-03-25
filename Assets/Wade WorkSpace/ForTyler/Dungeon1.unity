@@ -1942,7 +1942,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 469980, guid: cebc45940fe781742bf3a624a2dae71e, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11469820, guid: cebc45940fe781742bf3a624a2dae71e, type: 2}
       propertyPath: pathList.Array.data[0].z
@@ -2077,7 +2077,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 444262, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
       propertyPath: m_IsActive
@@ -2265,6 +2265,10 @@ Prefab:
       propertyPath: hitPart
       value: 
       objectReference: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+    - target: {fileID: 11466424, guid: 266f6981017a6ba44b8bd6ddacb3d052, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 266f6981017a6ba44b8bd6ddacb3d052, type: 2}
   m_IsPrefabParent: 0
@@ -7453,7 +7457,7 @@ GameObject:
   - 65: {fileID: 702211025}
   m_Layer: 0
   m_Name: Hitbox
-  m_TagString: Weapon
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7464,12 +7468,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 702211023}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.000000021187589, y: -0.000000020256266, z: 0.00000001071021,
+    w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1067781716}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!65 &702211025
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7477,7 +7482,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 702211023}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.09312439, y: 0.13172226, z: 0.061860967}
@@ -8766,7 +8771,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1067781716}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &875764006
 GameObject:
   m_ObjectHideFlags: 0
@@ -17982,7 +17987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fefa54b60b29f944baf7284fecb8b60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 1
+  startHealth: 3
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
 --- !u!1 &1780418520
 GameObject:

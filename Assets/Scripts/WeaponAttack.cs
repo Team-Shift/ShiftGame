@@ -6,7 +6,7 @@ public class WeaponAttack : MonoBehaviour {
     Collider c;
 	// Use this for initialization
 	void Start () {
-        c = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Collider>();
+        c = GameObject.FindGameObjectWithTag("Hitbox").GetComponent<Collider>();
         c.enabled = false;
 	}
 
