@@ -38,7 +38,7 @@ public class DimensionalSwitchManager : MonoBehaviour
 
         foreach (GameObject enviorn in enviornment)
         {
-            Enemies.Add(enviorn);
+            Enviornment.Add(enviorn);
         }
 
         Debug.Log(enemies.Length);
@@ -55,6 +55,11 @@ public class DimensionalSwitchManager : MonoBehaviour
             {
                 enemy.transform.position = new Vector3(enemy.transform.position.x, playerY/* - (enemy.GetComponent<Collider>().bounds.size.y / 2)*/, enemy.transform.position.z);
             }
+
+            foreach (GameObject enviorn in Enviornment)
+            {
+                enviorn.transform.position = new Vector3(enviorn.transform.position.x, playerY-1/* - (enemy.GetComponent<Collider>().bounds.size.y / 2)*/, enviorn.transform.position.z);
+            }
         }
 
         else if(proSwitch == false)
@@ -62,6 +67,10 @@ public class DimensionalSwitchManager : MonoBehaviour
             foreach (GameObject enemy in Enemies)
             {                                                                   //Y position needs to be saved and brought back later on
                 enemy.transform.position = new Vector3(enemy.transform.position.x, 2, enemy.transform.position.z);
+            }
+            foreach (GameObject enviorn in Enviornment)
+            {
+                enviorn.transform.position = new Vector3(enviorn.transform.position.x, 1/* - (enemy.GetComponent<Collider>().bounds.size.y / 2)*/, enviorn.transform.position.z);
             }
         }
     }

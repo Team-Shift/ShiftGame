@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Animator))]
+
 public class Custom2DController : MonoBehaviour
 {
     public GameObject player;
@@ -16,7 +18,8 @@ public class Custom2DController : MonoBehaviour
     [HideInInspector]
     public int health = 3;
     [HideInInspector]
-    public bool CameraSwitch = true;
+    public bool CameraSwitch = false;
+    private Animator anim;
     
     public enum FacingDirection { Forward, Backward, Left, Right };
     public FacingDirection playerDir;
@@ -31,8 +34,11 @@ public class Custom2DController : MonoBehaviour
     {
         playerDir = FacingDirection.Forward;
         currentHeld = CurrentItemType.None;
-        playerGroundLevel = playerGroundLevel + player.GetComponent<Collider>().bounds.size.y / 2;
+        //playerGroundLevel = playerGroundLevel + player.GetComponent<Collider>().bounds.size.y / 2;
         manager = GameObject.FindObjectOfType<DimensionalSwitchManager>();
+        anim = player.GetComponent<Animator>();
+
+        CameraSwitch = false;
         //Make sure to finish init by finding it
 
     }
@@ -69,28 +75,41 @@ public class Custom2DController : MonoBehaviour
     {
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
+        if(moveDirection.x != 0 || moveDirection.z != 0)
+        {
+            anim.SetBool("walk", true);
+        }
+        else if(moveDirection.x == 0 || moveDirection.z == 0)
+        {
+            anim.SetBool("walk", false);
+        }
+
         transform.Translate(moveDirection * Time.deltaTime * speed, Space.World);
 
         if(Input.GetKeyDown(KeyCode.W))
         {
+            anim.SetBool("walk", true);
             playerDir = FacingDirection.Forward;
             //player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 0.0f , player.transform.eulerAngles.z);
             player.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
+            anim.SetBool("walk", true);
             playerDir = FacingDirection.Left;
             //player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 270.0f, player.transform.eulerAngles.z);
             player.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
+            anim.SetBool("walk", true);
             playerDir = FacingDirection.Backward;
             //player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 180.0f, player.transform.eulerAngles.z);
             player.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
+            anim.SetBool("walk", true);
             playerDir = FacingDirection.Right;
             //player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 90.0f, player.transform.eulerAngles.z);
             player.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
@@ -112,6 +131,15 @@ public class Custom2DController : MonoBehaviour
 
         float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         player.transform.Translate(0, 0, vertical);
+
+        if (vertical != 0)
+        {
+            anim.SetBool("walk", true);
+        }
+        else
+        {
+            anim.SetBool("walk", false);
+        }
 
 
         /*
@@ -141,12 +169,15 @@ public class Custom2DController : MonoBehaviour
     {
         Debug.Log("Player swung their sword");
 
+        anim.SetTrigger("sword_attack");
+
         //run animation for sword swinging
         //Add script for damage on the weapon itself maybe?
     }
 
     void RangedAttack()
     {
+        anim.SetTrigger("bow_attack");
         if(playerDir == FacingDirection.Forward)
         {
             GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1.0f), Quaternion.identity) as GameObject;
