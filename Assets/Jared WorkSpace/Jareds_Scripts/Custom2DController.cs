@@ -179,7 +179,7 @@ public class Custom2DController : MonoBehaviour
 
     void MeleeAttack()
     {
-        Debug.Log("Player swung their sword");
+        //Debug.Log("Player swung their sword");
 
         anim.SetTrigger("sword_attack");
 

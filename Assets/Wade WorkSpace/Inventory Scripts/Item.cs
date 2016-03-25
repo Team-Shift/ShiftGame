@@ -15,7 +15,12 @@ public class Item : MonoBehaviour {
     void OnMouseDown()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        Inventory i = player.GetComponent<Inventory>();
-        i.AddItem(this);
+        if (player != null)
+        {
+            Inventory i = player.GetComponent<Inventory>();
+            i.AddItem(this as Item);
+        }
+        else
+            Debug.Log("player not found");
     }
 }
