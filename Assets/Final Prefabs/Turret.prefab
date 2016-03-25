@@ -11,11 +11,11 @@ GameObject:
   - 137: {fileID: 13706742}
   - 95: {fileID: 9594842}
   - 135: {fileID: 13551714}
-  - 114: {fileID: 11466424}
   - 114: {fileID: 11496528}
+  - 65: {fileID: 6532234}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,11 +27,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161546}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0.21753216, y: -1.1270509, z: 5.6870804}
+  m_LocalPosition: {x: 0.08138418, y: -1.1270509, z: 4.9637775}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!65 &6532234
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6499999, y: 0.9983474, z: 0.8640772}
+  m_Center: {x: -0.02500009, y: 0.49966067, z: -0.027926205}
 --- !u!95 &9594842
 Animator:
   serializedVersion: 3
@@ -49,18 +61,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11466424
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fefa54b60b29f944baf7284fecb8b60c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startHealth: 2
 --- !u!114 &11496528
 MonoBehaviour:
   m_ObjectHideFlags: 1

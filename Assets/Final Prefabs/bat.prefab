@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11469820}
   - 114: {fileID: 11419770}
   - 114: {fileID: 11427302}
+  - 114: {fileID: 11497782}
   m_Layer: 0
   m_Name: bat
   m_TagString: Untagged
@@ -93,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147730}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 3.1670542, y: 0, z: 7.41}
+  m_LocalPosition: {x: 4.46, y: -1, z: 5.17455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 469980}
@@ -290,12 +291,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathList:
-  - {x: 0, y: 0, z: 10}
-  - {x: 12, y: 0, z: 10}
-  - {x: 7, y: 0, z: 15}
+  - {x: 0, y: 0, z: 0}
+  - {x: 9.68, y: 0, z: 0}
   speed: 2
-  showPath: 0
+  showPath: 1
   shouldWander: 0
+--- !u!114 &11497782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fefa54b60b29f944baf7284fecb8b60c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startHealth: 3
+  hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
 --- !u!135 &13525662
 SphereCollider:
   m_ObjectHideFlags: 1

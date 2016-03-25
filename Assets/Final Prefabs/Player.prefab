@@ -51,6 +51,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &123188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 470168}
+  - 65: {fileID: 6507596}
+  m_Layer: 0
+  m_Name: Hitbox
+  m_TagString: Hitbox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &128142
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +112,7 @@ GameObject:
   - 65: {fileID: 6591716}
   - 114: {fileID: 11430686}
   - 114: {fileID: 11493212}
+  - 114: {fileID: 11453508}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -131,7 +148,7 @@ GameObject:
   - 114: {fileID: 11491302}
   m_Layer: 0
   m_Name: weap_sword
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,6 +165,21 @@ GameObject:
   - 23: {fileID: 2343684}
   m_Layer: 0
   m_Name: char_right_arm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &189084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 477862}
+  m_Layer: 0
+  m_Name: PivotPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,6 +260,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 424488}
   m_RootOrder: 0
+--- !u!4 &470168
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123188}
+  m_LocalRotation: {x: -0.000000021187589, y: -0.000000020256266, z: 0.00000001071021,
+    w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 484842}
+  m_RootOrder: 4
 --- !u!4 &470292
 Transform:
   m_ObjectHideFlags: 1
@@ -242,6 +287,18 @@ Transform:
   - {fileID: 446386}
   m_Father: {fileID: 484842}
   m_RootOrder: 2
+--- !u!4 &477862
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189084}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1294, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 484842}
+  m_RootOrder: 3
 --- !u!4 &484842
 Transform:
   m_ObjectHideFlags: 1
@@ -249,12 +306,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.716, y: 0, z: 0.041}
+  m_LocalPosition: {x: 7.857366, y: -0.77, z: 1.3043399}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 404324}
   - {fileID: 405212}
   - {fileID: 470292}
+  - {fileID: 477862}
+  - {fileID: 470168}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &488688
@@ -480,8 +539,20 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 36
+  m_Constraints: 32
   m_CollisionDetection: 0
+--- !u!65 &6507596
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123188}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.09312439, y: 0.13172226, z: 0.061860967}
+  m_Center: {x: -0.0049073696, y: 0.0633297, z: 0.056173053}
 --- !u!65 &6591716
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -528,11 +599,22 @@ MonoBehaviour:
   mousePointer_Debug: {fileID: 0}
   turnSpeed: 180
   speed: 6
-  playerGroundLevel: 0
+  playerGroundLevel: -1
   health: 3
   CameraSwitch: 1
   playerDir: 0
   currentHeld: 0
+--- !u!114 &11453508
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c84b057a8a3324bb4a8dfb5af3c566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11491302
 MonoBehaviour:
   m_ObjectHideFlags: 1
