@@ -10,21 +10,35 @@ public class CameraFollow : MonoBehaviour
     private Vector3 cameraFollowPos;
 
     private Custom2DController playerStatus;
+    private GameObject pivotPoint;
+    public Vector3 Crosshair;
 
     // Use this for initialization
     void Start()
     {
-        
+        pivotPoint = GameObject.Find("PivotPoint");
     }
 
     // Update is called once per frame
     void Update()
     {
-        float playerPosX = player.transform.position.x;
-        float playerPosZ = player.transform.position.z;
+        //float playerPosX = player.transform.position.x;
+        //float playerPosZ = player.transform.position.z;
+        //cameraFollowPos = new Vector3(playerPosX, staticY, playerPosZ - 7.0f);
+        //gameObject.transform.position = cameraFollowPos;
+    }
 
-        cameraFollowPos = new Vector3(playerPosX, staticY, playerPosZ - 7.0f);
+    void LateUpdate()
+    {
+        if (player.GetComponent<Custom2DController>().CameraSwitch == true)
+        {
+            float offsetBack = 3;
+            float turning = Input.GetAxis("Mouse X");
 
-        gameObject.transform.position = cameraFollowPos;
+            transform.rotation = (pivotPoint.transform.rotation);
+            //Vector3 pivotPos = pivotPoint.transform.position + offsetBack * -transform.forward;
+            //pivotPos = new Vector3(pivotPos.x, pivotPos.y + 2.0f, pivotPos.z - 2.0f);
+            transform.position = pivotPoint.transform.position + offsetBack * -transform.forward;
+        }
     }
 }

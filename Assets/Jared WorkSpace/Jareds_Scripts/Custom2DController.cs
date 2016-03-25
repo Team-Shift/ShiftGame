@@ -130,8 +130,19 @@ public class Custom2DController : MonoBehaviour
         //player.transform.rotation = lookRotation;
 
         float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        player.transform.Translate(0, 0, vertical);
+        //player.transform.Translate(0, 0, vertical);
+
+        //Start of new code
+
+        float forwardBack = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        float strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        float turning = Input.GetAxis("Mouse X");
+
+        player.transform.Translate(Vector3.forward * forwardBack + Vector3.right * strafe, Space.Self);
+
+        player.transform.Rotate(Vector3.up * turning * turnSpeed * Time.deltaTime);
+        //end of new code
+
 
         if (vertical != 0)
         {
