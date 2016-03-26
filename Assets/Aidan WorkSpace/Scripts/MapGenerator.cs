@@ -17,6 +17,7 @@ public class MapGenerator : MonoBehaviour
 
     public Transform[] rooms;
 
+    //For Debug Purposes
     public Transform roomPrefab;
 
     public float gridScale;
@@ -26,8 +27,13 @@ public class MapGenerator : MonoBehaviour
     Queue<Coord> shuffleOpenRoomCoords;
 
     //Transform[,] roomMap;
-    Transform[,] roomLayout;
+    public Transform[,] roomLayout;
     Dungeon currentDungeon;
+    public List<Coord> currentOpenCoords;
+
+    //Room definitions
+    public Transform StartRoom;
+    public Transform EndRoom;
 
     void Start()
     {
@@ -73,7 +79,7 @@ public class MapGenerator : MonoBehaviour
 
         int obstacleCount = (int)(currentDungeon.dungeonSize.x * currentDungeon.dungeonSize.y * currentDungeon.emptyRoomPercent);
         int currentObstacleCount = 0;
-        List<Coord> currentOpenCoords = new List<Coord>(allRoomCoords);
+        currentOpenCoords = new List<Coord>(allRoomCoords);
 
         //Get a Random Coord
         //If the coord is not the center room
@@ -106,15 +112,41 @@ public class MapGenerator : MonoBehaviour
 
 
             Vector3 roomPosition = CoordToPosition(openCoord);
+            Transform newRoom;
             //Transform newRoom = Instantiate(roomPrefab) as Transform;
             //Transform newRoom = Instantiate(rooms[UnityEngine.Random.Range(0, rooms.Length)]);
-            Transform newRoom = Instantiate(roomPrefab);
-            newRoom.GetComponent<Room>().Init();
 
-            newRoom.SetParent(dungeonHolder, false);
-            newRoom.localPosition = roomPosition;
-            newRoom.localRotation = Quaternion.identity;
-            newRoom.localScale = Vector3.one;
+            //ToDo Sort special rooms by tag
+            //Select and pull from prefabs with particular tag
+            //Example: Start/End rooms tagged as such
+            //Instantiate(rooms[]
+            //Special Case Room Generation
+            if (openCoord == currentDungeon.dungeonCenter)
+            {
+                newRoom = Instantiate(StartRoom);
+                newRoom.name = ("RoomPosition(" + openCoord.x + "," + openCoord.y + ")");
+                newRoom.GetComponent<Room>().Init();
+
+                newRoom.SetParent(dungeonHolder, false);
+                newRoom.localPosition = roomPosition;
+                newRoom.localRotation = Quaternion.identity;
+                newRoom.localScale = Vector3.one;
+            }
+
+            //Super Generic Room Generation
+            else
+            {
+                //ToDo Move instantiation of a prefab till we know what the room should be
+                newRoom = Instantiate(roomPrefab);
+                newRoom.name = ("RoomPosition(" + openCoord.x + "," + openCoord.y + ")");
+                newRoom.GetComponent<Room>().Init();
+
+                newRoom.SetParent(dungeonHolder, false);
+                newRoom.localPosition = roomPosition;
+                newRoom.localRotation = Quaternion.identity;
+                newRoom.localScale = Vector3.one;
+            }
+            
 
             //Find neighboors
             foreach (Coord open in currentOpenCoords)
@@ -163,6 +195,8 @@ public class MapGenerator : MonoBehaviour
             //ToDo Cleanup - Unload Resources and shizz
             Resources.UnloadUnusedAssets();
         }
+
+        
     }
 
     //A* based check to ensure that the removable rooms allow remaining rooms to be accessed
