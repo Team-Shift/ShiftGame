@@ -171,17 +171,47 @@ public class Custom2DController : MonoBehaviour
         health--;
         Debug.Log(health);
 
-        //Vector3 pushBack = new Vector3();
-
-        //Push the player back in the opposite direction from damage source
-        //transform.Translate(transform.position - damageSource);
+        if(player.transform.position.z < damageSource.z)
+        {
+            player.GetComponent<Rigidbody>().AddForce(-Vector3.forward * 1000);
+            //player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + -Vector3.forward * 2, 0.05f);
+            Debug.Log("Greater Z");
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+        else if(player.transform.position.z > damageSource.z)
+        {
+            player.GetComponent<Rigidbody>().AddForce(Vector3.forward * 1000);
+            //player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + Vector3.forward * 2, 0.05f);
+            Debug.Log("Lower Z");
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+        if (player.transform.position.x < damageSource.x)
+        {
+            player.GetComponent<Rigidbody>().AddForce(-Vector3.right * 1000);
+            //player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + -Vector3.right * 2, 0.05f);
+            Debug.Log("Greater X");
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+        else if (player.transform.position.x > damageSource.x)
+        {
+            player.GetComponent<Rigidbody>().AddForce(Vector3.right * 1000);
+            //player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + Vector3.right * 2, 0.05f);
+            Debug.Log("Lower X");
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
     }
 
     void MeleeAttack()
     {
         //Debug.Log("Player swung their sword");
-
-        anim.SetTrigger("sword_attack");
+        if (CameraSwitch == true)
+        {
+            anim.SetTrigger("3D_sword_attack");
+        }
+        else
+        {
+            anim.SetTrigger("sword_attack");
+        }
 
         //run animation for sword swinging
         //Add script for damage on the weapon itself maybe?

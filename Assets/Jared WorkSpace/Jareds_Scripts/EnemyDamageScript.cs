@@ -7,7 +7,7 @@ public class EnemyDamageScript : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Custom2DController>();
+        player = GameObject.Find("Player").GetComponent<Custom2DController>();
     }
 
     void OnTriggerEnter(Collider col)
