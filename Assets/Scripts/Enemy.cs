@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour {
     {
         if(other.tag == "Hitbox")
         {
-            //Debug.Log("losing health from " + other.name);
+            Debug.Log("losing health from " + other.name);
             health--;
             // knockback
         }
@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour {
     {
         if(health <= 0)
         {
-            //Debug.Log("enemy " + this.name + " has died.");
+            Debug.Log("enemy " + this.name + " has died.");
             Instantiate(hitPart, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

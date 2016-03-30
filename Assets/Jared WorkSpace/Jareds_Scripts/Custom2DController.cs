@@ -241,4 +241,12 @@ public class Custom2DController : MonoBehaviour
             projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
         }
     }
+
+    //void OnCollisionEnter(Collider other)
+    //{
+    //    if (other.tag == "enemy")
+    //    {
+    //    }
+
+    //}
 }
