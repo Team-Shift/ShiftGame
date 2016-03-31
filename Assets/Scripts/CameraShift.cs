@@ -58,7 +58,7 @@ public class CameraShift : MonoBehaviour {
             // perspective cam position
             if (camActive)
             {
-                Vector3 v = new Vector3(playerPosX, playerPosY + 2.0f, playerPosZ - 2.0f);
+                Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 2.0f);
                 gameObject.transform.position = v;
                 gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
                 cam.orthographic = false;

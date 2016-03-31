@@ -44,9 +44,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 488790}
   - 114: {fileID: 11439100}
-  - 65: {fileID: 6507520}
   - 95: {fileID: 9587102}
   - 114: {fileID: 11471574}
+  - 61: {fileID: 6160912}
   m_Layer: 0
   m_Name: fireball
   m_TagString: Untagged
@@ -125,18 +125,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162390}
   m_Mesh: {fileID: 4300000, guid: fa4a52bc5abbcc644b9e834fb856d21a, type: 3}
---- !u!65 &6507520
-BoxCollider:
+--- !u!61 &6160912
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179974}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 11.054719, y: 6.040403, z: 5.161401}
-  m_Center: {x: -12.437242, y: 0.22659498, z: 0.78656024}
+  m_Size: {x: 1, y: 1}
 --- !u!95 &9540048
 Animator:
   serializedVersion: 3

@@ -6,6 +6,8 @@ using System.Collections;
 public class Custom2DController : MonoBehaviour
 {
     public GameObject player;
+    public GameObject player2D;
+    public GameObject player3D;
     public GameObject rangedTemp;
     public GameObject meleeWeapon;
     public GameObject mousePointer_Debug;
@@ -67,6 +69,16 @@ public class Custom2DController : MonoBehaviour
         {
             CameraSwitch = !CameraSwitch;
             manager.Shift();
+            if (CameraSwitch == false)
+            {
+                player3D.SetActive(false);
+                player2D.SetActive(true);
+            }
+            else
+            {
+                player3D.SetActive(true);
+                player2D.SetActive(false);
+            }
             //last call on LShift down
         }
     }
