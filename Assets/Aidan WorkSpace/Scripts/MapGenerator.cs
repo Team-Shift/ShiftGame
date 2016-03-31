@@ -136,7 +136,7 @@ public class MapGenerator : MonoBehaviour
 
                 if (newRoom != null)
                 {
-                    GameObject newRoomObject = Instantiate<GameObject>(newRoom.prefab);
+                    GameObject newRoomObject = Instantiate(newRoom.prefab);
                     newRoomObject.name = ("RoomPosition(" + x + "," + y + ")");
                     
                     newRoomObject.transform.SetParent(dungeonHolder, false);

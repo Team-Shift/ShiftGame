@@ -62,6 +62,7 @@ public class Room{
         //Transform portal = t.GetChild((int)swapDir(location) + 1).GetComponentInChildren<Portal>().transform; // for the active child           
 
         neighbors.Add(location, t);
+        AssignHallways();
     }
 
     public void RemoveNeighbor(Direction location)
