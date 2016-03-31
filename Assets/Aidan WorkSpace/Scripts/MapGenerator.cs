@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using UnityEditor;
 using Object = UnityEngine.Object;
@@ -15,10 +16,10 @@ public class MapGenerator : MonoBehaviour
     public Dungeon[] dungeons;
     public int dungeonIndex;
 
-    public Transform[] rooms;
+    public GameObject[] rooms;
 
     //For Debug Purposes
-    public Transform roomPrefab;
+    public GameObject roomPrefab;
 
     public float gridScale;
 
@@ -30,6 +31,10 @@ public class MapGenerator : MonoBehaviour
     public Transform[,] roomLayout;
     Dungeon currentDungeon;
     public List<Coord> currentOpenCoords;
+
+
+    //
+    public Room[,] map;
 
     //Room definitions
     public Transform StartRoom;
@@ -46,13 +51,26 @@ public class MapGenerator : MonoBehaviour
         currentDungeon = dungeons[dungeonIndex];
 
         roomLayout = new Transform[currentDungeon.dungeonSize.x, currentDungeon.dungeonSize.y];
+        map = new Room[currentDungeon.dungeonSize.x, currentDungeon.dungeonSize.y];
 
         System.Random prng = new System.Random(currentDungeon.seed);
 
         //Generate array of room prefabs
-        rooms = Resources.LoadAll("Rooms", typeof(Transform)).Select( o => o as Transform ).ToArray();
+        rooms = Resources.LoadAll("Rooms", typeof(Transform)).Select( o => o as GameObject ).ToArray();
+
+        //Create array of rooms and assign room types
+        //ToDo If x,y = center assign the start room
+        for (int x = 0; x < currentDungeon.dungeonSize.x; x++)
+        {
+            for (int y = 0; y < currentDungeon.dungeonSize.y; y++)
+            {
+                Room newRoom = new Room {prefab = roomPrefab};
+                map[x, y] = newRoom;
+            }
+        }
 
         //Generates a list of possible room coordinates
+        //ToDo Needed for now remove as soon as possible
         allRoomCoords = new List<Coord>();
         for (int x = 0; x < currentDungeon.dungeonSize.x; x++)
         {
@@ -74,6 +92,7 @@ public class MapGenerator : MonoBehaviour
         Transform dungeonHolder = new GameObject(holderName).transform;
         dungeonHolder.SetParent(transform, false);
 
+#region RandomRemoveRoom
         //Create an array of removable coordinates for rooms
         bool[,] obstacleMap = new bool[(int)currentDungeon.dungeonSize.x, (int)currentDungeon.dungeonSize.y];
 
@@ -84,9 +103,12 @@ public class MapGenerator : MonoBehaviour
         //Get a Random Coord
         //If the coord is not the center room
         //Remove the Room from that coord
-        //
+        //Look here for dead stuff
         for (int i = 0; i < obstacleCount; i++)
         {
+
+            //Room room = map[UnityEngine.Random.Range(0, currentDungeon.dungeonSize.x - 1), UnityEngine.Random.Range(0, currentDungeon.dungeonSize.y - 1)];
+
             Coord randomCoord = GetRandomCoord();
             obstacleMap[randomCoord.x, randomCoord.y] = true;
             currentObstacleCount++;
@@ -94,7 +116,7 @@ public class MapGenerator : MonoBehaviour
             {
                 Vector3 obstaclePosition = CoordToPosition(randomCoord);
 
-                currentOpenCoords.Remove(randomCoord);
+                map[randomCoord.x, randomCoord.y] = null;
             }
             else
             {
@@ -103,100 +125,159 @@ public class MapGenerator : MonoBehaviour
             }
 
         }
+#endregion
 
-        shuffleOpenRoomCoords = new Queue<Coord>(Utility.ShuffleArray(currentOpenCoords.ToArray(), currentDungeon.seed));
-
-        //Instantiate rooms based on the final list of available coordinates
-        foreach (Coord openCoord in currentOpenCoords)
+        for (int x = 0; x < currentDungeon.dungeonSize.x; x++)
         {
-
-
-            Vector3 roomPosition = CoordToPosition(openCoord);
-            Transform newRoom;
-            //Transform newRoom = Instantiate(roomPrefab) as Transform;
-            //Transform newRoom = Instantiate(rooms[UnityEngine.Random.Range(0, rooms.Length)]);
-
-            //ToDo Sort special rooms by tag
-            //Select and pull from prefabs with particular tag
-            //Example: Start/End rooms tagged as such
-            //Instantiate(rooms[]
-            //Special Case Room Generation
-            if (openCoord == currentDungeon.dungeonCenter)
+            for (int y = 0; y < currentDungeon.dungeonSize.y; y++)
             {
-                newRoom = Instantiate(StartRoom);
-                newRoom.name = ("RoomPosition(" + openCoord.x + "," + openCoord.y + ")");
-                newRoom.GetComponent<Room>().Init();
+                Vector3 roomPosition = CoordToPosition(x, y);
+                Room newRoom = map[x, y];
 
-                newRoom.SetParent(dungeonHolder, false);
-                newRoom.localPosition = roomPosition;
-                newRoom.localRotation = Quaternion.identity;
-                newRoom.localScale = Vector3.one;
-            }
-
-            //Super Generic Room Generation
-            else
-            {
-                //ToDo Move instantiation of a prefab till we know what the room should be
-                newRoom = Instantiate(roomPrefab);
-                newRoom.name = ("RoomPosition(" + openCoord.x + "," + openCoord.y + ")");
-                newRoom.GetComponent<Room>().Init();
-
-                newRoom.SetParent(dungeonHolder, false);
-                newRoom.localPosition = roomPosition;
-                newRoom.localRotation = Quaternion.identity;
-                newRoom.localScale = Vector3.one;
-            }
-            
-
-            //Find neighboors
-            foreach (Coord open in currentOpenCoords)
-            {
-                Room openRoom = newRoom.GetComponent<Room>();
-                if (openRoom != null)
+                if (newRoom != null)
                 {
-                    //If Top Neighboor
-                    Coord neighborCoord = new Coord(openCoord.x, openCoord.y + 1);
+                    GameObject newRoomObject = Instantiate<GameObject>(newRoom.prefab);
+                    newRoomObject.name = ("RoomPosition(" + x + "," + y + ")");
                     
-                    if (neighborCoord == open)
-                    {
-                        openRoom.AddNeighbor(Room.Direction.North, neighborCoord);
-                        openRoom.SetHallwayActive(Room.Direction.North, true);
-                    }
+                    newRoomObject.transform.SetParent(dungeonHolder, false);
+                    newRoomObject.transform.localPosition = roomPosition;
+                    newRoomObject.transform.localRotation = Quaternion.identity;
+                    newRoomObject.transform.localScale = Vector3.one;
 
-                    //If Right Neighboor
-                    neighborCoord = new Coord(openCoord.x + 1, openCoord.y);
-                    if (neighborCoord == open)
-                    {
-                        openRoom.AddNeighbor(Room.Direction.East, neighborCoord);
-                        openRoom.SetHallwayActive(Room.Direction.East, true);
-                    }
 
-                    //If Bottom Neighboor
-                    neighborCoord = new Coord(openCoord.x, openCoord.y - 1);
-                    if (neighborCoord == open)
+                    for (int row = -1; row <= 1; row++)
                     {
-                        openRoom.AddNeighbor(Room.Direction.South, neighborCoord);
-                        openRoom.SetHallwayActive(Room.Direction.South, true);
-                    }
-
-                    //If Left Neighboor
-                    neighborCoord = new Coord(openCoord.x - 1, openCoord.y);
-                    if (neighborCoord == open)
-                    {
-                        openRoom.AddNeighbor(Room.Direction.West, neighborCoord);
-                        openRoom.SetHallwayActive(Room.Direction.West, true);
-                        //createRoom.AddNeighbor(Room.Direction.West, neighborCoord);
+                        for (int col = -1; col <= 1; col++)
+                        {
+                            int neighborX = x + row;
+                            int neighborY = y + col;
+                            if (row == 0 || col == 0)
+                            {
+                                if (neighborX >= 0 && neighborX < currentDungeon.dungeonSize.x && neighborY >= 0 && neighborY < currentDungeon.dungeonSize.y)
+                                {
+                                    Room neighbor = map[neighborX, neighborY];
+                                    if (neighbor != null)
+                                    {
+                                        if (neighborY > y)
+                                        {
+                                            newRoom.AddNeighbor(Room.Direction.North, neighbor);
+                                        }
+                                        if (neighborX < x)
+                                        {
+                                            newRoom.AddNeighbor(Room.Direction.East, neighbor);
+                                        }
+                                        if (neighborX > x)
+                                        {
+                                            newRoom.AddNeighbor(Room.Direction.South, neighbor);
+                                        }
+                                        if (neighborY < y)
+                                        {
+                                            newRoom.AddNeighbor(Room.Direction.West, neighbor);
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
-
-            roomLayout[openCoord.x, openCoord.y] = newRoom;
-
-            //ToDo Cleanup - Unload Resources and shizz
-            Resources.UnloadUnusedAssets();
         }
 
-        
+        ////Instantiate rooms based on the final list of available coordinates
+        //foreach (Coord openCoord in currentOpenCoords)
+        //{
+
+
+        //    Vector3 roomPosition = CoordToPosition(openCoord);
+        //    Transform newRoom;
+        //    //Transform newRoom = Instantiate(roomPrefab) as Transform;
+        //    //Transform newRoom = Instantiate(rooms[UnityEngine.Random.Range(0, rooms.Length)]);
+
+        //    //ToDo Sort special rooms by tag
+        //    //Select and pull from prefabs with particular tag
+        //    //Example: Start/End rooms tagged as such
+        //    //Instantiate(rooms[]
+        //    //Special Case Room Generation
+        //    if (openCoord == currentDungeon.dungeonCenter)
+        //    {
+        //        newRoom = Instantiate(StartRoom);
+        //        newRoom.name = ("RoomPosition(" + openCoord.x + "," + openCoord.y + ")");
+        //        newRoom.GetComponent<Room>().Init();
+
+        //        newRoom.SetParent(dungeonHolder, false);
+        //        newRoom.localPosition = roomPosition;
+        //        newRoom.localRotation = Quaternion.identity;
+        //        newRoom.localScale = Vector3.one;
+        //    }
+
+        //    //Super Generic Room Generation
+        //    else
+        //    {
+        //        //ToDo Move instantiation of a prefab till we know what the room should be
+        //        newRoom = Instantiate(roomPrefab);
+        //        newRoom.name = ("RoomPosition(" + openCoord.x + "," + openCoord.y + ")");
+        //        newRoom.GetComponent<Room>().Init();
+
+        //        newRoom.SetParent(dungeonHolder, false);
+        //        newRoom.localPosition = roomPosition;
+        //        newRoom.localRotation = Quaternion.identity;
+        //        newRoom.localScale = Vector3.one;
+        //    }
+
+        //    roomLayout[openCoord.x, openCoord.y] = newRoom;
+
+        //    //ToDo Cleanup - Unload Resources and shizz
+        //    Resources.UnloadUnusedAssets();
+        //}
+
+
+        ////Find and assign neighboors
+        //foreach (Coord openCoord in currentOpenCoords)
+        //{
+        //    Transform newRoom = roomLayout[openCoord.x, openCoord.y];
+        //    Room openRoom = newRoom.GetComponent<Room>();
+            
+        //    //Room openRoom = roomLayout[open.x, open.y];
+
+        //    if (openRoom != null)
+        //    {
+        //        //If Top Neighboor
+        //        Coord neighborCoord = new Coord(openCoord.x, openCoord.y + 1);
+
+        //        if (neighborCoord == open)
+        //        {
+        //            openRoom.AddNeighbor(Room.Direction.North, neighborCoord);
+        //            openRoom.SetHallwayActive(Room.Direction.North, true);
+        //        }
+
+        //        //If Right Neighboor
+        //        neighborCoord = new Coord(openCoord.x + 1, openCoord.y);
+        //        if (neighborCoord == open)
+        //        {
+        //            openRoom.AddNeighbor(Room.Direction.East, neighborCoord);
+        //            openRoom.SetHallwayActive(Room.Direction.East, true);
+        //        }
+
+        //        //If Bottom Neighboor
+        //        neighborCoord = new Coord(openCoord.x, openCoord.y - 1);
+        //        if (neighborCoord == open)
+        //        {
+        //            openRoom.AddNeighbor(Room.Direction.South, neighborCoord);
+        //            openRoom.SetHallwayActive(Room.Direction.South, true);
+        //        }
+
+        //        //If Left Neighboor
+        //        neighborCoord = new Coord(openCoord.x - 1, openCoord.y);
+        //        if (neighborCoord == open)
+        //        {
+        //            openRoom.AddNeighbor(Room.Direction.West, neighborCoord);
+        //            openRoom.SetHallwayActive(Room.Direction.West, true);
+        //            //createRoom.AddNeighbor(Room.Direction.West, neighborCoord);
+        //        }
+        //    }
+        //}
+
+
     }
 
     //A* based check to ensure that the removable rooms allow remaining rooms to be accessed

@@ -3,29 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 
-public class Room : MonoBehaviour {
+public class Room{
 
-	// Use this for initialization
-	void Start () {
-        //Hallways = new GameObject[4];
-        //AssignHallways();
-        //neighbors = new Dictionary<Direction, MapGenerator.Coord>();
-    }
-
-    public void Init()
+    public Room()
     {
         Hallways = new GameObject[4];
-        AssignHallways();
         neighbors = new Dictionary<Direction, Transform>();
-        
-
-        //neighbors[Direction.South].get
     }
 
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public GameObject prefab;
 
     public MapGenerator.Coord roomCoord;
     
@@ -58,14 +44,24 @@ public class Room : MonoBehaviour {
     //Functions for adding and removing connected rooms
     public void AddNeighbor(Direction location, MapGenerator.Coord neighbor)
     {
-        //neighbors.Add(location, gameObject.GetComponentInParent<MapGenerator>().roomLayout[neighbor.x, neighbor.y]);
 
-        Transform t = gameObject.GetComponentInParent<MapGenerator>().roomLayout[neighbor.x, neighbor.y];
+        Transform t = prefab.GetComponentInParent<MapGenerator>().roomLayout[neighbor.x, neighbor.y];
 
         // Little bit of danger here!    
         Transform portal = t.GetChild((int) swapDir(location) + 1).GetComponentInChildren<Portal>().transform; // for the active child           
 
         neighbors.Add(location, portal);
+    }
+
+    public void AddNeighbor(Direction location, Room neighbor)
+    {
+        //ToDo Fix Portal Bullshit and get stuff on screen
+        Transform t = neighbor.prefab.transform;
+
+        // Little bit of danger here!    
+        //Transform portal = t.GetChild((int)swapDir(location) + 1).GetComponentInChildren<Portal>().transform; // for the active child           
+
+        neighbors.Add(location, t);
     }
 
     public void RemoveNeighbor(Direction location)
@@ -95,9 +91,9 @@ public class Room : MonoBehaviour {
 
     private void AssignHallways()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < prefab.transform.childCount; i++)
         {
-            Transform child = transform.GetChild(i);
+            Transform child = prefab.transform.GetChild(i);
             if(child != null) { 
                 if (child.gameObject.name == "North_Hallway")
                 {

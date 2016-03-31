@@ -6,7 +6,6 @@ public class Portal : MonoBehaviour {
 
 	// Use this for initialization
 	private void Start () {
-        Debug.Log("Parent Name" + transform.GetComponentInParent<Room>().name);
         //neighborLocations = new Dictionary<Room.Direction, Transform>(transform.GetComponentInParent<Room>().neighbors);
         Debug.Log(transform.GetComponentInParent<Room>().neighbors.Count);
         //neighborLocations = transform.GetComponentInParent<Room>().neighbors;
