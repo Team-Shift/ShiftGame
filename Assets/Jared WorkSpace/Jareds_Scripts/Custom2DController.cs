@@ -14,7 +14,7 @@ public class Custom2DController : MonoBehaviour
     private GameObject sword;
     public float turnSpeed = 180f;
     public float speed = 6.0f;
-    public float playerGroundLevel = 0;
+    //public float playerGroundLevel = 0;
     [HideInInspector]
     private Vector3 moveDirection = Vector3.zero;
     [HideInInspector]
@@ -69,17 +69,10 @@ public class Custom2DController : MonoBehaviour
         {
             CameraSwitch = !CameraSwitch;
             manager.Shift();
-            //if (CameraSwitch == false)
-            //{
-            //    player3D.SetActive(false);
-            //    player2D.SetActive(true);
-            //}
-            //else
-            //{
-            //    player3D.SetActive(true);
-            //    player2D.SetActive(false);
-            //}
-            //last call on LShift down
+            if (CameraSwitch == false)
+            {
+                gameObject.layer = LayerMask.NameToLayer("AvoidLight2D");
+            }
         }
     }
 
@@ -164,26 +157,39 @@ public class Custom2DController : MonoBehaviour
         {
             anim.SetBool("walk", false);
         }
+    }
 
+    IEnumerator ChangeColor(float r, float g, float b, float a, float timeToWait)
+    {
+        Transform[] m = gameObject.GetComponentsInChildren<Transform>();
 
-        /*
-        ||==================================================================================================||
-        || Note: The below if statement will prevent the player from being able to jump so if you're adding ||
-        ||       jump then don't forget to fix the last issue of the player being able to fly by backing up.||
-        ||==================================================================================================||
-        */
-        if(player.transform.position.y > playerGroundLevel)
+        foreach(Transform om in m)
         {
-            player.transform.position = new Vector3(player.transform.position.x, playerGroundLevel, player.transform.position.z);
+            if(om.GetComponent<Renderer>())
+            om.GetComponent<Renderer>().material.color = new Color(r, g, b, a);
+        }
+
+        Debug.Log("Changed Color");
+
+        if(timeToWait > 0)
+        { Debug.Log("Changed color after " + timeToWait + " seconds"); }
+
+        yield return new WaitForSeconds(timeToWait);
+
+        foreach (Transform om in m)
+        {
+            if (om.GetComponent<Renderer>())
+                om.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
         }
     }
 
     public void DamageFallback(Vector3 damageSource)
     {
         health--;
-        Debug.Log(health);
 
-        if(player.transform.position.z < damageSource.z)
+        StartCoroutine(ChangeColor(1, 0.1f, 0.1f, 1, 0.5f));
+
+        if (player.transform.position.z < damageSource.z)
         {
             //player.GetComponent<Rigidbody>().AddForce(-Vector3.forward * 1000);
             player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + -Vector3.forward * 2, Time.deltaTime * 3);
