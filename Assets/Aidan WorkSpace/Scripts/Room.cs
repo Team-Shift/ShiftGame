@@ -5,15 +5,26 @@ using System.Globalization;
 
 public class Room{
 
-    public Room()
+    public Room(GameObject roomPrefab)
     {
         Hallways = new GameObject[4];
         neighbors = new Dictionary<Direction, Transform>();
+        prefab = roomPrefab;
+        
     }
 
-    public GameObject prefab;
+    public void Init()
+    {
+        AssignHallways();
+    }
 
-    public MapGenerator.Coord roomCoord;
+    //Used to keep track of original prefab
+    public GameObject prefab;
+    
+    //Prefab Instance - Instantiated Object
+    public GameObject roomInst;
+
+    public Vector3 roomPosition;
     
     public Dictionary<Direction, Transform> neighbors;
 
@@ -62,7 +73,6 @@ public class Room{
         //Transform portal = t.GetChild((int)swapDir(location) + 1).GetComponentInChildren<Portal>().transform; // for the active child           
 
         neighbors.Add(location, t);
-        AssignHallways();
     }
 
     public void RemoveNeighbor(Direction location)
@@ -90,11 +100,12 @@ public class Room{
         }
     }
 
+    //Assigns hallways for the room instance
     private void AssignHallways()
     {
-        for (int i = 0; i < prefab.transform.childCount; i++)
+        for (int i = 0; i < roomInst.transform.childCount; i++)
         {
-            Transform child = prefab.transform.GetChild(i);
+            Transform child = roomInst.transform.GetChild(i);
             if(child != null) { 
                 if (child.gameObject.name == "North_Hallway")
                 {
@@ -130,6 +141,12 @@ public class Room{
                 child.gameObject.SetActive(!isActive);
             }
         }
+    }
+
+    public void SetPortalTarget(Direction location, Vector3 target)
+    {
+        Portal myNPortal = Hallways[(int)location].GetComponentInChildren<Portal>();
+        myNPortal.targetPosition = target;
     }
 
     //OnEntrance of a room

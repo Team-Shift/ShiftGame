@@ -20,6 +20,7 @@ public class MapGenerator : MonoBehaviour
 
     //For Debug Purposes
     public GameObject roomPrefab;
+    public GameObject portalPrefab;
 
     public float gridScale;
 
@@ -37,12 +38,12 @@ public class MapGenerator : MonoBehaviour
     public Room[,] map;
 
     //Room definitions
-    public Transform StartRoom;
-    public Transform EndRoom;
+    public GameObject StartRoom;
+    public GameObject EndRoom;
 
     void Start()
     {
-        
+        GenerateMap();
     }
 
     public void GenerateMap()
@@ -64,7 +65,17 @@ public class MapGenerator : MonoBehaviour
         {
             for (int y = 0; y < currentDungeon.dungeonSize.y; y++)
             {
-                Room newRoom = new Room {prefab = roomPrefab};
+
+                if(x == currentDungeon.dungeonCenter.x && y == currentDungeon.dungeonCenter.y)
+                {
+                    Room newRoom = new Room(StartRoom);
+                }
+                else
+                {
+                    Room newRoom = new Room(roomPrefab);
+                }
+                
+                newRoom.roomPosition = CoordToPosition(x, y);
                 map[x, y] = newRoom;
             }
         }
@@ -131,16 +142,18 @@ public class MapGenerator : MonoBehaviour
         {
             for (int y = 0; y < currentDungeon.dungeonSize.y; y++)
             {
-                Vector3 roomPosition = CoordToPosition(x, y);
                 Room newRoom = map[x, y];
 
                 if (newRoom != null)
                 {
+                    //ToDo Figure out better way that keeping track of a prefab and a gameobject
                     GameObject newRoomObject = Instantiate(newRoom.prefab);
+                    newRoom.roomInst = newRoomObject;
+                    newRoom.Init();
                     newRoomObject.name = ("RoomPosition(" + x + "," + y + ")");
                     
                     newRoomObject.transform.SetParent(dungeonHolder, false);
-                    newRoomObject.transform.localPosition = roomPosition;
+                    newRoomObject.transform.localPosition = newRoom.roomPosition;
                     newRoomObject.transform.localRotation = Quaternion.identity;
                     newRoomObject.transform.localScale = Vector3.one;
 
@@ -161,24 +174,33 @@ public class MapGenerator : MonoBehaviour
                                         if (neighborY > y)
                                         {
                                             newRoom.AddNeighbor(Room.Direction.North, neighbor);
-                                        }
-                                        if (neighborX < x)
-                                        {
-                                            newRoom.AddNeighbor(Room.Direction.East, neighbor);
+                                            newRoom.SetHallwayActive(Room.Direction.North, true);
+                                            newRoom.SetPortalTarget(Room.Direction.North, neighbor.roomPosition);
                                         }
                                         if (neighborX > x)
                                         {
-                                            newRoom.AddNeighbor(Room.Direction.South, neighbor);
+                                            newRoom.AddNeighbor(Room.Direction.East, neighbor);
+                                            newRoom.SetHallwayActive(Room.Direction.East, true);
+                                            newRoom.SetPortalTarget(Room.Direction.East, neighbor.roomPosition);
                                         }
                                         if (neighborY < y)
                                         {
+                                            newRoom.AddNeighbor(Room.Direction.South, neighbor);
+                                            newRoom.SetHallwayActive(Room.Direction.South, true);
+                                            newRoom.SetPortalTarget(Room.Direction.South, neighbor.roomPosition);
+                                        }
+                                        if (neighborX < x)
+                                        {
                                             newRoom.AddNeighbor(Room.Direction.West, neighbor);
+                                            newRoom.SetHallwayActive(Room.Direction.West, true);
+                                            newRoom.SetPortalTarget(Room.Direction.West, neighbor.roomPosition);
                                         }
                                     }
                                 }
                             }
                         }
                     }
+
                 }
             }
         }
