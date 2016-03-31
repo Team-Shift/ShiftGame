@@ -16,7 +16,7 @@ public class DimensionalSwitchManager : MonoBehaviour
         Enemies = new List<GameObject>();
         Enviornment = new List<GameObject>();
 
-        FindAllEnE();
+        //FindAllEnE();
         playerY = Player.transform.position.y;
     }
 
@@ -49,29 +49,29 @@ public class DimensionalSwitchManager : MonoBehaviour
     {
         proSwitch = !proSwitch;
 
-        if (proSwitch == false)
-        {
-            foreach (GameObject enemy in Enemies)
-            {
-                enemy.transform.position = new Vector3(enemy.transform.position.x, playerY/* - (enemy.GetComponent<Collider>().bounds.size.y / 2)*/, enemy.transform.position.z);
-            }
+        //if (proSwitch == false)
+        //{
+        //    foreach (GameObject enemy in Enemies)
+        //    {
+        //        enemy.transform.position = new Vector3(enemy.transform.position.x, playerY/* - (enemy.GetComponent<Collider>().bounds.size.y / 2)*/, enemy.transform.position.z);
+        //    }
 
-            foreach (GameObject enviorn in Enviornment)
-            {
-                enviorn.transform.position = new Vector3(enviorn.transform.position.x, playerY-1/* - (enemy.GetComponent<Collider>().bounds.size.y / 2)*/, enviorn.transform.position.z);
-            }
-        }
+        //    foreach (GameObject enviorn in Enviornment)
+        //    {
+        //        enviorn.transform.position = new Vector3(enviorn.transform.position.x, playerY-1/* - (enemy.GetComponent<Collider>().bounds.size.y / 2)*/, enviorn.transform.position.z);
+        //    }
+        //}
 
-        else if(proSwitch == true)
-        {
-            foreach (GameObject enemy in Enemies)
-            {                                                                   //Y position needs to be saved and brought back later on
-                enemy.transform.position = new Vector3(enemy.transform.position.x, 2, enemy.transform.position.z);
-            }
-            foreach (GameObject enviorn in Enviornment)
-            {
-                enviorn.transform.position = new Vector3(enviorn.transform.position.x, 1/* - (enemy.GetComponent<Collider>().bounds.size.y / 2)*/, enviorn.transform.position.z);
-            }
-        }
+        //else if(proSwitch == true)
+        //{
+        //    foreach (GameObject enemy in Enemies)
+        //    {                                                                   //Y position needs to be saved and brought back later on
+        //        enemy.transform.position = new Vector3(enemy.transform.position.x, 2, enemy.transform.position.z);
+        //    }
+        //    foreach (GameObject enviorn in Enviornment)
+        //    {
+        //        enviorn.transform.position = new Vector3(enviorn.transform.position.x, 1/* - (enemy.GetComponent<Collider>().bounds.size.y / 2)*/, enviorn.transform.position.z);
+        //    }
+        //}
     }
 }

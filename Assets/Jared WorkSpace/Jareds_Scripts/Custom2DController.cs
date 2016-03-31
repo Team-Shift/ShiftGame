@@ -69,16 +69,16 @@ public class Custom2DController : MonoBehaviour
         {
             CameraSwitch = !CameraSwitch;
             manager.Shift();
-            if (CameraSwitch == false)
-            {
-                player3D.SetActive(false);
-                player2D.SetActive(true);
-            }
-            else
-            {
-                player3D.SetActive(true);
-                player2D.SetActive(false);
-            }
+            //if (CameraSwitch == false)
+            //{
+            //    player3D.SetActive(false);
+            //    player2D.SetActive(true);
+            //}
+            //else
+            //{
+            //    player3D.SetActive(true);
+            //    player2D.SetActive(false);
+            //}
             //last call on LShift down
         }
     }
@@ -185,31 +185,31 @@ public class Custom2DController : MonoBehaviour
 
         if(player.transform.position.z < damageSource.z)
         {
-            player.GetComponent<Rigidbody>().AddForce(-Vector3.forward * 1000);
-            //player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + -Vector3.forward * 2, 0.05f);
+            //player.GetComponent<Rigidbody>().AddForce(-Vector3.forward * 1000);
+            player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + -Vector3.forward * 2, Time.deltaTime * 3);
             Debug.Log("Greater Z");
-            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         else if(player.transform.position.z > damageSource.z)
         {
-            player.GetComponent<Rigidbody>().AddForce(Vector3.forward * 1000);
-            //player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + Vector3.forward * 2, 0.05f);
+            //player.GetComponent<Rigidbody>().AddForce(Vector3.forward * 1000);
+            player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + Vector3.forward * 2, Time.deltaTime * 3);
             Debug.Log("Lower Z");
-            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         if (player.transform.position.x < damageSource.x)
         {
-            player.GetComponent<Rigidbody>().AddForce(-Vector3.right * 1000);
-            //player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + -Vector3.right * 2, 0.05f);
+            //player.GetComponent<Rigidbody>().AddForce(-Vector3.right * 1000);
+            player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + -Vector3.right * 2, Time.deltaTime * 3);
             Debug.Log("Greater X");
-            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         else if (player.transform.position.x > damageSource.x)
         {
-            player.GetComponent<Rigidbody>().AddForce(Vector3.right * 1000);
-            //player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + Vector3.right * 2, 0.05f);
+            //player.GetComponent<Rigidbody>().AddForce(Vector3.right * 1000);
+            player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + Vector3.right * 2, Time.deltaTime * 3);
             Debug.Log("Lower X");
-            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 

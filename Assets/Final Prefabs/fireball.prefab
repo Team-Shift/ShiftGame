@@ -46,7 +46,7 @@ GameObject:
   - 114: {fileID: 11439100}
   - 95: {fileID: 9587102}
   - 114: {fileID: 11471574}
-  - 61: {fileID: 6160912}
+  - 65: {fileID: 6515616}
   m_Layer: 0
   m_Name: fireball
   m_TagString: Untagged
@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.989796, y: -3.7988954, z: 0.42112693}
+  m_LocalPosition: {x: -14.989796, y: 0.08, z: 0.42112693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 488790}
@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179974}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.485, y: -0.764, z: 5.304}
+  m_LocalPosition: {x: 8.124124, y: 3.8320885, z: -1.3236217}
   m_LocalScale: {x: 0.080203265, y: 0.08020322, z: 0.08020322}
   m_Children:
   - {fileID: 401928}
@@ -125,20 +125,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162390}
   m_Mesh: {fileID: 4300000, guid: fa4a52bc5abbcc644b9e834fb856d21a, type: 3}
---- !u!61 &6160912
-BoxCollider2D:
+--- !u!65 &6515616
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179974}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 13.636259, y: 6.454086, z: 6.1012583}
+  m_Center: {x: -11.474744, y: 4.5497594, z: 0.4225012}
 --- !u!95 &9540048
 Animator:
   serializedVersion: 3
@@ -148,7 +146,7 @@ Animator:
   m_GameObject: {fileID: 162390}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8432d4da315a5c64eb4de58672fd8f0f, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -197,6 +195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbfb8f300979fc84d9aeb71ddaa88ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  xOffset: 1
+  zOffset: 1
 --- !u!198 &19869868
 ParticleSystem:
   m_ObjectHideFlags: 1
