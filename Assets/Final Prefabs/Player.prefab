@@ -362,7 +362,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< 4440d3a0fd7f2e0ff3153fe987ad2987c7317555
   m_LocalPosition: {x: 4.772, y: 0, z: -6}
+||||||| merged common ancestors
+  m_LocalPosition: {x: 2.535, y: 2.16, z: -5.798}
+=======
+  m_LocalPosition: {x: 7.857366, y: -0.77, z: 1.3043399}
+>>>>>>> combat
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 404324}
@@ -640,9 +646,19 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
+<<<<<<< 4440d3a0fd7f2e0ff3153fe987ad2987c7317555
   m_Size: {x: 0.09312439, y: 0.13172226, z: 0.061860967}
   m_Center: {x: -0.0049073696, y: 0.0633297, z: 0.056173053}
 --- !u!65 &6589724
+||||||| merged common ancestors
+  m_Size: {x: 0.09312439, y: 0.13172226, z: 0.061860967}
+  m_Center: {x: -0.0049073696, y: 0.0633297, z: 0.056173053}
+--- !u!65 &6591716
+=======
+  m_Size: {x: 0.39524698, y: 0.6562575, z: 0.3403226}
+  m_Center: {x: -0.0145492405, y: 0.21246225, z: 0.2578327}
+--- !u!65 &6591716
+>>>>>>> combat
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -652,8 +668,16 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
+<<<<<<< 4440d3a0fd7f2e0ff3153fe987ad2987c7317555
   m_Size: {x: 0.4021666, y: 0.58665824, z: 0.41378003}
   m_Center: {x: -0.015193105, y: 0.24900699, z: 0.04495454}
+||||||| merged common ancestors
+  m_Size: {x: 0.08351433, y: 0.12404475, z: 0.086496614}
+  m_Center: {x: -0.0015595913, y: 0.06836474, z: 0.005533335}
+=======
+  m_Size: {x: 0.3972311, y: 0.65960324, z: 0.36494574}
+  m_Center: {x: -0.0058658123, y: 0.21272391, z: 0.04247278}
+>>>>>>> combat
 --- !u!95 &9519946
 Animator:
   serializedVersion: 3

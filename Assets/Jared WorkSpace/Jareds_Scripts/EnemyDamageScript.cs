@@ -40,10 +40,19 @@ public class EnemyDamageScript : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
+<<<<<<< 4440d3a0fd7f2e0ff3153fe987ad2987c7317555
             Debug.Log("Gameobject dead");
             Destroy(gameObject);
             playerScript.DamageFallback(transform.position);
+||||||| merged common ancestors
+            Debug.Log("Player was hit");
+            player.DamageFallback(transform.position);
+=======
+            Debug.Log("Player was hit");
+            //player.DamageFallback(transform.position);
+>>>>>>> combat
             //Add reference to monster script later to decress health
         }
+        Destroy(gameObject);
     }
 }

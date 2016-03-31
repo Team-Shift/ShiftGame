@@ -147,7 +147,7 @@ ModelImporter:
     - serializedVersion: 16
       name: sword_attack
       takeName: Take 001
-      firstFrame: 82
+      firstFrame: 83
       lastFrame: 93
       wrapMode: 0
       orientationOffsetY: 0
@@ -168,18 +168,18 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.41359773
+      - time: 0.42776203
         functionName: enableCollider
         data: 
-        objectReferenceParameter: {fileID: 168000, guid: db01e1b5d3986094480b47862586e72b,
+        objectReferenceParameter: {fileID: 132990, guid: 2342a168ec03a2b4db92fc78b4b3020b,
           type: 2}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.8385269
+      - time: 0.92351276
         functionName: disableCollider
         data: 
-        objectReferenceParameter: {fileID: 168000, guid: db01e1b5d3986094480b47862586e72b,
+        objectReferenceParameter: {fileID: 132990, guid: 2342a168ec03a2b4db92fc78b4b3020b,
           type: 2}
         floatParameter: 0
         intParameter: 0
