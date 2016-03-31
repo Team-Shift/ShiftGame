@@ -53,17 +53,6 @@ public class Room{
     }
 
     //Functions for adding and removing connected rooms
-    public void AddNeighbor(Direction location, MapGenerator.Coord neighbor)
-    {
-
-        Transform t = prefab.GetComponentInParent<MapGenerator>().roomLayout[neighbor.x, neighbor.y];
-
-        // Little bit of danger here!    
-        Transform portal = t.GetChild((int) swapDir(location) + 1).GetComponentInChildren<Portal>().transform; // for the active child           
-
-        neighbors.Add(location, portal);
-    }
-
     public void AddNeighbor(Direction location, Room neighbor)
     {
         //ToDo Fix Portal Bullshit and get stuff on screen
