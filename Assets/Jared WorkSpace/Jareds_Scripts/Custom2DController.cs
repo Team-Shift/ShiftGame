@@ -2,6 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody))]
 
 public class Custom2DController : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class Custom2DController : MonoBehaviour
     [HideInInspector]
     public bool CameraSwitch = false;
     private Animator anim;
+
+    public float pushBackForce = 750;
+    public float pushUpForce = 10;
+    
     
     public enum FacingDirection { Forward, Backward, Left, Right };
     public FacingDirection playerDir;
@@ -42,7 +47,7 @@ public class Custom2DController : MonoBehaviour
 
         CameraSwitch = false;
         //Make sure to finish init by finding it
-
+        gameObject.GetComponent<Rigidbody>().freezeRotation = true;
     }
 
     // Update is called once per frame
@@ -191,33 +196,64 @@ public class Custom2DController : MonoBehaviour
 
         if (player.transform.position.z < damageSource.z)
         {
-            //player.GetComponent<Rigidbody>().AddForce(-Vector3.forward * 1000);
-            player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + -Vector3.forward * 2, Time.deltaTime * 3);
+            player.GetComponent<Rigidbody>().AddForce(-Vector3.forward * pushBackForce);
             Debug.Log("Greater Z");
-            //player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
-        else if(player.transform.position.z > damageSource.z)
+        else if (player.transform.position.z > damageSource.z)
         {
-            //player.GetComponent<Rigidbody>().AddForce(Vector3.forward * 1000);
-            player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + Vector3.forward * 2, Time.deltaTime * 3);
+            player.GetComponent<Rigidbody>().AddForce(Vector3.forward * pushBackForce);
             Debug.Log("Lower Z");
-            //player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         if (player.transform.position.x < damageSource.x)
         {
-            //player.GetComponent<Rigidbody>().AddForce(-Vector3.right * 1000);
-            player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + -Vector3.right * 2, Time.deltaTime * 3);
+            player.GetComponent<Rigidbody>().AddForce(-Vector3.right * pushBackForce);
             Debug.Log("Greater X");
-            //player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         else if (player.transform.position.x > damageSource.x)
         {
-            //player.GetComponent<Rigidbody>().AddForce(Vector3.right * 1000);
-            player.transform.position = Vector3.Lerp(player.transform.position, player.transform.position + Vector3.right * 2, Time.deltaTime * 3);
+            player.GetComponent<Rigidbody>().AddForce(Vector3.right * pushBackForce);
             Debug.Log("Lower X");
-            //player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
+
+        StartCoroutine(StopForce());
+
     }
+
+    //void OnCollisionEnter(Collision col)
+    //{
+    //    float force = 750;
+    //    float upForce = 10;
+
+    //    if (col.gameObject.tag == "Enemy")
+    //    {
+    //        Debug.Log("Enemy has hit player");
+
+    //        //ContactPoint contact = col.contacts [0];
+
+    //        Vector3 dir = col.transform.position - transform.position;
+
+    //        dir = -dir.normalized;
+    //        dir = new Vector3(dir.x, dir.y * upForce, dir.z);
+
+    //        Debug.Log(dir.x + ", " + dir.y + ", " + dir.z);
+
+    //        gameObject.GetComponent<Rigidbody>().AddForce(dir * force);
+
+    //        StartCoroutine(StopForce());
+    //    }
+    //}
+
+    IEnumerator StopForce()
+    {
+        float waitTime = 1f;
+
+        yield return new WaitForSeconds(waitTime);
+
+        Debug.Log("Player Force Stopped");
+
+        gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+    }
+
 
     void MeleeAttack()
     {
@@ -259,12 +295,4 @@ public class Custom2DController : MonoBehaviour
             projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
         }
     }
-
-    //void OnCollisionEnter(Collider other)
-    //{
-    //    if (other.tag == "enemy")
-    //    {
-    //    }
-
-    //}
 }
