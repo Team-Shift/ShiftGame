@@ -22,14 +22,12 @@ public class EnemyDamageScript : MonoBehaviour
         Vector3 fireBallPos = gameObject.transform.position;
 
         yOffset = fireBallPos.y * .84f;
-        Debug.Log(yOffset);
 
         if (playerScript.CameraSwitch == false)
         {
             //if ((player.transform.position.x <= transform.position.x + xOffset && player.transform.position.x >= transform.position.x - xOffset) && (player.transform.position.z <= transform.position.z + zOffset && player.transform.position.z >= transform.position.z - zOffset))
             if( (playerPos.x <= fireBallPos.x + xOffset && playerPos.x >= fireBallPos.x - xOffset) && (playerPos.z <= (fireBallPos.z + yOffset) + zOffset && playerPos.z >= (fireBallPos.z + yOffset) - zOffset) )
             {
-                Debug.Log("Collision via x/z axis!");
                 Destroy(gameObject);
                 playerScript.DamageFallback(transform.position);
             }
