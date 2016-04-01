@@ -9,8 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 405628}
   - 95: {fileID: 9587918}
+  - 114: {fileID: 11424018}
+  - 114: {fileID: 11420728}
+  - 114: {fileID: 11411998}
   m_Layer: 0
-  m_Name: fbx_ghostshopkeeper_animation
+  m_Name: ghostWander
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.088, y: 0, z: 0}
+  m_LocalPosition: {x: 1.1996125, y: -1.179, z: 4.680399}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 423120}
@@ -360,6 +363,50 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11411998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fefa54b60b29f944baf7284fecb8b60c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startHealth: 5
+  hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+--- !u!114 &11420728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17258435be8c5e34fa0c52f2bdd20377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVel: 50
+  shouldSeek: 0
+--- !u!114 &11424018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71dbe9531a8ba86478dada0dbfa064a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathList:
+  - {x: -0.82, y: -1, z: 8.38}
+  - {x: -0.92, y: -1, z: 4.87}
+  - {x: 3.47, y: -1, z: 4.87}
+  speed: 2
+  showPath: 1
+  shouldWander: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
