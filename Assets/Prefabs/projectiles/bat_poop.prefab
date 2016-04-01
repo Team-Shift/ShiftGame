@@ -28,6 +28,7 @@ GameObject:
   - 114: {fileID: 11471050}
   - 65: {fileID: 6510824}
   - 114: {fileID: 11457688}
+  - 65: {fileID: 6534200}
   m_Layer: 0
   m_Name: bat_poop
   m_TagString: Untagged
@@ -54,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4088292, y: -1.3006215, z: 5.6113424}
+  m_LocalPosition: {x: 7.0561123, y: -0.6782757, z: -14.689457}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 441352}
@@ -103,8 +104,20 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.3090508, y: 0.27224743, z: 0.3184985}
+  m_Center: {x: 0.0008649826, y: 0.14408243, z: -0.0014038086}
+--- !u!65 &6534200
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141264}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3394571, y: 0.3025787, z: 0.33875263}
+  m_Center: {x: 0.0035114288, y: 0.14272845, z: -0.0017490387}
 --- !u!114 &11457688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,8 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  xOffset: 0
-  zOffset: 0
+  xOffset: 0.2
+  zOffset: 0.2
 --- !u!114 &11471050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,6 +159,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: xOffset
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: zOffset
+      value: -0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

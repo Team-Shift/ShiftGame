@@ -24,6 +24,9 @@ public class Custom2DController : MonoBehaviour
     public float pushBackForce = 750;
     public float pushUpForce = 10;
     private bool jump = true;
+    public float jumpTimeLeft = 1f;
+    private bool shot = true;
+    public float shotTimeLeft = 1f;
     
     //Movement
     public enum FacingDirection { Forward, Backward, Left, Right };
@@ -83,6 +86,24 @@ public class Custom2DController : MonoBehaviour
                 gameObject.layer = LayerMask.NameToLayer("Default");
             }
         }
+
+        jumpTimeLeft = jumpTimeLeft - Time.deltaTime;
+
+        if(jumpTimeLeft <= 0)
+        {
+            jumpTimeLeft = 1f;
+            jump = true;
+        }
+
+        shotTimeLeft = shotTimeLeft - Time.deltaTime;
+
+        if (shotTimeLeft <= 0)
+        {
+            shotTimeLeft = 1f;
+            shot = true;
+        }
+
+
     }
 
 
@@ -146,7 +167,6 @@ public class Custom2DController : MonoBehaviour
         {
             player.GetComponent<Rigidbody>().AddForce(new Vector3(0, 10000, 0));
             jump = false;
-            StartCoroutine(ActivateJump());
         }
 
         if (forwardBack != 0)
@@ -204,27 +224,46 @@ public class Custom2DController : MonoBehaviour
 
     void RangedAttack()
     {
-        anim.SetTrigger("bow_attack");
-        if(playerDir == FacingDirection.Forward)
+        if (shot == true)
         {
-            GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1.0f), player.transform.rotation) as GameObject;
-            projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
+            anim.SetTrigger("bow_attack");
         }
-        else if (playerDir == FacingDirection.Backward)
+
+        if (CameraSwitch == false)
         {
-            GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 1.0f), player.transform.rotation) as GameObject;
-            projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
+            if (playerDir == FacingDirection.Forward && shot == true)
+            {
+                GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1.0f), player.transform.rotation) as GameObject;
+                projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
+            }
+            else if (playerDir == FacingDirection.Backward && shot == true)
+            {
+                GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 1.0f), player.transform.rotation) as GameObject;
+                projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
+            }
+            else if (playerDir == FacingDirection.Left && shot == true)
+            {
+                GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x - 1.0f, player.transform.position.y, player.transform.position.z), player.transform.rotation) as GameObject;
+                projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
+            }
+            else if (playerDir == FacingDirection.Right && shot == true)
+            {
+                GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x + 1.0f, player.transform.position.y, player.transform.position.z), player.transform.rotation) as GameObject;
+                projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
+            }
+
         }
-        else if (playerDir == FacingDirection.Left)
+
+        else
         {
-            GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x - 1.0f, player.transform.position.y, player.transform.position.z), player.transform.rotation) as GameObject;
-            projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
+            if (shot == true)
+            {
+                GameObject projectial = Instantiate(rangedTemp, player.transform.position + player.transform.forward, player.transform.rotation) as GameObject;
+                projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
+            }
         }
-        else if (playerDir == FacingDirection.Right)
-        {
-            GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x + 1.0f, player.transform.position.y, player.transform.position.z), player.transform.rotation) as GameObject;
-            projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
-        }
+
+        shot = false;
     }
 
     /*
@@ -249,12 +288,6 @@ public class Custom2DController : MonoBehaviour
             if (om.GetComponent<Renderer>())
                 om.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
         }
-    }
-
-    IEnumerator ActivateJump()
-    {
-        yield return new WaitForSeconds(0.5f);
-        jump = true;
     }
 
     IEnumerator StopForce()
