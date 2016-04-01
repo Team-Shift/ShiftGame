@@ -10,13 +10,15 @@ public class PlayerProjectialControl : MonoBehaviour
     void Update()
     {
         Destroy(gameObject, lifeSpan);
+
+
+
     }
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Enemy")
         {
             Debug.Log("Enemy was hit");
-            //Add reference to monster script later to decress health
 
 
             Destroy(gameObject);

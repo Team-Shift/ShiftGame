@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147730}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 4.46, y: -1, z: 5.17455}
+  m_LocalPosition: {x: 1.0833979, y: -0.14499998, z: -13.457351}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 469980}
@@ -311,8 +311,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathList:
-  - {x: 0, y: 0, z: 0}
-  - {x: 9.68, y: 0, z: 0}
+  - {x: 0, y: 2, z: -15}
+  - {x: 0, y: 2, z: -10}
   speed: 2
   showPath: 1
   shouldWander: 1
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   yPosLock: 0
-  projectile: {fileID: 0}
+  projectile: {fileID: 141264, guid: d9f7a69cb40f1c1449befa0f92f88a68, type: 2}
   alwaysShoot: 1
   shouldRotate: 1
   yOffset: 0
@@ -357,7 +357,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4.117571
+  m_Radius: 2.25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
