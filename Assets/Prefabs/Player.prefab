@@ -58,7 +58,6 @@ GameObject:
   - 95: {fileID: 9540820}
   - 114: {fileID: 11410388}
   - 114: {fileID: 11472094}
-  - 114: {fileID: 11437430}
   - 65: {fileID: 6535498}
   - 54: {fileID: 5410418}
   m_Layer: 0
@@ -318,7 +317,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.044, y: -0.185, z: -17.35}
+  m_LocalPosition: {x: 0.37, y: -0.087, z: -10.938}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 454132}
@@ -338,7 +337,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: c32f38f59352a5e45bc046c6ea239b4c, type: 2}
+  - {fileID: 2100000, guid: 05d702b7512bd734f87856ddce842b9d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -364,7 +363,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: c32f38f59352a5e45bc046c6ea239b4c, type: 2}
+  - {fileID: 2100000, guid: 05d702b7512bd734f87856ddce842b9d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -390,7 +389,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: c32f38f59352a5e45bc046c6ea239b4c, type: 2}
+  - {fileID: 2100000, guid: 05d702b7512bd734f87856ddce842b9d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -416,7 +415,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: c32f38f59352a5e45bc046c6ea239b4c, type: 2}
+  - {fileID: 2100000, guid: 05d702b7512bd734f87856ddce842b9d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -442,7 +441,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: c32f38f59352a5e45bc046c6ea239b4c, type: 2}
+  - {fileID: 2100000, guid: 05d702b7512bd734f87856ddce842b9d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -468,7 +467,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: c32f38f59352a5e45bc046c6ea239b4c, type: 2}
+  - {fileID: 2100000, guid: 05d702b7512bd734f87856ddce842b9d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -534,12 +533,12 @@ Rigidbody:
   m_GameObject: {fileID: 130236}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 10
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 32
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &6535498
 BoxCollider:
@@ -596,13 +595,15 @@ MonoBehaviour:
   player: {fileID: 130236}
   player2D: {fileID: 0}
   player3D: {fileID: 0}
-  rangedTemp: {fileID: 156006, guid: aa96e6271392392429e8a142178ffcaf, type: 2}
+  rangedTemp: {fileID: 186404, guid: 8f982843d0e044d408e9c21a41848cc3, type: 2}
   meleeWeapon: {fileID: 160042}
   mousePointer_Debug: {fileID: 0}
   turnSpeed: 180
-  speed: 6
+  speed: 4
   health: 3
   CameraSwitch: 1
+  pushBackForce: 150
+  pushUpForce: 10
   playerDir: 0
   currentHeld: 0
 --- !u!114 &11437396
@@ -617,17 +618,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
---- !u!114 &11437430
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11472094
 MonoBehaviour:
   m_ObjectHideFlags: 1
