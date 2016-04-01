@@ -5,7 +5,6 @@ public class CameraShift : MonoBehaviour {
 
     // player to follow
     public GameObject player;
-    private GameObject pivotPoint;
 
     // for fading in/out
     Color s_fade;                                       // to change alpha
@@ -19,15 +18,8 @@ public class CameraShift : MonoBehaviour {
 
     public bool canShift;                               // if player unlocks shift ability
 
-    // get players pos
-    float playerPosX;
-    float playerPosZ;
-    float playerPosY;
-
     void Start()
     {
-        pivotPoint = GameObject.Find("PivotPoint");
-
         // changes if unlocked in game
         canShift = true;
         camActive = false;  // start in ortho
@@ -38,15 +30,8 @@ public class CameraShift : MonoBehaviour {
         canFade = false;    // no fading to start
     }
 
-	void Update() {
-
-        // get players pos
-        playerPosX = player.transform.position.x;
-        playerPosZ = player.transform.position.z;
-        playerPosY = player.transform.position.y;
-
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && canShift)
+	void Update () {
+	    if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && canShift)
         {
             canFade = true;
             startTime = Time.unscaledTime;
@@ -54,60 +39,34 @@ public class CameraShift : MonoBehaviour {
             StartCoroutine("CameraChange");
             // disable fading after full fade duration
             StartCoroutine("ShiftFade");
-
-            // perspective cam position
-            if (camActive)
-            {
-                Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 2.0f);
-                gameObject.transform.position = v;
-                gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
-                cam.orthographic = false;
-            }
-            // ortho camera position
-            else
-            {
-                Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 6.0f);
-                gameObject.transform.position = v;
-                gameObject.transform.rotation = Quaternion.Euler(50.0f, 0, 0);
-                cam.orthographic = true;
-            }
         }
 
-        if(!camActive)
+        // get players pos
+        float playerPosX = player.transform.position.x;
+        float playerPosZ = player.transform.position.z;
+        float playerPosY = player.transform.position.y;
+
+        // perspective cam position
+        if (camActive)
+        {
+            Vector3 v = new Vector3(playerPosX, playerPosY + 2.0f, playerPosZ - 2.0f);
+            gameObject.transform.position = v;
+            gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
+            cam.orthographic = false;
+        }
+        // ortho camera position
+        else
         {
             Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 6.0f);
             gameObject.transform.position = v;
             gameObject.transform.rotation = Quaternion.Euler(50.0f, 0, 0);
             cam.orthographic = true;
         }
-        else
-        {
-            cam.orthographic = false;
-        }
 
         // start fading in and out
         if (canFade)
             lerpAlpha();
         
-    }
-
-
-    /*
-    ||===================================================================================||
-    *       DON'T TOUCH LATE UPDATE                                                       *
-    *       THIS ALLOWS TO PLAYER AND CAMERA TO ROATE THE SAME                            *
-    ||===================================================================================||
-    */
-    void LateUpdate()
-    {
-        if (camActive == true)
-        {
-            float offsetBack = 3;
-            float turning = Input.GetAxis("Mouse X");
-
-            transform.rotation = (pivotPoint.transform.rotation);
-            transform.position = pivotPoint.transform.position + offsetBack * -transform.forward;
-        }
     }
     
     void ChangeCamera()

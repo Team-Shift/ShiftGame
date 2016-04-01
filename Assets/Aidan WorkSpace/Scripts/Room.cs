@@ -135,6 +135,7 @@ public class Room{
     public void SetPortalTarget(Direction location, Vector3 target)
     {
         Portal myNPortal = Hallways[(int)location].GetComponentInChildren<Portal>();
+        myNPortal.name = (location + "Portal");
         myNPortal.targetPosition = target;
     }
 
