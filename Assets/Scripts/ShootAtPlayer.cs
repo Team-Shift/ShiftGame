@@ -44,6 +44,7 @@ public class ShootAtPlayer : MonoBehaviour {
         }
         else if(alwaysShoot) anim.SetBool("canShoot", true);
         else anim.SetBool("canShoot", false);
+        
     }
 
     void OnTriggerEnter(Collider other)

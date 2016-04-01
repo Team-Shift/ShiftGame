@@ -27,7 +27,7 @@ public class Wander : MonoBehaviour {
             //rotate to path node
             gameObject.transform.LookAt(pathList[index]);
 
-            Debug.Log(dir.magnitude);
+            //Debug.Log(dir.magnitude);
             // increment index
             if (dir.magnitude <= 1.0f) index++;
             if (index >= pathList.Count) index = 0;
