@@ -38,6 +38,7 @@ public class EnemyDamageScript : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
+        Debug.Log("hitting");
         if (col.gameObject.tag == "Player")
         {
             Debug.Log("Gameobject dead");

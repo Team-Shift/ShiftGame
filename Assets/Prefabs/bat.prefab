@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11419770}
   - 114: {fileID: 11427302}
   - 114: {fileID: 11497782}
+  - 114: {fileID: 11484246}
   m_Layer: 0
   m_Name: bat
   m_TagString: Untagged
@@ -49,6 +50,7 @@ GameObject:
   - 33: {fileID: 3316262}
   - 23: {fileID: 2355014}
   - 95: {fileID: 9510370}
+  - 114: {fileID: 11459832}
   m_Layer: 0
   m_Name: bat_animation
   m_TagString: Untagged
@@ -94,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147730}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -3.088338, y: -0.17357063, z: -17.948187}
+  m_LocalPosition: {x: 4.46, y: -1, z: 5.17455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 469980}
@@ -279,6 +281,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad1921a0d53ae44f938dc306420c553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11459832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170038}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2ac4c27aa36794294c4478976b2053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  yPosLock: 0
+  projectile: {fileID: 141264, guid: d9f7a69cb40f1c1449befa0f92f88a68, type: 2}
+  alwaysShoot: 0
+  shouldRotate: 1
+  yOffset: -1
+  rotOffset: 90
 --- !u!114 &11469820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -295,7 +315,25 @@ MonoBehaviour:
   - {x: 9.68, y: 0, z: 0}
   speed: 2
   showPath: 1
-  shouldWander: 0
+  shouldWander: 1
+--- !u!114 &11484246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2ac4c27aa36794294c4478976b2053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  yPosLock: 0
+  projectile: {fileID: 0}
+  alwaysShoot: 1
+  shouldRotate: 1
+  yOffset: 0
+  rotOffset: 90
 --- !u!114 &11497782
 MonoBehaviour:
   m_ObjectHideFlags: 1

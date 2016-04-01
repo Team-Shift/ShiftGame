@@ -26,8 +26,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161546}
-  m_LocalRotation: {x: 0, y: 0.999999, z: 0, w: -0.0014623532}
-  m_LocalPosition: {x: -597.43884, y: 723.39624, z: -752.4743}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0.08138418, y: -1.1270509, z: 7.201}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,6 +77,8 @@ MonoBehaviour:
   projectile: {fileID: 179974, guid: 71a1486ace4ad7e4cae66d9e20f9919a, type: 2}
   alwaysShoot: 0
   shouldRotate: 0
+  yOffset: 0.5
+  rotOffset: 90
 --- !u!135 &13551714
 SphereCollider:
   m_ObjectHideFlags: 1

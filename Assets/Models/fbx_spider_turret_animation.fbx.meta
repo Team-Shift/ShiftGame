@@ -1,28 +1,47 @@
 fileFormatVersion: 2
-guid: ce06174afc94aa44fb544501c5a7c763
-timeCreated: 1458174372
+guid: fc7c2d75deeb831478ec0e1828879ac9
+timeCreated: 1459539696
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: obj_bat_wing_01:Mesh
-    100004: obj_bat_wing_02:Mesh
+    100002: obj_spider_turret_body:Mesh
+    100004: obj_spider_turret_legs_01:Mesh
+    100006: obj_spider_turret_legs_02:Mesh
+    100008: obj_spider_turret_legs_03:Mesh
+    100010: obj_spider_turret_legs_04:Mesh
+    100012: obj_spider_turret_slingshot:Mesh
+    100014: obj_spider_turret_web:Mesh
     400000: //RootNode
-    400002: obj_bat_wing_01:Mesh
-    400004: obj_bat_wing_02:Mesh
-    2300000: //RootNode
-    2300002: obj_bat_wing_01:Mesh
-    2300004: obj_bat_wing_02:Mesh
-    3300000: //RootNode
-    3300002: obj_bat_wing_01:Mesh
-    3300004: obj_bat_wing_02:Mesh
-    4300000: obj_bat:Mesh
-    4300002: obj_bat_wing_02:Mesh
-    4300004: obj_bat_wing_01:Mesh
-    7400000: Fly
-    7400002: Shoot
+    400002: obj_spider_turret_body:Mesh
+    400004: obj_spider_turret_legs_01:Mesh
+    400006: obj_spider_turret_legs_02:Mesh
+    400008: obj_spider_turret_legs_03:Mesh
+    400010: obj_spider_turret_legs_04:Mesh
+    400012: obj_spider_turret_slingshot:Mesh
+    400014: obj_spider_turret_web:Mesh
+    2300000: obj_spider_turret_body:Mesh
+    2300002: obj_spider_turret_legs_01:Mesh
+    2300004: obj_spider_turret_legs_02:Mesh
+    2300006: obj_spider_turret_legs_03:Mesh
+    2300008: obj_spider_turret_legs_04:Mesh
+    3300000: obj_spider_turret_body:Mesh
+    3300002: obj_spider_turret_legs_01:Mesh
+    3300004: obj_spider_turret_legs_02:Mesh
+    3300006: obj_spider_turret_legs_03:Mesh
+    3300008: obj_spider_turret_legs_04:Mesh
+    4300000: obj_spider_turret_slingshot:Mesh
+    4300002: obj_spider_turret_web:Mesh
+    4300004: obj_spider_turret_body:Mesh
+    4300006: obj_spider_turret_legs_01:Mesh
+    4300008: obj_spider_turret_legs_02:Mesh
+    4300010: obj_spider_turret_legs_03:Mesh
+    4300012: obj_spider_turret_legs_04:Mesh
+    7400000: Take 001
     9500000: //RootNode
+    13700000: obj_spider_turret_slingshot:Mesh
+    13700002: obj_spider_turret_web:Mesh
   materials:
     importMaterials: 1
     materialName: 0
@@ -45,44 +64,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Fly
+      name: Take 001
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 10
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: obj_bat_wing_01:Mesh
-        weight: 1
-      - path: obj_bat_wing_02:Mesh
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
-    - serializedVersion: 16
-      name: Shoot
-      takeName: Take 001
-      firstFrame: 10
-      lastFrame: 35
+      lastFrame: 41
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -102,10 +87,10 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9168901
+      - time: 0.424581
         functionName: ShootProjectile
         data: 
-        objectReferenceParameter: {fileID: 147730, guid: cebc45940fe781742bf3a624a2dae71e,
+        objectReferenceParameter: {fileID: 111196, guid: d980265bd1189ad49aa20de9bf3f06c7,
           type: 2}
         floatParameter: 0
         intParameter: 0
@@ -113,9 +98,19 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: obj_bat_wing_01:Mesh
+      - path: obj_spider_turret_body:Mesh
         weight: 1
-      - path: obj_bat_wing_02:Mesh
+      - path: obj_spider_turret_body:Mesh/obj_spider_turret_legs_01:Mesh
+        weight: 1
+      - path: obj_spider_turret_body:Mesh/obj_spider_turret_legs_02:Mesh
+        weight: 1
+      - path: obj_spider_turret_legs_03:Mesh
+        weight: 1
+      - path: obj_spider_turret_legs_04:Mesh
+        weight: 1
+      - path: obj_spider_turret_slingshot:Mesh
+        weight: 1
+      - path: obj_spider_turret_slingshot:Mesh/obj_spider_turret_web:Mesh
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
