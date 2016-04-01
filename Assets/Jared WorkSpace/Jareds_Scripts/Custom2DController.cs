@@ -9,7 +9,8 @@ public class Custom2DController : MonoBehaviour
     public GameObject player;
     public GameObject rangedTemp;
     public GameObject meleeWeapon;
-    private GameObject sword;
+    public GameObject sword;
+    private DimensionalSwitchManager manager;
     public float turnSpeed = 180f;
     public float speed = 6.0f;
     [HideInInspector]
@@ -22,13 +23,15 @@ public class Custom2DController : MonoBehaviour
 
     public float pushBackForce = 750;
     public float pushUpForce = 10;
+    private bool jump = true;
     
-    
+    //Movement
     public enum FacingDirection { Forward, Backward, Left, Right };
     public FacingDirection playerDir;
+
+    //Combat
     public enum CurrentItemType { Melee, Range, Scroll, Spell, None};
     public CurrentItemType currentHeld;
-    private DimensionalSwitchManager manager;
 
 
     // Use this for initialization
@@ -45,6 +48,8 @@ public class Custom2DController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //Movement
         if (CameraSwitch == false)
         {
             Move2D();
@@ -54,6 +59,7 @@ public class Custom2DController : MonoBehaviour
             Move3D();
         }
 
+        //Combat
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             MeleeAttack();
@@ -62,6 +68,8 @@ public class Custom2DController : MonoBehaviour
         {
             RangedAttack();
         }
+
+        //Shift
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             CameraSwitch = !CameraSwitch;
@@ -77,6 +85,10 @@ public class Custom2DController : MonoBehaviour
         }
     }
 
+
+    /*
+    * Movement
+    */
     void Move2D()
     {
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -130,6 +142,13 @@ public class Custom2DController : MonoBehaviour
         //end of new code
 
 
+        if (Input.GetKeyDown(KeyCode.Space) && jump == true)
+        {
+            player.GetComponent<Rigidbody>().AddForce(new Vector3(0, 10000, 0));
+            jump = false;
+            StartCoroutine(ActivateJump());
+        }
+
         if (forwardBack != 0)
         {
             anim.SetBool("walk", true);
@@ -140,29 +159,9 @@ public class Custom2DController : MonoBehaviour
         }
     }
 
-    IEnumerator ChangeColor(float r, float g, float b, float a, float timeToWait)
-    {
-        Transform[] m = gameObject.GetComponentsInChildren<Transform>();
-
-        foreach(Transform om in m)
-        {
-            if(om.GetComponent<Renderer>())
-            om.GetComponent<Renderer>().material.color = new Color(r, g, b, a);
-        }
-
-        Debug.Log("Changed Color");
-
-        if(timeToWait > 0)
-        { Debug.Log("Changed color after " + timeToWait + " seconds"); }
-
-        yield return new WaitForSeconds(timeToWait);
-
-        foreach (Transform om in m)
-        {
-            if (om.GetComponent<Renderer>())
-                om.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
-        }
-    }
+    /*
+    * Combat
+    */
 
     public void DamageFallback(Vector3 damageSource)
     {
@@ -173,43 +172,26 @@ public class Custom2DController : MonoBehaviour
         if (player.transform.position.z < damageSource.z)
         {
             player.GetComponent<Rigidbody>().AddForce(-Vector3.forward * pushBackForce);
-            Debug.Log("Greater Z");
         }
         else if (player.transform.position.z > damageSource.z)
         {
             player.GetComponent<Rigidbody>().AddForce(Vector3.forward * pushBackForce);
-            Debug.Log("Lower Z");
         }
         if (player.transform.position.x < damageSource.x)
         {
             player.GetComponent<Rigidbody>().AddForce(-Vector3.right * pushBackForce);
-            Debug.Log("Greater X");
         }
         else if (player.transform.position.x > damageSource.x)
         {
             player.GetComponent<Rigidbody>().AddForce(Vector3.right * pushBackForce);
-            Debug.Log("Lower X");
         }
 
         StartCoroutine(StopForce());
 
     }
 
-    IEnumerator StopForce()
-    {
-        float waitTime = 1f;
-
-        yield return new WaitForSeconds(waitTime);
-
-        Debug.Log("Player Force Stopped");
-
-        gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-    }
-
-
     void MeleeAttack()
     {
-        //Debug.Log("Player swung their sword");
         if (CameraSwitch == true)
         {
             anim.SetTrigger("3D_sword_attack");
@@ -243,5 +225,44 @@ public class Custom2DController : MonoBehaviour
             GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x + 1.0f, player.transform.position.y, player.transform.position.z), player.transform.rotation) as GameObject;
             projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
         }
+    }
+
+    /*
+    * Ienumerator Functions
+    * (Used for WaitForSeconds function)
+    */
+
+    IEnumerator ChangeColor(float r, float g, float b, float a, float timeToWait)
+    {
+        Transform[] m = gameObject.GetComponentsInChildren<Transform>();
+
+        foreach (Transform om in m)
+        {
+            if (om.GetComponent<Renderer>())
+                om.GetComponent<Renderer>().material.color = new Color(r, g, b, a);
+        }
+
+        yield return new WaitForSeconds(timeToWait);
+
+        foreach (Transform om in m)
+        {
+            if (om.GetComponent<Renderer>())
+                om.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+        }
+    }
+
+    IEnumerator ActivateJump()
+    {
+        yield return new WaitForSeconds(0.5f);
+        jump = true;
+    }
+
+    IEnumerator StopForce()
+    {
+        float waitTime = 1f;
+
+        yield return new WaitForSeconds(waitTime);
+
+        gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
     }
 }
