@@ -68,7 +68,7 @@ public class Custom2DController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             CameraSwitch = !CameraSwitch;
-            manager.Shift();
+            //manager.Shift();
             if (CameraSwitch == false)
             {
                 gameObject.layer = LayerMask.NameToLayer("AvoidLight2D");
