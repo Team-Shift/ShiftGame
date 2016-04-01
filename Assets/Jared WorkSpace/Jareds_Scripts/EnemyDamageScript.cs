@@ -43,7 +43,8 @@ public class EnemyDamageScript : MonoBehaviour
             Debug.Log("Gameobject dead");
             Destroy(gameObject);
             playerScript.DamageFallback(transform.position);
-            //Add reference to monster script later to decress health
+
         }
+
     }
 }
