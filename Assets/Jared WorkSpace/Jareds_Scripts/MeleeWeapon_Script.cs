@@ -18,6 +18,7 @@ public class MeleeWeapon_Script : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
+        Debug.Log("Entered Collider");
         if(col.gameObject.tag == "Enemy")
         {
             Debug.Log("Enemy was hit");

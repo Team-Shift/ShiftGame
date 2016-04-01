@@ -7,8 +7,9 @@ TagManager:
   - Perspective Camera
   - Enemy
   - Enviornment
-  - Enter_Exit
-  - Room
+  - Weapon
+  - Hitbox
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - AvoidLight2D
   - 
   - 
   - 

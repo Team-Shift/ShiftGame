@@ -2,17 +2,20 @@
 using System.Collections;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody))]
 
 public class Custom2DController : MonoBehaviour
 {
     public GameObject player;
+    public GameObject player2D;
+    public GameObject player3D;
     public GameObject rangedTemp;
     public GameObject meleeWeapon;
     public GameObject mousePointer_Debug;
     private GameObject sword;
     public float turnSpeed = 180f;
     public float speed = 6.0f;
-    public float playerGroundLevel = 0;
+    //public float playerGroundLevel = 0;
     [HideInInspector]
     private Vector3 moveDirection = Vector3.zero;
     [HideInInspector]
@@ -20,6 +23,10 @@ public class Custom2DController : MonoBehaviour
     [HideInInspector]
     public bool CameraSwitch = false;
     private Animator anim;
+
+    public float pushBackForce = 750;
+    public float pushUpForce = 10;
+    
     
     public enum FacingDirection { Forward, Backward, Left, Right };
     public FacingDirection playerDir;
@@ -40,7 +47,7 @@ public class Custom2DController : MonoBehaviour
 
         CameraSwitch = false;
         //Make sure to finish init by finding it
-
+        gameObject.GetComponent<Rigidbody>().freezeRotation = true;
     }
 
     // Update is called once per frame
@@ -66,8 +73,11 @@ public class Custom2DController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             CameraSwitch = !CameraSwitch;
-            manager.Shift();
-            //last call on LShift down
+            //manager.Shift();
+            if (CameraSwitch == false)
+            {
+                gameObject.layer = LayerMask.NameToLayer("AvoidLight2D");
+            }
         }
     }
 
@@ -118,19 +128,31 @@ public class Custom2DController : MonoBehaviour
 
     void Move3D()
     {
-        Vector3 cameraWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
-        cameraWorldPos.y = playerGroundLevel;
+        //Vector3 cameraWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+        //cameraWorldPos.y = playerGroundLevel;
 
         //Debug.Log("Current mouse position = " + cameraWorldPos.x + ", " + cameraWorldPos.y + ", " + cameraWorldPos.z);
-        mousePointer_Debug.transform.position = cameraWorldPos;
+        //mousePointer_Debug.transform.position = cameraWorldPos;
 
-        Vector3 direction = (cameraWorldPos - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        //Vector3 direction = (cameraWorldPos - transform.position).normalized;
+        //Quaternion lookRotation = Quaternion.LookRotation(direction);
         
-        player.transform.rotation = lookRotation;
+        //player.transform.rotation = lookRotation;
 
         float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        player.transform.Translate(0, 0, vertical);
+        //player.transform.Translate(0, 0, vertical);
+
+        //Start of new code
+
+        float forwardBack = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        float strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        float turning = Input.GetAxis("Mouse X");
+
+        player.transform.Translate(Vector3.forward * forwardBack + Vector3.right * strafe, Space.Self);
+
+        player.transform.Rotate(Vector3.up * turning * turnSpeed * Time.deltaTime);
+        //end of new code
+
 
         if (vertical != 0)
         {
@@ -140,36 +162,110 @@ public class Custom2DController : MonoBehaviour
         {
             anim.SetBool("walk", false);
         }
+    }
 
+    IEnumerator ChangeColor(float r, float g, float b, float a, float timeToWait)
+    {
+        Transform[] m = gameObject.GetComponentsInChildren<Transform>();
 
-        /*
-        ||==================================================================================================||
-        || Note: The below if statement will prevent the player from being able to jump so if you're adding ||
-        ||       jump then don't forget to fix the last issue of the player being able to fly by backing up.||
-        ||==================================================================================================||
-        */
-        if(player.transform.position.y > playerGroundLevel)
+        foreach(Transform om in m)
         {
-            player.transform.position = new Vector3(player.transform.position.x, playerGroundLevel, player.transform.position.z);
+            if(om.GetComponent<Renderer>())
+            om.GetComponent<Renderer>().material.color = new Color(r, g, b, a);
+        }
+
+        Debug.Log("Changed Color");
+
+        if(timeToWait > 0)
+        { Debug.Log("Changed color after " + timeToWait + " seconds"); }
+
+        yield return new WaitForSeconds(timeToWait);
+
+        foreach (Transform om in m)
+        {
+            if (om.GetComponent<Renderer>())
+                om.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
         }
     }
 
     public void DamageFallback(Vector3 damageSource)
     {
         health--;
-        Debug.Log(health);
 
-        //Vector3 pushBack = new Vector3();
+        StartCoroutine(ChangeColor(1, 0.1f, 0.1f, 1, 0.5f));
 
-        //Push the player back in the opposite direction from damage source
-        //transform.Translate(transform.position - damageSource);
+        if (player.transform.position.z < damageSource.z)
+        {
+            player.GetComponent<Rigidbody>().AddForce(-Vector3.forward * pushBackForce);
+            Debug.Log("Greater Z");
+        }
+        else if (player.transform.position.z > damageSource.z)
+        {
+            player.GetComponent<Rigidbody>().AddForce(Vector3.forward * pushBackForce);
+            Debug.Log("Lower Z");
+        }
+        if (player.transform.position.x < damageSource.x)
+        {
+            player.GetComponent<Rigidbody>().AddForce(-Vector3.right * pushBackForce);
+            Debug.Log("Greater X");
+        }
+        else if (player.transform.position.x > damageSource.x)
+        {
+            player.GetComponent<Rigidbody>().AddForce(Vector3.right * pushBackForce);
+            Debug.Log("Lower X");
+        }
+
+        StartCoroutine(StopForce());
+
     }
+
+    //void OnCollisionEnter(Collision col)
+    //{
+    //    float force = 750;
+    //    float upForce = 10;
+
+    //    if (col.gameObject.tag == "Enemy")
+    //    {
+    //        Debug.Log("Enemy has hit player");
+
+    //        //ContactPoint contact = col.contacts [0];
+
+    //        Vector3 dir = col.transform.position - transform.position;
+
+    //        dir = -dir.normalized;
+    //        dir = new Vector3(dir.x, dir.y * upForce, dir.z);
+
+    //        Debug.Log(dir.x + ", " + dir.y + ", " + dir.z);
+
+    //        gameObject.GetComponent<Rigidbody>().AddForce(dir * force);
+
+    //        StartCoroutine(StopForce());
+    //    }
+    //}
+
+    IEnumerator StopForce()
+    {
+        float waitTime = 1f;
+
+        yield return new WaitForSeconds(waitTime);
+
+        Debug.Log("Player Force Stopped");
+
+        gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+    }
+
 
     void MeleeAttack()
     {
-        Debug.Log("Player swung their sword");
-
-        anim.SetTrigger("sword_attack");
+        //Debug.Log("Player swung their sword");
+        if (CameraSwitch == true)
+        {
+            anim.SetTrigger("3D_sword_attack");
+        }
+        else
+        {
+            anim.SetTrigger("sword_attack");
+        }
 
         //run animation for sword swinging
         //Add script for damage on the weapon itself maybe?

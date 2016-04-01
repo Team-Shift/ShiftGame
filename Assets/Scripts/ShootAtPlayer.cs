@@ -3,7 +3,8 @@ using System.Collections;
 
 public class ShootAtPlayer : MonoBehaviour {
 
-    private Animator anim;
+    [HideInInspector]
+    public Animator anim;
     bool inRange;
     GameObject objToFollow;
 
@@ -19,7 +20,7 @@ public class ShootAtPlayer : MonoBehaviour {
         alwaysShoot = false;
     }
 
-        void Update()
+    void Update()
     {
         if (inRange)
         {
@@ -43,6 +44,7 @@ public class ShootAtPlayer : MonoBehaviour {
         if (other.tag == "Player")
         {
             inRange = true;
+            Debug.Log("inRange");
             objToFollow = GameObject.FindGameObjectWithTag("Player");
         }
         // lock y
