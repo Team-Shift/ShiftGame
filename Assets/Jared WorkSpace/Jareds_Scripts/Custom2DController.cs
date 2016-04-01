@@ -7,15 +7,11 @@ using System.Collections;
 public class Custom2DController : MonoBehaviour
 {
     public GameObject player;
-    public GameObject player2D;
-    public GameObject player3D;
     public GameObject rangedTemp;
     public GameObject meleeWeapon;
-    public GameObject mousePointer_Debug;
     private GameObject sword;
     public float turnSpeed = 180f;
     public float speed = 6.0f;
-    //public float playerGroundLevel = 0;
     [HideInInspector]
     private Vector3 moveDirection = Vector3.zero;
     [HideInInspector]
@@ -33,7 +29,6 @@ public class Custom2DController : MonoBehaviour
     public enum CurrentItemType { Melee, Range, Scroll, Spell, None};
     public CurrentItemType currentHeld;
     private DimensionalSwitchManager manager;
-    //add private reference of camera change
 
 
     // Use this for initialization
@@ -41,12 +36,9 @@ public class Custom2DController : MonoBehaviour
     {
         playerDir = FacingDirection.Forward;
         currentHeld = CurrentItemType.None;
-        //playerGroundLevel = playerGroundLevel + player.GetComponent<Collider>().bounds.size.y / 2;
         manager = GameObject.FindObjectOfType<DimensionalSwitchManager>();
         anim = player.GetComponent<Animator>();
-
         CameraSwitch = false;
-        //Make sure to finish init by finding it
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
     }
 
@@ -78,6 +70,10 @@ public class Custom2DController : MonoBehaviour
             {
                 gameObject.layer = LayerMask.NameToLayer("AvoidLight2D");
             }
+            else
+            {
+                gameObject.layer = LayerMask.NameToLayer("Default");
+            }
         }
     }
 
@@ -100,50 +96,30 @@ public class Custom2DController : MonoBehaviour
         {
             anim.SetBool("walk", true);
             playerDir = FacingDirection.Forward;
-            //player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 0.0f , player.transform.eulerAngles.z);
             player.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
             anim.SetBool("walk", true);
             playerDir = FacingDirection.Left;
-            //player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 270.0f, player.transform.eulerAngles.z);
             player.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
             anim.SetBool("walk", true);
             playerDir = FacingDirection.Backward;
-            //player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 180.0f, player.transform.eulerAngles.z);
             player.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             anim.SetBool("walk", true);
             playerDir = FacingDirection.Right;
-            //player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, 90.0f, player.transform.eulerAngles.z);
             player.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
         }
     }
 
     void Move3D()
     {
-        //Vector3 cameraWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
-        //cameraWorldPos.y = playerGroundLevel;
-
-        //Debug.Log("Current mouse position = " + cameraWorldPos.x + ", " + cameraWorldPos.y + ", " + cameraWorldPos.z);
-        //mousePointer_Debug.transform.position = cameraWorldPos;
-
-        //Vector3 direction = (cameraWorldPos - transform.position).normalized;
-        //Quaternion lookRotation = Quaternion.LookRotation(direction);
-        
-        //player.transform.rotation = lookRotation;
-
-        float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        //player.transform.Translate(0, 0, vertical);
-
-        //Start of new code
-
         float forwardBack = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         float strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         float turning = Input.GetAxis("Mouse X");
@@ -154,7 +130,7 @@ public class Custom2DController : MonoBehaviour
         //end of new code
 
 
-        if (vertical != 0)
+        if (forwardBack != 0)
         {
             anim.SetBool("walk", true);
         }
@@ -219,30 +195,6 @@ public class Custom2DController : MonoBehaviour
 
     }
 
-    //void OnCollisionEnter(Collision col)
-    //{
-    //    float force = 750;
-    //    float upForce = 10;
-
-    //    if (col.gameObject.tag == "Enemy")
-    //    {
-    //        Debug.Log("Enemy has hit player");
-
-    //        //ContactPoint contact = col.contacts [0];
-
-    //        Vector3 dir = col.transform.position - transform.position;
-
-    //        dir = -dir.normalized;
-    //        dir = new Vector3(dir.x, dir.y * upForce, dir.z);
-
-    //        Debug.Log(dir.x + ", " + dir.y + ", " + dir.z);
-
-    //        gameObject.GetComponent<Rigidbody>().AddForce(dir * force);
-
-    //        StartCoroutine(StopForce());
-    //    }
-    //}
-
     IEnumerator StopForce()
     {
         float waitTime = 1f;
@@ -266,9 +218,6 @@ public class Custom2DController : MonoBehaviour
         {
             anim.SetTrigger("sword_attack");
         }
-
-        //run animation for sword swinging
-        //Add script for damage on the weapon itself maybe?
     }
 
     void RangedAttack()
@@ -276,22 +225,22 @@ public class Custom2DController : MonoBehaviour
         anim.SetTrigger("bow_attack");
         if(playerDir == FacingDirection.Forward)
         {
-            GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1.0f), Quaternion.identity) as GameObject;
+            GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1.0f), player.transform.rotation) as GameObject;
             projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
         }
         else if (playerDir == FacingDirection.Backward)
         {
-            GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 1.0f), Quaternion.identity) as GameObject;
+            GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 1.0f), player.transform.rotation) as GameObject;
             projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
         }
         else if (playerDir == FacingDirection.Left)
         {
-            GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x - 1.0f, player.transform.position.y, player.transform.position.z), Quaternion.identity) as GameObject;
+            GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x - 1.0f, player.transform.position.y, player.transform.position.z), player.transform.rotation) as GameObject;
             projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
         }
         else if (playerDir == FacingDirection.Right)
         {
-            GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x + 1.0f, player.transform.position.y, player.transform.position.z), Quaternion.identity) as GameObject;
+            GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x + 1.0f, player.transform.position.y, player.transform.position.z), player.transform.rotation) as GameObject;
             projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
         }
     }
