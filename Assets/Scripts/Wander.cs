@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Wander : MonoBehaviour {
-    
+
+    //public List<GameObject> gList;
     public List<Vector3> pathList;
     public float speed = 2;
     private int index = 0;
@@ -14,17 +15,19 @@ public class Wander : MonoBehaviour {
         if (!Application.isPlaying) return;
         showPath = true;
         shouldWander = true;
-	}
+        //pathList = GetComponentInChildren<PathToFollow>().pathList;
+    }
 
     void Update() {
         if (shouldWander)
         {
-            Vector3 dir = pathList[index] - gameObject.transform.localPosition;
+            Vector3 dir = pathList[index] - gameObject.transform.position;
             // go to path node
-            gameObject.transform.localPosition += (dir.normalized) * Time.deltaTime * speed;
+            gameObject.transform.position += (dir.normalized) * Time.deltaTime * speed;
             //rotate to path node
             gameObject.transform.LookAt(pathList[index]);
 
+            //Debug.Log(dir.magnitude);
             // increment index
             if (dir.magnitude <= 1.0f) index++;
             if (index >= pathList.Count) index = 0;

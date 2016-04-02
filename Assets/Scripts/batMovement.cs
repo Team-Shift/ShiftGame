@@ -4,20 +4,21 @@ using System.Collections;
 public class batMovement : MonoBehaviour {
 
     private Wander w;
-    private Seek s;
+    private ShootAtPlayer s;
 
     // Use this for initialization
     void Start () {
         w = GetComponent<Wander>();
-        s = GetComponent<Seek>();
+        s = GetComponent<ShootAtPlayer>();
     }
 	
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            s.shouldSeek = true;
             w.shouldWander = false;
+            s.alwaysShoot = true;
+            s.shouldRotate = true;
         }
     }
 
@@ -25,8 +26,9 @@ public class batMovement : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            s.shouldSeek = false;
             w.shouldWander = true;
+            s.alwaysShoot = false;
+            s.shouldRotate = false;
         }
     }
 }
