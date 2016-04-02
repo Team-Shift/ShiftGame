@@ -4,8 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
-using UnityEditor;
-using Object = UnityEngine.Object;
 
 public class MapGenerator : MonoBehaviour
 {

@@ -20,6 +20,6 @@ public class PlayerAttack : MonoBehaviour {
 
     void disableCollider()
     {
-        c.enabled = false;
+       c.enabled = false;
     }
 }

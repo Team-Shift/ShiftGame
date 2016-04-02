@@ -46,6 +46,9 @@ public class Custom2DController : MonoBehaviour
         anim = player.GetComponent<Animator>();
         CameraSwitch = false;
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -85,6 +88,11 @@ public class Custom2DController : MonoBehaviour
             {
                 gameObject.layer = LayerMask.NameToLayer("Default");
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
 
         jumpTimeLeft = jumpTimeLeft - Time.deltaTime;
