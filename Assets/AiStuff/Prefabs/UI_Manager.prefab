@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 467150}
-  - 114: {fileID: 11407328}
+  - 114: {fileID: 11410532}
   m_Layer: 0
   m_Name: UI_Manager
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11407328
+--- !u!114 &11410532
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -36,11 +36,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 198292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9c699b62aac8d245a097d3fb6f65377, type: 3}
+  m_Script: {fileID: 11500000, guid: 30e8245b427dda64bba4e09ca1b41a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 3
-  heartGUI: {fileID: 13141414, guid: 6a2e70a46da8cb54d8376f5329abd552, type: 2}
+  HeartFillTexture: {fileID: 13172374, guid: 00beb33bc9003f049aa88f4fc0b99128, type: 2}
+  HeartContainerTexture: {fileID: 13199914, guid: df921734038b9354bb793908929a4e63,
+    type: 2}
+  AmountOfHearts: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

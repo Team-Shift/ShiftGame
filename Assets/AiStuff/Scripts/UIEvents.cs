@@ -10,6 +10,7 @@ public class UIEvents : MonoBehaviour
 {
 
     public int startingHealth;
+    private int currentHealth;
     public GUITexture heartGUI;
     public float heartSpace;
 
@@ -22,15 +23,13 @@ public class UIEvents : MonoBehaviour
 
     void Start()
     {
+
+
         PlaceHeart();
         //AddHearts(startingHealth);
     }
 
-    //void Awake()
-    //{
-    //    PlaceHearts();
-    //    HealthBar();
-    //}
+
 
     //void HealthBar()
     //{
@@ -71,7 +70,7 @@ public class UIEvents : MonoBehaviour
         for (int i = 0; i < n; i++)
             {
 
-                GUITexture newHearts = ((GUITexture)Instantiate(heartGUI));
+                //Transform newHearts = ((Transform)Instantiate(heartGUI));
                 //newHearts.transform.position += new Vector3(HeartPos.x * i, HeartPos.y, HeartPos.z);
 
             }
