@@ -4,17 +4,28 @@ using System.Collections.Generic;
 
 public class Wander : MonoBehaviour {
 
-    //public List<GameObject> gList;
+    public List<GameObject> nodeList;
     public List<Vector3> pathList;
     public float speed = 2;
-    private int index = 0;
     public bool showPath;
     public bool shouldWander;
 
+    private int index = 0;
+
     void Start () {
+
+        foreach(GameObject g in nodeList)
+        {
+            Debug.Log(g.name);
+            pathList.Add(g.transform.position);
+        }
+
+        //nodeList = pathList;
+
         if (!Application.isPlaying) return;
         showPath = true;
         shouldWander = true;
+
         //pathList = GetComponentInChildren<PathToFollow>().pathList;
     }
 
@@ -40,8 +51,17 @@ public class Wander : MonoBehaviour {
         {
             foreach (Vector3 v in pathList)
             {
-                Gizmos.DrawWireSphere(v, 0.2f);
+                //Gizmos.DrawWireSphere(v, 0.2f);
             }
         }
+    }
+
+    public void AddNode()
+    {
+        GameObject g = new GameObject();
+        g.transform.SetParent(gameObject.transform);
+        g.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+        g.name = "pathNode";
+        nodeList.Add(g);
     }
 }
