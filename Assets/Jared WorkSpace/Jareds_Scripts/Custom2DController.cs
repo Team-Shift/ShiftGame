@@ -220,14 +220,15 @@ public class Custom2DController : MonoBehaviour
 
     void MeleeAttack()
     {
-        if (CameraSwitch == true)
-        {
-            anim.SetTrigger("3D_sword_attack");
-        }
-        else
-        {
-            anim.SetTrigger("sword_attack");
-        }
+        //if (CameraSwitch == true)
+        //{
+        //    anim.SetTrigger("3D_sword_attack");
+        //}
+        //else
+        //{
+        //    anim.SetTrigger("sword_attack");
+        //}
+        anim.SetTrigger("sword_attack");
     }
 
     void RangedAttack()
