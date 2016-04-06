@@ -5,15 +5,18 @@ public class ShootAtPlayer : MonoBehaviour {
 
     [HideInInspector]
     public Animator anim;
-    bool inRange;
-    GameObject objToFollow;
+    [HideInInspector]
+    public bool alwaysShoot;
+    [HideInInspector]
+    public bool shouldRotate;
 
+    private bool inRange;
+    GameObject objToFollow;
     public float yPosLock;
     public GameObject projectile;
-    public bool alwaysShoot;
-    public bool shouldRotate;
     public float yOffset;
     public float rotOffset;
+    public bool isFlyingEnemy;
 
     void Start()
     {
@@ -22,9 +25,11 @@ public class ShootAtPlayer : MonoBehaviour {
         {
             anim = gameObject.GetComponentInChildren<Animator>();
         }
-
-        shouldRotate = false;
-        alwaysShoot = false;
+        if (!isFlyingEnemy)
+        {
+            shouldRotate = false;
+            alwaysShoot = false;
+        }
     }
 
     void Update()
@@ -53,9 +58,12 @@ public class ShootAtPlayer : MonoBehaviour {
         if (other.tag == "Player" )
         {
             inRange = true;
-            alwaysShoot = true;
-            shouldRotate = true;
-            Debug.Log("inRange");
+            if (isFlyingEnemy)
+            {
+                alwaysShoot = true;
+                shouldRotate = true;
+            }
+            //Debug.Log("inRange");
             objToFollow = GameObject.FindGameObjectWithTag("Player");
         }
         // lock y
@@ -66,8 +74,11 @@ public class ShootAtPlayer : MonoBehaviour {
         if(other.tag == "Player" )
         {
             inRange = true;
-            alwaysShoot = true;
-            shouldRotate = true;
+            if (isFlyingEnemy)
+            {
+                alwaysShoot = true;
+                shouldRotate = true;
+            }
         }
     }
 
@@ -76,8 +87,11 @@ public class ShootAtPlayer : MonoBehaviour {
         if (other.tag == "Player")
         {
             inRange = false;
-            alwaysShoot = false;
-            shouldRotate = false;
+            if (isFlyingEnemy)
+            {
+                alwaysShoot = false;
+                shouldRotate = false;
+            }
         }
     }
 

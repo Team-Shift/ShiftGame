@@ -13,7 +13,7 @@ public class Wander : MonoBehaviour {
     private int index;
 
     void Start () {
-
+        gameObject.transform.Translate(0, 1, 0);
         // get all child game objects with name pathNode
         foreach(Transform t in GetComponentsInChildren<Transform>())
         {

@@ -2,15 +2,23 @@
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
-    int health;
-    public int startHealth = 5;
+
+    Custom2DController playerScript;
+    GameObject player;
+    public int health;
+    int startHealth = 5;
     public GameObject hitPart;
-    Rigidbody rb;
+
+    public float xOffset;
+    public float zOffset;
+    private float yOffset;
+
 
     void Start()
     {
         health = startHealth;
-        rb = GetComponent<Rigidbody>();
+        player = GameObject.Find("Player");
+        playerScript = player.GetComponent<Custom2DController>();
     }
 
     // triggers when hitting sphere collider.... (might need to separate colliders)
@@ -18,7 +26,7 @@ public class Enemy : MonoBehaviour {
     {
         if (other.tag == "Hitbox")
         {
-            Debug.Log("losing health from " + other.name);
+            //Debug.Log("losing health from " + other.name);
             TakeDamage();
             // knockback
         }
@@ -31,7 +39,26 @@ public class Enemy : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if(health <= 0)
+        // 2D/3D collision detection
+        // gameObject <-- playerPos
+        // player <-- fireball
+        Vector3 enemyPos = gameObject.transform.position;
+        Vector3 playerPos = player.transform.position;
+
+        yOffset = playerPos.y * .84f;
+
+        if (playerScript.CameraSwitch == false)
+        {
+            //if ((player.transform.position.x <= transform.position.x + xOffset && player.transform.position.x >= transform.position.x - xOffset) && (player.transform.position.z <= transform.position.z + zOffset && player.transform.position.z >= transform.position.z - zOffset))
+            if ((enemyPos.x <= playerPos.x + xOffset && enemyPos.x >= playerPos.x - xOffset) && (enemyPos.z <= (playerPos.z + yOffset) + zOffset && enemyPos.z >= (playerPos.z + yOffset) - zOffset))
+            {
+                Debug.Log(gameObject.name + " is taking damage");
+                Destroy(gameObject);
+                TakeDamage();
+            }
+        }
+
+        if (health <= 0)
         {
             Debug.Log("enemy " + this.name + " has died.");
             Instantiate(hitPart, transform.position, Quaternion.identity);
