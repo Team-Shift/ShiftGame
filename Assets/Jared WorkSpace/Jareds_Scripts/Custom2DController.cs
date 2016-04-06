@@ -218,6 +218,11 @@ public class Custom2DController : MonoBehaviour
 
     }
 
+    public void AttackPushForward()
+    {
+        player.GetComponent<Rigidbody>().AddForce(player.transform.forward * 10000);
+    }
+
     void MeleeAttack()
     {
         //if (CameraSwitch == true)
@@ -229,6 +234,7 @@ public class Custom2DController : MonoBehaviour
         //    anim.SetTrigger("sword_attack");
         //}
         anim.SetTrigger("sword_attack");
+        AttackPushForward();
     }
 
     void RangedAttack()
