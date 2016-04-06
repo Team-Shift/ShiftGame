@@ -4,41 +4,43 @@ using System.Collections.Generic;
 
 public class Wander : MonoBehaviour {
 
-    public List<GameObject> nodeList;
+    [HideInInspector]
     public List<Vector3> pathList;
     public float speed = 2;
     public bool showPath;
     public bool shouldWander;
 
-    private int index = 0;
+    private int index;
 
     void Start () {
 
-        foreach(GameObject g in nodeList)
+        // get all child game objects with name pathNode
+        foreach(Transform t in GetComponentsInChildren<Transform>())
         {
-            Debug.Log(g.name);
-            pathList.Add(g.transform.position);
+            if (t.name == "pathNode")
+            {
+                pathList.Add(t.position);
+                t.hideFlags = HideFlags.HideInHierarchy;
+            }
         }
-
-        //nodeList = pathList;
+        
 
         if (!Application.isPlaying) return;
         showPath = true;
         shouldWander = true;
-
-        //pathList = GetComponentInChildren<PathToFollow>().pathList;
+        index = 0;
     }
 
     void Update() {
-        if (shouldWander)
+        showPath = false;
+        if (shouldWander && pathList.Count != 0)
         {
             Vector3 dir = pathList[index] - gameObject.transform.position;
             // go to path node
             gameObject.transform.position += (dir.normalized) * Time.deltaTime * speed;
             //rotate to path node
             gameObject.transform.LookAt(pathList[index]);
-
-            //Debug.Log(dir.magnitude);
+            
             // increment index
             if (dir.magnitude <= 1.0f) index++;
             if (index >= pathList.Count) index = 0;
@@ -46,22 +48,24 @@ public class Wander : MonoBehaviour {
 	}
 
     void OnDrawGizmos()
-    {
-        if (showPath)
+    { 
+        if(showPath)
         {
-            foreach (Vector3 v in pathList)
+            foreach (Transform t in GetComponentsInChildren<Transform>())
             {
-                //Gizmos.DrawWireSphere(v, 0.2f);
+                if (t.name == "pathNode")
+                    Gizmos.DrawWireSphere(t.position, 0.2f);
             }
         }
     }
 
-    public void AddNode()
+    public GameObject AddNode()
     {
         GameObject g = new GameObject();
         g.transform.SetParent(gameObject.transform);
         g.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         g.name = "pathNode";
-        nodeList.Add(g);
+        return g;
+        //nodeList.Add(g);
     }
 }

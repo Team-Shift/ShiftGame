@@ -14,7 +14,7 @@ public class CustomWanderEditor : Editor
 
         if(GUILayout.Button("Add Path Node"))
         {
-            myscript.AddNode();
+            Selection.activeGameObject = myscript.AddNode();
         }
     }
 }
