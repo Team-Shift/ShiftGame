@@ -38,7 +38,7 @@ public class ShootAtPlayer : MonoBehaviour {
             {
                 // rotate turret to follow
                 Transform t = objToFollow.transform;
-                t.position = new Vector3(t.position.x, yPosLock, t.position.z);
+                t.position = new Vector3(t.position.x , yPosLock, t.position.z);
                 gameObject.transform.LookAt(t);
             }
         }
@@ -50,18 +50,35 @@ public class ShootAtPlayer : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         // only fire if collider is player
-        if (other.tag == "Player")
+        if (other.tag == "Player" )
         {
             inRange = true;
+            alwaysShoot = true;
+            shouldRotate = true;
             Debug.Log("inRange");
             objToFollow = GameObject.FindGameObjectWithTag("Player");
         }
         // lock y
     }
 
-    void OnTriggerExit()
+    void OnTriggerStay(Collider other)
     {
-        inRange = false;
+        if(other.tag == "Player" )
+        {
+            inRange = true;
+            alwaysShoot = true;
+            shouldRotate = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            inRange = false;
+            alwaysShoot = false;
+            shouldRotate = false;
+        }
     }
 
     void ShootProjectile()

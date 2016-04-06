@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 public class Wander : MonoBehaviour {
 
-    [HideInInspector]
+    //[HideInInspector]
     public List<Vector3> pathList;
     public float speed = 2;
     public bool showPath;
     public bool shouldWander;
-
+    
     private int index;
 
     void Start () {
@@ -24,7 +24,6 @@ public class Wander : MonoBehaviour {
             }
         }
         
-
         if (!Application.isPlaying) return;
         showPath = true;
         shouldWander = true;
@@ -41,6 +40,7 @@ public class Wander : MonoBehaviour {
             //rotate to path node
             gameObject.transform.LookAt(pathList[index]);
             
+            //Debug.Log(dir.magnitude);
             // increment index
             if (dir.magnitude <= 1.0f) index++;
             if (index >= pathList.Count) index = 0;
@@ -67,5 +67,23 @@ public class Wander : MonoBehaviour {
         g.name = "pathNode";
         return g;
         //nodeList.Add(g);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        // only fire if collider is player
+        if (other.tag == "Player")
+        {
+            shouldWander = false;
+        }
+        // lock y
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            shouldWander = true;
+        }
     }
 }

@@ -2,28 +2,30 @@
 using System.Collections;
 
 public class Seek : MonoBehaviour {
-    public float maxVel = 50;
+    public float maxVel = 10;
     public bool shouldSeek;
+    //public GameObject objToSeek;
+    public Vector3 objToSeek;
 
     private Vector2 targetPos;
     private Rigidbody rb;
     private Vector2 desiredVel;
     private Vector2 vel;
-    private GameObject player;
+    
 
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         shouldSeek = false;
-        player = GameObject.FindGameObjectWithTag("Player");
-        maxVel = 50;
+        //player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
         if (shouldSeek)
         {
-            targetPos = new Vector2(player.transform.position.x, player.transform.position.z);
+            targetPos = new Vector2(objToSeek.x, objToSeek.z);
+            //targetPos = new Vector2(objToSeek.transform.position.x, objToSeek.transform.position.z);
             vel = new Vector3(rb.velocity.x, rb.velocity.z);
 
             Vector2 v = new Vector2(targetPos.x - gameObject.transform.position.x, targetPos.y - gameObject.transform.position.z);

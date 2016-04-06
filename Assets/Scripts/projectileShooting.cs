@@ -22,4 +22,5 @@ public class projectileShooting : MonoBehaviour {
             Destroy(gameObject);
         }
 	}
+
 }

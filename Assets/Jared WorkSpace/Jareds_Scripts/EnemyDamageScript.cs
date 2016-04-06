@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// projectile damaging player
 public class EnemyDamageScript : MonoBehaviour
 {
     Custom2DController playerScript;
@@ -36,7 +37,7 @@ public class EnemyDamageScript : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        Debug.Log("hitting");
+        //Debug.Log("hitting");
         if (col.gameObject.tag == "Player")
         {
             Debug.Log("Gameobject dead");

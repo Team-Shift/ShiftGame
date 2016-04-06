@@ -13,14 +13,20 @@ public class Enemy : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
     }
 
+    // triggers when hitting sphere collider.... (might need to separate colliders)
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Hitbox")
+        if (other.tag == "Hitbox")
         {
             Debug.Log("losing health from " + other.name);
-            health--;
+            TakeDamage();
             // knockback
         }
+    }
+
+    void TakeDamage()
+    {
+        health--;
     }
 
     void FixedUpdate()
