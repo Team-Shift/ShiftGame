@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody))]
@@ -17,7 +19,7 @@ public class Custom2DController : MonoBehaviour
     [HideInInspector]
     private Vector3 moveDirection = Vector3.zero;
     [HideInInspector]
-    public int health = 3;
+    public int Health = 3;
     [HideInInspector]
     public bool CameraSwitch = false;
     private Animator anim;
@@ -46,6 +48,16 @@ public class Custom2DController : MonoBehaviour
     public enum CurrentItemType { Melee, Range, Scroll, Spell, None};
     public CurrentItemType currentHeld;
 
+    //UI
+    public GUITexture HeartFillTexture;
+    public GUITexture HeartContainerTexture;
+    private List<GUITexture> HeartFillList = new List<GUITexture>();
+    private List<GUITexture> HeartContainerList = new List<GUITexture>();
+    int AmountOfHeartContainer;
+    public float XOffset = 0.14f;
+    public float YOffset = 0.92f;
+
+
 
     // Use this for initialization
     void Start()
@@ -59,8 +71,15 @@ public class Custom2DController : MonoBehaviour
 
         playerSound = player.GetComponent<AudioSource>();
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //AI WAS HERE
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+
+        // UI STUFF
+        AmountOfHeartContainer = Health;
+        SpawnHeart(Health);
+        SpawnHeartContainer(AmountOfHeartContainer);
+
     }
 
     // Update is called once per frame
@@ -140,6 +159,9 @@ public class Custom2DController : MonoBehaviour
     */
     void Move2D()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         if(moveDirection.x != 0 || moveDirection.z != 0)
@@ -181,6 +203,9 @@ public class Custom2DController : MonoBehaviour
 
     void Move3D()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         float forwardBack = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         float strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         float turning = Input.GetAxis("Mouse X");
@@ -207,7 +232,7 @@ public class Custom2DController : MonoBehaviour
         }
     }
 
-    public void DustKickOff()
+    void DustKickOff()
     {
         Instantiate(dust, player.transform.position, Quaternion.Inverse(player.transform.rotation));
         Debug.Log("Kicking off Dust");
@@ -219,7 +244,8 @@ public class Custom2DController : MonoBehaviour
 
     public void DamageFallback(Vector3 damageSource)
     {
-        health--;
+        Health--;
+        DamageHeart();
 
         playerSound.PlayOneShot(hurtSound);
         StartCoroutine(ChangeColor(1, 0.1f, 0.1f, 1, 0.5f));
@@ -341,4 +367,59 @@ public class Custom2DController : MonoBehaviour
 
         gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
     }
+
+    /*
+    UI Stuffs
+    */
+
+    void SpawnHeart(int HeartAmount)
+    {
+        for (int i = 0; i < Health; i++)
+        {
+            HeartFillList.Add(((GUITexture)Instantiate(HeartFillTexture, new Vector2(i * XOffset + .07f, YOffset), Quaternion.identity)));
+        }
+    }
+
+    void SpawnHeartContainer(int HeartAmount)
+    {
+
+        for (int i = 0; i < Health; i++)
+        {
+            HeartContainerList.Add(((GUITexture)Instantiate(HeartContainerTexture, new Vector2(i * XOffset + .07f, YOffset), Quaternion.identity)));
+        }
+    }
+
+
+    public void AddHeartContainer()
+    {
+        AmountOfHeartContainer++;
+        int HeartContainerIndex = HeartContainerList.Count;
+        HeartContainerList.Add(((GUITexture)Instantiate(HeartContainerTexture, new Vector3(HeartContainerIndex * XOffset + .07f, YOffset, -1), Quaternion.identity)));
+    }
+
+    public void HealHeart()
+    {
+        if (HeartFillList.Count < HeartContainerList.Count)
+        {
+            Health++;
+            int HeartFillIndex = HeartFillList.Count;
+            HeartFillList.Add(((GUITexture)Instantiate(HeartFillTexture, new Vector2(HeartFillIndex * XOffset + .07f, YOffset), Quaternion.identity)));
+        }
+    }
+
+    public void DamageHeart()
+    {
+        Health--;
+        Destroy(HeartFillList[HeartFillList.Count - 1].gameObject);
+        HeartFillList.RemoveAt(HeartFillList.Count - 1);
+    }
+
+    public void RemoveHeartContainer()
+    {
+        AmountOfHeartContainer--;
+        Destroy(HeartContainerList[HeartContainerList.Count - 1].gameObject);
+        HeartFillList.RemoveAt(HeartFillList.Count - 1);
+    }
+
+
 }

@@ -435,7 +435,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.04, y: -0.087, z: -14.77}
+  m_LocalPosition: {x: 6.424571, y: 1.3292196, z: 2.1693065}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 454132}
@@ -798,7 +798,7 @@ MonoBehaviour:
   sword: {fileID: 0}
   turnSpeed: 180
   speed: 4
-  health: 3
+  Health: 3
   CameraSwitch: 1
   meleeSound: {fileID: 8300000, guid: 0d8a31fe7d6bcc44297bc1139cac9654, type: 3}
   bowSound: {fileID: 8300000, guid: 052a8c222dfcd104d9d3950201a11418, type: 3}
@@ -811,6 +811,11 @@ MonoBehaviour:
   playerDir: 0
   dust: {fileID: 19806912}
   currentHeld: 0
+  HeartFillTexture: {fileID: 13172374, guid: 00beb33bc9003f049aa88f4fc0b99128, type: 2}
+  HeartContainerTexture: {fileID: 13199914, guid: df921734038b9354bb793908929a4e63,
+    type: 2}
+  XOffset: 0.14
+  YOffset: 0.92
 --- !u!114 &11432982
 MonoBehaviour:
   m_ObjectHideFlags: 1
