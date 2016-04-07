@@ -24,8 +24,6 @@ public class EnemyHealth : MonoBehaviour {
         enemySound = gameObject.GetComponent<AudioSource>();
         parent = gameObject.transform.parent.gameObject;
         health = startHealth;
-        //player = GameObject.Find("Player");
-        //playerScript = player.GetComponent<Custom2DController>();
     }
 
     // triggers when hitting sphere collider.... (might need to separate colliders)

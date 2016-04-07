@@ -21,11 +21,17 @@ public class HitboxScript: MonoBehaviour {
 
     void enableCollider()
     {
-        c.enabled = true;
+        if (c)
+        {
+            c.enabled = true;
+        }
     }
 
     void disableCollider()
     {
-       c.enabled = false;
+        if (c)
+        {
+            c.enabled = false;
+        }
     }
 }
