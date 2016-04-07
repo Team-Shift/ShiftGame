@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerProjectialControl : MonoBehaviour
-{
-    public float lifeSpan = 0;
+public class PlayerDamagingEnemy : MonoBehaviour {
+
+    //public float lifeSpan = 0;
     public float xOffset = 0, yOffset = 0, zOffset = 0;
     private GameObject[] enemies;
     private Custom2DController playerScript;
+    //public EnemyHealth eh;
 
     void Start()
     {
@@ -17,11 +18,9 @@ public class PlayerProjectialControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, lifeSpan);
-     }
+        //Destroy(gameObject, lifeSpan);
 
-    void FixedUpdate()
-    {
+
         foreach (GameObject enemy in enemies)
         {
 
@@ -36,22 +35,24 @@ public class PlayerProjectialControl : MonoBehaviour
                 if ((enemyPos.x <= thisProjectilePos.x + xOffset && enemyPos.x >= thisProjectilePos.x - xOffset) && (enemyPos.z <= (thisProjectilePos.z + yOffset) + zOffset && enemyPos.z >= (thisProjectilePos.z + yOffset) - zOffset))
                 {
                     Debug.Log("Enemy Hit: " + enemy.name);
-                    Destroy(enemy);
-                    Destroy(gameObject);
+                    //Destroy(enemy);
+                    //Destroy(gameObject);
+                    if(enemy.GetComponent<EnemyHealth>())
+                    {
+                        enemy.GetComponent<EnemyHealth>().TakeDamage();
+                    }
                 }
             }
         }
+
+
     }
-
-
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Enemy")
         {
-            Debug.Log("Enemy was hit");
-
-
-            Destroy(gameObject);
+            Debug.Log(col.gameObject.name + " was hit");
+           
 
         }
     }

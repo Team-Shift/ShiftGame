@@ -234,7 +234,7 @@ public class Custom2DController : MonoBehaviour
         //    anim.SetTrigger("sword_attack");
         //}
         anim.SetTrigger("sword_attack");
-        AttackPushForward();
+        //AttackPushForward();
     }
 
     void RangedAttack()
