@@ -3,6 +3,7 @@ using System.Collections;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(AudioSource))]
 
 public class Custom2DController : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class Custom2DController : MonoBehaviour
     [HideInInspector]
     public bool CameraSwitch = false;
     private Animator anim;
+
+    private AudioSource playerSound;
+    public AudioClip meleeSound;
+    public AudioClip bowSound;
+    public AudioClip hurtSound;
 
     public float pushBackForce = 750;
     public float pushUpForce = 10;
@@ -48,6 +54,8 @@ public class Custom2DController : MonoBehaviour
         anim = player.GetComponent<Animator>();
         CameraSwitch = false;
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
+
+        playerSound = player.GetComponent<AudioSource>();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -205,6 +213,7 @@ public class Custom2DController : MonoBehaviour
     {
         health--;
 
+        playerSound.PlayOneShot(hurtSound);
         StartCoroutine(ChangeColor(1, 0.1f, 0.1f, 1, 0.5f));
 
         if (player.transform.position.z < damageSource.z)
@@ -235,19 +244,9 @@ public class Custom2DController : MonoBehaviour
 
     void MeleeAttack()
     {
-        //if (CameraSwitch == true)
-        //{
-        //    anim.SetTrigger("3D_sword_attack");
-        //}
-        //else
-        //{
-        //    anim.SetTrigger("sword_attack");
-        //}
-        
-        //AttackPushForward();
-
         if(melee == true)
         {
+            playerSound.PlayOneShot(meleeSound);
             anim.SetTrigger("sword_attack");
             melee = false;
         }
@@ -258,10 +257,12 @@ public class Custom2DController : MonoBehaviour
         if (shot == true)
         {
             anim.SetTrigger("bow_attack");
+            playerSound.PlayOneShot(bowSound);
         }
 
         if (CameraSwitch == false)
         {
+            playerSound.PlayOneShot(bowSound);
             if (playerDir == FacingDirection.Forward && shot == true)
             {
                 GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1.0f), player.transform.rotation) as GameObject;
@@ -287,6 +288,7 @@ public class Custom2DController : MonoBehaviour
 
         else
         {
+            playerSound.PlayOneShot(bowSound);
             if (shot == true)
             {
                 GameObject projectial = Instantiate(rangedTemp, player.transform.position + player.transform.forward, player.transform.rotation) as GameObject;

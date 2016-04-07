@@ -447,6 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  hurtSound: {fileID: 8300000, guid: 586d9cf54140fb54a9c08b4196294e9a, type: 3}
 --- !u!114 &11481294
 MonoBehaviour:
   m_ObjectHideFlags: 1

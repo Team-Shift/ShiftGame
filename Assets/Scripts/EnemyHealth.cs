@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+[RequireComponent(typeof(AudioSource))]
 public class EnemyHealth : MonoBehaviour {
 
     //Custom2DController playerScript;
@@ -9,6 +11,8 @@ public class EnemyHealth : MonoBehaviour {
     public int startHealth = 5;
     public GameObject hitPart;
     private GameObject parent;
+    private AudioSource enemySound;
+    public AudioClip hurtSound;
 
     //public float xOffset;
     //public float zOffset;
@@ -17,6 +21,7 @@ public class EnemyHealth : MonoBehaviour {
 
     void Start()
     {
+        enemySound = gameObject.GetComponent<AudioSource>();
         parent = gameObject.transform.parent.gameObject;
         health = startHealth;
         //player = GameObject.Find("Player");
@@ -36,6 +41,7 @@ public class EnemyHealth : MonoBehaviour {
 
     public void TakeDamage()
     {
+        enemySound.PlayOneShot(hurtSound);
         Instantiate(hitPart, transform.position, Quaternion.identity);
         health--;
     }
