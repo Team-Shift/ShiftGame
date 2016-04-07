@@ -1,48 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &198292
+--- !u!1 &188546
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 467150}
-  - 114: {fileID: 11410532}
+  - 4: {fileID: 415406}
+  - 131: {fileID: 13199914}
   m_Layer: 0
-  m_Name: UI_Manager
+  m_Name: HeartContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &467150
+--- !u!4 &415406
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198292}
+  m_GameObject: {fileID: 188546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.1, y: 0.91, z: 0}
+  m_LocalScale: {x: 0.11, y: 0.12, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11410532
-MonoBehaviour:
+--- !u!131 &13199914
+GUITexture:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198292}
+  m_GameObject: {fileID: 188546}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e8245b427dda64bba4e09ca1b41a44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HeartFillTexture: {fileID: 13172374, guid: 00beb33bc9003f049aa88f4fc0b99128, type: 2}
-  HeartContainerTexture: {fileID: 13199914, guid: df921734038b9354bb793908929a4e63,
-    type: 2}
-  AmountOfHearts: 3
+  m_Texture: {fileID: 2800000, guid: 70a2d2ea2d9fa374d89cd7e74276241a, type: 3}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -52,5 +56,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 198292}
+  m_RootGameObject: {fileID: 188546}
   m_IsPrefabParent: 1
