@@ -27,6 +27,8 @@ public class Custom2DController : MonoBehaviour
     public float jumpTimeLeft = 1f;
     private bool shot = true;
     public float shotTimeLeft = 1f;
+    public bool melee = true;
+    private float meleeTimeLeft = 1f;
     
     //Movement
     public enum FacingDirection { Forward, Backward, Left, Right };
@@ -109,6 +111,14 @@ public class Custom2DController : MonoBehaviour
         {
             shotTimeLeft = 1f;
             shot = true;
+        }
+
+        meleeTimeLeft = meleeTimeLeft - Time.deltaTime;
+
+        if (meleeTimeLeft <= 0)
+        {
+            meleeTimeLeft = 1f;
+            melee = true;
         }
 
 
@@ -233,8 +243,14 @@ public class Custom2DController : MonoBehaviour
         //{
         //    anim.SetTrigger("sword_attack");
         //}
-        anim.SetTrigger("sword_attack");
-        AttackPushForward();
+        
+        //AttackPushForward();
+
+        if(melee == true)
+        {
+            anim.SetTrigger("sword_attack");
+            melee = false;
+        }
     }
 
     void RangedAttack()

@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 130236, guid: c7355f848da0f194486b877747d1bc94, type: 2}
   xOffset: 0.5
-  zOffset: 1.5
+  zOffset: 0.5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -129,7 +129,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: zOffset
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

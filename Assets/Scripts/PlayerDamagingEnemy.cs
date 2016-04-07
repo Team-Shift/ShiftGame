@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerProjectialControl : MonoBehaviour
-{
-    public float lifeSpan = 0;
+public class PlayerDamagingEnemy : MonoBehaviour {
+
+    //public float lifeSpan = 0;
     public float xOffset = 0, yOffset = 0, zOffset = 0;
     private GameObject[] enemies;
     private Custom2DController playerScript;
+    //public EnemyHealth eh;
 
     void Start()
     {
@@ -17,8 +18,7 @@ public class PlayerProjectialControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, lifeSpan);
-     }
+    }
 
     void FixedUpdate()
     {
@@ -26,33 +26,32 @@ public class PlayerProjectialControl : MonoBehaviour
         {
 
             Vector3 enemyPos = enemy.transform.position;
-            Vector3 thisProjectilePos = gameObject.transform.position;
+            Vector3 playerSword = gameObject.transform.position;
             EnemyHealth enemyStatus = enemy.GetComponent<EnemyHealth>();
 
-            yOffset = enemyPos.y * -.84f;
+            yOffset = enemyPos.y * -.5f;
 
-            if (playerScript.CameraSwitch == false)
+            if (playerScript.CameraSwitch == false && playerScript.melee == false)
             {
                 //if ((enemyPos.x <= thisProjectilePos.x + xOffset && enemyPos.x >= thisProjectilePos.x - xOffset) && (enemyPos.z <= (thisProjectilePos.z + yOffset) + zOffset && enemyPos.z >= (thisProjectilePos.z + yOffset) - zOffset))
-                if(Mathf.Abs(enemyPos.x - thisProjectilePos.x) <= xOffset && Mathf.Abs(enemyPos.z - thisProjectilePos.z) <= zOffset)
+                if(Mathf.Abs(enemyPos.x - playerSword.x) <= xOffset && Mathf.Abs(enemyPos.z - (playerSword.z + yOffset)) <= zOffset)
                 {
                     Debug.Log("Enemy Hit: " + enemy.name);
-                    Destroy(enemy);
-                    Destroy(gameObject);
+                    if (enemy.GetComponent<EnemyHealth>())
+                    {
+                        enemy.GetComponent<EnemyHealth>().TakeDamage();
+                    }
                 }
             }
         }
     }
 
-
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Enemy")
         {
-            Debug.Log("Enemy was hit");
-
-
-            Destroy(gameObject);
+            Debug.Log(col.gameObject.name + " was hit");
+           
 
         }
     }

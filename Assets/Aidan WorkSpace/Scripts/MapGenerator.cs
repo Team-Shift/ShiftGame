@@ -137,7 +137,7 @@ public class MapGenerator : MonoBehaviour
         }
         #endregion
 
-#region RoomGeneration
+#region AssignNeighbors
         for (int x = 0; x < currentDungeon.dungeonSize.x; x++)
         {
             for (int y = 0; y < currentDungeon.dungeonSize.y; y++)
@@ -146,19 +146,6 @@ public class MapGenerator : MonoBehaviour
 
                 if (newRoom != null)
                 {
-                    //ToDo Figure out better way that keeping track of a prefab and a gameobject
-                    //Can I create the new GameObject without instantiated it and do that later?
-                    GameObject newRoomObject = Instantiate(newRoom.prefab);
-                    newRoom.roomInst = newRoomObject;
-                    newRoom.Init();
-                    newRoomObject.name = ("RoomPosition(" + x + "," + y + ")");
-                    
-                    newRoomObject.transform.SetParent(dungeonHolder, false);
-                    newRoomObject.transform.localPosition = newRoom.roomPosition;
-                    newRoomObject.transform.localRotation = Quaternion.identity;
-                    newRoomObject.transform.localScale = Vector3.one;
-
-
                     for (int row = -1; row <= 1; row++)
                     {
                         for (int col = -1; col <= 1; col++)
@@ -175,26 +162,26 @@ public class MapGenerator : MonoBehaviour
                                         if (neighborY > y)
                                         {
                                             newRoom.AddNeighbor(Room.Direction.North, neighbor);
-                                            newRoom.SetHallwayActive(Room.Direction.North, true);
-                                            newRoom.SetPortalTarget(Room.Direction.North, neighbor.roomPosition);
+                                            //newRoom.SetHallwayActive(Room.Direction.North, true);
+                                            //newRoom.SetPortalTarget(Room.Direction.North, neighbor.roomPosition);
                                         }
                                         if (neighborX > x)
                                         {
                                             newRoom.AddNeighbor(Room.Direction.East, neighbor);
-                                            newRoom.SetHallwayActive(Room.Direction.East, true);
-                                            newRoom.SetPortalTarget(Room.Direction.East, neighbor.roomPosition);
+                                            //newRoom.SetHallwayActive(Room.Direction.East, true);
+                                            //newRoom.SetPortalTarget(Room.Direction.East, neighbor.roomPosition);
                                         }
                                         if (neighborY < y)
                                         {
                                             newRoom.AddNeighbor(Room.Direction.South, neighbor);
-                                            newRoom.SetHallwayActive(Room.Direction.South, true);
-                                            newRoom.SetPortalTarget(Room.Direction.South, neighbor.roomPosition);
+                                            //newRoom.SetHallwayActive(Room.Direction.South, true);
+                                            //newRoom.SetPortalTarget(Room.Direction.South, neighbor.roomPosition);
                                         }
                                         if (neighborX < x)
                                         {
                                             newRoom.AddNeighbor(Room.Direction.West, neighbor);
-                                            newRoom.SetHallwayActive(Room.Direction.West, true);
-                                            newRoom.SetPortalTarget(Room.Direction.West, neighbor.roomPosition);
+                                            //newRoom.SetHallwayActive(Room.Direction.West, true);
+                                            //newRoom.SetPortalTarget(Room.Direction.West, neighbor.roomPosition);
                                         }
                                     }
                                 }
@@ -202,36 +189,85 @@ public class MapGenerator : MonoBehaviour
                         }
                     }
                     //Adding Neighbors Completed
-                    Debug.Log(newRoom.roomInst.name +" neighbor count: " + newRoom.neighbors.Count);
-                    
-                    //Define Possible Boss Rooms
-                    //If there are no rooms with only one neighbor we look for rooms with 2
-                    //Etc?
-                    if (newRoom.prefab != StartRoom)
-                    {
-                        if (newRoom.neighbors.Count == 1)
-                        {
-                            
-                            PossibleBossRooms.Add(newRoom);
-                        }
-                    }
+                    map[x, y] = newRoom;
                 }
+
+
+
+
             }
         }
+
+        #endregion
+
+        #region Filter Rooms
+        //Use region to filter through values prior to assigning new prefabs to rooms
+        //for special use cases (i.e Boss Rooms, One Offs, Etc.)
+
+        //Define Possible Boss Rooms
+        //If there are no rooms with only one neighbor we look for rooms with 2
+        //Etc?
+        //if (newRoom.prefab != StartRoom)
+        //{
+        //    if (newRoom.neighbors.Count == 1)
+        //    {
+
+        //        PossibleBossRooms.Add(newRoom);
+        //    }
+        //}
+        #endregion
+
+        #region InstantiateRooms
+        //ToDo Figure out better way that keeping track of a prefab and a gameobject
+        //Can I create the new GameObject without instantiated it and do that later?
+        //GameObject newRoomObject = Instantiate(newRoom.prefab);
+        //newRoom.roomInst = newRoomObject;
+        //newRoom.Init();
+        //newRoomObject.name = ("RoomPosition(" + x + "," + y + ")");
+
+        //newRoomObject.transform.SetParent(dungeonHolder, false);
+        //newRoomObject.transform.localPosition = newRoom.roomPosition;
+        //newRoomObject.transform.localRotation = Quaternion.identity;
+        //newRoomObject.transform.localScale = Vector3.one;
+
+
+        for (int x = 0; x < currentDungeon.dungeonSize.x; x++)
+        {
+            for (int y = 0; y < currentDungeon.dungeonSize.y; y++)
+            {
+                Room newRoom = map[x, y];
+
+                if (newRoom != null)
+                {
+                    GameObject newRoomObject = Instantiate(newRoom.prefab);
+                    newRoom.roomInst = newRoomObject;
+                    newRoom.Init();
+                    newRoomObject.name = ("RoomPosition(" + x + "," + y + ")");
+
+                    newRoomObject.transform.SetParent(dungeonHolder, false);
+                    newRoomObject.transform.localPosition = newRoom.roomPosition;
+                    newRoomObject.transform.localRotation = Quaternion.identity;
+                    newRoomObject.transform.localScale = Vector3.one;
+                    newRoom.SetPortalTarget();
+                }
+
+            }
+        }
+
         #endregion
         //Select Random Room from BoosRooms
         //ToDo See Fix to shitty instantiation above
-        Debug.Log(PossibleBossRooms.Count);
-        int randomIndex = prng.Next(0, PossibleBossRooms.Count);
-        //Room bossRoom = PossibleBossRooms[UnityEngine.Random.Range(0, PossibleBossRooms.Count - 1)];
-        Room bossRoom = PossibleBossRooms[randomIndex];
-        bossRoom.roomInst = Instantiate(EndRoom);
-        bossRoom.roomInst.name= ("BossRoom");
+        //Debug.Log(PossibleBossRooms.Count);
+        //int randomIndex = prng.Next(0, PossibleBossRooms.Count);
+        ////Room bossRoom = PossibleBossRooms[UnityEngine.Random.Range(0, PossibleBossRooms.Count - 1)];
+        //Room bossRoom = PossibleBossRooms[randomIndex];
+        //bossRoom.roomInst = Instantiate(EndRoom);
+        //bossRoom.roomInst.name= ("BossRoom");
 
-        bossRoom.roomInst.transform.SetParent(dungeonHolder, false);
-        bossRoom.roomInst.transform.localPosition = bossRoom.roomPosition;
-        bossRoom.roomInst.transform.localRotation = Quaternion.identity;
-        bossRoom.roomInst.transform.localScale = Vector3.one;
+        //bossRoom.roomInst.transform.SetParent(dungeonHolder, false);
+        //bossRoom.roomInst.transform.localPosition = bossRoom.roomPosition;
+        //bossRoom.roomInst.transform.localRotation = Quaternion.identity;
+        //bossRoom.roomInst.transform.localScale = Vector3.one;
 
         //DestroyImmediate(bossRoom.roomInst);
     }

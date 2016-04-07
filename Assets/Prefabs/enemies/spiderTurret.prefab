@@ -11,10 +11,9 @@ GameObject:
   - 95: {fileID: 9577068}
   - 114: {fileID: 11481294}
   - 135: {fileID: 13570322}
-  - 65: {fileID: 6570040}
   m_Layer: 0
   m_Name: spiderTurret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,6 +28,8 @@ GameObject:
   - 4: {fileID: 435386}
   - 33: {fileID: 3372784}
   - 23: {fileID: 2388640}
+  - 65: {fileID: 6583930}
+  - 114: {fileID: 11460234}
   m_Layer: 0
   m_Name: obj_spider_turret_body:Mesh
   m_TagString: Untagged
@@ -192,8 +193,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111196}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 4.0132136, y: -0.873, z: 3.228712}
+  m_LocalRotation: {x: 0, y: 0.0017097697, z: 0, w: -0.99999857}
+  m_LocalPosition: {x: 1.8200002, y: -0.17357063, z: -8.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 435386}
@@ -404,18 +405,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114612}
   m_Mesh: {fileID: 4300004, guid: fc7c2d75deeb831478ec0e1828879ac9, type: 3}
---- !u!65 &6570040
+--- !u!65 &6583930
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111196}
+  m_GameObject: {fileID: 114612}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7578974, y: 1.0473676, z: 0.7164053}
-  m_Center: {x: 0.0052632093, y: 0.52367854, z: 0.02418375}
+  m_Size: {x: 0.7541624, y: 1.0377795, z: 0.74881494}
+  m_Center: {x: -0.0017624451, y: 0.27255082, z: -0.07440567}
 --- !u!95 &9577068
 Animator:
   serializedVersion: 3
@@ -433,6 +434,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11460234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fefa54b60b29f944baf7284fecb8b60c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
 --- !u!114 &11481294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -445,12 +459,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  yPosLock: 0
-  projectile: {fileID: 177004, guid: 4f5c6e6051d7507478ee32ab96d52ba0, type: 2}
   alwaysShoot: 0
   shouldRotate: 0
+  yPosLock: 0
+  projectile: {fileID: 177004, guid: 4f5c6e6051d7507478ee32ab96d52ba0, type: 2}
   yOffset: 0.5
   rotOffset: 270
+  isFlyingEnemy: 0
 --- !u!135 &13570322
 SphereCollider:
   m_ObjectHideFlags: 1

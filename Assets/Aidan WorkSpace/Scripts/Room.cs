@@ -7,8 +7,8 @@ public class Room{
 
     public Room(GameObject roomPrefab)
     {
-        Hallways = new GameObject[4];
-        neighbors = new Dictionary<Direction, Transform>();
+        hallways = new Dictionary<Direction, GameObject>();
+        neighbors = new Dictionary<Direction, Room>();
         prefab = roomPrefab;
         
     }
@@ -16,6 +16,7 @@ public class Room{
     public void Init()
     {
         AssignHallways();
+        SetHallwaysActive(true);
     }
 
     //Used to keep track of original prefab
@@ -25,17 +26,21 @@ public class Room{
     public GameObject roomInst;
 
     public Vector3 roomPosition;
-    
-    public Dictionary<Direction, Transform> neighbors;
 
-    public GameObject[] Hallways;
+    //ToDo Am I being redundent?
+    public Dictionary<Direction, GameObject> hallways;
+
+    public Dictionary<Direction, Room> neighbors;
+
+    
 
     public enum Direction
     {
-        North,
-        East,
-        South,
-        West
+        North = 0,
+        East = 1,
+        South = 2,
+        West = 3,
+        COUNT,
     }
 
     private Direction swapDir(Direction location)
@@ -48,20 +53,20 @@ public class Room{
                 case Direction.South: retval = Direction.North; break;
                 case Direction.West : retval = Direction.East;  break;
             }
-
         return retval;
     }
 
     //Functions for adding and removing connected rooms
     public void AddNeighbor(Direction location, Room neighbor)
     {
-        //ToDo Fix Portal Bullshit and get stuff on screen
-        Transform t = neighbor.prefab.transform;
+        //Transform t = neighbor.prefab.transform;
 
         // Little bit of danger here!    
         //Transform portal = t.GetChild((int)swapDir(location) + 1).GetComponentInChildren<Portal>().transform; // for the active child           
 
-        neighbors.Add(location, t);
+        neighbors.Add(location, neighbor);
+
+        
     }
 
     public void RemoveNeighbor(Direction location)
@@ -70,26 +75,16 @@ public class Room{
     }
 
     //GetSet Neighbor Active
-    public void SetHallwayActive(Direction location, bool isActive)
+    public void SetHallwaysActive(bool isActive)
     {
-        switch (location)
+        foreach (KeyValuePair<Direction, Room> pair in neighbors)
         {
-            case Direction.North:
-                ActivateHallway(location, isActive);
-                break;
-            case Direction.East:
-                ActivateHallway(location, isActive);
-                break;
-            case Direction.South:
-                ActivateHallway(location, isActive);
-                break;
-            case Direction.West:
-                ActivateHallway(location, isActive);
-                break;
+            ActivateHallway(pair.Key, isActive);
         }
     }
 
     //Assigns hallways for the room instance
+    //Requires a room instance
     private void AssignHallways()
     {
         for (int i = 0; i < roomInst.transform.childCount; i++)
@@ -98,19 +93,19 @@ public class Room{
             if(child != null) { 
                 if (child.gameObject.name == "North_Hallway")
                 {
-                    Hallways[(int)Direction.North] = child.gameObject;
+                    hallways[Direction.North] = child.gameObject;
                 }
                 if (child.gameObject.name == "East_Hallway")
                 {
-                    Hallways[(int)Direction.East] = child.gameObject;
+                    hallways[Direction.East] = child.gameObject;
                 }
                 if (child.gameObject.name == "South_Hallway")
                 {
-                    Hallways[(int)Direction.South] = child.gameObject;
+                    hallways[Direction.South] = child.gameObject;
                 }
                 if (child.gameObject.name == "West_Hallway")
                 {
-                    Hallways[(int)Direction.West] = child.gameObject;
+                    hallways[Direction.West] = child.gameObject;
                 }
             }
         }
@@ -118,9 +113,9 @@ public class Room{
 
     private void ActivateHallway(Direction location, bool isActive)
     {
-        for (int i = 0; i < Hallways[(int)location].transform.childCount; i++)
+        for (int i = 0; i < hallways[location].transform.childCount; i++)
         {
-            Transform child = Hallways[(int)location].transform.GetChild(i);
+            Transform child = hallways[location].transform.GetChild(i);
             if (child.gameObject.name == "Active")
             {
                 child.gameObject.SetActive(isActive);
@@ -132,11 +127,21 @@ public class Room{
         }
     }
 
-    public void SetPortalTarget(Direction location, Vector3 target)
+    public void SetPortalTarget()
     {
-        Portal myNPortal = Hallways[(int)location].GetComponentInChildren<Portal>();
-        myNPortal.name = (location + "Portal");
-        myNPortal.targetPosition = target;
+        //Portal myNPortal = hallways[location].GetComponentInChildren<Portal>();
+        //myNPortal.name = (location + "Portal");
+        //myNPortal.targetPosition = target;
+
+        foreach (KeyValuePair<Direction, Room> pair in neighbors)
+        {
+            Portal myPortal = hallways[pair.Key].GetComponentInChildren<Portal>();
+            myPortal.name = (pair.Key + "Portal");
+            myPortal.targetPosition = pair.Value.roomPosition;
+
+
+            //myPortal.targetPosition = target;
+        }
     }
 
     //OnEntrance of a room

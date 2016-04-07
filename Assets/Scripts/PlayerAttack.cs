@@ -7,6 +7,9 @@ public class PlayerAttack : MonoBehaviour {
     void Start()
     {
        GameObject g =  GameObject.FindGameObjectWithTag("Hitbox");
+        g.tag = "Weapon";
+
+        
        c = g.GetComponent<Collider>();
        //Debug.Log( c.name);
        c.enabled = false;
