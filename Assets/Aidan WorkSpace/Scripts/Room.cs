@@ -133,14 +133,33 @@ public class Room{
         //myNPortal.name = (location + "Portal");
         //myNPortal.targetPosition = target;
 
+        //Trigger portals based on flag
+        //OnTriggerEnter
+
         foreach (KeyValuePair<Direction, Room> pair in neighbors)
         {
             Portal myPortal = hallways[pair.Key].GetComponentInChildren<Portal>();
-            myPortal.name = (pair.Key + "Portal");
-            myPortal.targetPosition = pair.Value.roomPosition;
 
+            if (myPortal != null)
+            {
+                myPortal.name = (pair.Key + "Portal");
+                Room neighbor = pair.Value;
 
-            //myPortal.targetPosition = target;
+                Vector3 targetOffset = new Vector3(0,5.3f,0);
+
+                switch (pair.Key)
+                {
+                    case Direction.North:   targetOffset += new Vector3(0,0,2); break;
+                    case Direction.East:    targetOffset += new Vector3(2, 0, 0); break;
+                    case Direction.South:   targetOffset += new Vector3(0, 0, -2); break;
+                    case Direction.West:    targetOffset += new Vector3(-2, 0, 0); break;
+                }
+
+                Portal neighborPortal = neighbor.hallways[swapDir(pair.Key)].GetComponentInChildren<Portal>();
+
+                targetOffset += new Vector3(neighborPortal.transform.position.x, 0, neighborPortal.transform.position.z);
+                myPortal.targetPosition += targetOffset;
+            }
         }
     }
 

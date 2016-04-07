@@ -248,13 +248,28 @@ public class MapGenerator : MonoBehaviour
                     newRoomObject.transform.localPosition = newRoom.roomPosition;
                     newRoomObject.transform.localRotation = Quaternion.identity;
                     newRoomObject.transform.localScale = Vector3.one;
-                    newRoom.SetPortalTarget();
                 }
-
+                map[x, y] = newRoom;
             }
         }
 
         #endregion
+#region AssignPortalTargets
+        //Loop through rooms after instantiation to assign portal targets
+        for (int x = 0; x < currentDungeon.dungeonSize.x; x++)
+        {
+            for (int y = 0; y < currentDungeon.dungeonSize.y; y++)
+            {
+                Room newRoom = map[x, y];
+
+                if (newRoom != null)
+                {
+                    newRoom.SetPortalTarget();
+                }
+                map[x, y] = newRoom;
+            }
+        }
+#endregion
         //Select Random Room from BoosRooms
         //ToDo See Fix to shitty instantiation above
         //Debug.Log(PossibleBossRooms.Count);

@@ -17,13 +17,16 @@ public class Portal : MonoBehaviour {
 
     [HideInInspector]
     public Vector3 targetPosition;
+    [HideInInspector]
+    public Room.Direction targetDirection;
 
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Player")
         {
-                Debug.Log("Player going to: " + targetPosition.x + ", " + targetPosition.z);
-                col.transform.position = targetPosition + new Vector3(0, 5, 0);
+            col.transform.position = targetPosition;
         }
+
+        //ToDo Trigger OnEntrance of a Room
     }
 }
