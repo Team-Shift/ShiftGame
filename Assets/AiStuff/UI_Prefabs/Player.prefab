@@ -129,7 +129,7 @@ GameObject:
   - 54: {fileID: 5456608}
   - 114: {fileID: 11425466}
   m_Layer: 0
-  m_Name: AiPlayer
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -627,12 +627,16 @@ MonoBehaviour:
   speed: 4
   health: 3
   CameraSwitch: 1
+  meleeSound: {fileID: 0}
+  bowSound: {fileID: 0}
+  hurtSound: {fileID: 0}
   pushBackForce: 10100
   pushUpForce: 1000
   jumpTimeLeft: 0.5
   shotTimeLeft: 1
   melee: 1
   playerDir: 0
+  dust: {fileID: 0}
   currentHeld: 0
 --- !u!114 &11478630
 MonoBehaviour:

@@ -40,6 +40,8 @@ public class Custom2DController : MonoBehaviour
     public enum FacingDirection { Forward, Backward, Left, Right };
     public FacingDirection playerDir;
 
+    public GameObject dust;
+
     //Combat
     public enum CurrentItemType { Melee, Range, Scroll, Spell, None};
     public CurrentItemType currentHeld;
@@ -205,6 +207,12 @@ public class Custom2DController : MonoBehaviour
         }
     }
 
+    public void DustKickOff()
+    {
+        Instantiate(dust, player.transform.position, Quaternion.Inverse(player.transform.rotation));
+        Debug.Log("Kicking off Dust");
+    }
+
     /*
     * Combat
     */
@@ -257,29 +265,31 @@ public class Custom2DController : MonoBehaviour
         if (shot == true)
         {
             anim.SetTrigger("bow_attack");
-            playerSound.PlayOneShot(bowSound);
         }
 
         if (CameraSwitch == false)
         {
-            playerSound.PlayOneShot(bowSound);
             if (playerDir == FacingDirection.Forward && shot == true)
             {
+                playerSound.PlayOneShot(bowSound);
                 GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1.0f), player.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
             else if (playerDir == FacingDirection.Backward && shot == true)
             {
+                playerSound.PlayOneShot(bowSound);
                 GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 1.0f), player.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
             else if (playerDir == FacingDirection.Left && shot == true)
             {
+                playerSound.PlayOneShot(bowSound);
                 GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x - 1.0f, player.transform.position.y, player.transform.position.z), player.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
             else if (playerDir == FacingDirection.Right && shot == true)
             {
+                playerSound.PlayOneShot(bowSound);
                 GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x + 1.0f, player.transform.position.y, player.transform.position.z), player.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
@@ -288,9 +298,9 @@ public class Custom2DController : MonoBehaviour
 
         else
         {
-            playerSound.PlayOneShot(bowSound);
             if (shot == true)
             {
+                playerSound.PlayOneShot(bowSound);
                 GameObject projectial = Instantiate(rangedTemp, player.transform.position + player.transform.forward, player.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }

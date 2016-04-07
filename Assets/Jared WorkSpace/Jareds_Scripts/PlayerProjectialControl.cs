@@ -37,7 +37,6 @@ public class PlayerProjectialControl : MonoBehaviour
                 if(Mathf.Abs(enemyPos.x - thisProjectilePos.x) <= xOffset && Mathf.Abs(enemyPos.z - thisProjectilePos.z) <= zOffset)
                 {
                     Debug.Log("Enemy Hit: " + enemy.name);
-                    Destroy(enemy);
                     Destroy(gameObject);
                 }
             }
@@ -50,8 +49,6 @@ public class PlayerProjectialControl : MonoBehaviour
         if (col.gameObject.tag == "Enemy")
         {
             Debug.Log("Enemy was hit");
-
-
             Destroy(gameObject);
 
         }
