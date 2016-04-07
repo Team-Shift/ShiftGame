@@ -133,6 +133,21 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 81106883}
   m_Script: {fileID: 11500000, guid: 83d132153ea051840bc915ed90e8f3e8, type: 3}
+--- !u!1 &183490228 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 198292, guid: 60ab8a0efa253184a9abd792207b5893, type: 2}
+  m_PrefabInternal: {fileID: 81106883}
+--- !u!114 &183490230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 183490228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d944f0d76bb38e4ba9856496667bef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &192180380
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +600,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1366,4 +1380,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7

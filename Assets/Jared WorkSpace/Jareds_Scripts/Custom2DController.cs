@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
@@ -57,6 +58,7 @@ public class Custom2DController : MonoBehaviour
     public float XOffset = 0.14f;
     public float YOffset = 0.92f;
 
+    MenuManager sceneShit;
 
 
     // Use this for initialization
@@ -70,6 +72,7 @@ public class Custom2DController : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
 
         playerSound = player.GetComponent<AudioSource>();
+        sceneShit = FindObjectOfType<MenuManager>();
 
         //AI WAS HERE
         //Cursor.lockState = CursorLockMode.Locked;
@@ -148,6 +151,11 @@ public class Custom2DController : MonoBehaviour
         {
             meleeTimeLeft = 1f;
             melee = true;
+        }
+
+        if(Health <= 0)
+        {
+            sceneShit.TownScene();
         }
 
 
