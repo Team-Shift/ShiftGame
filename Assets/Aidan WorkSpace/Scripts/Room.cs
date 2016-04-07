@@ -27,7 +27,6 @@ public class Room{
 
     public Vector3 roomPosition;
 
-    //ToDo Am I being redundent?
     public Dictionary<Direction, GameObject> hallways;
 
     public Dictionary<Direction, Room> neighbors;
@@ -129,13 +128,6 @@ public class Room{
 
     public void SetPortalTarget()
     {
-        //Portal myNPortal = hallways[location].GetComponentInChildren<Portal>();
-        //myNPortal.name = (location + "Portal");
-        //myNPortal.targetPosition = target;
-
-        //Trigger portals based on flag
-        //OnTriggerEnter
-
         foreach (KeyValuePair<Direction, Room> pair in neighbors)
         {
             Portal myPortal = hallways[pair.Key].GetComponentInChildren<Portal>();
