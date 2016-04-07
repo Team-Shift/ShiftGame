@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerAttack : MonoBehaviour {
+public class HitboxScript: MonoBehaviour {
     Collider c;
 
     void Start()
     {
-       GameObject g =  GameObject.FindGameObjectWithTag("Hitbox");
+        Transform t = gameObject.transform.FindChild("Hitbox");
+        GameObject g = t.gameObject;
+        c =  g.GetComponent<Collider>();
+        Debug.Log(c.name);
         g.tag = "Weapon";
 
         

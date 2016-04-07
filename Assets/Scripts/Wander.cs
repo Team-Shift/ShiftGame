@@ -4,16 +4,20 @@ using System.Collections.Generic;
 
 public class Wander : MonoBehaviour {
 
-    //[HideInInspector]
+    [HideInInspector]
     public List<Vector3> pathList;
+    //[HideInInspector]
+    public bool shouldWander;
     public float speed = 2;
     public bool showPath;
-    public bool shouldWander;
+    public bool isFloatingEnemy;
     
     private int index;
 
     void Start () {
-        gameObject.transform.Translate(0, 1, 0);
+
+        if(isFloatingEnemy)
+            gameObject.transform.Translate(0, 1, 0);
         // get all child game objects with name pathNode
         foreach(Transform t in GetComponentsInChildren<Transform>())
         {

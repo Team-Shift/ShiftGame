@@ -12,7 +12,6 @@ GameObject:
   - 135: {fileID: 13525662}
   - 114: {fileID: 11469820}
   - 114: {fileID: 11484246}
-  - 114: {fileID: 11499750}
   m_Layer: 8
   m_Name: bat
   m_TagString: Untagged
@@ -66,7 +65,6 @@ GameObject:
   - 114: {fileID: 11459832}
   - 65: {fileID: 6586530}
   - 114: {fileID: 11470816}
-  - 65: {fileID: 6537516}
   m_Layer: 8
   m_Name: bat_animation
   m_TagString: Enemy
@@ -151,7 +149,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147730}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.13, y: 0.79, z: -11.51}
+  m_LocalPosition: {x: 2.5042608, y: -1.3006215, z: 3.395}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 469980}
@@ -297,18 +295,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!65 &6537516
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170038}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0187813, y: 0.25, z: 0.74999994}
-  m_Center: {x: 0.0028390884, y: -0.632385, z: 0}
 --- !u!65 &6586530
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -369,9 +355,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathList: []
+  shouldWander: 1
   speed: 2
   showPath: 1
-  shouldWander: 1
+  isFloatingEnemy: 1
 --- !u!114 &11470816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -383,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fefa54b60b29f944baf7284fecb8b60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  startHealth: 5
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
   hurtSound: {fileID: 8300000, guid: 586d9cf54140fb54a9c08b4196294e9a, type: 3}
 --- !u!114 &11484246
@@ -405,20 +392,6 @@ MonoBehaviour:
   yOffset: 0
   rotOffset: 90
   isFlyingEnemy: 1
---- !u!114 &11499750
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17258435be8c5e34fa0c52f2bdd20377, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxVel: 5
-  shouldSeek: 0
-  objToSeek: {x: 0, y: 0, z: 0}
 --- !u!135 &13525662
 SphereCollider:
   m_ObjectHideFlags: 1
