@@ -18,35 +18,34 @@ public class PlayerDamagingEnemy : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //Destroy(gameObject, lifeSpan);
+    }
 
-
+    void FixedUpdate()
+    {
         foreach (GameObject enemy in enemies)
         {
 
             Vector3 enemyPos = enemy.transform.position;
-            Vector3 thisProjectilePos = gameObject.transform.position;
+            Vector3 playerSword = gameObject.transform.position;
             EnemyHealth enemyStatus = enemy.GetComponent<EnemyHealth>();
 
-            yOffset = enemyPos.y * -.84f;
+            yOffset = enemyPos.y * -.5f;
 
-            if (playerScript.CameraSwitch == false)
+            if (playerScript.CameraSwitch == false && playerScript.melee == false)
             {
-                if ((enemyPos.x <= thisProjectilePos.x + xOffset && enemyPos.x >= thisProjectilePos.x - xOffset) && (enemyPos.z <= (thisProjectilePos.z + yOffset) + zOffset && enemyPos.z >= (thisProjectilePos.z + yOffset) - zOffset))
+                //if ((enemyPos.x <= thisProjectilePos.x + xOffset && enemyPos.x >= thisProjectilePos.x - xOffset) && (enemyPos.z <= (thisProjectilePos.z + yOffset) + zOffset && enemyPos.z >= (thisProjectilePos.z + yOffset) - zOffset))
+                if(Mathf.Abs(enemyPos.x - playerSword.x) <= xOffset && Mathf.Abs(enemyPos.z - (playerSword.z + yOffset)) <= zOffset)
                 {
                     Debug.Log("Enemy Hit: " + enemy.name);
-                    //Destroy(enemy);
-                    //Destroy(gameObject);
-                    if(enemy.GetComponent<EnemyHealth>())
+                    if (enemy.GetComponent<EnemyHealth>())
                     {
                         enemy.GetComponent<EnemyHealth>().TakeDamage();
                     }
                 }
             }
         }
-
-
     }
+
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Enemy")
