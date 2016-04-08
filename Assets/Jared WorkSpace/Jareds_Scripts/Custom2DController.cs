@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
@@ -14,7 +13,7 @@ public class Custom2DController : MonoBehaviour
     public GameObject rangedTemp;
     public GameObject meleeWeapon;
     public GameObject sword;
-    //private DimensionalSwitchManager manager;
+    private DimensionalSwitchManager manager;
     public float turnSpeed = 180f;
     public float speed = 6.0f;
     [HideInInspector]
@@ -73,10 +72,6 @@ public class Custom2DController : MonoBehaviour
 
         playerSound = player.GetComponent<AudioSource>();
         sceneShit = FindObjectOfType<MenuManager>();
-
-        //AI WAS HERE
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
 
         // UI STUFF
         AmountOfHeartContainer = Health;
@@ -218,8 +213,8 @@ public class Custom2DController : MonoBehaviour
 
     void Move3D()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         float forwardBack = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         float strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
@@ -424,7 +419,6 @@ public class Custom2DController : MonoBehaviour
 
     public void DamageHeart()
     {
-        Health--;
         Destroy(HeartFillList[HeartFillList.Count - 1].gameObject);
         HeartFillList.RemoveAt(HeartFillList.Count - 1);
     }
