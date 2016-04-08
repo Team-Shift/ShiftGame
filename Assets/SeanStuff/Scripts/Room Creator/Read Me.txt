@@ -1,0 +1,12 @@
+﻿How it works:
+
+1.Select an object(or a prefab) in Asset Folder/Hierarchy. If you click create button without selecting anything, nothing will happen...
+
+2.Choose the pattern you want to creat.
+
+-Floor:an AxB size plane will be created using the object you choose, A and B are the number of tiles.
+-Corner:Create 4 corners of a room.
+-Wall: Rooms larger than 2x2 will have walls, otherwise you can just create corners.
+-Window: Create windows on each wall. Windows will be evenly placed.
+
+3.Click the button and see what happen!
