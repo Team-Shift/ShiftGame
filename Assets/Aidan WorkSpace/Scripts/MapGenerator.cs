@@ -15,6 +15,8 @@ public class MapGenerator : MonoBehaviour
     //For Debug Purposes
     public GameObject roomPrefab;
 
+    public bool isSeeded;
+
     public float gridScale;
 
     List<Coord> allRoomCoords;
@@ -26,8 +28,6 @@ public class MapGenerator : MonoBehaviour
     public Transform[,] roomLayout;
     Dungeon currentDungeon;
     
-
-
     //
     public Room[,] map;
 
@@ -88,7 +88,15 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-        shuffleRoomCoords = new Queue<Coord>(Utility.ShuffleArray(allRoomCoords.ToArray(), currentDungeon.seed));
+        //Check if dungeon is intended to be seeded or not
+        if (isSeeded)
+        {
+            shuffleRoomCoords = new Queue<Coord>(Utility.ShuffleArray(allRoomCoords.ToArray(), currentDungeon.seed));
+        }
+        else
+        {
+            shuffleRoomCoords = new Queue<Coord>(Utility.ShuffleArray(allRoomCoords.ToArray(), (int)System.DateTime.Now.Ticks));
+        }
 
         //Create the parent object for the Dungeon
         string holderName = "Generated Dungeon";

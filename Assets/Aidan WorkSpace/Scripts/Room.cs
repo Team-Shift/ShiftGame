@@ -31,7 +31,7 @@ public class Room{
 
     public Dictionary<Direction, Room> neighbors;
 
-    
+    public bool isSeeded;
 
     public enum Direction
     {
