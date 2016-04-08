@@ -14,7 +14,7 @@ public class Custom2DController : MonoBehaviour
     public GameObject rangedTemp;
     public GameObject meleeWeapon;
     public GameObject sword;
-    private DimensionalSwitchManager manager;
+    //private DimensionalSwitchManager manager;
     public float turnSpeed = 180f;
     public float speed = 6.0f;
     [HideInInspector]
@@ -37,7 +37,7 @@ public class Custom2DController : MonoBehaviour
     private bool shot = true;
     public float shotTimeLeft = 1f;
     public bool melee = true;
-    private float meleeTimeLeft = 1f;
+    public float meleeTimeLeft = 1f;
     
     //Movement
     public enum FacingDirection { Forward, Backward, Left, Right };
@@ -89,6 +89,11 @@ public class Custom2DController : MonoBehaviour
     void Update()
     {
 
+        if (player.transform.position.y <= 0)
+        {
+            sceneShit.TownScene();
+        }
+
         //Movement
         if (CameraSwitch == false)
         {
@@ -115,12 +120,13 @@ public class Custom2DController : MonoBehaviour
             CameraSwitch = !CameraSwitch;
             //manager.Shift();
             if (CameraSwitch == false)
-            {
-                gameObject.layer = LayerMask.NameToLayer("AvoidLight2D");
+            {         
+                    player.layer = LayerMask.NameToLayer("AvoidLight2D");
             }
             else
             {
-                gameObject.layer = LayerMask.NameToLayer("Default");
+                Debug.Log("Changing players layer to default");
+                player.layer = LayerMask.NameToLayer("Default");
             }
         }
 
@@ -160,6 +166,7 @@ public class Custom2DController : MonoBehaviour
 
 
     }
+
 
 
     /*
@@ -211,8 +218,8 @@ public class Custom2DController : MonoBehaviour
 
     void Move3D()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
 
         float forwardBack = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         float strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;

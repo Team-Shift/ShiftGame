@@ -5,10 +5,22 @@ public class DirtManager : MonoBehaviour
 {
     private ParticleSystem ps;
 
+    float lifeTime;
+
     // Use this for initialization
     void Start()
     {
-        Destroy(gameObject, 1);
+        lifeTime = 0;
+    }
+
+    void Update()
+    {
+        lifeTime += Time.deltaTime;
+        if (lifeTime > 1)
+        {
+            Destroy(gameObject, 1);
+            Debug.Log("die");
+        }
     }
 
 }

@@ -195,7 +195,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111196}
   m_LocalRotation: {x: 0, y: 0.0017097697, z: 0, w: -0.99999857}
-  m_LocalPosition: {x: 1.8200002, y: -0.17357063, z: -8.77}
+  m_LocalPosition: {x: 53.388145, y: 8.263437, z: 21.867458}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 435386}
@@ -469,7 +469,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -491,7 +491,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!95 &9577068
 Animator:
   serializedVersion: 3
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fefa54b60b29f944baf7284fecb8b60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 5
+  startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
   hurtSound: {fileID: 8300000, guid: 586d9cf54140fb54a9c08b4196294e9a, type: 3}
 --- !u!114 &11481294
@@ -601,7 +601,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7677b6e5ba671c745996b0578b899a10, type: 2}
+  - {fileID: 2100000, guid: 0043dcb2a5c059b4da678a4153bf462c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -634,7 +634,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startHealth
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 111196}

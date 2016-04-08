@@ -44,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101712}
   m_LocalRotation: {x: 0.42261833, y: 0, z: 0, w: 0.9063078}
-  m_LocalPosition: {x: 4.6, y: 18.5, z: -13.920001}
+  m_LocalPosition: {x: 2.64, y: 14.76, z: -17.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 487892}
@@ -70,8 +70,8 @@ Camera:
   m_GameObject: {fileID: 101712}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.09256055, g: 0.093771614, b: 0.11764705, a: 0.019607844}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.042171292, g: 0.044395052, b: 0.08823532, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -135,10 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5736aec5a96644f99e4fea3456cbdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 130236, guid: c7355f848da0f194486b877747d1bc94, type: 2}
+  player: {fileID: 0}
+  pivotPoint: {fileID: 0}
   sprite: {fileID: 152266}
   camActive: 0
-  duration: 0.5
+  duration: 1
   canShift: 0
 --- !u!124 &12490606
 Behaviour:
@@ -173,7 +174,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b5530eb1567df254fbc2b35eab0aa787, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40c53577ae8389d429f1ac23a221a916, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
