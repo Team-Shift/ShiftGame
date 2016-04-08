@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+[RequireComponent(typeof(AudioSource))]
 public class EnemyHealth : MonoBehaviour {
 
     //Custom2DController playerScript;
     //GameObject player;
-    public int health;
-    int startHealth = 5;
+    int health;
+    public int startHealth = 5;
     public GameObject hitPart;
     private GameObject parent;
+    private AudioSource enemySound;
+    public AudioClip hurtSound;
 
     //public float xOffset;
     //public float zOffset;
@@ -17,10 +21,9 @@ public class EnemyHealth : MonoBehaviour {
 
     void Start()
     {
+        enemySound = gameObject.GetComponent<AudioSource>();
         parent = gameObject.transform.parent.gameObject;
         health = startHealth;
-        //player = GameObject.Find("Player");
-        //playerScript = player.GetComponent<Custom2DController>();
     }
 
     // triggers when hitting sphere collider.... (might need to separate colliders)
@@ -36,6 +39,7 @@ public class EnemyHealth : MonoBehaviour {
 
     public void TakeDamage()
     {
+        enemySound.PlayOneShot(hurtSound);
         Instantiate(hitPart, transform.position, Quaternion.identity);
         health--;
     }

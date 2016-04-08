@@ -132,6 +132,7 @@ MonoBehaviour:
   player: {fileID: 0}
   xOffset: 0.2
   zOffset: 0.2
+  isProjectile: 1
 --- !u!114 &11471050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -167,6 +168,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: zOffset
       value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isProjectile
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

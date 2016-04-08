@@ -132,6 +132,7 @@ MonoBehaviour:
   player: {fileID: 130236, guid: c7355f848da0f194486b877747d1bc94, type: 2}
   xOffset: 0
   zOffset: 0
+  isProjectile: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -149,6 +150,10 @@ Prefab:
       objectReference: {fileID: 130236, guid: c7355f848da0f194486b877747d1bc94, type: 2}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isProjectile
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

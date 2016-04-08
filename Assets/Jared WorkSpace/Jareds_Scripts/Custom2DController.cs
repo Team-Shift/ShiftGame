@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor.SceneManagement;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(AudioSource))]
 
 public class Custom2DController : MonoBehaviour
 {
@@ -16,10 +20,15 @@ public class Custom2DController : MonoBehaviour
     [HideInInspector]
     private Vector3 moveDirection = Vector3.zero;
     [HideInInspector]
-    public int health = 3;
+    public int Health = 3;
     [HideInInspector]
     public bool CameraSwitch = false;
     private Animator anim;
+
+    private AudioSource playerSound;
+    public AudioClip meleeSound;
+    public AudioClip bowSound;
+    public AudioClip hurtSound;
 
     public float pushBackForce = 750;
     public float pushUpForce = 10;
@@ -34,9 +43,22 @@ public class Custom2DController : MonoBehaviour
     public enum FacingDirection { Forward, Backward, Left, Right };
     public FacingDirection playerDir;
 
+    public GameObject dust;
+
     //Combat
     public enum CurrentItemType { Melee, Range, Scroll, Spell, None};
     public CurrentItemType currentHeld;
+
+    //UI
+    public GUITexture HeartFillTexture;
+    public GUITexture HeartContainerTexture;
+    private List<GUITexture> HeartFillList = new List<GUITexture>();
+    private List<GUITexture> HeartContainerList = new List<GUITexture>();
+    int AmountOfHeartContainer;
+    public float XOffset = 0.14f;
+    public float YOffset = 0.92f;
+
+    MenuManager sceneShit;
 
 
     // Use this for initialization
@@ -49,8 +71,18 @@ public class Custom2DController : MonoBehaviour
         CameraSwitch = false;
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        playerSound = player.GetComponent<AudioSource>();
+        sceneShit = FindObjectOfType<MenuManager>();
+
+        //AI WAS HERE
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+
+        // UI STUFF
+        AmountOfHeartContainer = Health;
+        SpawnHeart(Health);
+        SpawnHeartContainer(AmountOfHeartContainer);
+
     }
 
     // Update is called once per frame
@@ -121,6 +153,11 @@ public class Custom2DController : MonoBehaviour
             melee = true;
         }
 
+        if(Health <= 0)
+        {
+            sceneShit.TownScene();
+        }
+
 
     }
 
@@ -130,6 +167,9 @@ public class Custom2DController : MonoBehaviour
     */
     void Move2D()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         if(moveDirection.x != 0 || moveDirection.z != 0)
@@ -171,6 +211,9 @@ public class Custom2DController : MonoBehaviour
 
     void Move3D()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         float forwardBack = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         float strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         float turning = Input.GetAxis("Mouse X");
@@ -197,14 +240,22 @@ public class Custom2DController : MonoBehaviour
         }
     }
 
+    void DustKickOff()
+    {
+        Instantiate(dust, player.transform.position, Quaternion.Inverse(player.transform.rotation));
+        Debug.Log("Kicking off Dust");
+    }
+
     /*
     * Combat
     */
 
     public void DamageFallback(Vector3 damageSource)
     {
-        health--;
+        Health--;
+        DamageHeart();
 
+        playerSound.PlayOneShot(hurtSound);
         StartCoroutine(ChangeColor(1, 0.1f, 0.1f, 1, 0.5f));
 
         if (player.transform.position.z < damageSource.z)
@@ -235,19 +286,9 @@ public class Custom2DController : MonoBehaviour
 
     void MeleeAttack()
     {
-        //if (CameraSwitch == true)
-        //{
-        //    anim.SetTrigger("3D_sword_attack");
-        //}
-        //else
-        //{
-        //    anim.SetTrigger("sword_attack");
-        //}
-        
-        //AttackPushForward();
-
         if(melee == true)
         {
+            playerSound.PlayOneShot(meleeSound);
             anim.SetTrigger("sword_attack");
             melee = false;
         }
@@ -264,21 +305,25 @@ public class Custom2DController : MonoBehaviour
         {
             if (playerDir == FacingDirection.Forward && shot == true)
             {
+                playerSound.PlayOneShot(bowSound);
                 GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1.0f), player.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
             else if (playerDir == FacingDirection.Backward && shot == true)
             {
+                playerSound.PlayOneShot(bowSound);
                 GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 1.0f), player.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
             else if (playerDir == FacingDirection.Left && shot == true)
             {
+                playerSound.PlayOneShot(bowSound);
                 GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x - 1.0f, player.transform.position.y, player.transform.position.z), player.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
             else if (playerDir == FacingDirection.Right && shot == true)
             {
+                playerSound.PlayOneShot(bowSound);
                 GameObject projectial = Instantiate(rangedTemp, new Vector3(player.transform.position.x + 1.0f, player.transform.position.y, player.transform.position.z), player.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
@@ -289,6 +334,7 @@ public class Custom2DController : MonoBehaviour
         {
             if (shot == true)
             {
+                playerSound.PlayOneShot(bowSound);
                 GameObject projectial = Instantiate(rangedTemp, player.transform.position + player.transform.forward, player.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
@@ -329,4 +375,59 @@ public class Custom2DController : MonoBehaviour
 
         gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
     }
+
+    /*
+    UI Stuffs
+    */
+
+    void SpawnHeart(int HeartAmount)
+    {
+        for (int i = 0; i < Health; i++)
+        {
+            HeartFillList.Add(((GUITexture)Instantiate(HeartFillTexture, new Vector2(i * XOffset + .07f, YOffset), Quaternion.identity)));
+        }
+    }
+
+    void SpawnHeartContainer(int HeartAmount)
+    {
+
+        for (int i = 0; i < Health; i++)
+        {
+            HeartContainerList.Add(((GUITexture)Instantiate(HeartContainerTexture, new Vector2(i * XOffset + .07f, YOffset), Quaternion.identity)));
+        }
+    }
+
+
+    public void AddHeartContainer()
+    {
+        AmountOfHeartContainer++;
+        int HeartContainerIndex = HeartContainerList.Count;
+        HeartContainerList.Add(((GUITexture)Instantiate(HeartContainerTexture, new Vector3(HeartContainerIndex * XOffset + .07f, YOffset, -1), Quaternion.identity)));
+    }
+
+    public void HealHeart()
+    {
+        if (HeartFillList.Count < HeartContainerList.Count)
+        {
+            Health++;
+            int HeartFillIndex = HeartFillList.Count;
+            HeartFillList.Add(((GUITexture)Instantiate(HeartFillTexture, new Vector2(HeartFillIndex * XOffset + .07f, YOffset), Quaternion.identity)));
+        }
+    }
+
+    public void DamageHeart()
+    {
+        Health--;
+        Destroy(HeartFillList[HeartFillList.Count - 1].gameObject);
+        HeartFillList.RemoveAt(HeartFillList.Count - 1);
+    }
+
+    public void RemoveHeartContainer()
+    {
+        AmountOfHeartContainer--;
+        Destroy(HeartContainerList[HeartContainerList.Count - 1].gameObject);
+        HeartFillList.RemoveAt(HeartFillList.Count - 1);
+    }
+
+
 }

@@ -4,7 +4,8 @@ using System.Collections;
 public class Seek : MonoBehaviour {
     public float maxVel = 10;
     public bool shouldSeek;
-    //public GameObject objToSeek;
+    //GameObject player;
+
     public Vector3 objToSeek;
 
     private Vector2 targetPos;
@@ -12,12 +13,12 @@ public class Seek : MonoBehaviour {
     private Vector2 desiredVel;
     private Vector2 vel;
     
-
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         shouldSeek = false;
         //player = GameObject.FindGameObjectWithTag("Player");
+        objToSeek = GameObject.FindGameObjectWithTag("Player").transform.position;
     }
 
     void Update()
@@ -25,15 +26,16 @@ public class Seek : MonoBehaviour {
         if (shouldSeek)
         {
             targetPos = new Vector2(objToSeek.x, objToSeek.z);
-            //targetPos = new Vector2(objToSeek.transform.position.x, objToSeek.transform.position.z);
+            //targetPos = new Vector2(player.transform.position.x, player.transform.position.z);
             vel = new Vector3(rb.velocity.x, rb.velocity.z);
 
             Vector2 v = new Vector2(targetPos.x - gameObject.transform.position.x, targetPos.y - gameObject.transform.position.z);
             desiredVel = v * maxVel * Time.deltaTime;
 
             Vector2 steering = desiredVel - vel;
-
-            gameObject.transform.LookAt(new Vector3(targetPos.x, 0, targetPos.y), Vector3.up);
+           
+            //gameObject.transform.LookAt(new Vector3(targetPos.x, 0, targetPos.y), Vector3.forward);
+            gameObject.transform.LookAt(objToSeek, Vector3.up);
 
             steering = steering / rb.mass;
 
@@ -41,5 +43,10 @@ public class Seek : MonoBehaviour {
         }
         else
             rb.velocity = Vector3.zero;
+    }
+
+    public void SetObjToSeek(Vector3 v)
+    {
+        objToSeek = v;
     }
 }
