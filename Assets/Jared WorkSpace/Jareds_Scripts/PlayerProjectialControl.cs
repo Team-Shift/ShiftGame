@@ -24,20 +24,22 @@ public class PlayerProjectialControl : MonoBehaviour
     {
         foreach (GameObject enemy in enemies)
         {
-
-            Vector3 enemyPos = enemy.transform.position;
-            Vector3 thisProjectilePos = gameObject.transform.position;
-            EnemyHealth enemyStatus = enemy.GetComponent<EnemyHealth>();
-
-            yOffset = enemyPos.y * -.84f;
-
-            if (playerScript.CameraSwitch == false)
+            if (enemy)
             {
-                //if ((enemyPos.x <= thisProjectilePos.x + xOffset && enemyPos.x >= thisProjectilePos.x - xOffset) && (enemyPos.z <= (thisProjectilePos.z + yOffset) + zOffset && enemyPos.z >= (thisProjectilePos.z + yOffset) - zOffset))
-                if(Mathf.Abs(enemyPos.x - thisProjectilePos.x) <= xOffset && Mathf.Abs(enemyPos.z - thisProjectilePos.z) <= zOffset)
+                Vector3 enemyPos = enemy.transform.position;
+                Vector3 thisProjectilePos = gameObject.transform.position;
+                EnemyHealth enemyStatus = enemy.GetComponent<EnemyHealth>();
+
+                yOffset = enemyPos.y * -.84f;
+
+                if (playerScript.CameraSwitch == false)
                 {
-                    Debug.Log("Enemy Hit: " + enemy.name);
-                    Destroy(gameObject);
+                    //if ((enemyPos.x <= thisProjectilePos.x + xOffset && enemyPos.x >= thisProjectilePos.x - xOffset) && (enemyPos.z <= (thisProjectilePos.z + yOffset) + zOffset && enemyPos.z >= (thisProjectilePos.z + yOffset) - zOffset))
+                    if (Mathf.Abs(enemyPos.x - thisProjectilePos.x) <= xOffset && Mathf.Abs(enemyPos.z - thisProjectilePos.z) <= zOffset)
+                    {
+                        Debug.Log("Enemy Hit: " + enemy.name);
+                        Destroy(gameObject);
+                    }
                 }
             }
         }

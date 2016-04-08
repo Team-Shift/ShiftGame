@@ -24,27 +24,29 @@ public class PlayerDamagingEnemy : MonoBehaviour {
     {
         foreach (GameObject enemy in enemies)
         {
-
-            Vector3 enemyPos = enemy.transform.position;
-            Vector3 playerSword = gameObject.transform.position;
-            EnemyHealth enemyStatus = enemy.GetComponent<EnemyHealth>();
-
-            yOffset = enemyPos.y * -.5f;
-
-            if (playerScript.CameraSwitch == false && playerScript.melee == false)
+            if (enemy)
             {
-                //if ((enemyPos.x <= thisProjectilePos.x + xOffset && enemyPos.x >= thisProjectilePos.x - xOffset) && (enemyPos.z <= (thisProjectilePos.z + yOffset) + zOffset && enemyPos.z >= (thisProjectilePos.z + yOffset) - zOffset))
-                if(Mathf.Abs(enemyPos.x - playerSword.x) <= xOffset && Mathf.Abs(enemyPos.z - (playerSword.z + yOffset)) <= zOffset)
+                Vector3 enemyPos = enemy.transform.position;
+                Vector3 playerSword = gameObject.transform.position;
+                EnemyHealth enemyStatus = enemy.GetComponent<EnemyHealth>();
+
+                yOffset = enemyPos.y * -.5f;
+
+                if (playerScript.CameraSwitch == false && playerScript.melee == false)
                 {
-                    Debug.Log("Enemy Hit: " + enemy.name);
-                    if (enemy.GetComponent<EnemyHealth>())
+                    //if ((enemyPos.x <= thisProjectilePos.x + xOffset && enemyPos.x >= thisProjectilePos.x - xOffset) && (enemyPos.z <= (thisProjectilePos.z + yOffset) + zOffset && enemyPos.z >= (thisProjectilePos.z + yOffset) - zOffset))
+                    if (Mathf.Abs(enemyPos.x - playerSword.x) <= xOffset && Mathf.Abs(enemyPos.z - (playerSword.z + yOffset)) <= zOffset)
                     {
-                        enemy.GetComponent<EnemyHealth>().TakeDamage();
-                    }
-                }
-            }
-        }
-    }
+                        Debug.Log("Enemy Hit: " + enemy.name);
+                        if (enemy.GetComponent<EnemyHealth>())
+                        {
+                            enemy.GetComponent<EnemyHealth>().TakeDamage();
+                        }//if enemy health script exists
+                    }//collision check
+                }//if player is in 2D and attacking
+            }//if enemy exists
+        }//Forloop
+    }//End of fixed update
 
     void OnCollisionEnter(Collision col)
     {
