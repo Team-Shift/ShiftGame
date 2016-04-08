@@ -10,8 +10,6 @@ public class MapGenerator : MonoBehaviour
     public Dungeon[] dungeons;
     public int dungeonIndex;
 
-    public GameObject[] rooms;
-
     //For Debug Purposes
     public GameObject roomPrefab;
 
@@ -55,7 +53,7 @@ public class MapGenerator : MonoBehaviour
         System.Random prng = new System.Random(currentDungeon.seed);
 
         //Generate array of room prefabs
-        rooms = Resources.LoadAll("Rooms", typeof(Transform)).Select( o => o as GameObject ).ToArray();
+        GameObject[] rooms = Resources.LoadAll("Rooms").Select(o => o as GameObject).ToArray();
 
         //Create array of rooms and assign room types
         for (int x = 0; x < currentDungeon.dungeonSize.x; x++)
@@ -220,8 +218,8 @@ public class MapGenerator : MonoBehaviour
 
         //Check here for room load troubles
         //get random room from above list and assign new prefab
-        int randomIndex = prng.Next(0, PossibleBossRooms.Count);
-        map[PossibleBossRooms[randomIndex].x, PossibleBossRooms[randomIndex].y].prefab = EndRoom;
+        int randomBossIndex = prng.Next(0, PossibleBossRooms.Count);
+        map[PossibleBossRooms[randomBossIndex].x, PossibleBossRooms[randomBossIndex].y].prefab = EndRoom;
 
         #endregion
 
@@ -234,6 +232,11 @@ public class MapGenerator : MonoBehaviour
 
                 if (newRoom != null)
                 {
+                    //Select random room prefab from array
+                    int randomIndex = prng.Next(0, rooms.Length);
+                    newRoom.prefab = rooms[randomIndex];
+
+                    //Instantiate and initialize room
                     GameObject newRoomObject = Instantiate(newRoom.prefab);
                     newRoom.roomInst = newRoomObject;
                     newRoom.Init();
@@ -266,6 +269,8 @@ public class MapGenerator : MonoBehaviour
             }
         }
 #endregion
+
+        Resources.UnloadUnusedAssets();
     }
 
     //A* based check to ensure that the removable rooms allow remaining rooms to be accessed
