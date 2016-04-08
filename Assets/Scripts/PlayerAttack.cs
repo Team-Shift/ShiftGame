@@ -6,11 +6,23 @@ public class PlayerAttack : MonoBehaviour {
 
     void Start()
     {
-       GameObject g =  GameObject.FindGameObjectWithTag("Hitbox");
-        g.tag = "Weapon";
+
+        //c =  gameObject.GetComponentInChildren<Collider>();
+        
+
+        foreach(Transform temp in gameObject.GetComponentInChildren<Transform>())
+        {
+            if(temp.name == "Hitbox")
+            {
+                c = temp.gameObject.GetComponent<Collider>();
+            }
+        }
+
+       //GameObject g =  GameObject.FindGameObjectWithTag("Hitbox");
+        c.gameObject.tag = "Weapon";
 
         
-       c = g.GetComponent<Collider>();
+       //c = g.GetComponent<Collider>();
        //Debug.Log( c.name);
        c.enabled = false;
     }
@@ -18,11 +30,13 @@ public class PlayerAttack : MonoBehaviour {
 
     void enableCollider()
     {
-        c.enabled = true;
+        if(c)
+            c.enabled = true;
     }
 
     void disableCollider()
     {
-       c.enabled = false;
+        if(c)
+            c.enabled = false;
     }
 }
