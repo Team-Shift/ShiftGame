@@ -10,6 +10,7 @@ public class EnemyDamageScript : MonoBehaviour
     public float zOffset;
     [HideInInspector]
     private float yOffset;
+    public bool isProjectile;
 
     void Start()
     {
@@ -47,7 +48,8 @@ public class EnemyDamageScript : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             Debug.Log("Gameobject dead");
-            Destroy(gameObject);
+            if(isProjectile)
+                Destroy(gameObject);
             playerScript.DamageFallback(transform.position);
 
         }
