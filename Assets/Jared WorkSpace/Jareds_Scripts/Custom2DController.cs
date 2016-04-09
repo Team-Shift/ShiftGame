@@ -45,8 +45,7 @@ public class Custom2DController : MonoBehaviour
     public GameObject dust;
 
     //Combat
-    public enum CurrentItemType { Melee, Range, Scroll, Spell, None};
-    public CurrentItemType currentHeld;
+     
 
     //UI
     public GUITexture HeartFillTexture;
@@ -102,6 +101,7 @@ public class Custom2DController : MonoBehaviour
         //Combat
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
+            melee = !melee;
             MeleeAttack();
         }
         else if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -130,7 +130,10 @@ public class Custom2DController : MonoBehaviour
             Application.Quit();
         }
 
-        jumpTimeLeft = jumpTimeLeft - Time.deltaTime;
+        if (jump == false)
+        {
+            jumpTimeLeft = jumpTimeLeft - Time.deltaTime;
+        }
 
         if(jumpTimeLeft <= 0)
         {
@@ -138,20 +141,15 @@ public class Custom2DController : MonoBehaviour
             jump = true;
         }
 
-        shotTimeLeft = shotTimeLeft - Time.deltaTime;
+        if (shot == false)
+        {
+            shotTimeLeft = shotTimeLeft - Time.deltaTime;
+        }
 
         if (shotTimeLeft <= 0)
         {
             shotTimeLeft = 1f;
             shot = true;
-        }
-
-        meleeTimeLeft = meleeTimeLeft - Time.deltaTime;
-
-        if (meleeTimeLeft <= 0)
-        {
-            meleeTimeLeft = 1f;
-            melee = true;
         }
 
         if(Health <= 0)

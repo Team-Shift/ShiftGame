@@ -66,7 +66,7 @@ public class CameraShift : MonoBehaviour {
             // ortho camera position
             else
             {
-                Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 6.0f);
+                Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 4.0f);
                 gameObject.transform.position = v;
                 gameObject.transform.rotation = Quaternion.Euler(50.0f, 0, 0);
                 cam.orthographic = true;
@@ -75,7 +75,7 @@ public class CameraShift : MonoBehaviour {
 
         if(!camActive)
         {
-            Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 6.0f);
+            Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 8.0f);
             gameObject.transform.position = v;
             gameObject.transform.rotation = Quaternion.Euler(50.0f, 0, 0);
             cam.orthographic = true;
@@ -102,7 +102,7 @@ public class CameraShift : MonoBehaviour {
     {
         if (camActive == true)
         {
-            float offsetBack = 3;
+            float offsetBack = 1;
             float turning = Input.GetAxis("Mouse X");
 
             transform.rotation = (pivotPoint.transform.rotation);
