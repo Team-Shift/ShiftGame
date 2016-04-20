@@ -17,7 +17,7 @@ public class Wander : MonoBehaviour {
     void Start () {
 
         if(isFloatingEnemy)
-            //gameObject.transform.Translate(0, 1, 0);
+            gameObject.transform.Translate(0, 1, 0);
         // get all child game objects with name pathNode
         foreach(Transform t in GetComponentsInChildren<Transform>())
         {

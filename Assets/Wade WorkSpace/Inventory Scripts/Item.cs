@@ -1,26 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class Item : MonoBehaviour {
 
-    //[HideInInspector]
     public int ID;
+    public string itemName;
+    [HideInInspector]
+    public bool canPickup;
 
     void Start()
     {
-        // each item has a different ID
-        ID = 0;
+        canPickup = false;
     }
 
-    void OnMouseDown()
+    void OnTriggerEnter()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+        canPickup = true;
+
+        // to display text on screen 
+        /*GameObject g = new GameObject();
+        g.transform.localScale *= 0.5f;
+        g.transform.position = gameObject.transform.position;
+        g.AddComponent<GUIText>().text = "press 'x' to pickup";*/
+
+    }
+
+    void OnTriggerStay()
+    {
+        if (Input.GetKeyDown(KeyCode.X) && canPickup)
         {
-            Inventory i = player.GetComponent<Inventory>();
-            i.AddItem(this as Item);
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                Inventory i = player.GetComponent<Inventory>();
+                i.AddItem(this as Item);
+                if(canPickup) Destroy(gameObject);
+            }
+            else
+                Debug.Log("player not found");
         }
-        else
-            Debug.Log("player not found");
+    }
+
+    void OnTriggerExit()
+    {
+        canPickup = false;
     }
 }
