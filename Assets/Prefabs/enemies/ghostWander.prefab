@@ -573,6 +573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startHealth: 5
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  hurtSound: {fileID: 0}
 --- !u!114 &11419500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -587,6 +588,7 @@ MonoBehaviour:
   player: {fileID: 0}
   xOffset: 0
   zOffset: 0
+  isProjectile: 0
 --- !u!114 &11420728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -598,7 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17258435be8c5e34fa0c52f2bdd20377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVel: 60
+  maxVel: 10
   shouldSeek: 0
   objToSeek: {x: 0, y: 0, z: 0}
 --- !u!114 &11424018

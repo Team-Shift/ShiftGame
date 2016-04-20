@@ -63,7 +63,7 @@ public class Custom2DController : MonoBehaviour
     void Start()
     {
         playerDir = FacingDirection.Forward;
-        currentHeld = CurrentItemType.None;
+        //currentHeld = CurrentItemType.None;
         manager = GameObject.FindObjectOfType<DimensionalSwitchManager>();
         anim = player.GetComponent<Animator>();
         CameraSwitch = false;
@@ -85,7 +85,7 @@ public class Custom2DController : MonoBehaviour
 
         if (player.transform.position.y <= 0)
         {
-            sceneShit.TownScene();
+            //sceneShit.TownScene();
         }
 
         //Movement
@@ -154,7 +154,7 @@ public class Custom2DController : MonoBehaviour
 
         if(Health <= 0)
         {
-            sceneShit.TownScene();
+            //sceneShit.TownScene();
         }
 
 
@@ -243,7 +243,7 @@ public class Custom2DController : MonoBehaviour
     void DustKickOff()
     {
         Instantiate(dust, player.transform.position, Quaternion.Inverse(player.transform.rotation));
-        Debug.Log("Kicking off Dust");
+        //Debug.Log("Kicking off Dust");
     }
 
     /*

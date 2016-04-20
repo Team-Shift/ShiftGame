@@ -5,7 +5,7 @@ public class ShootAtPlayer : MonoBehaviour {
 
     [HideInInspector]
     public Animator anim;
-    [HideInInspector]
+    //[HideInInspector]
     public bool alwaysShoot;
     [HideInInspector]
     public bool shouldRotate;
@@ -28,8 +28,8 @@ public class ShootAtPlayer : MonoBehaviour {
         if (!isFlyingEnemy)
         {
             shouldRotate = false;
-            alwaysShoot = false;
         }
+        alwaysShoot = false;
     }
 
     void Update()
@@ -64,7 +64,7 @@ public class ShootAtPlayer : MonoBehaviour {
                 shouldRotate = true;
             }
             //Debug.Log("inRange");
-            //objToFollow = GameObject.FindGameObjectWithTag("Player");
+            objToFollow = GameObject.FindGameObjectWithTag("Player");
         }
         // lock y
     }
