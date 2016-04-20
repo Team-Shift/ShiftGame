@@ -43,7 +43,7 @@ public class ShootAtPlayer : MonoBehaviour {
             {
                 // rotate turret to follow
                 Transform t = objToFollow.transform;
-                t.position = new Vector3(t.position.x , yPosLock, t.position.z);
+                //t.position = new Vector3(t.position.x , t.position.y, t.position.z);
                 gameObject.transform.LookAt(t);
             }
         }

@@ -78,6 +78,7 @@ public class Wander : MonoBehaviour {
         // only fire if collider is player
         if (other.tag == "Player")
         {
+            //Debug.Log("player pos= " + other.transform.position);
             shouldWander = false;
         }
         // lock y
