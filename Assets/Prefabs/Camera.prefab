@@ -79,10 +79,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 70
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -102,7 +102,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101712}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!92 &9279704
 Behaviour:
   m_ObjectHideFlags: 1
@@ -136,10 +136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  pivotPoint: {fileID: 0}
   sprite: {fileID: 152266}
   camActive: 0
-  duration: 1
+  duration: 0.1
   canShift: 0
 --- !u!124 &12490606
 Behaviour:

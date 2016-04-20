@@ -72,5 +72,4 @@ public class HeartHealthUI : MonoBehaviour {
         Destroy(HeartContainerList[HeartContainerList.Count - 1].gameObject);
         HeartFillList.RemoveAt(HeartFillList.Count - 1);
     }
-
 }
