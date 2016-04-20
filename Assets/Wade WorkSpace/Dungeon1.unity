@@ -319,7 +319,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 104724, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420728, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+      propertyPath: maxVel
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
@@ -627,7 +631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 2
-  itemName: wood sword
+  itemName: 
   canPickup: 0
 --- !u!1001 &1075359560
 Prefab:
@@ -795,6 +799,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 147730, guid: cebc45940fe781742bf3a624a2dae71e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cebc45940fe781742bf3a624a2dae71e, type: 2}
   m_IsPrefabParent: 0
@@ -901,7 +909,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 161546, guid: 266f6981017a6ba44b8bd6ddacb3d052, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 266f6981017a6ba44b8bd6ddacb3d052, type: 2}

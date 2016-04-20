@@ -63,11 +63,7 @@ public class Custom2DController : MonoBehaviour
     void Start()
     {
         playerDir = FacingDirection.Forward;
-<<<<<<< HEAD
-//        currentHeld = CurrentItemType.None;
-=======
         //currentHeld = CurrentItemType.None;
->>>>>>> f7b594318c0b9585b6cfed3cb6d81bfd0848aceb
         manager = GameObject.FindObjectOfType<DimensionalSwitchManager>();
         anim = player.GetComponent<Animator>();
         CameraSwitch = false;
@@ -158,11 +154,7 @@ public class Custom2DController : MonoBehaviour
 
         if(Health <= 0)
         {
-<<<<<<< HEAD
             this.transform.LoadScene(1);
-=======
-            //sceneShit.TownScene();
->>>>>>> f7b594318c0b9585b6cfed3cb6d81bfd0848aceb
         }
 
 
