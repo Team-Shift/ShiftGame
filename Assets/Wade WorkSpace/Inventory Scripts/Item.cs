@@ -14,9 +14,22 @@ public class Item : MonoBehaviour {
         canPickup = false;
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
-        canPickup = true;
+        if (other.tag == "Player") canPickup = true;
+        if (canPickup)
+        {
+            //canPickup = true;
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null) //make sure player is found
+            {
+                Inventory i = player.GetComponent<Inventory>();
+                i.AddItem(this);
+                if (canPickup) Destroy(gameObject);
+            }
+            else
+                Debug.Log("player not found");
+        }
 
         // to display text on screen 
         /*GameObject g = new GameObject();
@@ -28,18 +41,7 @@ public class Item : MonoBehaviour {
 
     void OnTriggerStay()
     {
-        if (Input.GetKeyDown(KeyCode.X) && canPickup)
-        {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
-                Inventory i = player.GetComponent<Inventory>();
-                i.AddItem(this as Item);
-                if(canPickup) Destroy(gameObject);
-            }
-            else
-                Debug.Log("player not found");
-        }
+        
     }
 
     void OnTriggerExit()

@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour {
 
     //Custom2DController playerScript;
     //GameObject player;
-    int health;
+    public int health;
     public int startHealth = 5;
     public GameObject hitPart;
     private GameObject parent;
