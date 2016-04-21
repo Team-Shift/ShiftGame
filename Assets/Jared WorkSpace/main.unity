@@ -89,6 +89,33 @@ NavMeshSettings:
 GameObject:
   m_PrefabParentObject: {fileID: 130236, guid: c7355f848da0f194486b877747d1bc94, type: 2}
   m_PrefabInternal: {fileID: 646043463}
+--- !u!1 &427540434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 427540435}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &427540435
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 427540434}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 883482022}
+  m_RootOrder: 0
 --- !u!1001 &557193440
 Prefab:
   m_ObjectHideFlags: 0
@@ -177,6 +204,58 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c7355f848da0f194486b877747d1bc94, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &668377644 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 445886, guid: b9b09b17fe2bda440b27288631a01c55, type: 2}
+  m_PrefabInternal: {fileID: 1875657007}
+--- !u!1 &766886524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 766886526}
+  - 114: {fileID: 766886525}
+  m_Layer: 0
+  m_Name: PuzzleFloorController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &766886525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 766886524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ff0d11ce6a3494691dd70301268160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorPieces: []
+--- !u!4 &766886526
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 766886524}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.9344044, y: -1.17871, z: -12.331968}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+--- !u!4 &785035517 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 412480, guid: b9b09b17fe2bda440b27288631a01c55, type: 2}
+  m_PrefabInternal: {fileID: 1875657007}
+--- !u!4 &883482022 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 498674, guid: b9b09b17fe2bda440b27288631a01c55, type: 2}
+  m_PrefabInternal: {fileID: 1875657007}
 --- !u!1001 &1040211792
 Prefab:
   m_ObjectHideFlags: 0
@@ -219,6 +298,60 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cebc45940fe781742bf3a624a2dae71e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1053602034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1053602035}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1053602035
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1053602034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 785035517}
+  m_RootOrder: 0
+--- !u!1 &1508409431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1508409432}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1508409432
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1508409431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 668377644}
+  m_RootOrder: 0
 --- !u!1001 &1614831749
 Prefab:
   m_ObjectHideFlags: 0
@@ -488,11 +621,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 428166, guid: b9b09b17fe2bda440b27288631a01c55, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 196072, guid: b9b09b17fe2bda440b27288631a01c55, type: 2}
       propertyPath: m_Name
       value: maze final room
+      objectReference: {fileID: 0}
+    - target: {fileID: 176802, guid: b9b09b17fe2bda440b27288631a01c55, type: 2}
+      propertyPath: m_TagString
+      value: PuzzleFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 179732, guid: b9b09b17fe2bda440b27288631a01c55, type: 2}
+      propertyPath: m_TagString
+      value: PuzzleFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 135922, guid: b9b09b17fe2bda440b27288631a01c55, type: 2}
+      propertyPath: m_TagString
+      value: PuzzleFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 164302, guid: b9b09b17fe2bda440b27288631a01c55, type: 2}
+      propertyPath: m_TagString
+      value: PuzzleFloor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b9b09b17fe2bda440b27288631a01c55, type: 2}

@@ -110,7 +110,7 @@ public class Custom2DController : MonoBehaviour
         }
 
         //Shift
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {
             CameraSwitch = !CameraSwitch;
             //manager.Shift();
@@ -183,25 +183,25 @@ public class Custom2DController : MonoBehaviour
 
         transform.Translate(moveDirection * Time.deltaTime * speed, Space.World);
 
-        if(Input.GetKeyDown(KeyCode.W))
+        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             anim.SetBool("walk", true);
             playerDir = FacingDirection.Forward;
             player.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             anim.SetBool("walk", true);
             playerDir = FacingDirection.Left;
             player.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             anim.SetBool("walk", true);
             playerDir = FacingDirection.Backward;
             player.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             anim.SetBool("walk", true);
             playerDir = FacingDirection.Right;
