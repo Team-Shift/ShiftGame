@@ -28,7 +28,7 @@ public class PlayerProjectialControl : MonoBehaviour
             {
                 Vector3 enemyPos = enemy.transform.position;
                 Vector3 thisProjectilePos = gameObject.transform.position;
-                EnemyHealth enemyStatus = enemy.GetComponent<EnemyHealth>();
+                //EnemyHealth enemyStatus = enemy.GetComponent<EnemyHealth>();
 
                 yOffset = enemyPos.y * -.84f;
 
