@@ -5,8 +5,8 @@ using System.Collections;
 [RequireComponent(typeof(AudioSource))]
 public class EnemyHealth : MonoBehaviour {
 
-    //Custom2DController playerScript;
-    //GameObject player;
+    Custom2DController playerScript;
+    GameObject player;
     public int health;
     public int startHealth = 5;
     public GameObject hitPart;
@@ -14,13 +14,16 @@ public class EnemyHealth : MonoBehaviour {
     private AudioSource enemySound;
     public AudioClip hurtSound;
 
-    //public float xOffset;
-    //public float zOffset;
-    //private float yOffset;
+    public float xOffset;
+    public float zOffset;
+    private float yOffset;
 
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<Custom2DController>();
+
         enemySound = gameObject.GetComponent<AudioSource>();
         parent = gameObject.transform.parent.gameObject;
         health = startHealth;
@@ -49,22 +52,23 @@ public class EnemyHealth : MonoBehaviour {
         // 2D/3D collision detection
         // gameObject <-- playerPos
         // player <-- fireball
-        //Vector3 enemyPos = gameObject.transform.position;
-        //Vector3 playerPos = player.transform.position;
+        Vector3 enemyPos = gameObject.transform.position;
+        Vector3 playerPos = player.transform.position;
 
-        //yOffset = playerPos.y * .84f;
+        yOffset = GetYOffset();
+        //yOffset = yOffset - 1;
 
         //2d
-        //if (playerScript.CameraSwitch == false)
-        //{
-        //    //if ((player.transform.position.x <= transform.position.x + xOffset && player.transform.position.x >= transform.position.x - xOffset) && (player.transform.position.z <= transform.position.z + zOffset && player.transform.position.z >= transform.position.z - zOffset))
-        //    if ((enemyPos.x <= playerPos.x + xOffset && enemyPos.x >= playerPos.x - xOffset) && (enemyPos.z <= (playerPos.z + yOffset) + zOffset && enemyPos.z >= (playerPos.z + yOffset) - zOffset))
-        //    {
-        //        Debug.Log(gameObject.name + " is taking damage");
-        //        Destroy(gameObject);
-        //        TakeDamage();
-        //    }
-        //}
+        if (playerScript.CameraSwitch == false)
+        {
+            //if ((player.transform.position.x <= transform.position.x + xOffset && player.transform.position.x >= transform.position.x - xOffset) && (player.transform.position.z <= transform.position.z + zOffset && player.transform.position.z >= transform.position.z - zOffset))
+            if (Mathf.Abs(playerPos.x - enemyPos.x) < xOffset && Mathf.Abs(playerPos.z - (enemyPos.z + yOffset)) < zOffset)
+            {
+                Debug.Log(gameObject.name + " is taking damage");
+                Destroy(gameObject);
+                TakeDamage();
+            }
+        }
 
         if (health <= 0)
         {
@@ -72,5 +76,26 @@ public class EnemyHealth : MonoBehaviour {
             Instantiate(hitPart, transform.position, Quaternion.identity);
             Destroy(parent);
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector3 gizmosPos = new Vector3(parent.transform.position.x, 0, parent.transform.position.z + yOffset);
+        Vector3 gizmosSize = new Vector3(xOffset, 1, zOffset);
+        Gizmos.DrawWireCube(gizmosPos, gizmosSize);
+    }
+
+    float GetYOffset()
+    {
+        float a = 0;
+
+        float angleB = 180 - (Camera.main.transform.eulerAngles.x + 90);
+        angleB = Mathf.Round(angleB);
+        Vector3 tmp = new Vector3(angleB, 0, 0);
+
+        a = Mathf.Tan((tmp.x * Mathf.PI) / 180) * parent.transform.position.y;
+
+        return a;
     }
 }
