@@ -8,13 +8,15 @@ public class Inventory : MonoBehaviour {
     {
         public Item item;
         public int quantity;   // so items can stack
+        // item type
     }
     
     // slots in inventory 
     List<s_Items> equippedItems;
+    // differentiate between type of weapon
 
     public int invSize = 4;
-    int itemMaxStack = 5;
+    int itemMaxStack = 1;
 
     void Start()
     {
@@ -37,7 +39,7 @@ public class Inventory : MonoBehaviour {
         for(int e = 0; e < equippedItems.Count; e++)
         {
             // if item has same name
-            if (equippedItems[e].item.itemName == i.itemName)
+            if (equippedItems[e].item.ID == i.ID)
             {
                 if (equippedItems[e].quantity < itemMaxStack)
                 {

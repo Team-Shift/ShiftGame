@@ -8,9 +8,8 @@ public class ItemLibrary : MonoBehaviour {
     public struct ItemData
     {
         public Sprite sprite;
-        public GameObject mesh;
+        //public GameObject mesh; // store mesh somehow
         public bool unlocked;
-        // Action (what the item does)
     }
 
     public ItemData[] allItems;
