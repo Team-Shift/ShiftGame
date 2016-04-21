@@ -18,7 +18,7 @@ public class DirtManager : MonoBehaviour
         lifeTime += Time.deltaTime;
         if (lifeTime > 1)
         {
-            Destroy(gameObject, 1);
+            Destroy(gameObject);
             Debug.Log("die");
         }
     }

@@ -64,9 +64,10 @@ public class EnemyHealth : MonoBehaviour {
             //if ((player.transform.position.x <= transform.position.x + xOffset && player.transform.position.x >= transform.position.x - xOffset) && (player.transform.position.z <= transform.position.z + zOffset && player.transform.position.z >= transform.position.z - zOffset))
             if (Mathf.Abs(playerPos.x - enemyPos.x) < xOffset && Mathf.Abs(playerPos.z - (enemyPos.z + yOffset)) < zOffset)
             {
-                Debug.Log(gameObject.name + " is taking damage");
-                Destroy(gameObject);
-                TakeDamage();
+                if (playerScript.melee == true && Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    TakeDamage();
+                }
             }
         }
 
