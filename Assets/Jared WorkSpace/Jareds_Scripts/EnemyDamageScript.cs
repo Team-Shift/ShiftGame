@@ -4,7 +4,7 @@ using System.Collections;
 // projectile damaging player
 public class EnemyDamageScript : MonoBehaviour
 {
-    Custom2DController playerScript;
+    PlayerCombat playerScript;
     public GameObject player;
     public float xOffset;
     public float zOffset;
@@ -14,7 +14,7 @@ public class EnemyDamageScript : MonoBehaviour
 
     void Start()
     {
-        playerScript = GameObject.Find("Player").GetComponent<Custom2DController>();
+        playerScript = GameObject.Find("Player").GetComponent<PlayerCombat>();
         player = GameObject.Find("Player");
     }
 
@@ -30,7 +30,7 @@ public class EnemyDamageScript : MonoBehaviour
 
         yOffset = fireBallPos.y * .84f;
 
-        if (playerScript.CameraSwitch == false)
+        if (player.GetComponent<Custom2DController>().CameraSwitch == false)
         {
             //if ((player.transform.position.x <= transform.position.x + xOffset && player.transform.position.x >= transform.position.x - xOffset) && (player.transform.position.z <= transform.position.z + zOffset && player.transform.position.z >= transform.position.z - zOffset))
             //if( (playerPos.x <= fireBallPos.x + xOffset && playerPos.x >= fireBallPos.x - xOffset) && (playerPos.z <= (fireBallPos.z + yOffset) + zOffset && playerPos.z >= (fireBallPos.z + yOffset) - zOffset) )

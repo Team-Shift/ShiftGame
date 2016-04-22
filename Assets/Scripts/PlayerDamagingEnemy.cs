@@ -6,13 +6,15 @@ public class PlayerDamagingEnemy : MonoBehaviour {
     //public float lifeSpan = 0;
     public float xOffset = 0, yOffset = 0, zOffset = 0;
     private GameObject[] enemies;
-    private Custom2DController playerScript;
+    private PlayerCombat playerScript;
+    private GameObject player;
     //public EnemyHealth eh;
 
     void Start()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        playerScript = GameObject.Find("Player").GetComponent<Custom2DController>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<PlayerCombat>();
     }
 
     // Update is called once per frame
@@ -31,8 +33,7 @@ public class PlayerDamagingEnemy : MonoBehaviour {
                 EnemyHealth enemyStatus = enemy.GetComponent<EnemyHealth>();
 
                 yOffset = enemyPos.y * -.5f;
-
-                if (playerScript.CameraSwitch == false && playerScript.melee == false)
+                if (player.GetComponent<Custom2DController>().CameraSwitch == false && playerScript.melee == false)
                 {
                     //if ((enemyPos.x <= thisProjectilePos.x + xOffset && enemyPos.x >= thisProjectilePos.x - xOffset) && (enemyPos.z <= (thisProjectilePos.z + yOffset) + zOffset && enemyPos.z >= (thisProjectilePos.z + yOffset) - zOffset))
                     if (Mathf.Abs(enemyPos.x - playerSword.x) <= xOffset && Mathf.Abs(enemyPos.z - (playerSword.z + yOffset)) <= zOffset)

@@ -5,12 +5,12 @@ public class HealingPotion : MonoBehaviour
 {
 
     //private GameObject player;
-    private Custom2DController player;
+    private HealthUI player;
 
 
 	// Use this for initialization
 	void Start () {
-	     player = player.GetComponent<Custom2DController>();
+	     player = player.GetComponent<HealthUI>();
 	}
 	
 	// Update is called once per frame

@@ -8,12 +8,12 @@ public class SaveController : MonoBehaviour
 {
     public static SaveController saveController;
 
-    public Custom2DController player;
+    public PlayerCombat player;
 
     // Use this for initialization
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Custom2DController>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombat>();
 
         if(saveController == null)
         {
