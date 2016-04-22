@@ -1,21 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HealingPotion : MonoBehaviour
-{ 
-	// Use this for initialization
-	void Start ()
-	{
+public class HealingBundle : MonoBehaviour {
 
+	// Use this for initialization
+	void Start () {
+	
 	}
 	
 	// Update is called once per frame
+	void Update () {
+	
+	}
 
-    void OnUse()
-    {
-        Debug.Log("Attempting to use item");
-    }
-    
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Player")
