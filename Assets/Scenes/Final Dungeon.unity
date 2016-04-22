@@ -4809,6 +4809,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 57729053}
   m_Mesh: {fileID: 4300000, guid: 31d1de721a5f7674ba3ea734f0244edf, type: 3}
+--- !u!1 &58541303 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 104724, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+  m_PrefabInternal: {fileID: 1809810964}
 --- !u!1 &58953673
 GameObject:
   m_ObjectHideFlags: 0
@@ -5694,6 +5698,10 @@ Transform:
   - {fileID: 1446510570}
   m_Father: {fileID: 347715138}
   m_RootOrder: 1
+--- !u!1 &82752648 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 111196, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+  m_PrefabInternal: {fileID: 1761836101}
 --- !u!1 &83091537
 GameObject:
   m_ObjectHideFlags: 0
@@ -19501,6 +19509,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 11460234, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 575088222}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
   m_IsPrefabParent: 0
@@ -23270,6 +23282,10 @@ Prefab:
       propertyPath: m_Name
       value: ghostWander (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 11411244, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 766928803}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
   m_IsPrefabParent: 0
@@ -23625,6 +23641,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 387708475}
   m_Mesh: {fileID: 4300000, guid: 31d1de721a5f7674ba3ea734f0244edf, type: 3}
+--- !u!1 &389686010 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 104724, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+  m_PrefabInternal: {fileID: 894828352}
 --- !u!1 &390962737
 GameObject:
   m_ObjectHideFlags: 0
@@ -25667,6 +25687,10 @@ Prefab:
       propertyPath: m_Name
       value: spiderTurret (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 11460234, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 933953737}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
   m_IsPrefabParent: 0
@@ -35881,6 +35905,10 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!1 &575088222 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 111196, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+  m_PrefabInternal: {fileID: 315862197}
 --- !u!1 &576280428
 GameObject:
   m_ObjectHideFlags: 0
@@ -37667,6 +37695,10 @@ Prefab:
       propertyPath: m_Name
       value: spiderTurret (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 11460234, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1177855909}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
   m_IsPrefabParent: 0
@@ -41811,6 +41843,10 @@ Prefab:
       propertyPath: m_Name
       value: ghostWander (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 11411244, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1425424449}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
   m_IsPrefabParent: 0
@@ -43192,6 +43228,10 @@ Prefab:
       propertyPath: m_Name
       value: ghostWander (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 11411244, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1803532042}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
   m_IsPrefabParent: 0
@@ -45945,6 +45985,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 733682627}
   m_Mesh: {fileID: 4300000, guid: c2100f533797b3244b11c4948a5eb641, type: 3}
+--- !u!1 &733985730 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 104724, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+  m_PrefabInternal: {fileID: 1735680896}
 --- !u!1 &735319774
 GameObject:
   m_ObjectHideFlags: 0
@@ -48608,6 +48652,10 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!1 &766928803 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 104724, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+  m_PrefabInternal: {fileID: 381258830}
 --- !u!1 &767216682
 GameObject:
   m_ObjectHideFlags: 0
@@ -51616,6 +51664,10 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 11460234, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1895232206}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
   m_IsPrefabParent: 0
@@ -57359,6 +57411,10 @@ Prefab:
       propertyPath: m_Name
       value: ghostWander (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 11411244, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 389686010}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
   m_IsPrefabParent: 0
@@ -59993,6 +60049,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 930915248}
   m_Mesh: {fileID: 4300000, guid: c2100f533797b3244b11c4948a5eb641, type: 3}
+--- !u!1 &933953737 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 111196, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+  m_PrefabInternal: {fileID: 419445800}
 --- !u!1 &934345745
 GameObject:
   m_ObjectHideFlags: 0
@@ -60424,6 +60484,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 942175795}
   m_Mesh: {fileID: 4300000, guid: 5395026abc869ca4b9e7516350e6b27d, type: 3}
+--- !u!1 &943997503 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 111196, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+  m_PrefabInternal: {fileID: 983636850}
 --- !u!1 &944760404
 GameObject:
   m_ObjectHideFlags: 0
@@ -62080,6 +62144,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11460234, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 943997503}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
   m_IsPrefabParent: 0
@@ -65280,6 +65348,10 @@ Prefab:
       propertyPath: m_Name
       value: ghostWander (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 11411244, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1374819168}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
   m_IsPrefabParent: 0
@@ -67329,6 +67401,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11411244, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1899274654}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
   m_IsPrefabParent: 0
@@ -68081,6 +68157,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1087786447}
   m_Mesh: {fileID: 4300000, guid: 0491888c9f886ee4397b3d686f384b99, type: 3}
+--- !u!1 &1089289659 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 111196, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+  m_PrefabInternal: {fileID: 1481711433}
 --- !u!1 &1089339497
 GameObject:
   m_ObjectHideFlags: 0
@@ -72660,6 +72740,10 @@ Transform:
   - {fileID: 579327590}
   m_Father: {fileID: 882831626}
   m_RootOrder: 1
+--- !u!1 &1165135916 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 111196, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+  m_PrefabInternal: {fileID: 1931871524}
 --- !u!1 &1166417895
 GameObject:
   m_ObjectHideFlags: 0
@@ -73429,6 +73513,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1176708380}
   m_Mesh: {fileID: 4300000, guid: 0491888c9f886ee4397b3d686f384b99, type: 3}
+--- !u!1 &1177855909 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 111196, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+  m_PrefabInternal: {fileID: 596525423}
 --- !u!1 &1179402569
 GameObject:
   m_ObjectHideFlags: 0
@@ -82322,6 +82410,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11460234, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1659515306}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
   m_IsPrefabParent: 0
@@ -85303,6 +85395,10 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1374819168 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 104724, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+  m_PrefabInternal: {fileID: 1031892354}
 --- !u!1 &1374867839
 GameObject:
   m_ObjectHideFlags: 0
@@ -87504,6 +87600,10 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!1 &1425424449 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 104724, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+  m_PrefabInternal: {fileID: 666118603}
 --- !u!1 &1426925818
 GameObject:
   m_ObjectHideFlags: 0
@@ -90630,6 +90730,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1466270696}
   m_Mesh: {fileID: 4300000, guid: c2100f533797b3244b11c4948a5eb641, type: 3}
+--- !u!1 &1466373777 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 111196, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+  m_PrefabInternal: {fileID: 1530777057}
 --- !u!1 &1468231541
 GameObject:
   m_ObjectHideFlags: 0
@@ -91243,6 +91347,10 @@ Prefab:
       propertyPath: m_Name
       value: spiderTurret (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 11460234, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1089289659}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
   m_IsPrefabParent: 0
@@ -94191,6 +94299,10 @@ Prefab:
       propertyPath: m_Name
       value: spiderTurret (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 11460234, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1466373777}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
   m_IsPrefabParent: 0
@@ -102414,6 +102526,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1659031726}
   m_Mesh: {fileID: 4300000, guid: c2100f533797b3244b11c4948a5eb641, type: 3}
+--- !u!1 &1659515306 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 111196, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+  m_PrefabInternal: {fileID: 1313289184}
 --- !u!1 &1659937604
 GameObject:
   m_ObjectHideFlags: 0
@@ -102617,6 +102733,10 @@ Prefab:
       propertyPath: m_Name
       value: spiderTurret (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 11460234, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 2071161637}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
   m_IsPrefabParent: 0
@@ -107607,6 +107727,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 11411244, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 733985730}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
   m_IsPrefabParent: 0
@@ -108543,6 +108667,10 @@ Prefab:
       propertyPath: m_Name
       value: spiderTurret (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 11460234, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 82752648}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
   m_IsPrefabParent: 0
@@ -111478,6 +111606,10 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!1 &1803532042 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 104724, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+  m_PrefabInternal: {fileID: 690431922}
 --- !u!1 &1804365588
 GameObject:
   m_ObjectHideFlags: 0
@@ -112063,6 +112195,10 @@ Prefab:
       propertyPath: m_Name
       value: ghostWander (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 11411244, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 58541303}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
   m_IsPrefabParent: 0
@@ -117261,6 +117397,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1894551301}
   m_Mesh: {fileID: 4300000, guid: c2100f533797b3244b11c4948a5eb641, type: 3}
+--- !u!1 &1895232206 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 111196, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+  m_PrefabInternal: {fileID: 813738091}
 --- !u!1 &1895262445
 GameObject:
   m_ObjectHideFlags: 0
@@ -117581,6 +117721,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1896504330}
   m_Mesh: {fileID: 4300000, guid: 5395026abc869ca4b9e7516350e6b27d, type: 3}
+--- !u!1 &1899274654 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 104724, guid: 51cde7daed013704ba26ce74677c7756, type: 2}
+  m_PrefabInternal: {fileID: 1069051927}
 --- !u!1 &1900817161
 GameObject:
   m_ObjectHideFlags: 0
@@ -119770,6 +119914,10 @@ Prefab:
       propertyPath: m_Name
       value: spiderTurret (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 11460234, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1165135916}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
   m_IsPrefabParent: 0
@@ -128798,6 +128946,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2070508690}
   m_Mesh: {fileID: 4300000, guid: c2100f533797b3244b11c4948a5eb641, type: 3}
+--- !u!1 &2071161637 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 111196, guid: d980265bd1189ad49aa20de9bf3f06c7, type: 2}
+  m_PrefabInternal: {fileID: 1662019772}
 --- !u!1 &2072167578
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,10 @@ public class CameraShift : MonoBehaviour {
     float startTime;                                    // for pingPonging fade to start at 0
     public float duration = 0.5f;                       // how long to fade
 
+
+    //Shift Stuff
     public bool canShift;                               // if player unlocks shift ability
+    public Light DirLight;                              //Change Culling Mask On Lights
 
     // get players pos
     float playerPosX;
@@ -113,9 +116,18 @@ public class CameraShift : MonoBehaviour {
     void ChangeCamera()
     {
         // ortho -> persp
-        if (camActive) camActive = false;
+        if (camActive)
+        {
+            camActive = false;
+
+            //Ortho Light -> Persp
+            DirLight.cullingMask = ~(1 << 8);
+        }
         // persp -> ortho
-        else camActive = true;
+        else{
+            camActive = true;
+            DirLight.cullingMask = ~(1 << 9);
+        }
     }
 
     void lerpAlpha()
