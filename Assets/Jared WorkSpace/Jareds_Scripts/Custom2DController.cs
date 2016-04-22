@@ -10,6 +10,7 @@ using System.Collections.Generic;
 public class Custom2DController : MonoBehaviour
 {
     public GameObject player;
+    private GameObject pivotPoint;
     public GameObject rangedTemp;
     public GameObject meleeWeapon;
     public GameObject sword;
@@ -68,6 +69,7 @@ public class Custom2DController : MonoBehaviour
         anim = player.GetComponent<Animator>();
         CameraSwitch = false;
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
+        pivotPoint = GameObject.Find("PivotPoint");
 
         playerSound = player.GetComponent<AudioSource>();
         sceneShit = FindObjectOfType<MenuManager>();
@@ -216,11 +218,17 @@ public class Custom2DController : MonoBehaviour
 
         float forwardBack = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         float strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        float turning = Input.GetAxis("Mouse X");
+        float turning = Input.GetAxis("Mouse X") * turnSpeed * Time.deltaTime;
+        float leaning = Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
 
         player.transform.Translate(Vector3.forward * forwardBack + Vector3.right * strafe, Space.Self);
 
-        player.transform.Rotate(Vector3.up * turning * turnSpeed * Time.deltaTime);
+        player.transform.Rotate(Vector3.up * turning);
+
+        if (pivotPoint.transform.rotation.x < 30 && pivotPoint.transform.rotation.x > -30)
+        {
+            pivotPoint.transform.Rotate(Vector3.left * leaning);
+        }
         //end of new code
 
 
