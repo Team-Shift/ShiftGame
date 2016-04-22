@@ -26,7 +26,6 @@ public class EnemyHealth : MonoBehaviour {
 
         enemySound = gameObject.GetComponent<AudioSource>();
         parent = this.gameObject.transform.parent.gameObject;
-        Debug.Log(this.gameObject.transform.parent.gameObject.name);
         health = startHealth;
     }
 
