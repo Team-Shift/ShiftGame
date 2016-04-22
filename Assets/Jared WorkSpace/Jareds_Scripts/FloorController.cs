@@ -46,6 +46,8 @@ public class FloorController : MonoBehaviour
                 if (floorPieces[i].transform.position.y < floorPieceLevels[i])
                 {
                     Debug.Log("Moving pieces up");
+                    
+                    //if(player.gameObject.transform.position == floorPieces[i].transform.position)
                     floorPieces[i].transform.position = new Vector3(floorPieces[i].transform.position.x, floorPieceLevels[i], floorPieces[i].transform.position.z);
                 }
             }
