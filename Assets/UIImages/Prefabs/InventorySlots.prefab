@@ -88,6 +88,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 481180}
+  - 114: {fileID: 11408772}
   m_Layer: 0
   m_Name: InventorySlots
   m_TagString: Untagged
@@ -106,7 +107,7 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 481180}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &476094
 Transform:
   m_ObjectHideFlags: 1
@@ -118,7 +119,7 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 481180}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!4 &481180
 Transform:
   m_ObjectHideFlags: 1
@@ -130,10 +131,10 @@ Transform:
   m_LocalScale: {x: 0.13620906, y: 0.17, z: 0.13620906}
   m_Children:
   - {fileID: 498384}
-  - {fileID: 476094}
   - {fileID: 400308}
-  - {fileID: 493318}
   - {fileID: 482984}
+  - {fileID: 476094}
+  - {fileID: 493318}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &482984
@@ -147,7 +148,7 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 481180}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!4 &493318
 Transform:
   m_ObjectHideFlags: 1
@@ -159,7 +160,7 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 481180}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!4 &498384
 Transform:
   m_ObjectHideFlags: 1
@@ -172,6 +173,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481180}
   m_RootOrder: 0
+--- !u!114 &11408772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc67551125e33a4e9b493afbb1c30b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!131 &13117814
 GUITexture:
   m_ObjectHideFlags: 1
