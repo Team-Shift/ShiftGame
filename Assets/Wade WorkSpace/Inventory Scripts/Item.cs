@@ -32,8 +32,11 @@ public class Item : MonoBehaviour {
                 Inventory i = player.GetComponent<Inventory>();
                 InvHUD hud = GameObject.FindObjectOfType<InvHUD>();
                 //Debug.Log(reccentlyPickupUp);
+
+                Debug.Log(this);
                 i.AddItem(this);
                 hud.ChangeUIIcon(this);
+                
                 
                 // if weapon, its going to switch positions
                 if (canPickup && itype != ItemType.WEAPON) Destroy(gameObject);

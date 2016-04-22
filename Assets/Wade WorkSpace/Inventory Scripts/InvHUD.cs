@@ -17,12 +17,15 @@ public class InvHUD : MonoBehaviour {
     {
         // CHANGE to switch consumables if player wants to
         // if first consumable slot is taken
-        if (i.itype == Item.ItemType.CONSUMABLE && inv[(int)i.itype].GetComponent<GUITexture>().texture.name != "InventorySlot 1")
+        if (i.itype == Item.ItemType.CONSUMABLE && inv[(int)i.itype].GetComponent<GUITexture>().texture != null)
         {
             inv[(int)i.itype + 1].GetComponent<GUITexture>().texture = FindItemSprite(i.ID);
         }
         else
+        {
+            Debug.Log("change texture");
             inv[(int)i.itype].GetComponent<GUITexture>().texture = FindItemSprite(i.ID);
+        }
     }
 
     Texture FindItemSprite(int i)
