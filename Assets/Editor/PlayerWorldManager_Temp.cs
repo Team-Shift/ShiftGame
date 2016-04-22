@@ -24,7 +24,7 @@ public class PlayerWorldManager_Temp : MonoBehaviour
             sceneShit.TownScene();
         }
 
-        if(player.GetComponent<Custom2DController>().Health <= 0)
+        if(player.GetComponent<PlayerCombat>().Health <= 0)
         {
             sceneShit.TownScene();
         }

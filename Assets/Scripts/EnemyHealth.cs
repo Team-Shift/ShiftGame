@@ -5,7 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(AudioSource))]
 public class EnemyHealth : MonoBehaviour {
 
-    Custom2DController playerScript;
+    PlayerCombat playerScript;
     GameObject player;
     public int health;
     public int startHealth = 5;
@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour {
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerScript = player.GetComponent<Custom2DController>();
+        playerScript = player.GetComponent<PlayerCombat>();
 
         enemySound = gameObject.GetComponent<AudioSource>();
         parent = this.gameObject.transform.parent.gameObject;
@@ -54,7 +54,7 @@ public class EnemyHealth : MonoBehaviour {
         yOffset = GetYOffset();
 
         //2d
-        if (playerScript.CameraSwitch == false)
+        if (player.GetComponent<Custom2DController>().CameraSwitch == false)
         {
             //if ((player.transform.position.x <= transform.position.x + xOffset && player.transform.position.x >= transform.position.x - xOffset) && (player.transform.position.z <= transform.position.z + zOffset && player.transform.position.z >= transform.position.z - zOffset))
             if (Mathf.Abs(playerPos.x - enemyPos.x) < xOffset && Mathf.Abs(playerPos.z - (enemyPos.z + yOffset)) < zOffset)

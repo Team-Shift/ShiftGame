@@ -3,13 +3,13 @@ using System.Collections;
 
 public class SpikeController : MonoBehaviour
 {
-    public Custom2DController player;
+    public PlayerCombat player;
     private float posOffset;
 
     // Use this for initialization
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Custom2DController>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombat>();
         posOffset = gameObject.GetComponent<BoxCollider>().size.x / 2;
     }
 
@@ -26,7 +26,7 @@ public class SpikeController : MonoBehaviour
 
         if (Mathf.Abs(playerPos.x - spikePos.x) < posOffset && Mathf.Abs(playerPos.z - spikePos.z) < posOffset && playerPos.y > spikePos.y)
         {
-            if(player.CameraSwitch == false)
+            if(gameObject.GetComponent<Custom2DController>().CameraSwitch == false)
             {
                 //Activate animation
                 player.DamageFallback(gameObject.transform.position);
