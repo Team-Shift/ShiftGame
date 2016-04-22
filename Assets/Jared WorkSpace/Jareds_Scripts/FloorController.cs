@@ -6,6 +6,7 @@ public class FloorController : MonoBehaviour
 {
     public float groundLevel = 0;
     private List<GameObject> floorPieces = new List<GameObject>();
+    
     private List<float> floorPieceLevels = new List<float>();
     public Custom2DController player;
 
@@ -18,6 +19,9 @@ public class FloorController : MonoBehaviour
         {
             floorPieceLevels.Add(piece.transform.position.y);
         }
+
+        Debug.Log(floorPieces.Count);
+        Debug.Log(floorPieceLevels.Count);
     }
 
     // Update is called once per frame
@@ -29,6 +33,7 @@ public class FloorController : MonoBehaviour
             {
                 if(floorPieces[i].transform.position.y > groundLevel)
                 {
+                    Debug.Log("Moving Pieces down");
                     floorPieces[i].transform.position = new Vector3(floorPieces[i].transform.position.x, groundLevel, floorPieces[i].transform.position.z);
                 }
             }
@@ -40,6 +45,9 @@ public class FloorController : MonoBehaviour
             {
                 if (floorPieces[i].transform.position.y < floorPieceLevels[i])
                 {
+                    Debug.Log("Moving pieces up");
+                    
+                    //if(player.gameObject.transform.position == floorPieces[i].transform.position)
                     floorPieces[i].transform.position = new Vector3(floorPieces[i].transform.position.x, floorPieceLevels[i], floorPieces[i].transform.position.z);
                 }
             }

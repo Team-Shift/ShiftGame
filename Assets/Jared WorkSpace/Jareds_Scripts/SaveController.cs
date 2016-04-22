@@ -29,7 +29,7 @@ public class SaveController : MonoBehaviour
     public void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "saveData.dat");
+        FileStream file = File.Create(Application.persistentDataPath + "saveData.HotDog");
 
         PlayerData data = new PlayerData();
         data.health = player.Health;
@@ -43,10 +43,10 @@ public class SaveController : MonoBehaviour
 
     public void Load()
     {
-        if(File.Exists(Application.persistentDataPath + "saveData.dat"))
+        if(File.Exists(Application.persistentDataPath + "saveData.HotDog"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "saveData.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "saveData.HotDog", FileMode.Open);
             PlayerData data = (PlayerData)bf.Deserialize(file);
             file.Close();
 

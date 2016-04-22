@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour {
     public int health;
     public int startHealth = 5;
     public GameObject hitPart;
-    private GameObject parent;
+    public GameObject parent;
     private AudioSource enemySound;
     public AudioClip hurtSound;
 
@@ -25,7 +25,7 @@ public class EnemyHealth : MonoBehaviour {
         playerScript = player.GetComponent<Custom2DController>();
 
         enemySound = gameObject.GetComponent<AudioSource>();
-        parent = gameObject.transform.parent.gameObject;
+        parent = this.gameObject.transform.parent.gameObject;
         health = startHealth;
     }
 
@@ -36,7 +36,6 @@ public class EnemyHealth : MonoBehaviour {
         {
             Debug.Log("losing health from " + other.name);
             TakeDamage();
-            // knockback
         }
     }
 
@@ -49,14 +48,10 @@ public class EnemyHealth : MonoBehaviour {
 
     void FixedUpdate()
     {
-        // 2D/3D collision detection
-        // gameObject <-- playerPos
-        // player <-- fireball
         Vector3 enemyPos = gameObject.transform.position;
-        Vector3 playerPos = player.transform.position;
+        Vector3 playerPos = player.transform.Find("Hitbox").gameObject.transform.position;
 
         yOffset = GetYOffset();
-        //yOffset = yOffset - 1;
 
         //2d
         if (playerScript.CameraSwitch == false)
