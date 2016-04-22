@@ -27,6 +27,8 @@ GameObject:
   - 4: {fileID: 464232}
   - 33: {fileID: 3352114}
   - 23: {fileID: 2360446}
+  - 65: {fileID: 6596700}
+  - 114: {fileID: 11496512}
   m_Layer: 0
   m_Name: obj_forestspike_spikes:Mesh
   m_TagString: Untagged
@@ -43,6 +45,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 405482}
   - 95: {fileID: 9576250}
+  - 65: {fileID: 6593176}
   m_Layer: 0
   m_Name: SpikeHazardBlock
   m_TagString: Untagged
@@ -57,7 +60,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.368246, y: 4.0646677, z: -8.366731}
+  m_LocalPosition: {x: -0.334, y: -1.18, z: -16.725}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 406708}
@@ -98,7 +101,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0be44d72d78bc144dac7e6ec68e7d4d4, type: 2}
+  - {fileID: 2100000, guid: 5ff37d4e3b6b97b44a58aef2012a15a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -154,6 +157,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111932}
   m_Mesh: {fileID: 4300000, guid: 9fdee0faa41266840b8a8dee63d87aa1, type: 3}
+--- !u!65 &6593176
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6596700
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6999999, y: 0.54999995, z: 0.6999999}
+  m_Center: {x: 0, y: 0.27499998, z: 0}
 --- !u!95 &9576250
 Animator:
   serializedVersion: 3
@@ -171,6 +198,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11496512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b8bd621bf9e1b45a32b6db7dfc7db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  anim: {fileID: 9576250}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -4,29 +4,30 @@ using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour {
 
+    [System.Serializable]
     public struct s_Items
     {
         public Item item;
         public int quantity;   // so items can stack
     }
     
-    // slots in inventory (possibly cange to array to visualize in inspector)
-    public List<s_Items> equippedItems;
-    // differentiate between type of weapon
+    /* {WEAPON, ARMOR, ABILITY, CONSUMABLE1, CONSUMABLE2} */
+    public s_Items[] invItems;
 
-    public int invSize = 4;
+    public int invSize = 5;
     int itemMaxStack = 1;
 
     void Start()
     {
-        equippedItems = new List<s_Items>();
+        invItems = new s_Items[invSize];
+
     }
 
     void OnMouseOver()
     {
-        // show name of item
+        // show name of item possibly
     }
-   
+   /*
     public void AddItem(Item i)
     {
         if(i.itype == Item.ItemType.WEAPON && !i.reccentlyPickupUp)
@@ -84,6 +85,45 @@ public class Inventory : MonoBehaviour {
                 i.canPickup = true;
             }
         }
+    }*/
+
+    public void AddItem(Item i)
+    {
+        Debug.Log(i.itype);
+        // if weapon: swap 
+        if (i.itype == Item.ItemType.WEAPON && !i.reccentlyPickupUp)
+        {
+            if (!i.reccentlyPickupUp)
+                ReplaceWeapon(i);
+        }
+
+        // if item exists, ids match, !maxstack: increase quantity
+        if (invItems[(int)i.itype].item != null && i.ID == invItems[(int)i.itype].item.ID && invItems[(int)i.itype].quantity < itemMaxStack)
+        {
+            invItems[(int)i.itype].quantity++;
+        }
+        // if max stack: dont pickup
+        else if (invItems[(int)i.itype].quantity >= itemMaxStack && i.itype != Item.ItemType.CONSUMABLE)  i.canPickup = false; 
+        // else: new item ID
+        else
+        {
+            // store new itemData in temp
+            s_Items temp = new s_Items();
+            temp.item = i;
+            temp.quantity = 1;
+
+            // if consumable: check both slots for availability
+            if (i.itype == Item.ItemType.CONSUMABLE && invItems[(int)i.itype].quantity > 0)
+            {
+                if (invItems[4].quantity >= 1) i.canPickup = false; // change to switch consumables
+                else invItems[4] = temp;
+                
+            }
+            else
+            {
+                invItems[(int)i.itype] = temp;
+            }
+        }
     }
 
     void ReplaceWeapon(Item pickupItem)
@@ -108,17 +148,7 @@ public class Inventory : MonoBehaviour {
             pickupItem.transform.position = new Vector3(tParent.position.x, tParent.position.y, tParent.position.z);
             pickupItem.transform.localRotation = Quaternion.Euler(new Vector3(270,0,0));
             pickupItem.reccentlyPickupUp = true;
-
-            //Debug.Log(temp.parent);
         }
-
-        // access library and get weapon needed
-        //GameObject weaponToAdd = ;
-    }
-
-    void ItemSwap()
-    {
-        Debug.Log("replacing");
     }
 
 }

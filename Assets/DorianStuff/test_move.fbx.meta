@@ -1,24 +1,16 @@
 fileFormatVersion: 2
-guid: 9fdee0faa41266840b8a8dee63d87aa1
-timeCreated: 1461277932
-licenseType: Free
+guid: e442eff5588298f47ac5d280391a37fa
+timeCreated: 1461363191
+licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: obj_forestspike_holes:Mesh
-    100002: obj_forestspike_spikes:Mesh
-    100004: //RootNode
-    400000: obj_forestspike_holes:Mesh
-    400002: obj_forestspike_spikes:Mesh
-    400004: //RootNode
-    2300000: obj_forestspike_holes:Mesh
-    2300002: obj_forestspike_spikes:Mesh
-    3300000: obj_forestspike_holes:Mesh
-    3300002: obj_forestspike_spikes:Mesh
-    4300000: obj_forestspike_holes:Mesh
-    4300002: obj_forestspike_spikes:Mesh
-    7400000: SpikeHit
-    7400002: SpikeRetract
+    100000: move
+    100002: //RootNode
+    400000: move
+    400002: //RootNode
+    7400000: up
+    7400002: down
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -42,10 +34,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: SpikeHit
+      name: up
       takeName: Take 001
-      firstFrame: 8.2
-      lastFrame: 14
+      firstFrame: 1
+      lastFrame: 3
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -68,18 +60,16 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: obj_forestspike_holes:Mesh
-        weight: 1
-      - path: obj_forestspike_spikes:Mesh
+      - path: move
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: SpikeRetract
+      name: down
       takeName: Take 001
-      firstFrame: 14
-      lastFrame: 20
+      firstFrame: 3
+      lastFrame: 5
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -102,9 +92,7 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: obj_forestspike_holes:Mesh
-        weight: 1
-      - path: obj_forestspike_spikes:Mesh
+      - path: move
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
@@ -112,7 +100,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
