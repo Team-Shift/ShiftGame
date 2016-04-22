@@ -32,10 +32,18 @@ public class FloorController : MonoBehaviour
         {
             for (int i = 0; i < floorPieces.Count; i++)
             {
-                if(floorPieces[i].transform.position.y > groundLevel)
+                if (floorPieces[i].transform.position.y > groundLevel)
                 {
-                    Debug.Log("Moving Pieces down");
+                    posOffset = floorPieces[i].GetComponent<BoxCollider>().size.x / 2;
+                    Vector3 floorPiecePos = floorPieces[i].transform.position;
+                    Vector3 playerPos = player.gameObject.transform.position;
+
                     floorPieces[i].transform.position = new Vector3(floorPieces[i].transform.position.x, groundLevel, floorPieces[i].transform.position.z);
+
+                    if (Mathf.Abs(playerPos.x - floorPiecePos.x) < posOffset && Mathf.Abs(playerPos.z - floorPiecePos.z) < posOffset)
+                    {
+                        player.gameObject.transform.position = new Vector3(player.gameObject.transform.position.x, groundLevel + 1, player.gameObject.transform.position.z);
+                    }
                 }
             }
         }
@@ -46,18 +54,21 @@ public class FloorController : MonoBehaviour
             {
                 if (floorPieces[i].transform.position.y < floorPieceLevels[i])
                 {
-                    Debug.Log("Moving pieces up");
                     posOffset = floorPieces[i].GetComponent<BoxCollider>().size.x / 2;
                     Vector3 floorPiecePos = floorPieces[i].transform.position;
                     Vector3 playerPos = player.gameObject.transform.position;
 
                     if(Mathf.Abs(playerPos.x - floorPiecePos.x) < posOffset && Mathf.Abs(playerPos.z - floorPiecePos.z) < posOffset && playerPos.y > floorPiecePos.y)
                     {
-                        float playerPushUp = floorPieceLevels[i] - playerPos.y;
+                        float playerSizeOffset = player.gameObject.GetComponent<BoxCollider>().size.y / 2;
 
-                        Debug.Log((playerPos.y + playerPushUp) * 10);
+                        float pushUp = floorPieceLevels[i] - player.gameObject.transform.position.y;
 
-                        player.gameObject.transform.position = new Vector3(player.gameObject.transform.position.x, Mathf.Abs((player.gameObject.transform.position.y + playerPushUp) * 10), player.gameObject.transform.position.z);
+                        Debug.Log(pushUp + playerSizeOffset + 1);
+
+                        player.gameObject.transform.position = new Vector3(player.gameObject.transform.position.x, player.gameObject.transform.position.y + (pushUp + playerSizeOffset + 1), player.gameObject.transform.position.z);
+                                            
+                        
                     }
 
                     floorPieces[i].transform.position = new Vector3(floorPieces[i].transform.position.x, floorPieceLevels[i], floorPieces[i].transform.position.z);
