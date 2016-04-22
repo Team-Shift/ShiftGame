@@ -18,6 +18,7 @@ public class PlayerCombat : MonoBehaviour {
     public float shotTimeLeft = 1f;
     public bool melee = true;
     public float meleeTimeLeft = 1f;
+    public float worldLimit = 0;
 
     [HideInInspector]
     public int Health = 3;
@@ -55,6 +56,11 @@ public class PlayerCombat : MonoBehaviour {
         {
             shotTimeLeft = 1f;
             shot = true;
+        }
+
+        if(gameObject.transform.position.y <= worldLimit)
+        {
+            Health = 0;
         }
 
         if (Health <= 0)
