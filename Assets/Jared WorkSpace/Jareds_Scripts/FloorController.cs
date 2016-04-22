@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class FloorController : MonoBehaviour
 {
     public float groundLevel = 0;
+    private float posOffset = 0;
     private List<GameObject> floorPieces = new List<GameObject>();
     
     private List<float> floorPieceLevels = new List<float>();
@@ -46,8 +47,16 @@ public class FloorController : MonoBehaviour
                 if (floorPieces[i].transform.position.y < floorPieceLevels[i])
                 {
                     Debug.Log("Moving pieces up");
-                    
-                    //if(player.gameObject.transform.position == floorPieces[i].transform.position)
+                    posOffset = floorPieces[i].GetComponent<BoxCollider>().size.x / 2;
+                    Vector3 floorPiecePos = floorPieces[i].transform.position;
+                    Vector3 playerPos = player.gameObject.transform.position;
+
+                    if(Mathf.Abs(playerPos.x - floorPiecePos.x) < posOffset && Mathf.Abs(playerPos.z - floorPiecePos.z) < posOffset && playerPos.y > floorPiecePos.y)
+                    {
+                        Debug.Log("Player is on top of a block. Pushing up by " + Mathf.Abs(floorPieceLevels[i]));
+                        player.gameObject.transform.position = new Vector3(player.gameObject.transform.position.x, player.gameObject.transform.position.y + 1, player.gameObject.transform.position.z);
+                    }
+
                     floorPieces[i].transform.position = new Vector3(floorPieces[i].transform.position.x, floorPieceLevels[i], floorPieces[i].transform.position.z);
                 }
             }
