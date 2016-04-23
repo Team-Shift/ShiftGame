@@ -34,7 +34,7 @@ public class FloorController : MonoBehaviour
             {
                 if (floorPieces[i].transform.position.y > groundLevel)
                 {
-                    posOffset = floorPieces[i].GetComponent<BoxCollider>().size.x / 2;
+                    posOffset = floorPieces[i].GetComponent<BoxCollider>().size.x;
                     Vector3 floorPiecePos = floorPieces[i].transform.position;
                     Vector3 playerPos = player.gameObject.transform.position;
 
@@ -42,6 +42,7 @@ public class FloorController : MonoBehaviour
 
                     if (Mathf.Abs(playerPos.x - floorPiecePos.x) < posOffset && Mathf.Abs(playerPos.z - floorPiecePos.z) < posOffset)
                     {
+                        Debug.Log("Putting the player back onto the ground");
                         player.gameObject.transform.position = new Vector3(player.gameObject.transform.position.x, groundLevel + 1, player.gameObject.transform.position.z);
                     }
                 }
@@ -63,8 +64,6 @@ public class FloorController : MonoBehaviour
                         float playerSizeOffset = player.gameObject.GetComponent<BoxCollider>().size.y / 2;
 
                         float pushUp = floorPieceLevels[i] - player.gameObject.transform.position.y;
-
-                        Debug.Log(pushUp + playerSizeOffset + 1);
 
                         player.gameObject.transform.position = new Vector3(player.gameObject.transform.position.x, player.gameObject.transform.position.y + (pushUp + playerSizeOffset + 1), player.gameObject.transform.position.z);
                                             
