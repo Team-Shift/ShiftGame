@@ -13,19 +13,39 @@ public class InvHUD : MonoBehaviour {
         }
 	}
 	
+    void FixedUpdate()
+    {
+        // switch consumables
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            Texture temp = inv[3].GetComponent<GUITexture>().texture;
+            inv[3].GetComponent<GUITexture>().texture = inv[4].GetComponent<GUITexture>().texture;
+            inv[4].GetComponent<GUITexture>().texture = temp;
+        }
+    }
+
     public void ChangeUIIcon(Item i)
     {
-        // CHANGE to switch consumables if player wants to
-        // if first consumable slot is taken
-        if (i.itype == Item.ItemType.CONSUMABLE && inv[(int)i.itype].GetComponent<GUITexture>().texture != null)
+        if(i.itype == Item.ItemType.GOLD)
         {
-            inv[(int)i.itype + 1].GetComponent<GUITexture>().texture = FindItemSprite(i.ID);
+            // increase gold display
+        }
+        // if first consumable slot is taken
+        else if (i.itype == Item.ItemType.CONSUMABLE && inv[(int)i.itype].GetComponent<GUITexture>().texture != null && inv[4].GetComponent<GUITexture>().texture == null)
+        {
+            inv[4].GetComponent<GUITexture>().texture = FindItemSprite(i.ID);
         }
         else
         {
             Debug.Log("change texture");
             inv[(int)i.itype].GetComponent<GUITexture>().texture = FindItemSprite(i.ID);
         }
+    }
+
+    public void ReduceGold(int amount)
+    {
+        // change gold display 
+        // goldAMount -= amount;
     }
 
     Texture FindItemSprite(int i)
@@ -35,6 +55,10 @@ public class InvHUD : MonoBehaviour {
         if (i == 0)
         {
             temp = Resources.Load<Texture>("ItemSprites/HealthPotionItem");
+        }
+        else if(i == 8)
+        {
+            temp = Resources.Load<Texture>("ItemSprites/GreenPotion");
         }
         else
             temp = Resources.Load<Texture>("ItemSprites/SwordIcon");

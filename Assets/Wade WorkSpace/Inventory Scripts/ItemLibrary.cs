@@ -7,9 +7,13 @@ public class ItemLibrary : MonoBehaviour {
     // item ID = index
     public struct ItemData
     {
+        public int ID;
+        public GameObject mesh;
         public Sprite sprite;
-        //public GameObject mesh; // store mesh somehow
+        public Item.ItemType itemType;
         public bool unlocked;
+        public string name;
+        public int value;
     }
 
     public ItemData[] allItems;

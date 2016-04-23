@@ -5,7 +5,7 @@ using System.Collections;
 public class Item : MonoBehaviour {
 
     [HideInInspector]
-    public enum ItemType{WEAPON, ARMOR, ABILITY, CONSUMABLE };
+    public enum ItemType{WEAPON, ARMOR, ABILITY, CONSUMABLE, BOOK, GOLD};
 
     public int ID;
     public string itemName;
@@ -31,26 +31,16 @@ public class Item : MonoBehaviour {
             {
                 Inventory i = player.GetComponent<Inventory>();
                 InvHUD hud = GameObject.FindObjectOfType<InvHUD>();
-                //Debug.Log(reccentlyPickupUp);
 
-                Debug.Log(this);
                 i.AddItem(this);
                 hud.ChangeUIIcon(this);
-                
-                
+
                 // if weapon, its going to switch positions
                 if (canPickup && itype != ItemType.WEAPON) Destroy(gameObject);
             }
             else
                 Debug.Log("player not found");
         }
-
-        // to display text on screen 
-        /*GameObject g = new GameObject();
-        g.transform.localScale *= 0.5f;
-        g.transform.position = gameObject.transform.position;
-        g.AddComponent<GUIText>().text = "press 'x' to pickup";*/
-
     }
 
     void OnTriggerStay(Collider other)

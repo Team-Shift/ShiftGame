@@ -11,87 +11,55 @@ public class Inventory : MonoBehaviour {
         public int quantity;   // so items can stack
     }
     
-    /* {WEAPON, ARMOR, ABILITY, CONSUMABLE1, CONSUMABLE2} */
+    /* {[0]WEAPON, [1]ARMOR, [2]ABILITY, [3]CONSUMABLE1, [4]CONSUMABLE2, [5]BOOK} */
     public s_Items[] invItems;
-
-    public int invSize = 5;
+    public int invSize = 6;
     int itemMaxStack = 1;
+
+    public int goldCount;
+    public int goldPickupAmnt = 5;
 
     void Start()
     {
         invItems = new s_Items[invSize];
+        goldCount = 0;
+    }
 
+    void Update()
+    {
+        // switch consumables
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            s_Items temp = invItems[3];
+            invItems[3] = invItems[4];
+            invItems[4] = temp;
+        }
+        // gold hack
+        if(Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.P))
+        {
+            goldCount = 99999;
+        }
     }
 
     void OnMouseOver()
     {
         // show name of item possibly
     }
-   /*
-    public void AddItem(Item i)
-    {
-        if(i.itype == Item.ItemType.WEAPON && !i.reccentlyPickupUp)
-        {
-            //Debug.Log("replacing weapon");
-            if(!i.reccentlyPickupUp)
-                ReplaceWeapon(i);
-        }
-
-        bool doesExist = false;
-        for(int e = 0; e < equippedItems.Count; e++)
-        {
-            // if item has same name
-            if (equippedItems[e].item.ID == i.ID)
-            {
-                if (equippedItems[e].quantity < itemMaxStack)
-                {
-                    //Debug.Log(equippedItems[e].quantity + " of this kind of item");
-                    
-                    // if item type exists, increase quantity
-                    int test = equippedItems[e].quantity;
-                    var item = equippedItems[e];
-                    item.quantity = test + 1;
-                    equippedItems[e] = item;
-
-                    //Debug.Log("increasing quantity of " + equippedItems[e].item.itemName);
-                }
-                // item max carry
-                else
-                {
-                    //Debug.Log("reach max stack cannot pickup");
-                    i.canPickup = false;
-                }
-                doesExist = true;
-            }
-        }
-
-        if (!doesExist)
-        {
-            // create eItem
-            s_Items temp = new s_Items();
-            //Debug.Log("Item doesnt exist");
-            if (equippedItems.Count < invSize)
-            {
-                temp.quantity = 1;
-                temp.item = i;
-                equippedItems.Add(temp);
-                //Debug.Log("adding new item " + temp.item.itemName);
-            }
-            // no room in inventory
-            else
-            {
-                i.canPickup = false;
-                ItemSwap();
-                i.canPickup = true;
-            }
-        }
-    }*/
-
+  
     public void AddItem(Item i)
     {
         Debug.Log(i.itype);
+        // if book add to collection
+        if(i.itype == Item.ItemType.BOOK)
+        {
+            // unlock book lore
+        }
+        else if(i.itype == Item.ItemType.GOLD)
+        {
+            goldCount += goldPickupAmnt;
+        }
         // if weapon: swap 
-        if (i.itype == Item.ItemType.WEAPON && !i.reccentlyPickupUp)
+        else if (i.itype == Item.ItemType.WEAPON && !i.reccentlyPickupUp)
         {
             if (!i.reccentlyPickupUp)
                 ReplaceWeapon(i);
@@ -102,8 +70,10 @@ public class Inventory : MonoBehaviour {
         {
             invItems[(int)i.itype].quantity++;
         }
+
         // if max stack: dont pickup
         else if (invItems[(int)i.itype].quantity >= itemMaxStack && i.itype != Item.ItemType.CONSUMABLE)  i.canPickup = false; 
+
         // else: new item ID
         else
         {
@@ -113,15 +83,14 @@ public class Inventory : MonoBehaviour {
             temp.quantity = 1;
 
             // if consumable: check both slots for availability
-            if (i.itype == Item.ItemType.CONSUMABLE && invItems[(int)i.itype].quantity > 0)
+            if (i.itype == Item.ItemType.CONSUMABLE && invItems[(int)i.itype].quantity > 0 && invItems[4].quantity == 0)
             {
-                if (invItems[4].quantity >= 1) i.canPickup = false; // change to switch consumables
-                else invItems[4] = temp;
-                
+                invItems[4] = temp;
             }
             else
             {
                 invItems[(int)i.itype] = temp;
+                if (i.itype == Item.ItemType.CONSUMABLE) { /*DROP THE CURRENT CONSUMABLE*/ }
             }
         }
     }
@@ -142,12 +111,14 @@ public class Inventory : MonoBehaviour {
             tCurrWeap.position = pickupItem.transform.position;
             tCurrWeap.rotation = Quaternion.Euler(Vector3.zero);
             tCurrWeap.gameObject.GetComponent<Item>().reccentlyPickupUp = true;
+            tCurrWeap.GetComponent<Collider>().enabled = true;
 
             // pickup new weapon
             pickupItem.transform.parent = tParent;
             pickupItem.transform.position = new Vector3(tParent.position.x, tParent.position.y, tParent.position.z);
             pickupItem.transform.localRotation = Quaternion.Euler(new Vector3(270,0,0));
             pickupItem.reccentlyPickupUp = true;
+            pickupItem.GetComponent<Collider>().enabled = false;
         }
     }
 
