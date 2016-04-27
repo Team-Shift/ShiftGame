@@ -51,20 +51,27 @@ public class ShopkeeperInv : MonoBehaviour {
         itemsForSale[2] = unlockedConsumables[Random.Range(0, unlockedWeapons.Count - 1)];
         itemsForSale[3] = unlockedConsumables[Random.Range(0, unlockedWeapons.Count - 1)];
         itemsForSale[4] = unlockedAbilities[Random.Range(0, unlockedAbilities.Count - 1)];
+        // have consumables for sale diferent
+        while(itemsForSale[3].ID == itemsForSale[4].ID)
+        {
+            itemsForSale[4] = unlockedAbilities[Random.Range(0, unlockedAbilities.Count - 1)];
+        }
     }
 
     void PlayerBuyItem(int index)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
+        Inventory inv = player.GetComponent<Inventory>();
         // decrement gold
-        player.GetComponent<Inventory>().goldCount -= itemsForSale[index].value;
+        inv.goldCount -= itemsForSale[index].value;
         // change display
         player.GetComponent<InvHUD>().ReduceGold(itemsForSale[index].value);
 
         // if slot available: add to inventory
+        //inv.invItems[]
 
-        // else add to bank
+        // else replace w/current and add current to bank
     }
 
     int PlayerSellItem(int id)

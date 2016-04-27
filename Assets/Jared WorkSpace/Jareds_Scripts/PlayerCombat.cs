@@ -20,7 +20,7 @@ public class PlayerCombat : MonoBehaviour {
     public float meleeTimeLeft = 1f;
     public float worldLimit = 0;
 
-    [HideInInspector]
+    //[HideInInspector]
     public int Health = 3;
 
     private Animator anim;
@@ -32,6 +32,7 @@ public class PlayerCombat : MonoBehaviour {
         playerSound = gameObject.GetComponent<AudioSource>();
         anim = gameObject.GetComponent<Animator>();
         hearts = gameObject.GetComponent<HealthUI>();
+        Health = 3;
     }
 	
 	// Update is called once per frame
