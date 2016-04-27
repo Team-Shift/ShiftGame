@@ -12,7 +12,6 @@ public class Custom2DController : MonoBehaviour
     public GameObject player;
     private GameObject pivotPoint;
     
-    private DimensionalSwitchManager manager;
     public float turnSpeed = 180f;
     public float speed = 6.0f;
     [HideInInspector]
@@ -45,7 +44,6 @@ public class Custom2DController : MonoBehaviour
     {
         playerDir = FacingDirection.Forward;
         //currentHeld = CurrentItemType.None;
-        manager = GameObject.FindObjectOfType<DimensionalSwitchManager>();
         anim = player.GetComponent<Animator>();
         CameraSwitch = false;
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
