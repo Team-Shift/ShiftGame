@@ -110,7 +110,9 @@ public class PlayerCombat : MonoBehaviour {
         if (melee == true)
         {
             playerSound.PlayOneShot(meleeSound);
-            anim.SetTrigger("sword_attack");
+            anim.SetTrigger("Attack");
+            anim.SetFloat("WeaponIndex",0);
+            //anim.SetTrigger("sword_attack");
             melee = false;
         }
     }
@@ -119,7 +121,12 @@ public class PlayerCombat : MonoBehaviour {
     {
         if (shot == true)
         {
-            anim.SetTrigger("bow_attack");
+            //Triggering Attack State
+            anim.SetTrigger("Attack");
+
+            //Setting Weapon Index for Attack
+            anim.SetFloat("WeaponIndex", 1);
+            //anim.SetTrigger("bow_attack");
         }
 
         Custom2DController.FacingDirection playerDir = gameObject.GetComponent<Custom2DController>().playerDir;

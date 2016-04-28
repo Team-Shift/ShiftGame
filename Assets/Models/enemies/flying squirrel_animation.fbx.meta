@@ -25,9 +25,9 @@ ModelImporter:
     4300002: obj_flying_squirrel_right_wing:Mesh
     4300004: obj_flying_squirrel_left_wing:Mesh
     4300006: obj_flying_squirrel_tail:Mesh
-    7400000: idle
-    7400002: walk
-    7400004: attack
+    7400000: FlyingSquirrelIdle
+    7400002: FlyingSquirrelWalk
+    7400004: FlyingSquirrelAttack
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -51,7 +51,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: idle
+      name: FlyingSquirrelIdle
       takeName: Take 001
       firstFrame: 11
       lastFrame: 51
@@ -87,7 +87,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: walk
+      name: FlyingSquirrelWalk
       takeName: Take 001
       firstFrame: 71
       lastFrame: 111
@@ -123,7 +123,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: attack
+      name: FlyingSquirrelAttack
       takeName: Take 001
       firstFrame: 121
       lastFrame: 146

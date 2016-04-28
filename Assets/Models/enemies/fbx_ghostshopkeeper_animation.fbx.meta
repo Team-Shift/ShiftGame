@@ -32,9 +32,9 @@ ModelImporter:
     4300004: ghostshopkeeper_left_arm
     4300006: ghostshopkeeper_right_leg
     4300008: ghostshopkeeper_left_leg
-    7400000: idle
-    7400002: walk
-    7400004: attack
+    7400000: ShopKeeperGhostIdle
+    7400002: ShopKeeperGhostWalk
+    7400004: ShopKeeperGhostAttack
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -58,7 +58,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: idle
+      name: ShopKeeperGhostIdle
       takeName: Take 001
       firstFrame: 1
       lastFrame: 41
@@ -98,7 +98,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: walk
+      name: ShopKeeperGhostWalk
       takeName: Take 001
       firstFrame: 61
       lastFrame: 101
@@ -138,7 +138,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: attack
+      name: ShopKeeperGhostAttack
       takeName: Take 001
       firstFrame: 121
       lastFrame: 151

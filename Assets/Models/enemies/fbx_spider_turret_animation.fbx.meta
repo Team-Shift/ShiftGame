@@ -38,7 +38,7 @@ ModelImporter:
     4300008: obj_spider_turret_legs_02:Mesh
     4300010: obj_spider_turret_legs_03:Mesh
     4300012: obj_spider_turret_legs_04:Mesh
-    7400000: Take 001
+    7400000: SpiderTurretShoot
     9500000: //RootNode
     13700000: obj_spider_turret_slingshot:Mesh
     13700002: obj_spider_turret_web:Mesh
@@ -64,7 +64,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take 001
+      name: SpiderTurretShoot
       takeName: Take 001
       firstFrame: 1
       lastFrame: 41

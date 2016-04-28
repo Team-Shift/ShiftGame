@@ -32,9 +32,6 @@ public class Custom2DController : MonoBehaviour
     public GameObject dust;
 
     //Combat
-     
-
-    
 
     MenuManager sceneShit;
 
@@ -122,36 +119,43 @@ public class Custom2DController : MonoBehaviour
 
         if(moveDirection.x != 0 || moveDirection.z != 0)
         {
-            anim.SetBool("walk", true);
+            //Setting Y parameter to 1        Y Parameter 0 = Idle  1 = Walk
+            anim.SetFloat("y", 1);
+            //anim.SetBool("walk", true);
         }
         else if(moveDirection.x == 0 || moveDirection.z == 0)
         {
-            anim.SetBool("walk", false);
+            anim.SetFloat("y", 0);
+            //anim.SetBool("walk", false);
         }
 
         transform.Translate(moveDirection * Time.deltaTime * speed, Space.World);
 
         if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            anim.SetBool("walk", true);
+            anim.SetFloat("y", 1);
+            //anim.SetBool("walk", true);
             playerDir = FacingDirection.Forward;
             player.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
         }
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            anim.SetBool("walk", true);
+            anim.SetFloat("y", 1);
+            //anim.SetBool("walk", true);
             playerDir = FacingDirection.Left;
             player.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
         }
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            anim.SetBool("walk", true);
+            anim.SetFloat("y", 1);
+            //anim.SetBool("walk", true);
             playerDir = FacingDirection.Backward;
             player.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            anim.SetBool("walk", true);
+            anim.SetFloat("y", 1);
+            //anim.SetBool("walk", true);
             playerDir = FacingDirection.Right;
             player.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
         }
@@ -186,11 +190,13 @@ public class Custom2DController : MonoBehaviour
 
         if (forwardBack != 0)
         {
-            anim.SetBool("walk", true);
+            anim.SetFloat("y", 1);
+            //anim.SetBool("walk", true);
         }
         else
         {
-            anim.SetBool("walk", false);
+            anim.SetFloat("y", 0);
+            //anim.SetBool("walk", false);
         }
     }
 

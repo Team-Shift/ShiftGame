@@ -8,7 +8,6 @@ public class PlayerAttack : MonoBehaviour {
     {
 
         //c =  gameObject.GetComponentInChildren<Collider>();
-        
 
         foreach(Transform temp in gameObject.GetComponentInChildren<Transform>())
         {
