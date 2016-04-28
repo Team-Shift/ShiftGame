@@ -12,12 +12,13 @@ public class Item  :  MonoBehaviour{
     [HideInInspector]
     public bool canPickup;
     public bool reccentlyPickupUp;
-    public ItemType itype;
+    public ItemType itype; 
 
     void Start()
     {
         canPickup = false;
         reccentlyPickupUp = false;
+        itemName = gameObject.name;
     }
 
     void OnTriggerEnter(Collider other)
@@ -56,10 +57,5 @@ public class Item  :  MonoBehaviour{
             canPickup = false;
             reccentlyPickupUp = false;
         }
-    }
-
-    virtual public void OnUse()
-    {
-
     }
 }
