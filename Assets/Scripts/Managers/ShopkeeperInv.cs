@@ -10,13 +10,14 @@ public class ShopkeeperInv : MonoBehaviour {
 
     [HideInInspector]
     public int numItems = 5;
-
+    GameObject player;
     public float resellPerc = 0.3f;
 
     // Use this for initialization
     void Start () {
         // create array
         itemsForSale = new Item[numItems];
+        player = GameObject.FindGameObjectWithTag("Player");
 
         // populate list dependent on unlocked items
         GenerateInventory();
@@ -42,17 +43,28 @@ public class ShopkeeperInv : MonoBehaviour {
         //{
         //    itemsForSale[4] = unlockedAbilities[Random.Range(0, unlockedAbilities.Count - 1)];
         //}
+        // spawn itemsForSale (child of shopkeeper?)
+        //Vector3 offset = Vector3.zero;
+        //foreach (Item i in itemsForSale)
+        //{
+        //    ItemManager.SpawnItem(i.name, gameObject.transform.position + offset);
+        //    offset.z += 1;
+        //}
     }
 
     void PlayerBuyItem(int index)
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-
         Inventory inv = player.GetComponent<Inventory>();
-        // decrement gold
-        inv.goldCount -= itemsForSale[index].cost;
-        // change display
-        player.GetComponent<InvHUD>().ReduceGold(itemsForSale[index].cost);
+
+        // can't item.canPickup = false until press 'Enter' && enough gold
+        if ((inv.goldCount - itemsForSale[index].cost) >= 0)
+        {
+            // decrement gold
+            inv.goldCount -= itemsForSale[index].cost;
+            // change display
+            player.GetComponent<InvHUD>().ReduceGold(itemsForSale[index].cost);
+        }
+        else Debug.Log("not enough money");
 
         // if slot available: add to inventory
         //inv.invItems[]
