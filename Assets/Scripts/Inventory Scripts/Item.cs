@@ -12,6 +12,7 @@ public class Item  :  MonoBehaviour{
     [HideInInspector]
     public bool canPickup;
     public bool reccentlyPickupUp;
+    public int cost;
     public ItemType itype; 
 
     void Start()
