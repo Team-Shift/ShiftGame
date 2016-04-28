@@ -6,6 +6,7 @@ public class ShopkeeperInv : MonoBehaviour {
 
     // { [0]Weapon, [1]armor, [2]consumable, [3]consumable, [4]ability }
     public ItemLibrary.ItemData[]itemsForSale;
+    [HideInInspector]
     public int numItems = 5;
 
     public float resellPerc = 0.3f;

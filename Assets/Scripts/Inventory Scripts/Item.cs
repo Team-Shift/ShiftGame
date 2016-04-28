@@ -2,7 +2,7 @@
 using System.Collections;
 
 [System.Serializable]
-public class Item : MonoBehaviour {
+public class Item  :  MonoBehaviour{
 
     [HideInInspector]
     public enum ItemType{WEAPON, ARMOR, ABILITY, CONSUMABLE, BOOK, GOLD};
@@ -35,7 +35,7 @@ public class Item : MonoBehaviour {
                 i.AddItem(this);
                 hud.ChangeUIIcon(this);
 
-                // if weapon, its going to switch positions
+                // if weapon, its going to switch positions (add this)
                 if (canPickup && itype != ItemType.WEAPON) Destroy(gameObject);
             }
             else
@@ -56,5 +56,10 @@ public class Item : MonoBehaviour {
             canPickup = false;
             reccentlyPickupUp = false;
         }
+    }
+
+    virtual public void OnUse()
+    {
+
     }
 }

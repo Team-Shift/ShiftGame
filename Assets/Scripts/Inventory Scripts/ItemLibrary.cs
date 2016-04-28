@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[System.Serializable]
 // stored data of all possible items
 public class ItemLibrary : MonoBehaviour {
     // item ID = index
