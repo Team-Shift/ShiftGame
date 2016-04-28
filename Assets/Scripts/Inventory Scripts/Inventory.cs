@@ -48,6 +48,7 @@ public class Inventory : MonoBehaviour {
   
     public void AddItem(Item i)
     {
+        Debug.Log("adding");
         Debug.Log(i.itype);
         // if book add to collection
         if(i.itype == Item.ItemType.BOOK)
@@ -79,9 +80,9 @@ public class Inventory : MonoBehaviour {
         {
             // store new itemData in temp
             s_Items temp = new s_Items();
+
             temp.item = i;
             temp.quantity = 1;
-
             // if consumable: check both slots for availability
             if (i.itype == Item.ItemType.CONSUMABLE && invItems[(int)i.itype].quantity > 0 && invItems[4].quantity == 0)
             {
@@ -97,6 +98,7 @@ public class Inventory : MonoBehaviour {
 
     void ReplaceWeapon(Item pickupItem)
     {
+        Debug.Log("Swapping Weapons");
         // find locator/parent for weapon
         GameObject weaponLoc = GameObject.FindGameObjectWithTag("Weapon");
 

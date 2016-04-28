@@ -9,11 +9,13 @@ using System.Linq;
 
 public static class ItemManager
 {
-    private static Dictionary<string, GameObject> ItemDictionary;
+    private static Dictionary<string, Item> ItemDictionary;
+    private static Dictionary<string, Item> UnlockedItems;
 
     static ItemManager()
     {
-        ItemDictionary = new Dictionary<string, GameObject>();
+        ItemDictionary = new Dictionary<string, Item>();
+        UnlockedItems = new Dictionary<string, Item>();
         LoadItems();
     }
 
@@ -23,7 +25,7 @@ public static class ItemManager
         GameObject[] items = Resources.LoadAll("Items").Select(o => o as GameObject).ToArray();
         foreach (var item in items)
         {
-            ItemDictionary.Add(item.name, item);
+            ItemDictionary.Add(item.name, item.GetComponent<Item>());
             Debug.Log(item.name);
         }
     }
@@ -47,9 +49,14 @@ public static class ItemManager
         GameObject.Destroy(itemObject);
     }
 
-    public static GameObject GetItem(string key)
+    public static Item GetItem(string key)
     {
         return ItemDictionary[key];
     }
-    
+
+    public static void UnlockItem(Item unlocked_item)
+    {
+        UnlockedItems.Add(ItemDictionary[unlocked_item.name].name, unlocked_item);
+        Debug.Log(UnlockedItems.Count);
+    }
 }
