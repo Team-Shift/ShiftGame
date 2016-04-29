@@ -12,18 +12,19 @@ public class Item  :  MonoBehaviour{
     [HideInInspector]
     public bool canPickup;
     public bool reccentlyPickupUp;
-    public ItemType itype; 
+    public int cost;
+    public ItemType itype;
 
     void Start()
     {
         canPickup = false;
         reccentlyPickupUp = false;
-        itemName = gameObject.name;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player") { canPickup = true;}
+        Debug.Log("entered");
+        if (other.tag == "Player") {canPickup = true;}
         if (canPickup)
         {
             //canPickup = true;
@@ -33,11 +34,14 @@ public class Item  :  MonoBehaviour{
                 Inventory i = player.GetComponent<Inventory>();
                 InvHUD hud = GameObject.FindObjectOfType<InvHUD>();
 
-                i.AddItem(this);
-                hud.ChangeUIIcon(this);
+                i.AddItem(ItemManager.GetItem(itemName));
+                hud.ChangeUIIcon(ItemManager.GetItem(itemName));
 
                 // if weapon, its going to switch positions (add this)
-                if (canPickup && itype != ItemType.WEAPON) Destroy(gameObject);
+                if (canPickup && itype != ItemType.WEAPON)
+                {
+                    ItemManager.DestroyItem(gameObject);
+                }
             }
             else
                 Debug.Log("player not found");

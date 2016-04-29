@@ -43,6 +43,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 416666}
   - 95: {fileID: 9529718}
+  - 65: {fileID: 6572430}
+  - 114: {fileID: 11495638}
+  - 65: {fileID: 6504206}
   m_Layer: 0
   m_Name: Normal_Chest
   m_TagString: Untagged
@@ -57,7 +60,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181804}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: -0.41, y: 1, z: -3.59}
+  m_LocalPosition: {x: 1.9009112, y: -1.3006215, z: 7.9528637}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 498004}
@@ -154,6 +157,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171750}
   m_Mesh: {fileID: 4300002, guid: b7041abefad76ae499f2f1a67da25f83, type: 3}
+--- !u!65 &6504206
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181804}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9117937, y: 0.6497731, z: 0.88516426}
+  m_Center: {x: 0.0025507398, y: 0.32945132, z: -0.05741787}
+--- !u!65 &6572430
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181804}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7423916, y: 0.6072717, z: 0.6894293}
+  m_Center: {x: 0.008469289, y: 0.31304193, z: 0.53035784}
 --- !u!95 &9529718
 Animator:
   serializedVersion: 3
@@ -171,6 +198,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11495638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b1dff7d04887446af15bb8ab86f26d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

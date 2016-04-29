@@ -40,18 +40,18 @@ ModelImporter:
     4300004: char_left_arm
     4300006: char_right_leg1
     4300008: char_left_leg1
-    7400000: Idle
-    7400002: Walk
-    7400004: 2DSwordAttack
-    7400006: BowAttack
-    7400008: 3DSwordAttack
-    7400010: Knockback
-    7400012: Fall
-    7400014: StrafeLeft
-    7400016: StrafeRight
-    7400018: TeleportOut
-    7400020: TeleportIn
-    7400022: Death
+    7400000: PlayerIdle
+    7400002: PlayerWalk
+    7400004: Player2DSwordAttack
+    7400006: PlayerBowAttack
+    7400008: Player3DSwordAttack
+    7400010: PlayerKnockback
+    7400012: PlayerFall
+    7400014: PlayerStrafeLeft
+    7400016: PlayerStrafeRight
+    7400018: PlayerTeleportOut
+    7400020: PlayerTeleportIn
+    7400022: PlayerDeath
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -67,7 +67,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -75,7 +75,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: PlayerIdle
       takeName: Take 001
       firstFrame: 11
       lastFrame: 51
@@ -85,7 +85,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -123,7 +123,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Walk
+      name: PlayerWalk
       takeName: Take 001
       firstFrame: 61
       lastFrame: 81
@@ -133,7 +133,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -171,10 +171,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: 2DSwordAttack
+      name: Player2DSwordAttack
       takeName: Take 001
-      firstFrame: 83
-      lastFrame: 105
+      firstFrame: 81
+      lastFrame: 101
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -219,7 +219,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: BowAttack
+      name: PlayerBowAttack
       takeName: Take 001
       firstFrame: 108
       lastFrame: 124
@@ -267,7 +267,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: 3DSwordAttack
+      name: Player3DSwordAttack
       takeName: Take 001
       firstFrame: 125
       lastFrame: 145
@@ -315,10 +315,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Knockback
+      name: PlayerKnockback
       takeName: Take 001
-      firstFrame: 145
-      lastFrame: 160
+      firstFrame: 146
+      lastFrame: 158
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -363,7 +363,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Fall
+      name: PlayerFall
       takeName: Take 001
       firstFrame: 165
       lastFrame: 185
@@ -411,7 +411,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: StrafeLeft
+      name: PlayerStrafeLeft
       takeName: Take 001
       firstFrame: 206
       lastFrame: 225
@@ -421,7 +421,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -459,7 +459,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: StrafeRight
+      name: PlayerStrafeRight
       takeName: Take 001
       firstFrame: 245
       lastFrame: 265
@@ -469,7 +469,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -507,7 +507,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: TeleportOut
+      name: PlayerTeleportOut
       takeName: Take 001
       firstFrame: 282
       lastFrame: 298
@@ -555,7 +555,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: TeleportIn
+      name: PlayerTeleportIn
       takeName: Take 001
       firstFrame: 312
       lastFrame: 325
@@ -603,7 +603,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Death
+      name: PlayerDeath
       takeName: Take 001
       firstFrame: 325
       lastFrame: 399
@@ -653,7 +653,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 5
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
