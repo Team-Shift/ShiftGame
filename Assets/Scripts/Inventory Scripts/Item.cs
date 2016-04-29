@@ -18,14 +18,14 @@ public class Item  :  MonoBehaviour{
     void Start()
     {
         canPickup = false;
-        reccentlyPickupUp = false;
+        //reccentlyPickupUp = true;
     }
 
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("entered");
         if (other.tag == "Player") {canPickup = true;}
-        if (canPickup)
+        if (canPickup && !reccentlyPickupUp)
         {
             //canPickup = true;
             GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -36,22 +36,23 @@ public class Item  :  MonoBehaviour{
 
                 i.AddItem(ItemManager.GetItem(itemName));
                 hud.ChangeUIIcon(ItemManager.GetItem(itemName));
-
-                // if weapon, its going to switch positions (add this)
-                if (canPickup && itype != ItemType.WEAPON)
-                {
-                    ItemManager.DestroyItem(gameObject);
-                }
+                ItemManager.DestroyItem(gameObject);
             }
             else
+            {
                 Debug.Log("player not found");
+            }
+            reccentlyPickupUp = true;
         }
     }
 
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
+        {
             canPickup = false;
+            reccentlyPickupUp = true;
+        }
     }
 
     void OnTriggerExit(Collider other)

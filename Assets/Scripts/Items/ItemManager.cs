@@ -26,21 +26,23 @@ public static class ItemManager
         foreach (var item in items)
         {
             ItemDictionary.Add(item.name, item.GetComponent<Item>());
-            Debug.Log(item.name);
+            //Debug.Log(item.name);
         }
     }
 
     //Used to spawn an item based upon its name at a specific position
     //ToDo Possibly return the instantiated item to the user
-    public static void SpawnItem(string itemKey, Vector3 spawnPosition)
+    public static GameObject SpawnItem(string itemKey, Vector3 spawnPosition)
     {
         if (itemKey != null)
         {
-            GameObject.Instantiate(GetItem(itemKey), spawnPosition, Quaternion.identity);
+            GameObject g =  GameObject.Instantiate(GetItem(itemKey).gameObject, spawnPosition, Quaternion.identity) as GameObject;
+            return g;
         }
         else
         {
             Debug.LogError("Spawning of an item failed!");
+            return null;
         }
     }
 

@@ -37,7 +37,7 @@ public class InvHUD : MonoBehaviour {
         }
         else
         {
-            Debug.Log("change texture");
+            //Debug.Log("change texture");
             inv[(int)i.itype].GetComponent<GUITexture>().texture = FindItemSprite(i.ID);
         }
     }

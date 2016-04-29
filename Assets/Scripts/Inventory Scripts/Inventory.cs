@@ -48,8 +48,6 @@ public class Inventory : MonoBehaviour {
   
     public void AddItem(Item i)
     {
-        Debug.Log("adding");
-        Debug.Log(i.itype);
         // if book add to collection
         if(i.itype == Item.ItemType.BOOK)
         {
@@ -63,7 +61,10 @@ public class Inventory : MonoBehaviour {
         else if (i.itype == Item.ItemType.WEAPON && !i.reccentlyPickupUp)
         {
             if (!i.reccentlyPickupUp)
+            {
+                Debug.Log(i.reccentlyPickupUp);
                 ReplaceWeapon(i);
+            }
         }
 
         // if item exists, ids match, !maxstack: increase quantity
@@ -105,22 +106,20 @@ public class Inventory : MonoBehaviour {
         // get weapon transform
         foreach(Transform tCurrWeap in weaponLoc.transform)
         {
-            Transform temp = tCurrWeap;
-            Transform tParent = tCurrWeap.parent;
-
             // drop current weapon
-            tCurrWeap.parent = pickupItem.transform.parent;
-            tCurrWeap.position = pickupItem.transform.position;
-            tCurrWeap.rotation = Quaternion.Euler(Vector3.zero);
-            tCurrWeap.gameObject.GetComponent<Item>().reccentlyPickupUp = true;
+            tCurrWeap.SetParent(null);
+            tCurrWeap.position = transform.position;
+            tCurrWeap.rotation = Quaternion.Euler(new Vector3(270,0,0));
+            tCurrWeap.GetComponent<Item>().reccentlyPickupUp = true;
             tCurrWeap.GetComponent<Collider>().enabled = true;
 
-            // pickup new weapon
-            pickupItem.transform.parent = tParent;
-            pickupItem.transform.position = new Vector3(tParent.position.x, tParent.position.y, tParent.position.z);
-            pickupItem.transform.localRotation = Quaternion.Euler(new Vector3(270,0,0));
-            pickupItem.reccentlyPickupUp = true;
-            pickupItem.GetComponent<Collider>().enabled = false;
+            // pickup new weapon from DB
+            GameObject g = ItemManager.SpawnItem(pickupItem.itemName, weaponLoc.transform.position);
+            g.transform.SetParent(weaponLoc.transform);
+            g.transform.localRotation = Quaternion.Euler(new Vector3(270,0,0));
+            g.GetComponent<Item>().reccentlyPickupUp = true;
+
+            g.GetComponent<Collider>().enabled = false;
         }
     }
 
