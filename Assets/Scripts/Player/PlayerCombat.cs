@@ -38,7 +38,7 @@ public class PlayerCombat : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Combat
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             melee = !melee;
             MeleeAttack();

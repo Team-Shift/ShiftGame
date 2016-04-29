@@ -4,31 +4,6 @@ using UnityEngine.UI;
 
 public static class _NpcExtend {
 
-    //public GUITexture TextBox;
-    //public GUIText NPCText;
-
-    public static void startPrint(this Transform self, int speech, string text, GUIText guiText)
-    {
-        FarmerSpeech(speech,text);
-        guiText.text = "";
-        for(int i = 0; i < text.Length; i++)
-        {
-            guiText.text = guiText.text + text[i];
-        }
-    }
-
-
-    /*static IEnumerator printText(string Text)
-    {
-        //NPCText.text = "";
-        //for (int i = 0; i < Text.Length; i++)
-        //{
-        //    NPCText.text = NPCText.text + Text[i];
-        //    yield return new WaitForSeconds(0.1f);
-        //}
-    }
-    */
-
     public static void FarmerSpeech(int NPCSpeechIndex, string texts)
     {
         switch (NPCSpeechIndex)
