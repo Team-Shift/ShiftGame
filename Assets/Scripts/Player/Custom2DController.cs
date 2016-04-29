@@ -112,8 +112,8 @@ public class Custom2DController : MonoBehaviour
     */
     void Move2D()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
 
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
@@ -186,6 +186,15 @@ public class Custom2DController : MonoBehaviour
         {
             player.GetComponent<Rigidbody>().AddForce(new Vector3(0, 10000, 0));
             jump = false;
+        }
+
+        if(strafe > 0)
+        {
+            anim.SetFloat("x", -1);
+        }
+        else if(strafe < 0)
+        {
+            anim.SetFloat("x", 1);
         }
 
         if (forwardBack != 0)

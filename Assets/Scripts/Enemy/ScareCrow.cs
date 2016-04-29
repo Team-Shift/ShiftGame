@@ -12,6 +12,7 @@ public class ScareCrow : MonoBehaviour
     public bool showPath;
 
     float teleportTime = 0;
+    float spawnTime = 0;
 
     // Use this for initialization
     void Start()
@@ -37,10 +38,21 @@ public class ScareCrow : MonoBehaviour
             Teleport();
             teleportTime += 20;
             gameObject.transform.eulerAngles = gameObject.transform.rotation.eulerAngles + 180f * Vector3.up;
+            SpawnGhosts();
         }
         else
         {
             teleportTime -= Time.deltaTime;
+        }
+
+        if(spawnTime <= 0)
+        {
+            spawnTime += 5;
+            SpawnGhosts();
+        }
+        else
+        {
+            spawnTime -= Time.deltaTime;
         }
     }
 
@@ -79,6 +91,7 @@ public class ScareCrow : MonoBehaviour
 
     private void SpawnGhosts()
     {
-
+        GameObject ghost1 = Instantiate(ghost, gameObject.transform.position + gameObject.transform.forward, gameObject.transform.rotation) as GameObject;
+        ghost1.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
     }
 }
