@@ -326,7 +326,7 @@ Transform:
   - {fileID: 452128}
   - {fileID: 438716}
   m_Father: {fileID: 427654}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &410812
 Transform:
   m_ObjectHideFlags: 1
@@ -372,7 +372,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.76, y: 1.34, z: 19.69}
+  m_LocalPosition: {x: 0.98, y: 2.04, z: 3.02}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 444594}
@@ -392,7 +392,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 427654}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &416466
 Transform:
   m_ObjectHideFlags: 1
@@ -441,8 +441,8 @@ Transform:
   m_LocalPosition: {x: -0.053, y: -0.026, z: 0.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 413278}
   - {fileID: 402060}
+  - {fileID: 413278}
   m_Father: {fileID: 452912}
   m_RootOrder: 0
 --- !u!4 &432380
@@ -479,7 +479,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.182, y: 0.079, z: 0.162}
+  m_LocalPosition: {x: 0.173, y: 0.075, z: 0.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 402060}
@@ -998,7 +998,7 @@ MonoBehaviour:
   Granularity: 60
   Fps: 60
   MyColor: {r: 1, g: 1, b: 1, a: 1}
-  MyMaterial: {fileID: 2100000, guid: 75f756109f216ad409ff1a5ea7dd7b2c, type: 2}
+  MyMaterial: {fileID: 2100000, guid: df6824c830605f14dbb2163a12036b7c, type: 2}
 --- !u!114 &11451052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1029,6 +1029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SwordTrail: {fileID: 166000}
 --- !u!114 &11462788
 MonoBehaviour:
   m_ObjectHideFlags: 1

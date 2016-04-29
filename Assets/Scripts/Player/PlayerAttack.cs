@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class PlayerAttack : MonoBehaviour {
+
+    public GameObject SwordTrail;
+
     Collider c;
 
     void Start()
@@ -37,5 +40,15 @@ public class PlayerAttack : MonoBehaviour {
     {
         if(c)
             c.enabled = false;
+    }
+
+    void EnableSwordTrail()
+    {
+        SwordTrail.SetActive(true);
+    }
+
+    void DisableSwordTrail()
+    {
+        SwordTrail.SetActive(false);
     }
 }
