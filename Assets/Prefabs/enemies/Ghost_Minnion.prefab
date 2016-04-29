@@ -64,7 +64,6 @@ GameObject:
   - 65: {fileID: 6553390}
   - 114: {fileID: 11448836}
   - 82: {fileID: 8254934}
-  - 114: {fileID: 11450878}
   m_Layer: 0
   m_Name: Ghost_Minnion
   m_TagString: Untagged
@@ -478,24 +477,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 15
---- !u!114 &11450878
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154112}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fefa54b60b29f944baf7284fecb8b60c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  startHealth: 1
-  hitPart: {fileID: 174080}
-  parent: {fileID: 154112}
-  hurtSound: {fileID: 0}
-  xOffset: 0.5
-  zOffset: 0.5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
