@@ -112,8 +112,9 @@ public class Custom2DController : MonoBehaviour
     */
     void Move2D()
     {
-        //Cursor.lockState = CursorLockMode.None;
-        //Cursor.visible = true;
+        //SO I CAN MOVE MY GODDAMN MOUSE IN 2D DON'T FUCKING COMMENT IT OUT FUCKERS IT DOESNT MAKE THE GAME ANY WORSE THEN IT ALREADY IS >:U 
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
