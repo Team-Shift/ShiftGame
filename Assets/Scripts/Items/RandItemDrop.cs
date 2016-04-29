@@ -6,14 +6,11 @@ public class RandItemDrop : MonoBehaviour {
 
     Animator anim;
     List<GameObject> unlockedItems;
-    public  bool canDrop;
-
 	// Use this for initialization
 	void Start ()
     {
         unlockedItems = new List<GameObject>();
         anim = GetComponent<Animator>();
-        canDrop = true;
 	}
 	
 	// Update is called once per frame
@@ -23,9 +20,8 @@ public class RandItemDrop : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && canDrop) 
+        if (other.tag == "Player")
         {
-            canDrop = false;
             anim.SetBool("canOpen", true);
 
             // store all unlocked items
