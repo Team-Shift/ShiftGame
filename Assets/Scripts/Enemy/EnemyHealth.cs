@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour {
     public int health;
     public int startHealth = 5;
     public GameObject hitPart;
-    public GameObject parent;
+   // public GameObject parent;
     private AudioSource enemySound;
     public AudioClip hurtSound;
 
@@ -25,7 +25,8 @@ public class EnemyHealth : MonoBehaviour {
         playerScript = player.GetComponent<PlayerCombat>();
 
         enemySound = gameObject.GetComponent<AudioSource>();
-        parent = this.gameObject.transform.parent.gameObject;
+        
+        //parent = this.gameObject.transform.parent.gameObject;
         health = startHealth;
     }
 
@@ -70,14 +71,15 @@ public class EnemyHealth : MonoBehaviour {
         {
             Debug.Log("enemy " + this.name + " has died.");
             Instantiate(hitPart, transform.position, Quaternion.identity);
-            Destroy(parent);
+            Destroy(this.transform.parent);
+            Destroy(this.gameObject);
         }
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Vector3 gizmosPos = new Vector3(parent.transform.position.x, 0, parent.transform.position.z + yOffset);
+        Vector3 gizmosPos = new Vector3(this.transform.parent.transform.position.x, 0, this.transform.parent.transform.position.z + yOffset);
         Vector3 gizmosSize = new Vector3(xOffset, 1, zOffset);
         Gizmos.DrawWireCube(gizmosPos, gizmosSize);
     }
@@ -90,7 +92,7 @@ public class EnemyHealth : MonoBehaviour {
         angleB = Mathf.Round(angleB);
         Vector3 tmp = new Vector3(angleB, 0, 0);
 
-        a = Mathf.Tan((tmp.x * Mathf.PI) / 180) * parent.transform.position.y;
+        a = Mathf.Tan((tmp.x * Mathf.PI) / 180) * this.transform.parent.transform.position.y;
 
         return a;
     }

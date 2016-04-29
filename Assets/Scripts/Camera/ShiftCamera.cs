@@ -22,7 +22,7 @@ public class ShiftCamera : MonoBehaviour{
         }
     }
 
-    private void LateUpdate()
+    /*private void LateUpdate()
     {
         if (!_changing)
         {
@@ -68,7 +68,7 @@ public class ShiftCamera : MonoBehaviour{
             GetComponent<Camera>().ResetProjectionMatrix();
         }
     }
-
+    */
     private Matrix4x4 MatrixLerp(Matrix4x4 from, Matrix4x4 to, float t)
     {
         t = Mathf.Clamp(t, 0.0f, 1.0f);
