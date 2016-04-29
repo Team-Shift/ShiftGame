@@ -79,7 +79,9 @@ public class ScareCrow : MonoBehaviour
 
     private void Teleport()
     {
-        if(gameObject.transform.position == pathList[0])
+        spawnTime += 5;
+
+        if (gameObject.transform.position == pathList[0])
         {
             gameObject.transform.position = pathList[1];
         }
@@ -93,5 +95,9 @@ public class ScareCrow : MonoBehaviour
     {
         GameObject ghost1 = Instantiate(ghost, gameObject.transform.position + gameObject.transform.forward, gameObject.transform.rotation) as GameObject;
         ghost1.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
+        GameObject ghost2 = Instantiate(ghost, gameObject.transform.position + gameObject.transform.forward + (-gameObject.transform.right * 2), gameObject.transform.rotation) as GameObject;
+        ghost2.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
+        GameObject ghost3 = Instantiate(ghost, gameObject.transform.position + gameObject.transform.forward + (gameObject.transform.right * 2), gameObject.transform.rotation) as GameObject;
+        ghost3.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
     }
 }

@@ -57,7 +57,7 @@ public class Custom2DController : MonoBehaviour
     void Update()
     {
 
-        if (player.transform.position.y <= 0)
+        if (player.transform.position.y <= -10)
         {
             anim.SetFloat("DeathIndex", 1);
             anim.SetTrigger("Death");

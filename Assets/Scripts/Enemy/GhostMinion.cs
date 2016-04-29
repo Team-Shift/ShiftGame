@@ -3,10 +3,19 @@ using System.Collections;
 
 public class GhostMinion : MonoBehaviour
 {
-    // Use this for initialization
-    void Start()
-    {
+    public float lifeTime = 0;
 
+    // Use this for initialization
+    void Update()
+    {
+        if(lifeTime <= 0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            lifeTime -= Time.deltaTime;
+        }
     }
 
     void OnTriggerEnter(Collider col)

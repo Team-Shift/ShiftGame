@@ -23,6 +23,7 @@ public class Inventory : MonoBehaviour {
     {
         invItems = new s_Items[invSize];
         goldCount = 0;
+        
     }
 
     void Update()
@@ -49,9 +50,8 @@ public class Inventory : MonoBehaviour {
     public void AddItem(Item i)
     {
         Debug.Log("adding");
-        Debug.Log(i.itype);
         // if book add to collection
-        if(i.itype == Item.ItemType.BOOK)
+        if (i.itype == Item.ItemType.BOOK)
         {
             // unlock book lore
         }
@@ -63,7 +63,10 @@ public class Inventory : MonoBehaviour {
         else if (i.itype == Item.ItemType.WEAPON && !i.reccentlyPickupUp)
         {
             if (!i.reccentlyPickupUp)
+            {
                 ReplaceWeapon(i);
+                Debug.Log("replacing");
+            }
         }
 
         // if item exists, ids match, !maxstack: increase quantity
@@ -101,26 +104,36 @@ public class Inventory : MonoBehaviour {
         Debug.Log("Swapping Weapons");
         // find locator/parent for weapon
         GameObject weaponLoc = GameObject.FindGameObjectWithTag("Weapon");
+        Debug.Log(weaponLoc.name);
+        // error check to find locator
+        Debug.Assert(weaponLoc != null);
 
         // get weapon transform
         foreach(Transform tCurrWeap in weaponLoc.transform)
         {
-            Transform temp = tCurrWeap;
-            Transform tParent = tCurrWeap.parent;
+            Transform tempPos = tCurrWeap;
+            //Transform tParent = tCurrWeap.parent;
 
             // drop current weapon
-            tCurrWeap.parent = pickupItem.transform.parent;
-            tCurrWeap.position = pickupItem.transform.position;
+            //tCurrWeap.parent = pickupItem.transform.parent;
+            //tCurrWeap.position = pickupItem.transform.position;
+            //tCurrWeap.rotation = Quaternion.Euler(Vector3.zero);
+            //tCurrWeap.gameObject.GetComponent<Item>().reccentlyPickupUp = true;
+
+            tCurrWeap.parent = null;
+            tCurrWeap.position = gameObject.transform.position;
             tCurrWeap.rotation = Quaternion.Euler(Vector3.zero);
             tCurrWeap.gameObject.GetComponent<Item>().reccentlyPickupUp = true;
-            tCurrWeap.GetComponent<Collider>().enabled = true;
+            //tCurrWeap.GetComponent<Collider>().enabled = true;
 
-            // pickup new weapon
-            pickupItem.transform.parent = tParent;
-            pickupItem.transform.position = new Vector3(tParent.position.x, tParent.position.y, tParent.position.z);
-            pickupItem.transform.localRotation = Quaternion.Euler(new Vector3(270,0,0));
-            pickupItem.reccentlyPickupUp = true;
-            pickupItem.GetComponent<Collider>().enabled = false;
+            // pickup new weapon (spaw from DB)
+            GameObject g = ItemManager.SpawnItem(pickupItem.itemName, weaponLoc.transform.position);
+            g.transform.SetParent(weaponLoc.transform);
+            //pickupItem.transform.parent = weaponLoc.transform;
+            //pickupItem.transform.position = weaponLoc.transform.position;
+            //pickupItem.transform.localRotation = Quaternion.Euler(new Vector3(270,0,0));
+            //pickupItem.reccentlyPickupUp = true;
+            //pickupItem.GetComponent<Collider>().enabled = false;
         }
     }
 
