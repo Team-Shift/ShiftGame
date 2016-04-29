@@ -71,7 +71,7 @@ public class EnemyHealth : MonoBehaviour {
         {
             Debug.Log("enemy " + this.name + " has died.");
             Instantiate(hitPart, transform.position, Quaternion.identity);
-            Destroy(this.transform.parent);
+            Destroy(this.transform.parent.gameObject);
             Destroy(this.gameObject);
         }
     }
