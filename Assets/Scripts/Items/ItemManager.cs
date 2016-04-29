@@ -59,4 +59,20 @@ public static class ItemManager
         UnlockedItems.Add(ItemDictionary[unlocked_item.name].name, unlocked_item);
         Debug.Log(UnlockedItems.Count);
     }
+
+    //Returns a list of weapons from the UnlockedItems List;
+    //Parameter-Item.ItemType: Type of unlocked items you want returned
+    public static List<Item> GetUnlockedItems(Item.ItemType item_type)
+    {
+        List<Item> unlockedItems = new List<Item>();
+
+        foreach (var item in UnlockedItems)
+        {
+            if (item.Value.itype == item_type)
+            {
+                unlockedItems.Add(item.Value);
+            }
+        }
+        return unlockedItems;
+    }
 }
