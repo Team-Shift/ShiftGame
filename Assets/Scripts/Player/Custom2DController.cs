@@ -33,8 +33,6 @@ public class Custom2DController : MonoBehaviour
 
     //Combat
 
-    MenuManager sceneShit;
-
 
     // Use this for initialization
     void Start()
@@ -45,12 +43,6 @@ public class Custom2DController : MonoBehaviour
         CameraSwitch = false;
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
         pivotPoint = GameObject.Find("PivotPoint");
-
-        
-        sceneShit = FindObjectOfType<MenuManager>();
-
-        
-
     }
 
     // Update is called once per frame
@@ -62,7 +54,6 @@ public class Custom2DController : MonoBehaviour
             anim.SetFloat("DeathIndex", 1);
             anim.SetTrigger("Death");
             this.transform.LoadScene(1);
-            //sceneShit.TownScene();
         }
 
         //Movement
