@@ -1,32 +1,15 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &132828
+--- !u!1 &173582
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 438794}
-  - 65: {fileID: 6547508}
-  - 114: {fileID: 11445216}
-  m_Layer: 0
-  m_Name: Axe
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &171324
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 489180}
-  - 33: {fileID: 3365988}
-  - 23: {fileID: 2396358}
+  - 4: {fileID: 484022}
+  - 33: {fileID: 3306352}
+  - 23: {fileID: 2388106}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -34,37 +17,54 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &438794
+--- !u!1 &177276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 477170}
+  - 65: {fileID: 6519538}
+  - 114: {fileID: 11443292}
+  m_Layer: 0
+  m_Name: FireScroll
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &477170
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 132828}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 2.9556189, y: -1.3006215, z: 4.806416}
+  m_GameObject: {fileID: 177276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3440659, y: -1.3006215, z: 3.7935944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 489180}
+  - {fileID: 484022}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &489180
+--- !u!4 &484022
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 171324}
-  m_LocalRotation: {x: 0.5000005, y: 0.5, z: 0.5, w: 0.49999958}
+  m_GameObject: {fileID: 173582}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 438794}
+  m_Father: {fileID: 477170}
   m_RootOrder: 0
---- !u!23 &2396358
+--- !u!23 &2388106
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 171324}
+  m_GameObject: {fileID: 173582}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,43 +85,43 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3365988
+--- !u!33 &3306352
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 171324}
-  m_Mesh: {fileID: 4300000, guid: 7323ce9ae6e2f7e4baeca24c04680f20, type: 3}
---- !u!65 &6547508
+  m_GameObject: {fileID: 173582}
+  m_Mesh: {fileID: 4300000, guid: 73e061d748c504a47b1b14e776d705bc, type: 3}
+--- !u!65 &6519538
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 132828}
+  m_GameObject: {fileID: 177276}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0.2}
---- !u!114 &11445216
+  m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!114 &11443292
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 132828}
+  m_GameObject: {fileID: 177276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d43ce77390beaa47a90c6d8572255b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 61130d86063bb6646afeee502829773f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  itemName: Axe
+  itemName: FireScroll
   canPickup: 0
   reccentlyPickupUp: 0
   cost: 0
-  itype: 0
-  atkAmount: 2
+  itype: 3
+  projectile: {fileID: 179974, guid: 71a1486ace4ad7e4cae66d9e20f9919a, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -130,30 +130,26 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
-      propertyPath: m_LocalRotation.y
-      value: 0
+      propertyPath: itype
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: m_LocalRotation.w
+      propertyPath: m_LocalRotation.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalRotation.z
-      value: 0
+      propertyPath: m_LocalRotation.w
+      value: -0.00000016292068
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: itemName
-      value: Axe
+      value: FireScroll
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: atkAmount
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 179974, guid: 71a1486ace4ad7e4cae66d9e20f9919a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 132828}
+  m_RootGameObject: {fileID: 177276}
   m_IsPrefabParent: 1

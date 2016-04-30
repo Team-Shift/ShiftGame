@@ -36,6 +36,7 @@ public static class ItemManager
     {
         if (itemKey != null)
         {
+            Debug.Log(GetItem(itemKey));
             GameObject g =  GameObject.Instantiate(GetItem(itemKey).gameObject, spawnPosition, Quaternion.identity) as GameObject;
             return g;
         }

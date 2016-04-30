@@ -44,7 +44,7 @@ public class EnemyHealth : MonoBehaviour {
     {
         enemySound.PlayOneShot(hurtSound);
         Instantiate(hitPart, transform.position, Quaternion.identity);
-        health--;
+        health -= player.GetComponent<PlayerCombat>().Attack;
     }
 
     void FixedUpdate()

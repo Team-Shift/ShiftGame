@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 471380}
   - 33: {fileID: 3312868}
   - 65: {fileID: 6563816}
-  - 114: {fileID: 11473652}
+  - 114: {fileID: 11454462}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -140,7 +140,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0.2}
---- !u!114 &11473652
+--- !u!114 &11454462
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -148,15 +148,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 170840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d12ff2619de84bb670835a726fdb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d43ce77390beaa47a90c6d8572255b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
+  ID: 0
   itemName: Sword
   canPickup: 0
   reccentlyPickupUp: 0
   cost: 0
   itype: 0
+  atkAmount: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -171,6 +172,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: reccentlyPickupUp
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: atkAmount
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

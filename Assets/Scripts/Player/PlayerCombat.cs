@@ -22,6 +22,7 @@ public class PlayerCombat : MonoBehaviour {
 
     //[HideInInspector]
     public int Health = 3;
+    public int Attack;
 
     private Animator anim;
 
@@ -33,6 +34,7 @@ public class PlayerCombat : MonoBehaviour {
         anim = gameObject.GetComponent<Animator>();
         hearts = gameObject.GetComponent<HealthUI>();
         Health = 3;
+        Attack = 0;
     }
 	
 	// Update is called once per frame
@@ -203,5 +205,15 @@ public class PlayerCombat : MonoBehaviour {
         yield return new WaitForSeconds(waitTime);
 
         gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+    }
+
+    public void ModifyHealth(int amount)
+    {
+        Health += amount;
+    }
+
+    public void ModifyAttack(int amount)
+    {
+        Attack = amount;
     }
 }

@@ -24,7 +24,7 @@ public class HealthUI : MonoBehaviour {
         SpawnHeartContainer(AmountOfHeartContainer);
     }
 
-    void SpawnHeart(int HeartAmount)
+    public void SpawnHeart(int HeartAmount)
     {
         for (int i = 0; i < Health; i++)
         {
@@ -32,7 +32,7 @@ public class HealthUI : MonoBehaviour {
         }
     }
 
-    void SpawnHeartContainer(int HeartAmount)
+    public void SpawnHeartContainer(int HeartAmount)
     {
 
         for (int i = 0; i < Health; i++)

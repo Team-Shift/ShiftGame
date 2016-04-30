@@ -34,6 +34,13 @@ public class Inventory : MonoBehaviour {
             invItems[3] = invItems[4];
             invItems[4] = temp;
         }
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            // get from  DB
+            Item i = ItemManager.GetItem(invItems[3].item.itemName);
+            (i as iConsumable).OnUse(gameObject);
+        }
+
         // gold hack
         if(Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.P))
         {
@@ -48,23 +55,50 @@ public class Inventory : MonoBehaviour {
   
     public void AddItem(Item i)
     {
-        // if book add to collection
-        if(i.itype == Item.ItemType.BOOK)
+        switch(i.itype)
         {
-            // unlock book lore
-        }
-        else if(i.itype == Item.ItemType.GOLD)
-        {
-            goldCount += goldPickupAmnt;
-        }
-        // if weapon: swap 
-        else if (i.itype == Item.ItemType.WEAPON && !i.reccentlyPickupUp)
-        {
-            if (!i.reccentlyPickupUp)
-            {
-                Debug.Log(i.reccentlyPickupUp);
-                ReplaceWeapon(i);
-            }
+            case Item.ItemType.BOOK:
+                // unlock book lore
+                break;
+
+            case Item.ItemType.GOLD:
+                goldCount += goldPickupAmnt;
+                break;
+
+            case Item.ItemType.WEAPON:
+                if (!i.reccentlyPickupUp)
+                {
+                    Debug.Log(i.reccentlyPickupUp);
+                    ReplaceWeapon(i);
+
+                    // IF THIS FAILS, SOMETHING BAD GOT IN HERE
+                    Debug.Assert((i is iEquipable));
+
+                    (i as iEquipable).OnUse(gameObject);
+                }
+                break;
+            case Item.ItemType.CONSUMABLE:
+                s_Items temp = new s_Items();
+
+                temp.item = i;
+                temp.quantity = 1;
+                if (invItems[3].quantity == 0)
+                {
+                    invItems[3] = temp;
+                }
+                else // replace
+                {
+                    Debug.Log("4th slot");
+                    if (invItems[4].quantity > 0 && invItems[3].quantity > 0)
+                    {
+                        Debug.Log(invItems[4].item.itemName);
+                        GameObject g = ItemManager.SpawnItem(invItems[4].item.itemName, transform.position);
+
+                        g.GetComponent<Item>().reccentlyPickupUp = true;
+                    }
+                    invItems[4] = temp;
+                }
+                break;
         }
 
         // if item exists, ids match, !maxstack: increase quantity
@@ -75,26 +109,6 @@ public class Inventory : MonoBehaviour {
 
         // if max stack: dont pickup
         else if (invItems[(int)i.itype].quantity >= itemMaxStack && i.itype != Item.ItemType.CONSUMABLE)  i.canPickup = false; 
-
-        // else: new item ID
-        else
-        {
-            // store new itemData in temp
-            s_Items temp = new s_Items();
-
-            temp.item = i;
-            temp.quantity = 1;
-            // if consumable: check both slots for availability
-            if (i.itype == Item.ItemType.CONSUMABLE && invItems[(int)i.itype].quantity > 0 && invItems[4].quantity == 0)
-            {
-                invItems[4] = temp;
-            }
-            else
-            {
-                invItems[(int)i.itype] = temp;
-                if (i.itype == Item.ItemType.CONSUMABLE) { /*DROP THE CURRENT CONSUMABLE*/ }
-            }
-        }
     }
 
     void ReplaceWeapon(Item pickupItem)
