@@ -630,7 +630,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 486058656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d12ff2619de84bb670835a726fdb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d43ce77390beaa47a90c6d8572255b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
@@ -639,6 +639,7 @@ MonoBehaviour:
   reccentlyPickupUp: 0
   cost: 0
   itype: 0
+  atkAmount: 2
 --- !u!1 &574883039
 GameObject:
   m_ObjectHideFlags: 0
