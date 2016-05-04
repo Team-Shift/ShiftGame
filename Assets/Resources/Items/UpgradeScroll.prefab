@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d43ce77390beaa47a90c6d8572255b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  sprite: {fileID: 2800000, guid: c17502eea45ce234d872f294b7531f09, type: 3}
   itemName: UpgradeScroll
   canPickup: 0
   reccentlyPickupUp: 0
@@ -145,6 +145,10 @@ Prefab:
       propertyPath: itemName
       value: UpgradeScroll
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 2800000, guid: c17502eea45ce234d872f294b7531f09, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131414}

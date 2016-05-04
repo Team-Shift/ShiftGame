@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ce6eff3baa13e49816728c017bcaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  sprite: {fileID: 2800000, guid: d383fde6bb93e50438576ac68d3b0347, type: 3}
   itemName: ReturnOrb
   canPickup: 0
   reccentlyPickupUp: 0
@@ -141,6 +141,10 @@ Prefab:
       propertyPath: sceneToLoad
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 2800000, guid: d383fde6bb93e50438576ac68d3b0347, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 183662}

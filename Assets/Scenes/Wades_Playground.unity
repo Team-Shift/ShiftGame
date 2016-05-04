@@ -352,7 +352,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 435140, guid: 1c14c5aeaa8ec7c42b840c415d42619f, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c14c5aeaa8ec7c42b840c415d42619f, type: 2}
@@ -633,7 +633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d43ce77390beaa47a90c6d8572255b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  sprite: {fileID: 0}
   itemName: Axe
   canPickup: 0
   reccentlyPickupUp: 0
@@ -853,7 +853,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 463504, guid: 15c2ab278a0f2c84da5fa4aadeaefcc3, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15c2ab278a0f2c84da5fa4aadeaefcc3, type: 2}
@@ -896,6 +896,10 @@ Prefab:
     - target: {fileID: 411682, guid: 99446094625963448a4fa949eca7066a, type: 2}
       propertyPath: m_RootOrder
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 11402348, guid: 99446094625963448a4fa949eca7066a, type: 2}
+      propertyPath: itype
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 99446094625963448a4fa949eca7066a, type: 2}
@@ -1001,7 +1005,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 471380, guid: 508b4b5885a031c4aa9cb3ce15efcd5f, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 508b4b5885a031c4aa9cb3ce15efcd5f, type: 2}

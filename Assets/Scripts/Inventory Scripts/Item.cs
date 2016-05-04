@@ -7,7 +7,8 @@ public class Item  :  MonoBehaviour{
     [HideInInspector]
     public enum ItemType{WEAPON, ARMOR, ABILITY, CONSUMABLE, BOOK, GOLD};
 
-    public int ID;
+    //public int ID;
+    public Texture sprite;
     public string itemName;
     [HideInInspector]
     public bool canPickup;

@@ -26,19 +26,30 @@ public class InvHUD : MonoBehaviour {
 
     public void ChangeUIIcon(Item i)
     {
+        //Debug.Log("type: " + i.itype + ", spriteName: " + i.sprite);
         if(i.itype == Item.ItemType.GOLD)
         {
             // increase gold display
         }
         // if first consumable slot is taken
-        else if (i.itype == Item.ItemType.CONSUMABLE && inv[(int)i.itype].GetComponent<GUITexture>().texture != null && inv[4].GetComponent<GUITexture>().texture == null)
+        else if (i.itype == Item.ItemType.CONSUMABLE)
         {
-            inv[4].GetComponent<GUITexture>().texture = FindItemSprite(i.ID);
+            // if no consumables
+            if (inv[3].GetComponent<GUITexture>().texture == null)
+            {
+                inv[3].GetComponent<GUITexture>().texture = i.sprite;
+            }
+            else
+            {
+                inv[4].GetComponent<GUITexture>().texture = i.sprite;
+            }
+            //inv[4].GetComponent<GUITexture>().texture = FindItemSprite(i.ID);
         }
         else
         {
-            //Debug.Log("change texture");
-            inv[(int)i.itype].GetComponent<GUITexture>().texture = FindItemSprite(i.ID);
+            Debug.Log("another spot");
+            // any other itemType
+            inv[(int)i.itype].GetComponent<GUITexture>().texture = i.sprite;
         }
     }
 
@@ -50,6 +61,8 @@ public class InvHUD : MonoBehaviour {
 
     Texture FindItemSprite(int i)
     {
+        //Item  i = ItemManager.GetItem(i.itemName);
+        // return i.texture;
         Texture temp;
         // CHANGE search db by itemID
         if (i == 0)

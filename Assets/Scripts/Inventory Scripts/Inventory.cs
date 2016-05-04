@@ -88,7 +88,6 @@ public class Inventory : MonoBehaviour {
                 }
                 else // replace
                 {
-                    Debug.Log("4th slot");
                     if (invItems[4].quantity > 0 && invItems[3].quantity > 0)
                     {
                         Debug.Log(invItems[4].item.itemName);
@@ -102,7 +101,7 @@ public class Inventory : MonoBehaviour {
         }
 
         // if item exists, ids match, !maxstack: increase quantity
-        if (invItems[(int)i.itype].item != null && i.ID == invItems[(int)i.itype].item.ID && invItems[(int)i.itype].quantity < itemMaxStack)
+        if (invItems[(int)i.itype].item != null && i.itemName == invItems[(int)i.itype].item.itemName && invItems[(int)i.itype].quantity < itemMaxStack)
         {
             invItems[(int)i.itype].quantity++;
         }

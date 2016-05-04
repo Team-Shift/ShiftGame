@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 public class Bank : MonoBehaviour {
     
-    public List<ItemLibrary.ItemData> bankList;
+    public List<Inventory.s_Items> bankList;
 
     // Use this for initialization
     void Start () {
-        bankList = new List<ItemLibrary.ItemData>();
+        bankList = new List<Inventory.s_Items>();
 	}
 	
 	// Update is called once per frame
@@ -17,34 +17,21 @@ public class Bank : MonoBehaviour {
 	}
 
     // switches inv and bank item
-    void RetrieveItem(int id)
+    void RetrieveItem(Item i)
     {
         // get players inv
         Inventory playerInv = GameObject.FindWithTag("Player").GetComponent<Inventory>();
-
-        // get index/itemType
-        int index = (int)bankList[id].itemType;
-
-        // create temp item (item coming from bank)
-        Inventory.s_Items temp = new Inventory.s_Items();
-        temp.item.ID = id;
-        temp.item.itemName = bankList[id].name;
-        temp.item.canPickup = false;
-        temp.item.reccentlyPickupUp = false;
-        temp.item.itype = bankList[id].itemType;
+        playerInv.AddItem(i);
 
         // item in inventory to bank
-        AddItem(playerInv.invItems[index].item.ID);
-
-        // add temp item to inventory
-        playerInv.invItems[index] = temp;
+        AddItemToBank(playerInv.invItems[(int)i.itype].item.itemName);
     }
 
-    public void AddItem(int id)
+    public void AddItemToBank(string name)
     {
-        // access db
-        ItemLibrary itemDB = new ItemLibrary();
-        // add correct item 
-        bankList.Add(itemDB.allItems[id]);
+        Inventory.s_Items temp = new Inventory.s_Items();
+        temp.item = ItemManager.GetItem(name);
+        temp.quantity = 1;
+        bankList.Add(temp);
     }
 }
