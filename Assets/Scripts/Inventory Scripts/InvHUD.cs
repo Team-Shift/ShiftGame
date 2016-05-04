@@ -13,7 +13,7 @@ public class InvHUD : MonoBehaviour {
         }
 	}
 	
-    void FixedUpdate()
+    void Update()
     {
         // switch consumables
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -77,5 +77,4 @@ public class InvHUD : MonoBehaviour {
             temp = Resources.Load<Texture>("ItemSprites/SwordIcon");
         return temp;
     }
-
 }

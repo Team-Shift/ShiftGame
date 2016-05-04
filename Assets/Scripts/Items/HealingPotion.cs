@@ -11,11 +11,11 @@ public class HealingPotion : Item, iConsumable
         player.GetComponent<PlayerCombat>().ModifyHealth(value);
 
         //update UI
-        player.GetComponent<HealthUI>().SpawnHeart(value); // this not working
+        player.GetComponent<HealthUI>().HealHeart();
 
         // delete item in inventory
 
         //Heal Someone
-        Debug.Log("healing by " + value);
+        //Debug.Log("healing by " + value);
     }
 }

@@ -120,7 +120,7 @@ MonoBehaviour:
   canPickup: 0
   reccentlyPickupUp: 0
   cost: 0
-  itype: 3
+  itype: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -130,7 +130,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: itype
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.y

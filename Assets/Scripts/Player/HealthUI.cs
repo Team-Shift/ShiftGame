@@ -26,7 +26,7 @@ public class HealthUI : MonoBehaviour {
 
     public void SpawnHeart(int HeartAmount)
     {
-        for (int i = 0; i < Health; i++)
+        for (int i = 0; i < HeartAmount; i++)
         {
             HeartFillList.Add(((GUITexture)Instantiate(HeartFillTexture, new Vector2(i * XOffset + .07f, YOffset), Quaternion.identity)));
         }
@@ -35,7 +35,7 @@ public class HealthUI : MonoBehaviour {
     public void SpawnHeartContainer(int HeartAmount)
     {
 
-        for (int i = 0; i < Health; i++)
+        for (int i = 0; i < HeartAmount; i++)
         {
             HeartContainerList.Add(((GUITexture)Instantiate(HeartContainerTexture, new Vector2(i * XOffset + .07f, YOffset), Quaternion.identity)));
         }
@@ -53,9 +53,9 @@ public class HealthUI : MonoBehaviour {
     {
         if (HeartFillList.Count < HeartContainerList.Count)
         {
-            Health++;
+            //Health++;
             int HeartFillIndex = HeartFillList.Count;
-            HeartFillList.Add(((GUITexture)Instantiate(HeartFillTexture, new Vector2(HeartFillIndex * XOffset + .07f, YOffset), Quaternion.identity)));
+            HeartFillList.Add(((GUITexture)Instantiate(HeartFillTexture, new Vector3(HeartFillIndex * XOffset + .07f, YOffset, 1), Quaternion.identity)));
         }
     }
 

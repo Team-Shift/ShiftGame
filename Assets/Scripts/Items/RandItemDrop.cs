@@ -31,8 +31,8 @@ public class RandItemDrop : MonoBehaviour {
             //}
 
             // choose random item
-            string itemName = unlockedItems[Random.Range(0, unlockedItems.Count - 1)].name;
-            ItemManager.SpawnItem(itemName, gameObject.transform.position);
+            //string itemName = unlockedItems[Random.Range(0, unlockedItems.Count - 1)].name;
+            //ItemManager.SpawnItem(itemName, gameObject.transform.position);
         }
     }
 }

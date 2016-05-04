@@ -24,7 +24,7 @@ public class Item  :  MonoBehaviour{
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("entered");
+        //Debug.Log("entered");
         if (other.tag == "Player") {canPickup = true;}
         if (canPickup && !reccentlyPickupUp)
         {
@@ -37,6 +37,8 @@ public class Item  :  MonoBehaviour{
 
                 i.AddItem(ItemManager.GetItem(itemName));
                 hud.ChangeUIIcon(ItemManager.GetItem(itemName));
+                // mark item as unlocked/ add to drop list
+                ItemManager.UnlockItem(this);
                 ItemManager.DestroyItem(gameObject);
             }
             else

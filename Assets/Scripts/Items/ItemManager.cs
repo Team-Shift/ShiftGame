@@ -36,7 +36,7 @@ public static class ItemManager
     {
         if (itemKey != null)
         {
-            Debug.Log(GetItem(itemKey));
+            //Debug.Log(GetItem(itemKey));
             GameObject g =  GameObject.Instantiate(GetItem(itemKey).gameObject, spawnPosition, Quaternion.identity) as GameObject;
             return g;
         }
@@ -59,23 +59,41 @@ public static class ItemManager
 
     public static void UnlockItem(Item unlocked_item)
     {
-        UnlockedItems.Add(ItemDictionary[unlocked_item.name].name, unlocked_item);
-        Debug.Log(UnlockedItems.Count);
+        // only add if item doesnt exist
+        if (ItemDictionary[unlocked_item.itemName] == null)
+        {
+            UnlockedItems.Add(unlocked_item.itemName, ItemDictionary[unlocked_item.itemName]);
+            Debug.Log(UnlockedItems.Count);
+        }
     }
 
     //Returns a list of weapons from the UnlockedItems List;
     //Parameter-Item.ItemType: Type of unlocked items you want returned
     public static List<Item> GetUnlockedItems(Item.ItemType item_type)
     {
-        List<Item> unlockedItems = new List<Item>();
+        List<Item> tempItems = new List<Item>();
 
         foreach (var item in UnlockedItems)
         {
-            if (item.Value.itype == item_type)
+            //Debug.Log(item);
+            if(item.Value != null)
             {
-                unlockedItems.Add(item.Value);
+                if (item.Value.itype == item_type)
+                {
+                    tempItems.Add(item.Value);
+                }
             }
         }
-        return unlockedItems;
+        //Debug.Log(tempItems.Count);
+        return tempItems;
+    }
+
+    // unlocks all items in Resources folder **only for testing purposes**
+    public static void UnlockAllItems()
+    {
+        foreach(var v in ItemDictionary)
+        {
+            UnlockedItems.Add(v.Key, v.Value);
+        }
     }
 }

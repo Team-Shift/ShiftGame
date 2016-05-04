@@ -19,10 +19,13 @@ public class Inventory : MonoBehaviour {
     public int goldCount;
     public int goldPickupAmnt = 5;
 
+    InvHUD InvUI;
+
     void Start()
     {
         invItems = new s_Items[invSize];
         goldCount = 0;
+        InvUI = GameObject.Find("ItemIcons").GetComponent<InvHUD>();
     }
 
     void Update()
@@ -34,18 +37,39 @@ public class Inventory : MonoBehaviour {
             invItems[3] = invItems[4];
             invItems[4] = temp;
         }
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if(Input.GetKeyDown(KeyCode.Alpha1) && invItems[3].item != null)
         {
             // get from  DB
             Item i = ItemManager.GetItem(invItems[3].item.itemName);
             (i as iConsumable).OnUse(gameObject);
+
+            // delete item from inv
+            invItems[3].item = null;
+            invItems[3].quantity--;
+
+            // remove item on UI
+            InvUI.inv[3].GetComponent<GUITexture>().texture = null;
         }
 
-        // gold hack
-        if(Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && invItems[4].item != null)
+        {
+            Item i = ItemManager.GetItem(invItems[4].item.itemName);
+            (i as iConsumable).OnUse(gameObject);
+
+            // delete item from inv
+            invItems[4].item = null;
+            invItems[4].quantity--;
+
+            // remove item on UI
+            InvUI.inv[4].GetComponent<GUITexture>().texture = null;
+        }
+
+            // gold hack
+            if (Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.P))
         {
             goldCount = 99999;
         }
+        
     }
 
     void OnMouseOver()
@@ -90,7 +114,7 @@ public class Inventory : MonoBehaviour {
                 {
                     if (invItems[4].quantity > 0 && invItems[3].quantity > 0)
                     {
-                        Debug.Log(invItems[4].item.itemName);
+                        //Debug.Log(invItems[4].item.itemName);
                         GameObject g = ItemManager.SpawnItem(invItems[4].item.itemName, transform.position);
 
                         g.GetComponent<Item>().reccentlyPickupUp = true;

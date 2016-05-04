@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class ShopkeeperInv : MonoBehaviour {
 
     // { [0]Weapon, [1]armor, [2]consumable, [3]consumable, [4]ability }
-    public Item[]itemsForSale;
+    public List<Item>itemsForSale;
     // just call ItemManager.function()
 
     [HideInInspector]
@@ -13,12 +13,23 @@ public class ShopkeeperInv : MonoBehaviour {
     GameObject player;
     public float resellPerc = 0.3f;
 
+    public List<Item> unlockedWeapons;
+    public List<Item> unlockedArmor;
+    public List<Item> unlockedConsumables;
+    public List<Item> unlockedAbilities;
+
     // Use this for initialization
     void Start () {
         // create array
-        itemsForSale = new Item[numItems];
+        itemsForSale = new List<Item>();
         player = GameObject.FindGameObjectWithTag("Player");
 
+        unlockedWeapons = new List<Item>();
+        unlockedArmor = new List<Item>();
+        unlockedConsumables = new List<Item>();
+        unlockedAbilities = new List<Item>();
+
+        ItemManager.UnlockAllItems();
         // populate list dependent on unlocked items
         GenerateInventory();
 	}
@@ -26,30 +37,37 @@ public class ShopkeeperInv : MonoBehaviour {
     // call when player completes dungeon, dies, or teleports out
     void GenerateInventory()
     {
-        //// get unlocked items and sort
-        //List<Item> unlockedWeapons = ItemManager.GetUnlockedWeapons();
-        //List<Item> unlockedArmor = ItemManager.GetUnlockedArmor();
-        //List<Item> unlockedConsumables = ItemManager.GetUnlockedConsumables();
-        //List<Item> unlockedAbilities = ItemManager.GetUnlockedAbilites();
+        itemsForSale.Clear();
+        // get unlocked items and sort
+        //Debug.Log(ItemManager.GetUnlockedItems(Item.ItemType.WEAPON));
 
-        //// randomly choose items
-        //itemsForSale[0] = unlockedWeapons[Random.Range(0, unlockedWeapons.Count-1)];
-        //itemsForSale[1] = unlockedArmor[Random.Range(0, unlockedArmor.Count - 1)];
-        //itemsForSale[2] = unlockedConsumables[Random.Range(0, unlockedWeapons.Count - 1)];
-        //itemsForSale[3] = unlockedConsumables[Random.Range(0, unlockedWeapons.Count - 1)];
-        //itemsForSale[4] = unlockedAbilities[Random.Range(0, unlockedAbilities.Count - 1)];
-        //// have consumables for sale diferent
-        //while(itemsForSale[3].ID == itemsForSale[4].ID)
-        //{
-        //    itemsForSale[4] = unlockedAbilities[Random.Range(0, unlockedAbilities.Count - 1)];
-        //}
-        // spawn itemsForSale (child of shopkeeper?)
-        //Vector3 offset = Vector3.zero;
-        //foreach (Item i in itemsForSale)
-        //{
-        //    ItemManager.SpawnItem(i.name, gameObject.transform.position + offset);
-        //    offset.z += 1;
-        //}
+        unlockedWeapons = ItemManager.GetUnlockedItems(Item.ItemType.WEAPON);
+        unlockedArmor = ItemManager.GetUnlockedItems(Item.ItemType.ARMOR);
+        unlockedConsumables = ItemManager.GetUnlockedItems(Item.ItemType.CONSUMABLE);
+        unlockedAbilities = ItemManager.GetUnlockedItems(Item.ItemType.ABILITY);
+
+        // randomly choose items
+        itemsForSale.Add(unlockedWeapons[Random.Range(0, unlockedWeapons.Count - 1)]);
+        itemsForSale.Add(unlockedArmor[Random.Range(0, unlockedArmor.Count - 1)]);
+        itemsForSale.Add(unlockedConsumables[Random.Range(0, unlockedWeapons.Count - 1)]);
+        itemsForSale.Add(unlockedConsumables[Random.Range(0, unlockedWeapons.Count - 1)]);
+        itemsForSale.Add(unlockedAbilities[Random.Range(0, unlockedAbilities.Count - 1)]);
+
+        //Debug.Log(itemsForSale[0].itemName + itemsForSale[1].itemName + itemsForSale[2].itemName + itemsForSale[3].itemName + itemsForSale[4].itemName);
+
+        // have consumables for sale diferent
+        while (itemsForSale[3].itemName == itemsForSale[4].itemName)
+        {
+            itemsForSale[4] = unlockedAbilities[Random.Range(0, unlockedAbilities.Count - 1)];
+        }
+
+        // spawn itemsForSale (child of shopkeeper ?)
+        Vector3 offset = Vector3.zero;
+        foreach (Item i in itemsForSale)
+        {
+            ItemManager.SpawnItem(i.itemName, gameObject.transform.position + offset);
+            offset.z += 1;
+        }
     }
 
     void PlayerBuyItem(int index)
