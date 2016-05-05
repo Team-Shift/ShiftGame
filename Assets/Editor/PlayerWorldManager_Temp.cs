@@ -4,7 +4,6 @@ using UnityEditor.SceneManagement;
 
 public class PlayerWorldManager_Temp : MonoBehaviour
 {
-
     GameObject player;
 
     // Use this for initialization

@@ -9,9 +9,8 @@ public class NpcInteractions : MonoBehaviour {
 
     void Start()
     {
-        Instantiate(TextBox);
-    }
 
+    }
 
     public void startPrint(int speech, string text, GUIText guiText)
     {
