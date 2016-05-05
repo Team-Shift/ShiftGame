@@ -11,12 +11,15 @@ public class ScareCrow : MonoBehaviour
     public List<Vector3> pathList;
     public bool showPath;
 
-    float teleportTime = 0;
-    float spawnTime = 0;
+    public float teleportTime = 0;
+    public float spawnTime = 0;
+    float spawnTimeToAdd = 0;
 
     // Use this for initialization
     void Start()
     {
+        spawnTimeToAdd = spawnTime;
+
         foreach (Transform t in GetComponentsInChildren<Transform>())
         {
             if (t.name == "pathNode")
@@ -32,7 +35,6 @@ public class ScareCrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(teleportTime);
         if(teleportTime <= 0)
         {
             Teleport();
@@ -47,7 +49,7 @@ public class ScareCrow : MonoBehaviour
 
         if(spawnTime <= 0)
         {
-            spawnTime += 5;
+            spawnTime += spawnTimeToAdd;
             SpawnGhosts();
         }
         else
@@ -79,7 +81,7 @@ public class ScareCrow : MonoBehaviour
 
     private void Teleport()
     {
-        spawnTime += 5;
+        spawnTime += spawnTimeToAdd;
 
         if (gameObject.transform.position == pathList[0])
         {
@@ -93,8 +95,8 @@ public class ScareCrow : MonoBehaviour
 
     private void SpawnGhosts()
     {
-        GameObject ghost1 = Instantiate(ghost, gameObject.transform.position + gameObject.transform.forward, gameObject.transform.rotation) as GameObject;
-        ghost1.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
+        //GameObject ghost1 = Instantiate(ghost, gameObject.transform.position + gameObject.transform.forward, gameObject.transform.rotation) as GameObject;
+        //ghost1.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
         GameObject ghost2 = Instantiate(ghost, gameObject.transform.position + gameObject.transform.forward + (-gameObject.transform.right * 2), gameObject.transform.rotation) as GameObject;
         ghost2.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
         GameObject ghost3 = Instantiate(ghost, gameObject.transform.position + gameObject.transform.forward + (gameObject.transform.right * 2), gameObject.transform.rotation) as GameObject;
