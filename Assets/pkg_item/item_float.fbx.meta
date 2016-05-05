@@ -1,17 +1,19 @@
 fileFormatVersion: 2
-guid: 48759f64dc9ea1d4d91271fa361c4771
-timeCreated: 1457722660
+guid: 68f00bdf6aec38c408505e0632964506
+timeCreated: 1461975584
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: default
+    100002: sword_wood5:Mesh
     400000: //RootNode
-    400002: default
-    2300000: default
-    3300000: default
-    4300000: default
+    400002: sword_wood5:Mesh
+    2300000: sword_wood5:Mesh
+    3300000: sword_wood5:Mesh
+    4300000: sword_wood5:Mesh
+    7400000: float
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -32,11 +34,43 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: float
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 61
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: sword_wood5:Mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.05
+    globalScale: 5
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -70,7 +104,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
