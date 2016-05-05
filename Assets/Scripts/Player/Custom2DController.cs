@@ -185,11 +185,13 @@ public class Custom2DController : MonoBehaviour
 
         if(strafe > 0)
         {
-            anim.SetFloat("x", -1);
+            //anim.SetTrigger("LeftStrafe");
+            //anim.SetFloat("x", -1);
         }
         else if(strafe < 0)
         {
-            anim.SetFloat("x", 1);
+            //anim.SetTrigger("RightStrafe");
+            //anim.SetFloat("x", 1);
         }
 
         if (forwardBack != 0)

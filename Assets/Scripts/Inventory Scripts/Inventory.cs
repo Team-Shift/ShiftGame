@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour {
     public s_Items[] invItems;
     public int invSize = 6;
     int itemMaxStack = 1;
+    public GameObject floatingObject;
 
     public int goldCount;
     public int goldPickupAmnt = 5;
@@ -115,6 +116,7 @@ public class Inventory : MonoBehaviour {
                     if (invItems[4].quantity > 0 && invItems[3].quantity > 0)
                     {
                         //Debug.Log(invItems[4].item.itemName);
+                        // ***** put parent on locator *****
                         GameObject g = ItemManager.SpawnItem(invItems[4].item.itemName, transform.position);
 
                         g.GetComponent<Item>().reccentlyPickupUp = true;
@@ -144,6 +146,8 @@ public class Inventory : MonoBehaviour {
         foreach(Transform tCurrWeap in weaponLoc.transform)
         {
             // drop current weapon
+            Instantiate(floatingObject, transform.position, Quaternion.identity);
+            // ***** put parent on locator *****
             tCurrWeap.SetParent(null);
             tCurrWeap.position = transform.position;
             tCurrWeap.rotation = Quaternion.Euler(new Vector3(270,0,0));

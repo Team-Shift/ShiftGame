@@ -71,6 +71,8 @@ public class Item  :  MonoBehaviour{
                 ItemManager.UnlockItem(this);
                 ItemManager.DestroyItem(gameObject);
                 reccentlyPickupUp = true;
+                // if item is floating
+                DestroyParent();
             }
         }
     }
@@ -91,5 +93,16 @@ public class Item  :  MonoBehaviour{
             canPickup = false;
             reccentlyPickupUp = false;
         }
+    }
+
+    void DestroyParent()
+    {
+        Transform parent = gameObject.transform.parent;
+        while(parent.transform.parent != null)
+        {
+            parent = parent.transform.parent;
+            Debug.Log(parent.name);
+        }
+        Destroy(parent.gameObject);
     }
 }

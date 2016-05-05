@@ -29,7 +29,15 @@ public class CameraShift : MonoBehaviour {
 
     void Start()
     {
-        pivotPoint = GameObject.Find("PivotPoint");
+        //pivotPoint = GameObject.Find("PivotPoint");
+        foreach(Transform t in player.transform)
+        {
+            if(t.name == "PivotPoint")
+            {
+                pivotPoint = t.gameObject;
+                Debug.Log("Pivot Point Pos: " + pivotPoint.transform.position);
+            }
+        }
 
         // changes if unlocked in game
         canShift = true;
@@ -91,7 +99,7 @@ public class CameraShift : MonoBehaviour {
         // start fading in and out
         if (canFade)
             lerpAlpha();
-        
+        Debug.Log(pivotPoint.transform.position);
     }
 
 
@@ -107,9 +115,10 @@ public class CameraShift : MonoBehaviour {
         {
             float offsetBack = 1;
             float turning = Input.GetAxis("Mouse X");
-
+            
             transform.rotation = (pivotPoint.transform.rotation);
             transform.position = pivotPoint.transform.position + offsetBack * -transform.forward;
+            //Debug.Log(pivotPoint.transform.position);
         }
     }
     
