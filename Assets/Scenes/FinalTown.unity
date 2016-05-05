@@ -11439,7 +11439,7 @@ GameObject:
   - 65: {fileID: 302130782}
   m_Layer: 8
   m_Name: obj_character_body:Mesh
-  m_TagString: NPC
+  m_TagString: ShopKeeper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -42966,6 +42966,14 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 13203914, guid: a32c9aebc4c0ff749be74fc91ca39a54, type: 2}
+      propertyPath: m_Font
+      value: 
+      objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 13203914, guid: a32c9aebc4c0ff749be74fc91ca39a54, type: 2}
+      propertyPath: m_FontSize
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a32c9aebc4c0ff749be74fc91ca39a54, type: 2}
   m_IsPrefabParent: 0
@@ -56480,6 +56488,14 @@ Prefab:
       objectReference: {fileID: 117975219}
     - target: {fileID: 11475734, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
       propertyPath: GuiText
+      value: 
+      objectReference: {fileID: 1599281954}
+    - target: {fileID: 11475734, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
+      propertyPath: textBoxTexture
+      value: 
+      objectReference: {fileID: 117975219}
+    - target: {fileID: 11475734, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
+      propertyPath: guiTxt
       value: 
       objectReference: {fileID: 1599281954}
     m_RemovedComponents: []
@@ -75205,7 +75221,7 @@ Prefab:
     - target: {fileID: 11463030, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1091688453}
     - target: {fileID: 11466528, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
       propertyPath: player
       value: 
@@ -75220,7 +75236,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11466528, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
       propertyPath: duration
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 11466528, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
       propertyPath: canShift
@@ -75258,7 +75274,15 @@ Prefab:
     - target: {fileID: 11466528, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
       propertyPath: DirLight
       value: 
-      objectReference: {fileID: 2040807837}
+      objectReference: {fileID: 0}
+    - target: {fileID: 11466528, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11463030, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
+      propertyPath: staticY
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
   m_IsPrefabParent: 0

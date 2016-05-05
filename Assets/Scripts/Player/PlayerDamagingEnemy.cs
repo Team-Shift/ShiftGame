@@ -10,10 +10,12 @@ public class PlayerDamagingEnemy : MonoBehaviour {
     private GameObject player;
 
     // NPC Interaction Stuff
-    public GUITexture GuiTexture;
-    public GUIText GuiText;
-    public int Speechindex = 1;
-    int talkCount = 0;
+    public GUIText guiTxt;
+    public GUITexture textBoxTexture;
+    public int SpeechIndex;
+    private string str;
+    private string completeString;
+    bool canTalk = true;
     //public EnemyHealth eh;
 
     void Start()
@@ -57,39 +59,69 @@ public class PlayerDamagingEnemy : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "NPC")
-        { 
-            this.transform.ShopkeeperSpeech(Speechindex, "", GuiText);
-            GuiTexture.gameObject.SetActive(true);
-            talkCount++;
-            if(talkCount == 2)
+        if (col.gameObject.tag == "ShopKeeper")
+        {
+            if(canTalk)
             {
-                GuiTexture.gameObject.SetActive(false);
-                talkCount = 0;
-                //Speechindex++;
+                this.transform.TalkToShopKeeper(SpeechIndex, guiTxt);
+                completeString = guiTxt.text;
+                guiTxt.text = "";
+                StartCoroutine(PrintText(completeString));
+                textBoxTexture.gameObject.SetActive(true);
+            }
+            else if (canTalk == false)
+            {
+                textBoxTexture.gameObject.SetActive(false);
+                canTalk = true;
+            }
+        }
+
+        else if (col.gameObject.tag == "OldMan")
+        {
+            if (canTalk)
+            {
+                this.transform.TalkToOldMan(SpeechIndex, guiTxt);
+                completeString = guiTxt.text;
+                guiTxt.text = "";
+                StartCoroutine(PrintText(completeString));
+                textBoxTexture.gameObject.SetActive(true);
+            }
+            else if (canTalk == false)
+            {
+                textBoxTexture.gameObject.SetActive(false);
+                canTalk = true;
+            }
+        }
+        else if (col.gameObject.tag == "Farmer")
+        {
+            if (canTalk)
+            {
+                this.transform.TalkToFarmer(SpeechIndex, guiTxt);
+                completeString = guiTxt.text;
+                guiTxt.text = "";
+                StartCoroutine(PrintText(completeString));
+                textBoxTexture.gameObject.SetActive(true);
+            }
+            else if (canTalk == false)
+            {
+                textBoxTexture.gameObject.SetActive(false);
+                canTalk = true;
             }
         }
     }
 
 
-    /*IEnumerator AnimateText(string strComplete)
+    IEnumerator PrintText(string strComplete)
     {
         int i = 0;
         str = "";
         while (i < strComplete.Length)
         {
             str += strComplete[i++];
-            yield return new WaitForSeconds(0.5F);
-        }
-    }*/
-
-    /*void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "Enemy")
-        {
-            Debug.Log(col.gameObject.name + " was hit");
+            yield return new WaitForSeconds(0.1f);
+            guiTxt.text = str;
         }
     }
-    */
+
 
 }
