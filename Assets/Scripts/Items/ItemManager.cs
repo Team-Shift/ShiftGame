@@ -12,6 +12,9 @@ public static class ItemManager
     private static Dictionary<string, Item> ItemDictionary;
     private static Dictionary<string, Item> UnlockedItems;
 
+    //ToDo Decide if this is where we want BankedItems stored
+    private static Dictionary<string, Item> BankedItems;
+
     static ItemManager()
     {
         ItemDictionary = new Dictionary<string, Item>();
@@ -30,8 +33,8 @@ public static class ItemManager
         }
     }
 
-    //Used to spawn an item based upon its name at a specific position
-    //ToDo Possibly return the instantiated item to the user
+    // Used to spawn an item based upon its name at a specific position
+    // Returns the item that was spawned
     public static GameObject SpawnItem(string itemKey, Vector3 spawnPosition)
     {
         if (itemKey != null)
@@ -44,6 +47,15 @@ public static class ItemManager
         {
             Debug.LogError("Spawning of an item failed!");
             return null;
+        }
+    }
+
+    //Add item to player bank
+    public static void BankItem(string itemKey)
+    {
+        if (itemKey != null)
+        {
+            BankedItems.Add(itemKey, ItemDictionary[itemKey]);
         }
     }
 
@@ -88,6 +100,7 @@ public static class ItemManager
         return tempItems;
     }
 
+    // For Debug Purposes
     // unlocks all items in Resources folder **only for testing purposes**
     public static void UnlockAllItems()
     {
