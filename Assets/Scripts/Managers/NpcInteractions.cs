@@ -7,9 +7,11 @@ public class NpcInteractions : MonoBehaviour {
     public GUITexture TextBox;
     public GUIText NPCText;
 
-    void Update()
+    void Start()
     {
+        Instantiate(TextBox);
     }
+
 
     public void startPrint(int speech, string text, GUIText guiText)
     {

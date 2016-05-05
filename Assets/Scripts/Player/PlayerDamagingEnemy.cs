@@ -8,6 +8,12 @@ public class PlayerDamagingEnemy : MonoBehaviour {
     private GameObject[] enemies;
     private PlayerCombat playerScript;
     private GameObject player;
+
+    // NPC Interaction Stuff
+    public GUITexture GuiTexture;
+    public GUIText GuiText;
+    public int Speechindex = 1;
+    int talkCount = 0;
     //public EnemyHealth eh;
 
     void Start()
@@ -49,13 +55,41 @@ public class PlayerDamagingEnemy : MonoBehaviour {
         }//Forloop
     }//End of fixed update
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "NPC")
+        { 
+            this.transform.ShopkeeperSpeech(Speechindex, "", GuiText);
+            GuiTexture.gameObject.SetActive(true);
+            talkCount++;
+            if(talkCount == 2)
+            {
+                GuiTexture.gameObject.SetActive(false);
+                talkCount = 0;
+                //Speechindex++;
+            }
+        }
+    }
+
+
+    /*IEnumerator AnimateText(string strComplete)
+    {
+        int i = 0;
+        str = "";
+        while (i < strComplete.Length)
+        {
+            str += strComplete[i++];
+            yield return new WaitForSeconds(0.5F);
+        }
+    }*/
+
+    /*void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Enemy")
         {
             Debug.Log(col.gameObject.name + " was hit");
-           
-
         }
     }
+    */
+
 }
