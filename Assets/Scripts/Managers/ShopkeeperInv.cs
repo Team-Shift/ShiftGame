@@ -13,23 +13,13 @@ public class ShopkeeperInv : MonoBehaviour {
     GameObject player;
     public float resellPerc = 0.3f;
 
-    public List<Item> unlockedWeapons;
-    public List<Item> unlockedArmor;
-    public List<Item> unlockedConsumables;
-    public List<Item> unlockedAbilities;
-
     // Use this for initialization
     void Start () {
         // create array
         itemsForSale = new List<Item>();
         player = GameObject.FindGameObjectWithTag("Player");
 
-        unlockedWeapons = new List<Item>();
-        unlockedArmor = new List<Item>();
-        unlockedConsumables = new List<Item>();
-        unlockedAbilities = new List<Item>();
-
-        ItemManager.UnlockAllItems();
+        //ItemManager.UnlockAllItems();
         // populate list dependent on unlocked items
         GenerateInventory();
 	}
@@ -41,17 +31,17 @@ public class ShopkeeperInv : MonoBehaviour {
         // get unlocked items and sort
         //Debug.Log(ItemManager.GetUnlockedItems(Item.ItemType.WEAPON));
 
-        unlockedWeapons = ItemManager.GetUnlockedItems(Item.ItemType.WEAPON);
-        unlockedArmor = ItemManager.GetUnlockedItems(Item.ItemType.ARMOR);
-        unlockedConsumables = ItemManager.GetUnlockedItems(Item.ItemType.CONSUMABLE);
-        unlockedAbilities = ItemManager.GetUnlockedItems(Item.ItemType.ABILITY);
-
+        List<Item> unlockedWeapons = ItemManager.GetUnlockedItems(Item.ItemType.WEAPON);
+        List<Item> unlockedArmor = ItemManager.GetUnlockedItems(Item.ItemType.ARMOR);
+        List<Item> unlockedConsumables = ItemManager.GetUnlockedItems(Item.ItemType.CONSUMABLE);
+        List<Item> unlockedAbilities = ItemManager.GetUnlockedItems(Item.ItemType.ABILITY);
+         
         // randomly choose items
         itemsForSale.Add(unlockedWeapons[Random.Range(0, unlockedWeapons.Count - 1)]);
         itemsForSale.Add(unlockedArmor[Random.Range(0, unlockedArmor.Count - 1)]);
-        itemsForSale.Add(unlockedConsumables[Random.Range(0, unlockedWeapons.Count - 1)]);
-        itemsForSale.Add(unlockedConsumables[Random.Range(0, unlockedWeapons.Count - 1)]);
         itemsForSale.Add(unlockedAbilities[Random.Range(0, unlockedAbilities.Count - 1)]);
+        itemsForSale.Add(unlockedConsumables[Random.Range(0, unlockedWeapons.Count - 1)]);
+        itemsForSale.Add(unlockedConsumables[Random.Range(0, unlockedWeapons.Count - 1)]);
 
         //Debug.Log(itemsForSale[0].itemName + itemsForSale[1].itemName + itemsForSale[2].itemName + itemsForSale[3].itemName + itemsForSale[4].itemName);
 
@@ -62,11 +52,11 @@ public class ShopkeeperInv : MonoBehaviour {
         }
 
         // spawn itemsForSale (child of shopkeeper ?)
-        Vector3 offset = Vector3.zero;
+        Vector3 offset = new Vector3(1,0,-1);
         foreach (Item i in itemsForSale)
         {
             ItemManager.SpawnItem(i.itemName, gameObject.transform.position + offset);
-            offset.z += 1;
+            offset.z += .5f;
         }
     }
 

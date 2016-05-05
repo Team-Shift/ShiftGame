@@ -75,7 +75,7 @@ public static class ItemManager
         if (ItemDictionary[unlocked_item.itemName] == null)
         {
             UnlockedItems.Add(unlocked_item.itemName, ItemDictionary[unlocked_item.itemName]);
-            Debug.Log(UnlockedItems.Count);
+            //Debug.Log(UnlockedItems.Count);
         }
     }
 

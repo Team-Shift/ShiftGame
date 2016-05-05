@@ -5,12 +5,16 @@ using System.Collections.Generic;
 public class RandItemDrop : MonoBehaviour {
 
     Animator anim;
-    List<GameObject> unlockedItems;
+    public List<Item> unlockedItems;
+
+    private bool spawned;
 	// Use this for initialization
 	void Start ()
     {
-        unlockedItems = new List<GameObject>();
-        anim = GetComponent<Animator>();
+        ItemManager.UnlockAllItems();
+        unlockedItems = ItemManager.GetUnlockedItems(Item.ItemType.CONSUMABLE);
+        spawned = false;
+        anim = gameObject.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -23,16 +27,18 @@ public class RandItemDrop : MonoBehaviour {
         if (other.tag == "Player")
         {
             anim.SetBool("canOpen", true);
-
-            // store all unlocked items
-            //foreach(GameObject g in ItemManager.GetUnlockedItems())
-            //{
-            //    unlockedItems.Add(g);
-            //}
-
-            // choose random item
-            //string itemName = unlockedItems[Random.Range(0, unlockedItems.Count - 1)].name;
-            //ItemManager.SpawnItem(itemName, gameObject.transform.position);
+            if (!spawned)
+            {
+                SpawnItem();
+            }
         }
+    }
+
+    public void SpawnItem()
+    {
+        // choose random item
+        string itemName = unlockedItems[Random.Range(0, unlockedItems.Count - 1)].itemName;
+        ItemManager.SpawnItem(itemName, gameObject.transform.position + new Vector3(0, 1, 0));
+        spawned = true;
     }
 }
