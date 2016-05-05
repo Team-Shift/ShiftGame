@@ -146,7 +146,7 @@ public class Inventory : MonoBehaviour {
         foreach(Transform tCurrWeap in weaponLoc.transform)
         {
             // drop current weapon
-            Instantiate(floatingObject, transform.position, Quaternion.identity);
+            //Instantiate(floatingObject, transform.position, Quaternion.identity);
             // ***** put parent on locator *****
             tCurrWeap.SetParent(null);
             tCurrWeap.position = transform.position;

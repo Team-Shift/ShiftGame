@@ -35,7 +35,7 @@ public class CameraShift : MonoBehaviour {
             if(t.name == "PivotPoint")
             {
                 pivotPoint = t.gameObject;
-                Debug.Log("Pivot Point Pos: " + pivotPoint.transform.position);
+                //Debug.Log("Pivot Point Pos: " + pivotPoint.transform.position);
             }
         }
 
@@ -99,7 +99,6 @@ public class CameraShift : MonoBehaviour {
         // start fading in and out
         if (canFade)
             lerpAlpha();
-        Debug.Log(pivotPoint.transform.position);
     }
 
 

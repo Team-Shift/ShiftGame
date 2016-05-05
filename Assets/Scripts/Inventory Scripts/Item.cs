@@ -10,7 +10,7 @@ public class Item  :  MonoBehaviour{
     //public int ID;
     public Texture sprite;
     public string itemName;
-    [HideInInspector]
+    //[HideInInspector]
     public bool canPickup;
     public bool reccentlyPickupUp;
     public int cost;
@@ -26,7 +26,9 @@ public class Item  :  MonoBehaviour{
     {
         canPickup = false;
         player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log(player);
         playerInv = player.GetComponent<Inventory>();
+        Debug.Log(player.GetComponent<Custom2DController>());
         hud = GameObject.FindObjectOfType<InvHUD>();
         //reccentlyPickupUp = true;
         //beingSold = false;

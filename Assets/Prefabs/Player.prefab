@@ -552,7 +552,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.295171, y: 1.0018637, z: 14.75961}
+  m_LocalPosition: {x: 2.22, y: -1.3006215, z: 3.8872652}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 437172}
@@ -1068,6 +1068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invItems: []
   invSize: 5
+  floatingObject: {fileID: 199624, guid: 88e139d0854429f469a0740a95d75a14, type: 2}
   goldCount: 0
   goldPickupAmnt: 5
 --- !u!114 &11475734
@@ -1104,6 +1105,8 @@ MonoBehaviour:
   reccentlyPickupUp: 0
   cost: 0
   itype: 0
+  text: {fileID: 0}
+  beingSold: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
