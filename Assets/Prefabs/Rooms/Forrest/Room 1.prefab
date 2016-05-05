@@ -4956,7 +4956,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.03}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 486580}
@@ -15555,10 +15555,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6d12ff2619de84bb670835a726fdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  sprite: {fileID: 0}
   itemName: red potion
   canPickup: 0
   reccentlyPickupUp: 0
+  cost: 0
   itype: 3
 --- !u!114 &11423044
 MonoBehaviour:
@@ -15630,7 +15631,6 @@ MonoBehaviour:
   health: 0
   startHealth: 5
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
-  parent: {fileID: 0}
   hurtSound: {fileID: 0}
   xOffset: 0
   zOffset: 0
@@ -15669,6 +15669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SwordTrail: {fileID: 0}
 --- !u!114 &11477020
 MonoBehaviour:
   m_ObjectHideFlags: 1
