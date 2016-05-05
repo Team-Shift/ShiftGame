@@ -15,11 +15,33 @@ public class Item  :  MonoBehaviour{
     public bool reccentlyPickupUp;
     public int cost;
     public ItemType itype;
+    public GUIText text;
+    public bool beingSold;
+
+    private GameObject player;
+    private Inventory playerInv;
+    private InvHUD hud;
 
     void Start()
     {
         canPickup = false;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerInv = player.GetComponent<Inventory>();
+        hud = GameObject.FindObjectOfType<InvHUD>();
         //reccentlyPickupUp = true;
+        //beingSold = false;
+    }
+
+    void OnMouseDown()
+    {
+        Debug.Log("mouse down");
+        if (beingSold)
+        {
+            // switch 
+            GameObject g = Instantiate(text, new Vector3(.5f, .5f, 1), Quaternion.identity) as GameObject;
+            g.GetComponent<GUIText>().text = itemName + ": " + cost + " gold.";
+            Debug.Log("text");
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -28,24 +50,28 @@ public class Item  :  MonoBehaviour{
         if (other.tag == "Player") {canPickup = true;}
         if (canPickup && !reccentlyPickupUp)
         {
-            //canPickup = true;
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null) //make sure player is found
+            if (beingSold)
             {
-                Inventory i = player.GetComponent<Inventory>();
-                InvHUD hud = GameObject.FindObjectOfType<InvHUD>();
-
-                i.AddItem(ItemManager.GetItem(itemName));
+                // if enough gold decrement gold
+                if ((playerInv.goldCount - cost) > 0)
+                {
+                    playerInv.goldCount -= cost;
+                }
+                else
+                {
+                    canPickup = false;
+                    Debug.Log("not enough gold");
+                }
+            }
+            if (canPickup)
+            {
+                playerInv.AddItem(ItemManager.GetItem(itemName));
                 hud.ChangeUIIcon(ItemManager.GetItem(itemName));
                 // mark item as unlocked/ add to drop list
                 ItemManager.UnlockItem(this);
                 ItemManager.DestroyItem(gameObject);
+                reccentlyPickupUp = true;
             }
-            else
-            {
-                Debug.Log("player not found");
-            }
-            reccentlyPickupUp = true;
         }
     }
 

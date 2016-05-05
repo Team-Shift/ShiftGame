@@ -121,6 +121,8 @@ MonoBehaviour:
   reccentlyPickupUp: 0
   cost: 0
   itype: 2
+  text: {fileID: 145436, guid: bf7eb85705643854088b2b869ec492f6, type: 2}
+  beingSold: 0
   projectile: {fileID: 179974, guid: 71a1486ace4ad7e4cae66d9e20f9919a, type: 2}
 --- !u!1001 &100100000
 Prefab:
@@ -153,6 +155,10 @@ Prefab:
       propertyPath: sprite
       value: 
       objectReference: {fileID: 2800000, guid: c17502eea45ce234d872f294b7531f09, type: 3}
+    - target: {fileID: 0}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 145436, guid: bf7eb85705643854088b2b869ec492f6, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177276}
