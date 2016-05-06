@@ -2,10 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class RandItemDrop : MonoBehaviour {
+public class ChestDrop : MonoBehaviour {
 
     Animator anim;
     public List<Item> unlockedItems;
+    public string itemName;         // insert name if want specific item dropping
 
     private bool spawned;
 	// Use this for initialization
@@ -37,8 +38,20 @@ public class RandItemDrop : MonoBehaviour {
     public void SpawnItem()
     {
         // choose random item
-        string itemName = unlockedItems[Random.Range(0, unlockedItems.Count - 1)].itemName;
+        if (itemName == null)
+        {
+            string itemName = unlockedItems[Random.Range(0, unlockedItems.Count - 1)].itemName;
+        }
         ItemManager.SpawnItem(itemName, gameObject.transform.position + new Vector3(0, 1, 0));
-        spawned = true;
+        // set floating parent
+        //GameObject g = GameObject.Instantiate(floatingObject, transform.position, Quaternion.identity) as GameObject;
+
+        //foreach (Transform t in g.GetComponentsInChildren<Transform>())
+        //{
+        //    if (t.name == "item_Particle")
+        //    {
+        //        spawned = true;
+        //    }
+        //}
     }
 }
