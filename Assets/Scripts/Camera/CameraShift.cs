@@ -27,7 +27,7 @@ public class CameraShift : MonoBehaviour {
 
 
     //Shift Stuff
-    public bool canShift;                               // if player unlocks shift ability
+    int canShift;                               // if player unlocks shift ability
     public Light DirLight;                              //Change Culling Mask On Lights
 
     // get players pos
@@ -48,7 +48,7 @@ public class CameraShift : MonoBehaviour {
         }
 
         // changes if unlocked in game
-        canShift = true;
+        canShift = 0;
         camActive = false;  // start in ortho
 
 
@@ -60,72 +60,81 @@ public class CameraShift : MonoBehaviour {
         canFade = false;    // no fading to start
     }
 
-	void Update() {
+    void Update()
+    {
+
+        canShift++;
 
         // get players pos
         playerPosX = player.transform.position.x;
         playerPosZ = player.transform.position.z;
         playerPosY = player.transform.position.y;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && canShift)
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {
-            if (_changing)
+            if (canShift > 30)
             {
-                ChangeProjection = false;
-            }
-            else if (ChangeProjection)
-            {
-                _changing = true;
-                _currentT = 0.0f;
+                if (_changing)
+                {
+                    ChangeProjection = false;
+                }
+                else if (ChangeProjection)
+                {
+                    _changing = true;
+                    _currentT = 0.0f;
+                }
+
+                if (isOthos)
+                {
+                    isOthos = false;
+                }
+                else isOthos = true;
+
+                //canFade = true;
+
+                //startTime = Time.unscaledTime;
+                // change camera at half duration
+                //StartCoroutine("CameraChange");
+                // disable fading after full fade duration
+                //StartCoroutine("ShiftFade");
+                // perspective cam position
+
             }
 
             if (isOthos)
             {
-                isOthos = false;
+                Vector3 v = new Vector3(playerPosX, playerPosY + 50, playerPosZ - 40);
+                gameObject.transform.position = v;
+                gameObject.transform.rotation = Quaternion.Euler(50f, 0, 0);
+                //cam.nearClipPlane = -10f;
+                //cam.orthographic = false;
             }
-            else isOthos = true;
-
-            //canFade = true;
-
-            //startTime = Time.unscaledTime;
-            // change camera at half duration
-            //StartCoroutine("CameraChange");
-            // disable fading after full fade duration
-            //StartCoroutine("ShiftFade");
-            // perspective cam position
-            
-        }
-        if (isOthos)
-        {
-            Vector3 v = new Vector3(playerPosX, playerPosY + 10, playerPosZ - 8);
-            gameObject.transform.position = v;
-            gameObject.transform.rotation = Quaternion.Euler(50f, 0, 0);
-            Debug.Log(v);
+            else
+            {
+                Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 4.0f);
+                //cam.nearClipPlane = 0.01f;
+                gameObject.transform.position = v;
+                gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
+                //cam.orthographic = true;
+            }
+            //if(!isOthos)
+            //{
+            //    Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 8.0f);
+            //    gameObject.transform.position = v;
+            //    gameObject.transform.rotation = Quaternion.Euler(50.0f, 0, 0);
+            //    //cam.orthographic = true;
+            //}
+            //else
+            //{
             //cam.orthographic = false;
-        }
-        else
-        {
-            Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 4.0f);
-            
-            gameObject.transform.position = v;
-            gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
-            //cam.orthographic = true;
-        }
-        //if(!isOthos)
-        //{
-        //    Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 8.0f);
-        //    gameObject.transform.position = v;
-        //    gameObject.transform.rotation = Quaternion.Euler(50.0f, 0, 0);
-        //    //cam.orthographic = true;
-        //}
-        //else
-        //{
-            //cam.orthographic = false;
-        //}
+            //}
 
-        // start fading in and out
-        //if (canFade)
-        //    lerpAlpha();
+            // start fading in and out
+            //if (canFade)
+            //    lerpAlpha();
+
+            canShift = 0;
+        }
     }
 
 
@@ -185,12 +194,10 @@ public class CameraShift : MonoBehaviour {
             {
                 GetComponent<Camera>().projectionMatrix = MatrixLerp(persMat, orthoMat, Mathf.Sqrt(_currentT));
             }
-            canShift = false;
         }
         else
         {
             _changing = false;
-            canShift = true;
             GetComponent<Camera>().orthographic = !currentlyOrthographic;
             GetComponent<Camera>().ResetProjectionMatrix();
         }
