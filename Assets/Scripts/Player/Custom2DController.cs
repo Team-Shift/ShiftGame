@@ -79,7 +79,6 @@ public class Custom2DController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Changing players layer to default");
                 player.layer = LayerMask.NameToLayer("Default");
             }
         }

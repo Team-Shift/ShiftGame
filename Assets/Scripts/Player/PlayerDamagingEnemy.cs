@@ -68,6 +68,7 @@ public class PlayerDamagingEnemy : MonoBehaviour {
                 guiTxt.text = "";
                 StartCoroutine(PrintText(completeString));
                 textBoxTexture.gameObject.SetActive(true);
+                canTalk = false;
             }
             else if (canTalk == false)
             {
@@ -85,6 +86,7 @@ public class PlayerDamagingEnemy : MonoBehaviour {
                 guiTxt.text = "";
                 StartCoroutine(PrintText(completeString));
                 textBoxTexture.gameObject.SetActive(true);
+                canTalk = false;
             }
             else if (canTalk == false)
             {
@@ -101,6 +103,7 @@ public class PlayerDamagingEnemy : MonoBehaviour {
                 guiTxt.text = "";
                 StartCoroutine(PrintText(completeString));
                 textBoxTexture.gameObject.SetActive(true);
+                canTalk = false;
             }
             else if (canTalk == false)
             {
