@@ -15,7 +15,9 @@ public class Item  :  MonoBehaviour{
     public bool reccentlyPickupUp;
     public int cost;
     public ItemType itype;
-    public GUIText text;
+    public GameObject prefab_txt;
+    private GameObject text2Destroy;
+    private GUIText g_text;
     public bool beingSold;
 
     private GameObject player;
@@ -25,25 +27,30 @@ public class Item  :  MonoBehaviour{
     void Start()
     {
         canPickup = false;
-        player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(player);
+        player = GameObject.Find("Player");
+
         playerInv = player.GetComponent<Inventory>();
-        Debug.Log(player.GetComponent<Custom2DController>());
         hud = GameObject.FindObjectOfType<InvHUD>();
+
         //reccentlyPickupUp = true;
         //beingSold = false;
     }
 
-    void OnMouseDown()
+    void OnMouseEnter()
     {
+        g_text = prefab_txt.GetComponent<GUIText>();
         Debug.Log("mouse down");
         if (beingSold)
         {
             // switch 
-            GameObject g = Instantiate(text, new Vector3(.5f, .5f, 1), Quaternion.identity) as GameObject;
-            g.GetComponent<GUIText>().text = itemName + ": " + cost + " gold.";
-            Debug.Log("text");
+            g_text.text = itemName + ": " + cost + " gold.";
+            text2Destroy = Instantiate(prefab_txt, new Vector3(.5f, .5f, 1), Quaternion.identity) as GameObject;
         }
+    }
+
+    void OnMouseExit()
+    {
+        Destroy(text2Destroy);
     }
 
     void OnTriggerEnter(Collider other)
@@ -100,11 +107,14 @@ public class Item  :  MonoBehaviour{
     void DestroyParent()
     {
         Transform parent = gameObject.transform.parent;
-        while(parent.transform.parent != null)
+        if (parent != null)
         {
-            parent = parent.transform.parent;
-            Debug.Log(parent.name);
+            while (parent.transform.parent != null)
+            {
+                parent = parent.transform.parent;
+                Debug.Log(parent.name);
+            }
+            Destroy(parent.gameObject);
         }
-        Destroy(parent.gameObject);
     }
 }

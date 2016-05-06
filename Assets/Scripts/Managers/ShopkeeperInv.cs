@@ -59,7 +59,7 @@ public class ShopkeeperInv : MonoBehaviour {
             GameObject g = ItemManager.SpawnItem(i.itemName, gameObject.transform.position + offset);
             g.GetComponent<Item>().beingSold = true;
             g.GetComponent<Item>().cost = 500;
-            offset.z += .5f;
+            offset.z += .75f;
         }
     }
 

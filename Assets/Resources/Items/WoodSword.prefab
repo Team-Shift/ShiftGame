@@ -41,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165166}
   m_LocalRotation: {x: -0.00000029802325, y: -0.7071068, z: -0.70710677, w: -0.000000029802326}
-  m_LocalPosition: {x: 3.8197908, y: -1.3006215, z: 5.9788136}
+  m_LocalPosition: {x: 3.8197908, y: -1.01, z: 5.9788136}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 475850}
@@ -121,7 +121,7 @@ MonoBehaviour:
   reccentlyPickupUp: 0
   cost: 0
   itype: 0
-  text: {fileID: 145436, guid: bf7eb85705643854088b2b869ec492f6, type: 2}
+  prefab_txt: {fileID: 115938, guid: a32c9aebc4c0ff749be74fc91ca39a54, type: 2}
   beingSold: 0
   atkAmount: 1
 --- !u!1001 &100100000
@@ -166,7 +166,20 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: text
       value: 
-      objectReference: {fileID: 145436, guid: bf7eb85705643854088b2b869ec492f6, type: 2}
+      objectReference: {fileID: 13203914, guid: a32c9aebc4c0ff749be74fc91ca39a54,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: -1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: txt
+      value: 
+      objectReference: {fileID: 115938, guid: a32c9aebc4c0ff749be74fc91ca39a54, type: 2}
+    - target: {fileID: 0}
+      propertyPath: prefab_txt
+      value: 
+      objectReference: {fileID: 115938, guid: a32c9aebc4c0ff749be74fc91ca39a54, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 165166}

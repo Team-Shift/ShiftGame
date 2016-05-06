@@ -71,7 +71,6 @@ GameObject:
   - 4: {fileID: 498626}
   - 95: {fileID: 9540820}
   - 114: {fileID: 11410388}
-  - 114: {fileID: 11472094}
   - 65: {fileID: 6535498}
   - 54: {fileID: 5410418}
   - 114: {fileID: 11463796}
@@ -79,6 +78,7 @@ GameObject:
   - 81: {fileID: 8124294}
   - 114: {fileID: 11451058}
   - 114: {fileID: 11455330}
+  - 114: {fileID: 11439660}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -141,7 +141,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 420130}
-  - 114: {fileID: 11493224}
+  - 65: {fileID: 6591312}
+  - 114: {fileID: 11400026}
   m_Layer: 0
   m_Name: WoodSword
   m_TagString: Untagged
@@ -552,7 +553,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.22, y: -1.3006215, z: 3.8872652}
+  m_LocalPosition: {x: 2.22, y: -0.883, z: 3.8872652}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 437172}
@@ -798,6 +799,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.116585754, y: 0.13172226, z: 0.13742302}
   m_Center: {x: -0.0004791685, y: 0.06332969, z: 0.09395485}
+--- !u!65 &6591312
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18377651, y: 0.3932062, z: 0.103484124}
+  m_Center: {x: 0.011918798, y: 0.30352712, z: 0.0014739251}
 --- !u!81 &8124294
 AudioListener:
   m_ObjectHideFlags: 1
@@ -963,6 +976,26 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11400026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d43ce77390beaa47a90c6d8572255b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 2800000, guid: a54df1e8f1c4fcc4e8e3cd32834dfeb4, type: 3}
+  itemName: WoodSword
+  canPickup: 0
+  reccentlyPickupUp: 0
+  cost: 0
+  itype: 0
+  text: {fileID: 13203914, guid: a32c9aebc4c0ff749be74fc91ca39a54, type: 2}
+  beingSold: 0
+  atkAmount: 0
 --- !u!114 &11410388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -982,6 +1015,22 @@ MonoBehaviour:
   jumpTimeLeft: 0.5
   playerDir: 0
   dust: {fileID: 173066, guid: 9ab06efc70a743f49a34c52002d162c1, type: 2}
+--- !u!114 &11439660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b924c3860f69b4cb24e4618d851b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invItems: []
+  invSize: 6
+  floatingObject: {fileID: 199624, guid: 88e139d0854429f469a0740a95d75a14, type: 2}
+  goldCount: 0
+  goldPickupAmnt: 5
 --- !u!114 &11440910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1055,22 +1104,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SwordTrail: {fileID: 197716}
---- !u!114 &11472094
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19b924c3860f69b4cb24e4618d851b52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invItems: []
-  invSize: 5
-  floatingObject: {fileID: 199624, guid: 88e139d0854429f469a0740a95d75a14, type: 2}
-  goldCount: 0
-  goldPickupAmnt: 5
 --- !u!114 &11475734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1088,25 +1121,6 @@ MonoBehaviour:
   GuiTexture: {fileID: 0}
   GuiText: {fileID: 0}
   Speechindex: 1
---- !u!114 &11493224
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d12ff2619de84bb670835a726fdb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemName: WoodSword
-  canPickup: 0
-  reccentlyPickupUp: 0
-  cost: 0
-  itype: 0
-  text: {fileID: 0}
-  beingSold: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

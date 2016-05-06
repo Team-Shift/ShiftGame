@@ -118,6 +118,7 @@ public class Inventory : MonoBehaviour {
                         //Debug.Log(invItems[4].item.itemName);
                         // ***** put parent on locator *****
                         GameObject g = ItemManager.SpawnItem(invItems[4].item.itemName, transform.position);
+                        SetFloatingParent(g);
 
                         g.GetComponent<Item>().reccentlyPickupUp = true;
                     }
@@ -138,30 +139,53 @@ public class Inventory : MonoBehaviour {
 
     void ReplaceWeapon(Item pickupItem)
     {
-        Debug.Log("Swapping Weapons");
         // find locator/parent for weapon
         GameObject weaponLoc = GameObject.FindGameObjectWithTag("Weapon");
-
+        Debug.Log(weaponLoc.name);
         // get weapon transform
-        foreach(Transform tCurrWeap in weaponLoc.transform)
+        foreach (Transform tCurrWeap in weaponLoc.GetComponentInChildren<Transform>())
         {
-            // drop current weapon
-            //Instantiate(floatingObject, transform.position, Quaternion.identity);
-            // ***** put parent on locator *****
-            tCurrWeap.SetParent(null);
+            tCurrWeap.SetParent(null); //de-parent
             tCurrWeap.position = transform.position;
-            tCurrWeap.rotation = Quaternion.Euler(new Vector3(270,0,0));
-            tCurrWeap.GetComponent<Item>().reccentlyPickupUp = true;
+            tCurrWeap.rotation = Quaternion.Euler(new Vector3(270, 0, 0));
+
+            tCurrWeap.gameObject.GetComponent<Item>().reccentlyPickupUp = true;
             tCurrWeap.GetComponent<Collider>().enabled = true;
+            SetFloatingParent(tCurrWeap.gameObject);
 
             // pickup new weapon from DB
-            GameObject g = ItemManager.SpawnItem(pickupItem.itemName, weaponLoc.transform.position);
-            g.transform.SetParent(weaponLoc.transform);
-            g.transform.localRotation = Quaternion.Euler(new Vector3(270,0,0));
-            g.GetComponent<Item>().reccentlyPickupUp = true;
+            GameObject pickUp = ItemManager.SpawnItem(pickupItem.itemName, weaponLoc.transform.position);
+            pickUp.transform.SetParent(weaponLoc.transform);
+            pickUp.transform.localRotation = Quaternion.Euler(new Vector3(270, 0, 0));
+            pickUp.GetComponent<Item>().reccentlyPickupUp = true;
 
-            g.GetComponent<Collider>().enabled = false;
+            pickUp.GetComponent<Collider>().enabled = false;
         }
     }
 
+
+    public void SetFloatingParent(GameObject item)
+    {
+        Debug.Log("Setting parent");
+        // prefab
+        GameObject g = GameObject.Instantiate(floatingObject, transform.position, Quaternion.identity) as GameObject;
+
+        foreach(Transform t in g.GetComponentsInChildren<Transform>())
+        {
+            if(t.name == "item_Particle")
+            {
+                Debug.Log(transform.name);
+                // get parent 
+                if (item.GetComponent<Item>().itype == Item.ItemType.WEAPON)
+                {
+                    item.transform.Translate(new Vector3(0, 0, .3f)); // offset
+                }
+                else
+                {
+                    item.transform.Translate(new Vector3(0, .3f, 0)); // offset
+                }
+                item.transform.SetParent(t);
+            }
+        }
+    }
 }

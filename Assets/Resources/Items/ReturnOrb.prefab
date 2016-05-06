@@ -121,7 +121,7 @@ MonoBehaviour:
   reccentlyPickupUp: 0
   cost: 0
   itype: 3
-  text: {fileID: 145436, guid: bf7eb85705643854088b2b869ec492f6, type: 2}
+  prefab_txt: {fileID: 115938, guid: a32c9aebc4c0ff749be74fc91ca39a54, type: 2}
   beingSold: 0
   sceneToLoad: 1
 --- !u!1001 &100100000
@@ -150,7 +150,16 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: text
       value: 
-      objectReference: {fileID: 145436, guid: bf7eb85705643854088b2b869ec492f6, type: 2}
+      objectReference: {fileID: 13203914, guid: a32c9aebc4c0ff749be74fc91ca39a54,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: txt
+      value: 
+      objectReference: {fileID: 115938, guid: a32c9aebc4c0ff749be74fc91ca39a54, type: 2}
+    - target: {fileID: 0}
+      propertyPath: prefab_txt
+      value: 
+      objectReference: {fileID: 115938, guid: a32c9aebc4c0ff749be74fc91ca39a54, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 183662}
