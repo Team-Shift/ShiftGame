@@ -149,8 +149,15 @@ public class Room{
 
                 Portal neighborPortal = neighbor.hallways[swapDir(pair.Key)].GetComponentInChildren<Portal>();
 
-                targetOffset += new Vector3(neighborPortal.transform.position.x, 0, neighborPortal.transform.position.z);
-                myPortal.targetPosition += targetOffset;
+                if (neighborPortal != null)
+                {
+                    targetOffset += new Vector3(neighborPortal.transform.position.x, neighborPortal.transform.position.y, neighborPortal.transform.position.z);
+                    myPortal.targetPosition += targetOffset;
+                }
+                else
+                {
+                    Debug.LogError("No Neighbor Portal Found!");
+                }
             }
         }
     }
