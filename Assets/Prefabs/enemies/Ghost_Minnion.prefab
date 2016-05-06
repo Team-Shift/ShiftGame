@@ -64,6 +64,7 @@ GameObject:
   - 65: {fileID: 6553390}
   - 114: {fileID: 11448836}
   - 82: {fileID: 8254934}
+  - 114: {fileID: 11466268}
   m_Layer: 0
   m_Name: Ghost_Minnion
   m_TagString: Untagged
@@ -137,8 +138,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154112}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 19.67154, y: -0.053337723, z: -18.905907}
+  m_LocalRotation: {x: 0, y: 0.7071066, z: 0, w: -0.70710695}
+  m_LocalPosition: {x: 24.61, y: 0.7, z: -17.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452376}
@@ -370,10 +371,10 @@ BoxCollider:
   m_GameObject: {fileID: 154112}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.3968451, y: 0.6342244, z: 0.33152363}
-  m_Center: {x: -0.008766174, y: 0.22285509, z: -0.004104613}
+  m_Size: {x: 0.39789563, y: 1.2051363, z: 0.33152363}
+  m_Center: {x: -0.008275983, y: -0.06260085, z: -0.0038223309}
 --- !u!82 &8254934
 AudioSource:
   m_ObjectHideFlags: 1
@@ -476,7 +477,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce9344378b964d45a21a4952c1bd3dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 15
+  lifeTime: 3
+--- !u!114 &11466268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfb8f300979fc84d9aeb71ddaa88ffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  xOffset: 0.1
+  zOffset: 0.1
+  isProjectile: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
