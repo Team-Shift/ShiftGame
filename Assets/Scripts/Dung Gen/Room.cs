@@ -137,21 +137,21 @@ public class Room{
                 myPortal.name = (pair.Key + "Portal");
                 Room neighbor = pair.Value;
 
-                Vector3 targetOffset = new Vector3(0,5.3f,0);
+                Vector3 targetOffset = new Vector3(0,1.0f,0);
 
                 switch (pair.Key)
                 {
-                    case Direction.North:   targetOffset += new Vector3(0,0,2); break;
-                    case Direction.East:    targetOffset += new Vector3(2, 0, 0); break;
-                    case Direction.South:   targetOffset += new Vector3(0, 0, -2); break;
-                    case Direction.West:    targetOffset += new Vector3(-2, 0, 0); break;
+                    case Direction.North:   targetOffset += new Vector3(0,0,1.5f); break;
+                    case Direction.East:    targetOffset += new Vector3(1.5f, 0, 0); break;
+                    case Direction.South:   targetOffset += new Vector3(0, 0, -1.5f); break;
+                    case Direction.West:    targetOffset += new Vector3(-1.5f, 0, 0); break;
                 }
 
                 Portal neighborPortal = neighbor.hallways[swapDir(pair.Key)].GetComponentInChildren<Portal>();
 
                 if (neighborPortal != null)
                 {
-                    targetOffset += new Vector3(neighborPortal.transform.position.x, neighborPortal.transform.position.y, neighborPortal.transform.position.z);
+                    targetOffset += new Vector3(neighborPortal.transform.position.x, 0, neighborPortal.transform.position.z);
                     myPortal.targetPosition += targetOffset;
                 }
                 else
