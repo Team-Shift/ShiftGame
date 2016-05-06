@@ -97,9 +97,9 @@ public class CameraShift : MonoBehaviour {
         }
         if (isOthos)
         {
-            Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 2.0f);
+            Vector3 v = new Vector3(playerPosX, playerPosY + 10, playerPosZ - 8);
             gameObject.transform.position = v;
-            gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
+            gameObject.transform.rotation = Quaternion.Euler(50f, 0, 0);
             Debug.Log(v);
             //cam.orthographic = false;
         }
@@ -108,10 +108,9 @@ public class CameraShift : MonoBehaviour {
             Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 4.0f);
             
             gameObject.transform.position = v;
-            gameObject.transform.rotation = Quaternion.Euler(50.0f, 0, 0);
+            gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
             //cam.orthographic = true;
         }
-        Debug.Log(isOthos);
         //if(!isOthos)
         //{
         //    Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 8.0f);
@@ -149,51 +148,53 @@ public class CameraShift : MonoBehaviour {
             //Debug.Log(pivotPoint.transform.position);
         }
 
-        
-            if (!_changing)
-            {
-                return;
-            }
 
-            var currentlyOrthographic = GetComponent<Camera>().orthographic;
-            Matrix4x4 orthoMat, persMat;
+        if (!_changing)
+        {
+            return;
+        }
+
+        var currentlyOrthographic = GetComponent<Camera>().orthographic;
+        Matrix4x4 orthoMat, persMat;
+        if (currentlyOrthographic)
+        {
+            orthoMat = GetComponent<Camera>().projectionMatrix;
+
+            GetComponent<Camera>().orthographic = false;
+            GetComponent<Camera>().ResetProjectionMatrix();
+            persMat = GetComponent<Camera>().projectionMatrix;
+        }
+        else
+        {
+            persMat = GetComponent<Camera>().projectionMatrix;
+
+            GetComponent<Camera>().orthographic = true;
+            GetComponent<Camera>().ResetProjectionMatrix();
+            orthoMat = GetComponent<Camera>().projectionMatrix;
+        }
+        GetComponent<Camera>().orthographic = currentlyOrthographic;
+
+        _currentT += (Time.deltaTime / ProjectionChangeTime);
+        if (_currentT < 1.0f)
+        {
             if (currentlyOrthographic)
             {
-                orthoMat = GetComponent<Camera>().projectionMatrix;
-
-                GetComponent<Camera>().orthographic = false;
-                GetComponent<Camera>().ResetProjectionMatrix();
-                persMat = GetComponent<Camera>().projectionMatrix;
+                GetComponent<Camera>().projectionMatrix = MatrixLerp(orthoMat, persMat, _currentT * _currentT);
             }
             else
             {
-                persMat = GetComponent<Camera>().projectionMatrix;
-
-                GetComponent<Camera>().orthographic = true;
-                GetComponent<Camera>().ResetProjectionMatrix();
-                orthoMat = GetComponent<Camera>().projectionMatrix;
+                GetComponent<Camera>().projectionMatrix = MatrixLerp(persMat, orthoMat, Mathf.Sqrt(_currentT));
             }
-            GetComponent<Camera>().orthographic = currentlyOrthographic;
-
-            _currentT += (Time.deltaTime / ProjectionChangeTime);
-            if (_currentT < 1.0f)
-            {
-                if (currentlyOrthographic)
-                {
-                    GetComponent<Camera>().projectionMatrix = MatrixLerp(orthoMat, persMat, _currentT * _currentT);
-                }
-                else
-                {
-                    GetComponent<Camera>().projectionMatrix = MatrixLerp(persMat, orthoMat, Mathf.Sqrt(_currentT));
-                }
-            }
-            else
-            {
-                _changing = false;
-                GetComponent<Camera>().orthographic = !currentlyOrthographic;
-                GetComponent<Camera>().ResetProjectionMatrix();
-            }
+            canShift = false;
         }
+        else
+        {
+            _changing = false;
+            canShift = true;
+            GetComponent<Camera>().orthographic = !currentlyOrthographic;
+            GetComponent<Camera>().ResetProjectionMatrix();
+        }
+    }
     
    /* void ChangeCamera()
     {

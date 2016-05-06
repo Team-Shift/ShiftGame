@@ -40,7 +40,7 @@ public class ChestDrop : MonoBehaviour {
         // choose random item
         if (itemName == null)
         {
-            string itemName = unlockedItems[Random.Range(0, unlockedItems.Count - 1)].itemName;
+            itemName = unlockedItems[Random.Range(0, unlockedItems.Count - 1)].itemName;
         }
         ItemManager.SpawnItem(itemName, gameObject.transform.position + new Vector3(0, 1, 0));
         // set floating parent
