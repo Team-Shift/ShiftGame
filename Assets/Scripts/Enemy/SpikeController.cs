@@ -28,8 +28,11 @@ public class SpikeController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
-        player.GetComponent<PlayerCombat>().DamageFallback(gameObject.transform.position);
+        if (other.tag == "Player")
+        {
+            player.GetComponent<PlayerCombat>().DamageFallback(gameObject.transform.position);
+        }
     }
 }
