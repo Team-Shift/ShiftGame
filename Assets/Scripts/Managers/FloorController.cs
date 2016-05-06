@@ -20,9 +20,6 @@ public class FloorController : MonoBehaviour
         {
             floorPieceLevels.Add(piece.transform.position.y);
         }
-
-        Debug.Log(floorPieces.Count);
-        Debug.Log(floorPieceLevels.Count);
     }
 
     // Update is called once per frame
