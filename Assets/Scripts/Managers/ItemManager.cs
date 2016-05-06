@@ -12,13 +12,15 @@ public static class ItemManager
     private static Dictionary<string, Item> ItemDictionary;
     private static Dictionary<string, Item> UnlockedItems;
 
-    //ToDo Decide if this is where we want BankedItems stored
-    private static Dictionary<string, Item> BankedItems;
+    // ToDo Decide if this is where we want BankedItems stored
+    // Banked items with a set/get instead of leaving public
+    public static Dictionary<string, Item> BankedItems;
 
     static ItemManager()
     {
         ItemDictionary = new Dictionary<string, Item>();
         UnlockedItems = new Dictionary<string, Item>();
+        BankedItems = new Dictionary<string, Item>();
         LoadItems();
     }
 
@@ -48,6 +50,11 @@ public static class ItemManager
             Debug.LogError("Spawning of an item failed!");
             return null;
         }
+    }
+
+    public static GameObject SpawnItem(string itemKey)
+    {
+        return SpawnItem(itemKey, Vector3.zero);
     }
 
     //Add item to player bank
@@ -108,5 +115,27 @@ public static class ItemManager
         {
             UnlockedItems.Add(v.Key, v.Value);
         }
+    }
+
+    // For Debug Purposes
+    // Banks some items initially
+    public static void BankItemSet(Item.ItemType item_Type)
+    {
+        foreach (var item in ItemDictionary)
+        {
+            if (item.Value != null)
+            {
+                if (item.Value.itype == item_Type)
+                {
+                    BankItem(item.Key);
+                }
+            }
+        }
+        Debug.Log(BankedItems.Count);
+    }
+
+    public static void ClearBank()
+    {
+        BankedItems.Clear();
     }
 }
