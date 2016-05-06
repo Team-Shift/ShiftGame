@@ -11,20 +11,10 @@ public static class ItemManager
 {
     private static Dictionary<string, Item> ItemDictionary;
     private static Dictionary<string, Item> UnlockedItems;
-<<<<<<< 8a735eca15e074797280cb5d761183299ee0d83e:Assets/Scripts/Managers/ItemManager.cs
 
     // ToDo Decide if this is where we want BankedItems stored
     // Banked items with a set/get instead of leaving public
     public static Dictionary<string, Item> BankedItems;
-||||||| merged common ancestors
-
-    //ToDo Decide if this is where we want BankedItems stored
-    private static Dictionary<string, Item> BankedItems;
-=======
-    
-    //ToDo Decide if this is where we want BankedItems stored
-    private static Dictionary<string, Item> BankedItems;
->>>>>>> shop: item description onMouseEnter:Assets/Scripts/Items/ItemManager.cs
 
     static ItemManager()
     {
