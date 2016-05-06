@@ -62,7 +62,6 @@ public class CameraShift : MonoBehaviour {
 
     void Update()
     {
-
         canShift++;
 
         // get players pos
@@ -100,40 +99,40 @@ public class CameraShift : MonoBehaviour {
                 // perspective cam position
 
             }
-
-            if (isOthos)
-            {
-                Vector3 v = new Vector3(playerPosX, playerPosY + 50, playerPosZ - 40);
-                gameObject.transform.position = v;
-                gameObject.transform.rotation = Quaternion.Euler(50f, 0, 0);
-                //cam.nearClipPlane = -10f;
+                //if(!isOthos)
+                //{
+                //    Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 8.0f);
+                //    gameObject.transform.position = v;
+                //    gameObject.transform.rotation = Quaternion.Euler(50.0f, 0, 0);
+                //    //cam.orthographic = true;
+                //}
+                //else
+                //{
                 //cam.orthographic = false;
-            }
-            else
-            {
-                Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 4.0f);
-                //cam.nearClipPlane = 0.01f;
-                gameObject.transform.position = v;
-                gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
-                //cam.orthographic = true;
-            }
-            //if(!isOthos)
-            //{
-            //    Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 8.0f);
-            //    gameObject.transform.position = v;
-            //    gameObject.transform.rotation = Quaternion.Euler(50.0f, 0, 0);
-            //    //cam.orthographic = true;
-            //}
-            //else
-            //{
+                //}
+
+                // start fading in and out
+                //if (canFade)
+                //    lerpAlpha();
+
+                canShift = 0;
+            
+        }
+        if (isOthos)
+        {
+            Vector3 v = new Vector3(playerPosX, playerPosY + 50, playerPosZ - 40);
+            gameObject.transform.position = v;
+            gameObject.transform.rotation = Quaternion.Euler(50f, 0, 0);
+            //cam.nearClipPlane = -10f;
             //cam.orthographic = false;
-            //}
-
-            // start fading in and out
-            //if (canFade)
-            //    lerpAlpha();
-
-            canShift = 0;
+        }
+        else
+        {
+            Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 4.0f);
+            //cam.nearClipPlane = 0.01f;
+            gameObject.transform.position = v;
+            gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
+            //cam.orthographic = true;
         }
     }
 
