@@ -17,8 +17,7 @@ public class ChestDrop : MonoBehaviour {
         spawned = false;
         anim = gameObject.GetComponent<Animator>();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 	    
 	}
@@ -28,30 +27,34 @@ public class ChestDrop : MonoBehaviour {
         if (other.tag == "Player")
         {
             anim.SetBool("canOpen", true);
-            if (!spawned)
-            {
-                SpawnItem();
-            }
+            //if (!spawned)
+            //{
+            //    SpawnItem();
+            //}
         }
     }
 
     public void SpawnItem()
     {
         // choose random item
-        if (itemName == null)
+        if (string.IsNullOrEmpty(itemName))
         {
             itemName = unlockedItems[Random.Range(0, unlockedItems.Count - 1)].itemName;
         }
-        ItemManager.SpawnItem(itemName, gameObject.transform.position + new Vector3(0, 1, 0));
+        
         // set floating parent
-        //GameObject g = GameObject.Instantiate(floatingObject, transform.position, Quaternion.identity) as GameObject;
-
-        //foreach (Transform t in g.GetComponentsInChildren<Transform>())
-        //{
-        //    if (t.name == "item_Particle")
-        //    {
-        //        spawned = true;
-        //    }
-        //}
+        //GameObject g = Resources.Load("itemFloating") as GameObject;
+        
+        GameObject g = GameObject.Instantiate(Resources.Load("itemFloating"), transform.position, Quaternion.identity) as GameObject;
+        Debug.Log(g);
+        foreach (Transform t in g.GetComponentsInChildren<Transform>())
+        {
+            if (t.name == "item_Particle")
+            {
+                GameObject itemSpawned = ItemManager.SpawnItem(itemName, gameObject.transform.position + new Vector3(0, .5f, 0));
+                itemSpawned.transform.SetParent(t);
+            }
+        }
+        spawned = true;
     }
 }

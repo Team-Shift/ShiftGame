@@ -123,7 +123,12 @@ public class CameraShift : MonoBehaviour {
             Vector3 v = new Vector3(playerPosX, playerPosY + 50, playerPosZ - 40);
             gameObject.transform.position = v;
             gameObject.transform.rotation = Quaternion.Euler(50f, 0, 0);
+<<<<<<< 5a886479cfa9f961d0a7b3825abd959141af2425
             //cam.nearClipPlane = -10f;
+||||||| merged common ancestors
+            Debug.Log(v);
+=======
+>>>>>>> chest can spawn specific item, player bow/melee attack
             //cam.orthographic = false;
         }
         else

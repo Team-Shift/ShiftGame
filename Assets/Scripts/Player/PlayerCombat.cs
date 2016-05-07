@@ -25,6 +25,7 @@ public class PlayerCombat : MonoBehaviour {
     public int Attack;
 
     private Animator anim;
+    private Inventory inv;
 
     HealthUI hearts;
 
@@ -35,6 +36,7 @@ public class PlayerCombat : MonoBehaviour {
         hearts = gameObject.GetComponent<HealthUI>();
         Health = 3;
         Attack = 0;
+        inv = gameObject.GetComponent<Inventory>();
     }
 	
 	// Update is called once per frame
@@ -43,14 +45,22 @@ public class PlayerCombat : MonoBehaviour {
         //Combat & Interation
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            melee = !melee;
-            MeleeAttack();
+            Debug.Log(inv);
+            if (inv.invItems[0].item.itemName == "Bow")
+            {
+                RangedAttack();
+            }
+            else
+            {
+                melee = !melee;
+                MeleeAttack();
+            }
             
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            RangedAttack();
-        }
+        //else if (Input.GetKeyDown(KeyCode.Mouse1))
+        //{
+        //    RangedAttack();
+        //}
 
         if (shot == false)
         {
