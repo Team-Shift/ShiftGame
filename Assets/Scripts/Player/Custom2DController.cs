@@ -171,8 +171,24 @@ public class Custom2DController : MonoBehaviour
 
         if (pivotPoint.transform.rotation.x < 30 && pivotPoint.transform.rotation.x > -30)
         {
+            /*
+            {TODO}
+            Need to figure out how to clamp the camera from moving up and down too far
+            */
+
+            //if (pivotPoint.transform.rotation.x <= -30)
+            //{
+            //    pivotPoint.transform.rotation = Quaternion.Euler(-30, pivotPoint.transform.rotation.y, pivotPoint.transform.rotation.x);
+            //}
+
+            //else if (pivotPoint.transform.rotation.x >= 30)
+            //{
+            //    pivotPoint.transform.rotation = Quaternion.Euler(30, pivotPoint.transform.rotation.y, pivotPoint.transform.rotation.x);
+            //}
+
             pivotPoint.transform.Rotate(Vector3.left * leaning);
         }
+
         //end of new code
 
 
