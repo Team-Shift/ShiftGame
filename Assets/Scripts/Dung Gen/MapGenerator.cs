@@ -36,7 +36,7 @@ public class MapGenerator : MonoBehaviour
     //
     private List<Coord> PossibleBossRooms;
 
-    void Start()
+    void Awake()
     {
         GenerateMap();
     }
@@ -232,9 +232,14 @@ public class MapGenerator : MonoBehaviour
 
                 if (newRoom != null)
                 {
-                    //Select random room prefab from array
-                    int randomIndex = prng.Next(0, rooms.Length);
-                    newRoom.prefab = rooms[randomIndex];
+                    // Select random room prefab from array to assign
+                    // Only if not in the center room
+                    if (newRoom != map[currentDungeon.dungeonCenter.x, currentDungeon.dungeonCenter.y])
+                    {
+                        int randomIndex = prng.Next(0, rooms.Length);
+                        newRoom.prefab = rooms[randomIndex];
+                    }
+
 
                     //Instantiate and initialize room
                     GameObject newRoomObject = Instantiate(newRoom.prefab);

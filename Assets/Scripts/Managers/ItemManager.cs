@@ -107,13 +107,17 @@ public static class ItemManager
         return tempItems;
     }
 
-    // For Debug Purposes
-    // unlocks all items in Resources folder **only for testing purposes**
+    // For Debug
+    // Unlocks all items in Resources folder **only for testing purposes**
     public static void UnlockAllItems()
     {
         foreach(var v in ItemDictionary)
         {
-            UnlockedItems.Add(v.Key, v.Value);
+
+            if (UnlockedItems[v.Key] == null)
+            {
+                UnlockedItems.Add(v.Key, v.Value);
+            }
         }
     }
 
