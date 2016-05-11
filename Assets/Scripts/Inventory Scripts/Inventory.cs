@@ -26,7 +26,22 @@ public class Inventory : MonoBehaviour {
     {
         invItems = new s_Items[invSize];
         goldCount = 0;
-        InvUI = GameObject.Find("ItemIcons").GetComponent<InvHUD>();
+        if (GameObject.Find("ItemIcons").GetComponent<InvHUD>())
+        {
+            InvUI = GameObject.Find("ItemIcons").GetComponent<InvHUD>();
+        }
+
+        GameObject weaponLoc = GameObject.FindGameObjectWithTag("Weapon");
+        Debug.Log(weaponLoc.name);
+        // get weapon transform
+        foreach (Transform tCurrWeap in weaponLoc.GetComponentInChildren<Transform>())
+        {
+            Item i = tCurrWeap.gameObject.GetComponent<Item>();
+            s_Items newWeapon = new s_Items();
+            newWeapon.item = i;
+            newWeapon.quantity = 1;
+            invItems[0] = newWeapon;
+        }
     }
 
     void Update()
@@ -94,7 +109,15 @@ public class Inventory : MonoBehaviour {
                 if (!i.reccentlyPickupUp)
                 {
                     Debug.Log(i.reccentlyPickupUp);
+
+                    // instantiate game object
                     ReplaceWeapon(i);
+
+                    // store in inventory
+                    s_Items newWeapon = new s_Items();
+                    newWeapon.item = i;
+                    newWeapon.quantity = 1;
+                    invItems[0] = newWeapon;
 
                     // IF THIS FAILS, SOMETHING BAD GOT IN HERE
                     Debug.Assert((i is iEquipable));
@@ -102,10 +125,31 @@ public class Inventory : MonoBehaviour {
                     (i as iEquipable).OnUse(gameObject);
                 }
                 break;
+
+            case Item.ItemType.ARMOR:
+                // store in inventory
+                s_Items newArmor = new s_Items();
+                newArmor.item = i;
+                newArmor.quantity = 1;
+                invItems[1] = newArmor;
+                
+                //(i as iEquipable).OnUse(gameObject);
+                break;
+
+            case Item.ItemType.ABILITY:
+                // store in inventory
+                s_Items newAbility = new s_Items();
+                newAbility.item = i;
+                newAbility.quantity = 1;
+                invItems[2] = newAbility;
+
+                //(i as iEquipable).OnUse(gameObject);
+                break;
+
             case Item.ItemType.CONSUMABLE:
                 s_Items temp = new s_Items();
 
-                temp.item = i;
+                temp.item = ItemManager.GetItem(i.itemName);
                 temp.quantity = 1;
                 if (invItems[3].quantity == 0)
                 {
@@ -117,7 +161,7 @@ public class Inventory : MonoBehaviour {
                     {
                         //Debug.Log(invItems[4].item.itemName);
                         // ***** put parent on locator *****
-                        GameObject g = ItemManager.SpawnItem(invItems[4].item.itemName, transform.position);
+                        GameObject g = ItemManager.SpawnItem(invItems[4].item.itemName, i.transform.position);
                         SetFloatingParent(g);
 
                         g.GetComponent<Item>().reccentlyPickupUp = true;
@@ -145,8 +189,9 @@ public class Inventory : MonoBehaviour {
         // get weapon transform
         foreach (Transform tCurrWeap in weaponLoc.GetComponentInChildren<Transform>())
         {
+            // drop current weapon
             tCurrWeap.SetParent(null); //de-parent
-            tCurrWeap.position = transform.position;
+            tCurrWeap.position = pickupItem.transform.position;
             tCurrWeap.rotation = Quaternion.Euler(new Vector3(270, 0, 0));
 
             tCurrWeap.gameObject.GetComponent<Item>().reccentlyPickupUp = true;
@@ -168,7 +213,7 @@ public class Inventory : MonoBehaviour {
     {
         Debug.Log("Setting parent");
         // prefab
-        GameObject g = GameObject.Instantiate(floatingObject, transform.position, Quaternion.identity) as GameObject;
+        GameObject g = GameObject.Instantiate(floatingObject, item.transform.position, Quaternion.identity) as GameObject;
 
         foreach(Transform t in g.GetComponentsInChildren<Transform>())
         {
@@ -178,11 +223,11 @@ public class Inventory : MonoBehaviour {
                 // get parent 
                 if (item.GetComponent<Item>().itype == Item.ItemType.WEAPON)
                 {
-                    item.transform.Translate(new Vector3(0, 0, .3f)); // offset
+                    //item.transform.position += new Vector3(0,g.transform.position.y + 1.5f, 0); // offset
                 }
                 else
                 {
-                    item.transform.Translate(new Vector3(0, .3f, 0)); // offset
+                    //item.transform.Translate(new Vector3(0, .2f, 0f)); // offset
                 }
                 item.transform.SetParent(t);
             }

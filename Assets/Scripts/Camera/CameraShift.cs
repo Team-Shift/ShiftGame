@@ -123,8 +123,6 @@ public class CameraShift : MonoBehaviour {
             Vector3 v = new Vector3(playerPosX, playerPosY + 50, playerPosZ - 40);
             gameObject.transform.position = v;
             gameObject.transform.rotation = Quaternion.Euler(50f, 0, 0);
-            //cam.nearClipPlane = -10f;
-            //cam.orthographic = false;
         }
         else
         {
