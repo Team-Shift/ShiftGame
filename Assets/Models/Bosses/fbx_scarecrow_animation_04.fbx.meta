@@ -1,0 +1,674 @@
+fileFormatVersion: 2
+guid: 403da313d93644d4094d75cd22d76db1
+timeCreated: 1463005442
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: locator1
+    100004: locator2
+    100006: scarecrow_boss:locator1
+    100008: scarecrow_boss:locator2
+    100010: scarecrow_boss:obj_scarecrow_body:Mesh
+    100012: scarecrow_boss:obj_scarecrow_hat:Mesh
+    100014: scarecrow_boss:obj_scarecrow_head:Mesh
+    100016: scarecrow_boss:obj_scarecrow_left_arm_01:Mesh
+    100018: scarecrow_boss:obj_scarecrow_left_arm_02:Mesh
+    100020: scarecrow_boss:obj_scarecrow_left_hand_01:Mesh
+    100022: scarecrow_boss:obj_scarecrow_left_hand_02:Mesh
+    100024: scarecrow_boss:obj_scarecrow_left_leg_01:Mesh
+    100026: scarecrow_boss:obj_scarecrow_left_leg_02:Mesh
+    100028: scarecrow_boss:obj_scarecrow_right_arm_01:Mesh
+    100030: scarecrow_boss:obj_scarecrow_right_arm_02:Mesh
+    100032: scarecrow_boss:obj_scarecrow_right_hand_01:Mesh
+    100034: scarecrow_boss:obj_scarecrow_right_hand_02:Mesh
+    100036: scarecrow_boss:obj_scarecrow_right_leg_01:Mesh
+    100038: scarecrow_boss:obj_scarecrow_right_leg_02:Mesh
+    100040: scarecrow_boss:obj_scarecrow_scythe1:Mesh
+    100042: scarecrow_boss:obj_scarecrow_scythe:Mesh
+    100044: scarecrow_boss:Scarecrow
+    100046: scarecrow_boss:scarecrow_left_wrist
+    100048: scarecrow_boss:scarecrow_right_wrist
+    100050: scarecrow_boss:scythe_01
+    100052: scarecrow_boss:scythe_02
+    400000: //RootNode
+    400002: locator1
+    400004: locator2
+    400006: scarecrow_boss:locator1
+    400008: scarecrow_boss:locator2
+    400010: scarecrow_boss:obj_scarecrow_body:Mesh
+    400012: scarecrow_boss:obj_scarecrow_hat:Mesh
+    400014: scarecrow_boss:obj_scarecrow_head:Mesh
+    400016: scarecrow_boss:obj_scarecrow_left_arm_01:Mesh
+    400018: scarecrow_boss:obj_scarecrow_left_arm_02:Mesh
+    400020: scarecrow_boss:obj_scarecrow_left_hand_01:Mesh
+    400022: scarecrow_boss:obj_scarecrow_left_hand_02:Mesh
+    400024: scarecrow_boss:obj_scarecrow_left_leg_01:Mesh
+    400026: scarecrow_boss:obj_scarecrow_left_leg_02:Mesh
+    400028: scarecrow_boss:obj_scarecrow_right_arm_01:Mesh
+    400030: scarecrow_boss:obj_scarecrow_right_arm_02:Mesh
+    400032: scarecrow_boss:obj_scarecrow_right_hand_01:Mesh
+    400034: scarecrow_boss:obj_scarecrow_right_hand_02:Mesh
+    400036: scarecrow_boss:obj_scarecrow_right_leg_01:Mesh
+    400038: scarecrow_boss:obj_scarecrow_right_leg_02:Mesh
+    400040: scarecrow_boss:obj_scarecrow_scythe1:Mesh
+    400042: scarecrow_boss:obj_scarecrow_scythe:Mesh
+    400044: scarecrow_boss:Scarecrow
+    400046: scarecrow_boss:scarecrow_left_wrist
+    400048: scarecrow_boss:scarecrow_right_wrist
+    400050: scarecrow_boss:scythe_01
+    400052: scarecrow_boss:scythe_02
+    2300000: scarecrow_boss:obj_scarecrow_body:Mesh
+    2300002: scarecrow_boss:obj_scarecrow_hat:Mesh
+    2300004: scarecrow_boss:obj_scarecrow_left_arm_01:Mesh
+    2300006: scarecrow_boss:obj_scarecrow_left_arm_02:Mesh
+    2300008: scarecrow_boss:obj_scarecrow_left_hand_01:Mesh
+    2300010: scarecrow_boss:obj_scarecrow_left_hand_02:Mesh
+    2300012: scarecrow_boss:obj_scarecrow_left_leg_01:Mesh
+    2300014: scarecrow_boss:obj_scarecrow_left_leg_02:Mesh
+    2300016: scarecrow_boss:obj_scarecrow_right_arm_01:Mesh
+    2300018: scarecrow_boss:obj_scarecrow_right_arm_02:Mesh
+    2300020: scarecrow_boss:obj_scarecrow_right_hand_01:Mesh
+    2300022: scarecrow_boss:obj_scarecrow_right_hand_02:Mesh
+    2300024: scarecrow_boss:obj_scarecrow_right_leg_01:Mesh
+    2300026: scarecrow_boss:obj_scarecrow_right_leg_02:Mesh
+    2300028: scarecrow_boss:obj_scarecrow_scythe1:Mesh
+    2300030: scarecrow_boss:obj_scarecrow_scythe:Mesh
+    3300000: scarecrow_boss:obj_scarecrow_body:Mesh
+    3300002: scarecrow_boss:obj_scarecrow_hat:Mesh
+    3300004: scarecrow_boss:obj_scarecrow_left_arm_01:Mesh
+    3300006: scarecrow_boss:obj_scarecrow_left_arm_02:Mesh
+    3300008: scarecrow_boss:obj_scarecrow_left_hand_01:Mesh
+    3300010: scarecrow_boss:obj_scarecrow_left_hand_02:Mesh
+    3300012: scarecrow_boss:obj_scarecrow_left_leg_01:Mesh
+    3300014: scarecrow_boss:obj_scarecrow_left_leg_02:Mesh
+    3300016: scarecrow_boss:obj_scarecrow_right_arm_01:Mesh
+    3300018: scarecrow_boss:obj_scarecrow_right_arm_02:Mesh
+    3300020: scarecrow_boss:obj_scarecrow_right_hand_01:Mesh
+    3300022: scarecrow_boss:obj_scarecrow_right_hand_02:Mesh
+    3300024: scarecrow_boss:obj_scarecrow_right_leg_01:Mesh
+    3300026: scarecrow_boss:obj_scarecrow_right_leg_02:Mesh
+    3300028: scarecrow_boss:obj_scarecrow_scythe1:Mesh
+    3300030: scarecrow_boss:obj_scarecrow_scythe:Mesh
+    4300000: scarecrow_boss:obj_scarecrow_body:Mesh
+    4300002: scarecrow_boss:obj_scarecrow_head:Mesh
+    4300004: scarecrow_boss:obj_scarecrow_hat:Mesh
+    4300006: scarecrow_boss:obj_scarecrow_right_arm_01:Mesh
+    4300008: scarecrow_boss:obj_scarecrow_right_arm_02:Mesh
+    4300010: scarecrow_boss:obj_scarecrow_right_hand_01:Mesh
+    4300012: scarecrow_boss:obj_scarecrow_right_hand_02:Mesh
+    4300014: scarecrow_boss:obj_scarecrow_scythe:Mesh
+    4300016: scarecrow_boss:obj_scarecrow_left_arm_01:Mesh
+    4300018: scarecrow_boss:obj_scarecrow_left_arm_02:Mesh
+    4300020: scarecrow_boss:obj_scarecrow_left_hand_01:Mesh
+    4300022: scarecrow_boss:obj_scarecrow_left_hand_02:Mesh
+    4300024: scarecrow_boss:obj_scarecrow_right_leg_01:Mesh
+    4300026: scarecrow_boss:obj_scarecrow_right_leg_02:Mesh
+    4300028: scarecrow_boss:obj_scarecrow_left_leg_01:Mesh
+    4300030: scarecrow_boss:obj_scarecrow_left_leg_02:Mesh
+    4300032: scarecrow_boss:obj_scarecrow_scythe1:Mesh
+    7400000: ScarecrowOpeningAnimation
+    7400002: ScarecrowIdle
+    7400004: ScarecrowTeleportOut
+    7400006: ScarecrowTeleportIn
+    7400008: ScarecrowDeath
+    7400010: ScarecrowAttack
+    9500000: //RootNode
+    13700000: scarecrow_boss:obj_scarecrow_head:Mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: ScarecrowOpeningAnimation
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 312
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: locator2
+        weight: 1
+      - path: scarecrow_boss:locator2
+        weight: 1
+      - path: scarecrow_boss:obj_scarecrow_scythe1:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:locator1
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_head:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_head:Mesh/scarecrow_boss:obj_scarecrow_hat:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:obj_scarecrow_left_hand_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:obj_scarecrow_left_hand_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:scythe_02
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_leg_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_leg_01:Mesh/scarecrow_boss:obj_scarecrow_left_leg_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:obj_scarecrow_right_hand_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:obj_scarecrow_right_hand_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:scythe_01
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:scythe_01/scarecrow_boss:obj_scarecrow_scythe:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_leg_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_leg_01:Mesh/scarecrow_boss:obj_scarecrow_right_leg_02:Mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: ScarecrowIdle
+      takeName: Take 001
+      firstFrame: 312
+      lastFrame: 355
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: locator2
+        weight: 1
+      - path: scarecrow_boss:locator2
+        weight: 1
+      - path: scarecrow_boss:obj_scarecrow_scythe1:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:locator1
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_head:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_head:Mesh/scarecrow_boss:obj_scarecrow_hat:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:obj_scarecrow_left_hand_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:obj_scarecrow_left_hand_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:scythe_02
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_leg_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_leg_01:Mesh/scarecrow_boss:obj_scarecrow_left_leg_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:obj_scarecrow_right_hand_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:obj_scarecrow_right_hand_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:scythe_01
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:scythe_01/scarecrow_boss:obj_scarecrow_scythe:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_leg_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_leg_01:Mesh/scarecrow_boss:obj_scarecrow_right_leg_02:Mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: ScarecrowTeleportOut
+      takeName: Take 001
+      firstFrame: 355
+      lastFrame: 380
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: locator2
+        weight: 1
+      - path: scarecrow_boss:locator2
+        weight: 1
+      - path: scarecrow_boss:obj_scarecrow_scythe1:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:locator1
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_head:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_head:Mesh/scarecrow_boss:obj_scarecrow_hat:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:obj_scarecrow_left_hand_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:obj_scarecrow_left_hand_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:scythe_02
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_leg_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_leg_01:Mesh/scarecrow_boss:obj_scarecrow_left_leg_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:obj_scarecrow_right_hand_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:obj_scarecrow_right_hand_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:scythe_01
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:scythe_01/scarecrow_boss:obj_scarecrow_scythe:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_leg_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_leg_01:Mesh/scarecrow_boss:obj_scarecrow_right_leg_02:Mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: ScarecrowTeleportIn
+      takeName: Take 001
+      firstFrame: 390
+      lastFrame: 415
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: locator2
+        weight: 1
+      - path: scarecrow_boss:locator2
+        weight: 1
+      - path: scarecrow_boss:obj_scarecrow_scythe1:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:locator1
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_head:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_head:Mesh/scarecrow_boss:obj_scarecrow_hat:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:obj_scarecrow_left_hand_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:obj_scarecrow_left_hand_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:scythe_02
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_leg_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_leg_01:Mesh/scarecrow_boss:obj_scarecrow_left_leg_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:obj_scarecrow_right_hand_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:obj_scarecrow_right_hand_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:scythe_01
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:scythe_01/scarecrow_boss:obj_scarecrow_scythe:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_leg_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_leg_01:Mesh/scarecrow_boss:obj_scarecrow_right_leg_02:Mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: ScarecrowDeath
+      takeName: Take 001
+      firstFrame: 415
+      lastFrame: 500
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: locator2
+        weight: 1
+      - path: scarecrow_boss:locator2
+        weight: 1
+      - path: scarecrow_boss:obj_scarecrow_scythe1:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:locator1
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_head:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_head:Mesh/scarecrow_boss:obj_scarecrow_hat:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:obj_scarecrow_left_hand_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:obj_scarecrow_left_hand_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:scythe_02
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_leg_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_leg_01:Mesh/scarecrow_boss:obj_scarecrow_left_leg_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:obj_scarecrow_right_hand_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:obj_scarecrow_right_hand_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:scythe_01
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:scythe_01/scarecrow_boss:obj_scarecrow_scythe:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_leg_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_leg_01:Mesh/scarecrow_boss:obj_scarecrow_right_leg_02:Mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: ScarecrowAttack
+      takeName: Take 001
+      firstFrame: 264
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: locator2
+        weight: 1
+      - path: scarecrow_boss:locator2
+        weight: 1
+      - path: scarecrow_boss:obj_scarecrow_scythe1:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:locator1
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_head:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_head:Mesh/scarecrow_boss:obj_scarecrow_hat:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:obj_scarecrow_left_hand_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:obj_scarecrow_left_hand_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_arm_01:Mesh/scarecrow_boss:obj_scarecrow_left_arm_02:Mesh/scarecrow_boss:scarecrow_left_wrist/scarecrow_boss:scythe_02
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_leg_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_left_leg_01:Mesh/scarecrow_boss:obj_scarecrow_left_leg_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:obj_scarecrow_right_hand_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:obj_scarecrow_right_hand_02:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:scythe_01
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_arm_01:Mesh/scarecrow_boss:obj_scarecrow_right_arm_02:Mesh/scarecrow_boss:scarecrow_right_wrist/scarecrow_boss:scythe_01/scarecrow_boss:obj_scarecrow_scythe:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_leg_01:Mesh
+        weight: 1
+      - path: scarecrow_boss:Scarecrow/locator1/scarecrow_boss:obj_scarecrow_body:Mesh/scarecrow_boss:obj_scarecrow_right_leg_01:Mesh/scarecrow_boss:obj_scarecrow_right_leg_02:Mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 5
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
