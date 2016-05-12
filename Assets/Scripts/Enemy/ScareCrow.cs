@@ -8,6 +8,7 @@ public class ScareCrow : MonoBehaviour
     public bool battle = false;
     public int health = 0;
     public float difficultyMult = 1.0f;
+    Animator anim;
 
     //For telling the boss where he should be/ teleport to
     [HideInInspector]
@@ -31,6 +32,8 @@ public class ScareCrow : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        anim = gameObject.GetComponent<Animator>();
+        anim.SetTrigger("ScarecrowOpening");
         baseX = transform.position.x;
         difficultyMult *= health;
 
@@ -47,22 +50,30 @@ public class ScareCrow : MonoBehaviour
         }
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Custom2DController>();
-        gameObject.transform.position = pathList[0];
+        gameObject.transform.position = pathList[2];
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(anim.GetFloat("DoneAnimation") > 0)
+        {
+            battle = true;
+        }
+
         if (battle == true)
         {
             if(health <= 0)
             {
-                Destroy(gameObject);
+                battle = false;
+                anim.SetTrigger("Death");
+                //Destroy(gameObject);
             }
 
             if (teleportTime <= 0)
             {
-                Teleport();
+                anim.SetTrigger("Teleport");
+                //Teleport();
                 teleportTime += 5;
                 shotType = Random.Range(0, 4);
             }
@@ -75,6 +86,7 @@ public class ScareCrow : MonoBehaviour
         }
     }
 
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "HitBox" || other.tag == "Weapon")
@@ -85,6 +97,8 @@ public class ScareCrow : MonoBehaviour
 
     private void ShotPattern(int pattern)
     {
+        anim.SetTrigger("Attack");
+
         switch(pattern)
         {
             case 0:
@@ -141,7 +155,7 @@ public class ScareCrow : MonoBehaviour
         //Set up variables before anything else
         speedMulti = 1.0f;
         rangeMulti = 2.0f;
-        shootInterval = 0.15f;
+        shootInterval = 0.2f;
         shootInterval *= difficultyMult;
 
         //Get positions for spawning and interval between shots
@@ -173,7 +187,7 @@ public class ScareCrow : MonoBehaviour
         //Set up variables before anything else
         speedMulti = 1.0f;
         rangeMulti = 2.0f;
-        shootInterval = 0.5f;
+        shootInterval = 0.8f;
         shootInterval *= difficultyMult;
 
         //Get positions for spawning and interval between shots
