@@ -19,8 +19,9 @@ public class Custom2DController : MonoBehaviour
     [HideInInspector]
     public bool CameraSwitch = false;
     private Animator anim;
+    private float cameraPitch;
+    private float cameraYaw;
 
-    
     public float pushUpForce = 10;
     private bool jump = true;
     public float jumpTimeLeft = 1f;
@@ -162,33 +163,15 @@ public class Custom2DController : MonoBehaviour
 
         float forwardBack = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         float strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        float turning = Input.GetAxis("Mouse X") * turnSpeed * Time.deltaTime;
-        float leaning = Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
+        cameraYaw += Input.GetAxis("Mouse X") * turnSpeed * Time.deltaTime;
+        cameraPitch -= Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
 
         player.transform.Translate(Vector3.forward * forwardBack + Vector3.right * strafe, Space.Self);
 
-        player.transform.Rotate(Vector3.up * turning);
+        player.transform.Rotate(Vector3.up * cameraYaw);
 
-        if (pivotPoint.transform.rotation.x < 30 && pivotPoint.transform.rotation.x > -30)
-        {
-            /*
-            {TODO}
-            Need to figure out how to clamp the camera from moving up and down too far
-            */
-
-            //if (pivotPoint.transform.rotation.x <= -30)
-            //{
-            //    pivotPoint.transform.rotation = Quaternion.Euler(-30, pivotPoint.transform.rotation.y, pivotPoint.transform.rotation.x);
-            //}
-
-            //else if (pivotPoint.transform.rotation.x >= 30)
-            //{
-            //    pivotPoint.transform.rotation = Quaternion.Euler(30, pivotPoint.transform.rotation.y, pivotPoint.transform.rotation.x);
-            //}
-
-            pivotPoint.transform.Rotate(Vector3.left * leaning);
-        }
-
+        cameraPitch = Mathf.Clamp(cameraPitch + 90.0f, 60, 120) - 90.0f;
+        transform.eulerAngles = new Vector3(cameraPitch, cameraYaw, 0);
         //end of new code
 
 
