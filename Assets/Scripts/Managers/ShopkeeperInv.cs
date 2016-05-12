@@ -27,9 +27,9 @@ public class ShopkeeperInv : MonoBehaviour {
     // call when player completes dungeon, dies, or teleports out
     void GenerateInventory()
     {
+        Debug.Log("gen inv");
         itemsForSale.Clear();
         // get unlocked items and sort
-        //Debug.Log(ItemManager.GetUnlockedItems(Item.ItemType.WEAPON));
 
         List<Item> unlockedWeapons = ItemManager.GetUnlockedItems(Item.ItemType.WEAPON);
         List<Item> unlockedArmor = ItemManager.GetUnlockedItems(Item.ItemType.ARMOR);
@@ -61,10 +61,12 @@ public class ShopkeeperInv : MonoBehaviour {
             g.GetComponent<Item>().cost = 500;
             offset.z += .75f;
         }
+        
     }
 
-    void PlayerBuyItem(int index)
+    void PlayerBuyItem()
     {
+        int index = 0;
         Inventory inv = player.GetComponent<Inventory>();
 
         // can't item.canPickup = false until press 'Enter' && enough gold

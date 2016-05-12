@@ -38,12 +38,13 @@ public class Item  :  MonoBehaviour{
 
     void OnMouseEnter()
     {
-        g_text = prefab_txt.GetComponent<GUIText>();
-        Debug.Log("mouse down");
         if (beingSold)
         {
+            g_text = prefab_txt.GetComponent<GUIText>();
             // switch 
             g_text.text = itemName + ": " + cost + " gold.";
+            g_text.color = Color.black;
+            g_text.fontSize = 20;
             text2Destroy = Instantiate(prefab_txt, new Vector3(.5f, .5f, 1), Quaternion.identity) as GameObject;
         }
     }

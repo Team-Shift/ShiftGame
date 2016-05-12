@@ -26,6 +26,8 @@ GameObject:
   - 95: {fileID: 9557230}
   - 65: {fileID: 6567204}
   - 114: {fileID: 11497004}
+  - 65: {fileID: 6543298}
+  - 65: {fileID: 6510162}
   m_Layer: 0
   m_Name: fbx_shopkeeper
   m_TagString: Untagged
@@ -373,6 +375,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179420}
   m_Mesh: {fileID: 4300002, guid: e4c3d1781acaab949a44d0e64291c0cc, type: 3}
+--- !u!65 &6510162
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.6261226, z: 1}
+  m_Center: {x: 0, y: 0.3079787, z: 0}
+--- !u!65 &6543298
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.6261226, z: 1}
+  m_Center: {x: 0, y: 0.3079787, z: 0}
 --- !u!65 &6567204
 BoxCollider:
   m_ObjectHideFlags: 1

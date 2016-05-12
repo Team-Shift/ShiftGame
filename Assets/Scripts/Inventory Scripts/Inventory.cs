@@ -32,15 +32,17 @@ public class Inventory : MonoBehaviour {
         }
 
         GameObject weaponLoc = GameObject.FindGameObjectWithTag("Weapon");
-        Debug.Log(weaponLoc.name);
+        //Debug.Log(weaponLoc.name);
         // get weapon transform
         foreach (Transform tCurrWeap in weaponLoc.GetComponentInChildren<Transform>())
         {
             Item i = tCurrWeap.gameObject.GetComponent<Item>();
+            Debug.Log(i.itemName);
             s_Items newWeapon = new s_Items();
             newWeapon.item = i;
             newWeapon.quantity = 1;
             invItems[0] = newWeapon;
+            Debug.Log("adding cur weap");
         }
     }
 
@@ -108,7 +110,7 @@ public class Inventory : MonoBehaviour {
             case Item.ItemType.WEAPON:
                 if (!i.reccentlyPickupUp)
                 {
-                    Debug.Log(i.reccentlyPickupUp);
+                    //Debug.Log(i.reccentlyPickupUp);
 
                     // instantiate game object
                     ReplaceWeapon(i);
@@ -185,27 +187,34 @@ public class Inventory : MonoBehaviour {
     {
         // find locator/parent for weapon
         GameObject weaponLoc = GameObject.FindGameObjectWithTag("Weapon");
-        Debug.Log(weaponLoc.name);
+        //Debug.Log(weaponLoc.name);
         // get weapon transform
         foreach (Transform tCurrWeap in weaponLoc.GetComponentInChildren<Transform>())
         {
-            // drop current weapon
-            tCurrWeap.SetParent(null); //de-parent
-            tCurrWeap.position = pickupItem.transform.position;
-            tCurrWeap.rotation = Quaternion.Euler(new Vector3(270, 0, 0));
-
-            tCurrWeap.gameObject.GetComponent<Item>().reccentlyPickupUp = true;
-            tCurrWeap.GetComponent<Collider>().enabled = true;
-            SetFloatingParent(tCurrWeap.gameObject);
-
-            // pickup new weapon from DB
-            GameObject pickUp = ItemManager.SpawnItem(pickupItem.itemName, weaponLoc.transform.position);
-            pickUp.transform.SetParent(weaponLoc.transform);
-            pickUp.transform.localRotation = Quaternion.Euler(new Vector3(270, 0, 0));
-            pickUp.GetComponent<Item>().reccentlyPickupUp = true;
-
-            pickUp.GetComponent<Collider>().enabled = false;
+            Destroy(tCurrWeap.gameObject);
         }
+        //Transform tCurrWeap = weaponLoc.GetComponentInChildren<Transform>();
+        // drop current weapon
+
+        GameObject dropWeap  = ItemManager.SpawnItem(invItems[0].item.itemName, pickupItem.transform.position);
+        dropWeap.transform.rotation = Quaternion.Euler(new Vector3(270, 0, 0));
+        dropWeap.GetComponent<Item>().reccentlyPickupUp = true;
+        dropWeap.GetComponent<Collider>().enabled = true;
+        SetFloatingParent(dropWeap);
+
+        // pickup new weapon from DB
+        GameObject pickUp = ItemManager.SpawnItem(pickupItem.itemName, weaponLoc.transform.position);
+        pickUp.transform.SetParent(weaponLoc.transform);
+        if(pickupItem.itemName == "Bow")
+        {
+            pickUp.transform.localRotation = Quaternion.Euler(new Vector3(30, 140, 180));
+        }
+        else
+            pickUp.transform.localRotation = Quaternion.Euler(new Vector3(270, 0, 0));
+        pickUp.GetComponent<Item>().reccentlyPickupUp = true;
+
+        pickUp.GetComponent<Collider>().enabled = false;
+        
     }
 
 
@@ -219,16 +228,6 @@ public class Inventory : MonoBehaviour {
         {
             if(t.name == "item_Particle")
             {
-                Debug.Log(transform.name);
-                // get parent 
-                if (item.GetComponent<Item>().itype == Item.ItemType.WEAPON)
-                {
-                    //item.transform.position += new Vector3(0,g.transform.position.y + 1.5f, 0); // offset
-                }
-                else
-                {
-                    //item.transform.Translate(new Vector3(0, .2f, 0f)); // offset
-                }
                 item.transform.SetParent(t);
             }
         }

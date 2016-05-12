@@ -167,8 +167,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9117937, y: 0.6497731, z: 0.88516426}
-  m_Center: {x: 0.0025507398, y: 0.32945132, z: -0.05741787}
+  m_Size: {x: 0.9117937, y: 0.4114478, z: 0.88516426}
+  m_Center: {x: 0.0025507398, y: 0.21028864, z: -0.05741787}
 --- !u!65 &6572430
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -179,8 +179,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7423916, y: 0.6072717, z: 0.6894293}
-  m_Center: {x: 0.008469289, y: 0.31304193, z: 0.53035784}
+  m_Size: {x: 0.7423916, y: 0.5897808, z: 0.6894293}
+  m_Center: {x: 0.008469289, y: 0.30429673, z: 0.53035784}
 --- !u!95 &9529718
 Animator:
   serializedVersion: 3
@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockedItems: []
+  itemName: Bow
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

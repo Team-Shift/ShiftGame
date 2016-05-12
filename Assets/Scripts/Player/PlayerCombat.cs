@@ -45,15 +45,18 @@ public class PlayerCombat : MonoBehaviour {
         //Combat & Interation
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            Debug.Log(inv);
+            Debug.Log("attacking");
+            //Debug.Log(inv);
             if (inv.invItems[0].item.itemName == "Bow")
             {
                 RangedAttack();
+                Debug.Log("bow");
             }
             else
             {
                 melee = !melee;
                 MeleeAttack();
+                Debug.Log("meelee");
             }
             
         }

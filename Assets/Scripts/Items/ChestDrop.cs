@@ -12,8 +12,8 @@ public class ChestDrop : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        ItemManager.UnlockAllItems();
-        unlockedItems = ItemManager.GetUnlockedItems(Item.ItemType.CONSUMABLE);
+        //ItemManager.UnlockAllItems();
+        unlockedItems = ItemManager.GetUnlockedItems();
         spawned = false;
         anim = gameObject.GetComponent<Animator>();
 	}
@@ -27,10 +27,6 @@ public class ChestDrop : MonoBehaviour {
         if (other.tag == "Player")
         {
             anim.SetBool("canOpen", true);
-            //if (!spawned)
-            //{
-            //    SpawnItem();
-            //}
         }
     }
 
