@@ -110,13 +110,9 @@ public static class ItemManager
         return tempItems;
     }
 
-<<<<<<< 1c8a1a4300618b178762d5b0a48f8a36cee6900b
-    // For Debug
-    // Unlocks all items in Resources folder **only for testing purposes**
-||||||| merged common ancestors
+
     // For Debug Purposes
     // unlocks all items in Resources folder **only for testing purposes**
-=======
     public static List<Item> GetUnlockedItems()
     {
         return UnlockedItems.Values.ToList();
@@ -124,28 +120,14 @@ public static class ItemManager
 
     // For Debug Purposes
     // unlocks all items in Resources folder **only for testing purposes**
->>>>>>> bow animation working, and chest
     public static void UnlockAllItems()
     {
         foreach(var v in ItemDictionary)
         {
-<<<<<<< 1c8a1a4300618b178762d5b0a48f8a36cee6900b
-
-            if (UnlockedItems[v.Key] == null)
-            {
-                UnlockedItems.Add(v.Key, v.Value);
-            }
-||||||| merged common ancestors
-            UnlockedItems.Add(v.Key, v.Value);
-=======
             if (!UnlockedItems.Contains(v))
             {
-                Debug.Log("adding new");
                 UnlockedItems.Add(v.Key, v.Value);
             }
-            else
-                Debug.Log("repeats");
->>>>>>> bow animation working, and chest
         }
     }
 
