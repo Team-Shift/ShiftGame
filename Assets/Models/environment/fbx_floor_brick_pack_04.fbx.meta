@@ -1,15 +1,57 @@
 fileFormatVersion: 2
-guid: 78b114a5174e98d4d9328a425fc24770
-timeCreated: 1463078931
+guid: 348881dd14f3393429afbc97eadc4e57
+timeCreated: 1463078883
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: floor_brick_v010:Mesh
+    100004: floor_brick_v011:Mesh
+    100006: floor_brick_v012:Mesh
+    100008: floor_brick_v013:Mesh
+    100010: floor_brick_v014:Mesh
+    100012: floor_brick_v015:Mesh
+    100014: floor_brick_v016:Mesh
+    100016: floor_brick_v017:Mesh
+    100018: floor_brick_v018:Mesh
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: vox_entrance_Valcano_05:Mesh1
+    400002: floor_brick_v010:Mesh
+    400004: floor_brick_v011:Mesh
+    400006: floor_brick_v012:Mesh
+    400008: floor_brick_v013:Mesh
+    400010: floor_brick_v014:Mesh
+    400012: floor_brick_v015:Mesh
+    400014: floor_brick_v016:Mesh
+    400016: floor_brick_v017:Mesh
+    400018: floor_brick_v018:Mesh
+    2300000: floor_brick_v010:Mesh
+    2300002: floor_brick_v011:Mesh
+    2300004: floor_brick_v012:Mesh
+    2300006: floor_brick_v013:Mesh
+    2300008: floor_brick_v014:Mesh
+    2300010: floor_brick_v015:Mesh
+    2300012: floor_brick_v016:Mesh
+    2300014: floor_brick_v017:Mesh
+    2300016: floor_brick_v018:Mesh
+    3300000: floor_brick_v010:Mesh
+    3300002: floor_brick_v011:Mesh
+    3300004: floor_brick_v012:Mesh
+    3300006: floor_brick_v013:Mesh
+    3300008: floor_brick_v014:Mesh
+    3300010: floor_brick_v015:Mesh
+    3300012: floor_brick_v016:Mesh
+    3300014: floor_brick_v017:Mesh
+    3300016: floor_brick_v018:Mesh
+    4300000: floor_brick_v010:Mesh
+    4300002: floor_brick_v011:Mesh
+    4300004: floor_brick_v012:Mesh
+    4300006: floor_brick_v013:Mesh
+    4300008: floor_brick_v014:Mesh
+    4300010: floor_brick_v015:Mesh
+    4300012: floor_brick_v016:Mesh
+    4300014: floor_brick_v017:Mesh
+    4300016: floor_brick_v018:Mesh
   materials:
     importMaterials: 1
     materialName: 0
@@ -34,7 +76,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 7
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
