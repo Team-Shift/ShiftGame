@@ -12,20 +12,32 @@ public class Inventory : MonoBehaviour {
     }
     
     /* {[0]WEAPON, [1]ARMOR, [2]ABILITY, [3]CONSUMABLE1, [4]CONSUMABLE2, [5]BOOK} */
+    [HideInInspector]
     public s_Items[] invItems;
-    public int invSize = 6;
-    int itemMaxStack = 1;
-    public GameObject floatingObject;
 
+    [HideInInspector]
+    public int invSize = 6;
+
+    [HideInInspector]
+    int itemMaxStack = 1;
+
+    //[HideInInspector]
     public int goldCount;
+
+    [HideInInspector]
     public int goldPickupAmnt = 5;
 
+    [HideInInspector]
+    public float ySpawn;
+
+    public GameObject floatingObject;
     InvHUD InvUI;
 
     void Start()
     {
         invItems = new s_Items[invSize];
         goldCount = 0;
+        ySpawn = -1.3f;    // ground level
         if (GameObject.Find("ItemIcons").GetComponent<InvHUD>())
         {
             InvUI = GameObject.Find("ItemIcons").GetComponent<InvHUD>();
@@ -163,7 +175,7 @@ public class Inventory : MonoBehaviour {
                     {
                         //Debug.Log(invItems[4].item.itemName);
                         // ***** put parent on locator *****
-                        GameObject g = ItemManager.SpawnItem(invItems[4].item.itemName, i.transform.position);
+                        GameObject g = ItemManager.SpawnItem(invItems[4].item.itemName, new Vector3(i.transform.position.x, ySpawn, i.transform.position.z));
                         SetFloatingParent(g);
 
                         g.GetComponent<Item>().reccentlyPickupUp = true;
@@ -188,16 +200,21 @@ public class Inventory : MonoBehaviour {
         // find locator/parent for weapon
         GameObject weaponLoc = GameObject.FindGameObjectWithTag("Weapon");
         //Debug.Log(weaponLoc.name);
-        // get weapon transform
+        // delete current weapon
         foreach (Transform tCurrWeap in weaponLoc.GetComponentInChildren<Transform>())
         {
             Destroy(tCurrWeap.gameObject);
         }
         //Transform tCurrWeap = weaponLoc.GetComponentInChildren<Transform>();
-        // drop current weapon
 
-        GameObject dropWeap  = ItemManager.SpawnItem(invItems[0].item.itemName, pickupItem.transform.position);
-        dropWeap.transform.rotation = Quaternion.Euler(new Vector3(270, 0, 0));
+        // spawn the current weapon
+        GameObject dropWeap  = ItemManager.SpawnItem(invItems[0].item.itemName, new Vector3(pickupItem.transform.position.x, ySpawn + 0.2f, pickupItem.transform.position.z));
+        if (dropWeap.GetComponent<Item>().itemName != "Bow")
+        {
+            dropWeap.transform.rotation = Quaternion.Euler(new Vector3(270, 0, 0));
+        }
+        else
+            dropWeap.transform.Translate(new Vector3(0, .3f, 0));
         dropWeap.GetComponent<Item>().reccentlyPickupUp = true;
         dropWeap.GetComponent<Collider>().enabled = true;
         SetFloatingParent(dropWeap);
@@ -222,7 +239,7 @@ public class Inventory : MonoBehaviour {
     {
         Debug.Log("Setting parent");
         // prefab
-        GameObject g = GameObject.Instantiate(floatingObject, item.transform.position, Quaternion.identity) as GameObject;
+        GameObject g = GameObject.Instantiate(floatingObject, new Vector3(item.transform.position.x, ySpawn, item.transform.position.z), Quaternion.identity) as GameObject;
 
         foreach(Transform t in g.GetComponentsInChildren<Transform>())
         {

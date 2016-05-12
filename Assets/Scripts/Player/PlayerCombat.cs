@@ -152,25 +152,25 @@ public class PlayerCombat : MonoBehaviour {
             if (playerDir == Custom2DController.FacingDirection.Forward && shot == true)
             {
                 playerSound.PlayOneShot(bowSound);
-                GameObject projectial = Instantiate(rangedTemp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 1.0f), gameObject.transform.rotation) as GameObject;
+                GameObject projectial = Instantiate(rangedTemp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + .3f), gameObject.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
             else if (playerDir == Custom2DController.FacingDirection.Backward && shot == true)
             {
                 playerSound.PlayOneShot(bowSound);
-                GameObject projectial = Instantiate(rangedTemp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 1.0f), gameObject.transform.rotation) as GameObject;
+                GameObject projectial = Instantiate(rangedTemp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - .3f), gameObject.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
             else if (playerDir == Custom2DController.FacingDirection.Left && shot == true)
             {
                 playerSound.PlayOneShot(bowSound);
-                GameObject projectial = Instantiate(rangedTemp, new Vector3(gameObject.transform.position.x - 1.0f, gameObject.transform.position.y, gameObject.transform.position.z), gameObject.transform.rotation) as GameObject;
+                GameObject projectial = Instantiate(rangedTemp, new Vector3(gameObject.transform.position.x - .3f, gameObject.transform.position.y, gameObject.transform.position.z), gameObject.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
             else if (playerDir == Custom2DController.FacingDirection.Right && shot == true)
             {
                 playerSound.PlayOneShot(bowSound);
-                GameObject projectial = Instantiate(rangedTemp, new Vector3(gameObject.transform.position.x + 1.0f, gameObject.transform.position.y, gameObject.transform.position.z), gameObject.transform.rotation) as GameObject;
+                GameObject projectial = Instantiate(rangedTemp, new Vector3(gameObject.transform.position.x + .3f, gameObject.transform.position.y, gameObject.transform.position.z), gameObject.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
 

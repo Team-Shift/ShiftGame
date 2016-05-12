@@ -47,12 +47,14 @@ public class PlayerProjectialControl : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        Debug.Log("Something was hit");
-        if (col.gameObject.tag == "Enemy")
+        //Debug.Log("Something was hit");
+        //if (col.gameObject.tag == "Enemy")
+        //{
+        //    Debug.Log("Enemy was hit");
+        //}
+        if (col.gameObject.tag != "Player")
         {
-            Debug.Log("Enemy was hit");
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
     }
 }

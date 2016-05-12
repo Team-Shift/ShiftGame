@@ -38,6 +38,7 @@ public class Item  :  MonoBehaviour{
 
     void OnMouseEnter()
     {
+        //Debug.Log("selling " + this.itemName);
         if (beingSold)
         {
             g_text = prefab_txt.GetComponent<GUIText>();
