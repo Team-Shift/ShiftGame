@@ -17,7 +17,7 @@ public class PlayerCombat : MonoBehaviour {
     private bool shot = true;
     public float shotTimeLeft = 1f;
     public bool melee = true;
-    public float meleeTimeLeft = 1f;
+    public float meleeTimeLeft = .4f;
     public float worldLimit = 0;
 
     //[HideInInspector]
@@ -35,7 +35,7 @@ public class PlayerCombat : MonoBehaviour {
         anim = gameObject.GetComponent<Animator>();
         hearts = gameObject.GetComponent<HealthUI>();
         Health = 3;
-        Attack = 0;
+        Attack = 1;
         inv = gameObject.GetComponent<Inventory>();
     }
 	
@@ -54,7 +54,7 @@ public class PlayerCombat : MonoBehaviour {
             }
             else
             {
-                melee = !melee;
+                //melee = !melee;
                 MeleeAttack();
                 Debug.Log("meelee");
             }
@@ -76,7 +76,19 @@ public class PlayerCombat : MonoBehaviour {
             shot = true;
         }
 
-        if(gameObject.transform.position.y <= worldLimit)
+        // putting melee on a timer
+        if (melee == false)
+        {
+            meleeTimeLeft = meleeTimeLeft - Time.deltaTime;
+        }
+
+        if (meleeTimeLeft <= 0)
+        {
+            meleeTimeLeft = .475f;
+            melee = true;
+        }
+
+        if (gameObject.transform.position.y <= worldLimit)
         {
             Health = 0;
         }
