@@ -9,6 +9,7 @@ public class ScareCrow : MonoBehaviour
     public int health = 0;
     public float difficultyMult = 1.0f;
     Animator anim;
+    BoxCollider hitBox;
 
     //For telling the boss where he should be/ teleport to
     [HideInInspector]
@@ -32,6 +33,8 @@ public class ScareCrow : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        hitBox = gameObject.GetComponent<BoxCollider>();
+        hitBox.enabled = false;
         anim = gameObject.GetComponent<Animator>();
         anim.SetTrigger("ScarecrowOpening");
         baseX = transform.position.x;
@@ -59,6 +62,7 @@ public class ScareCrow : MonoBehaviour
         if(anim.GetFloat("DoneAnimation") > 0)
         {
             battle = true;
+            hitBox.enabled = true;
         }
 
         if (battle == true)
@@ -73,7 +77,7 @@ public class ScareCrow : MonoBehaviour
             if (teleportTime <= 0)
             {
                 anim.SetTrigger("Teleport");
-                //Teleport();
+                Teleport();
                 teleportTime += 5;
                 shotType = Random.Range(0, 4);
             }
