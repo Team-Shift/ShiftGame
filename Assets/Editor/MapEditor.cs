@@ -9,10 +9,7 @@ public class MapEditor : Editor {
     {
         MapGenerator map = target as MapGenerator;
 
-        if (DrawDefaultInspector())
-        {
-            map.GenerateMap();
-        }
+        DrawDefaultInspector();
 
         if(GUILayout.Button("Generate Map"))
         {

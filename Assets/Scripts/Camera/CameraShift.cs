@@ -69,7 +69,7 @@ public class CameraShift : MonoBehaviour {
         playerPosZ = player.transform.position.z;
         playerPosY = player.transform.position.y;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
         {
             if (canShift > 30)
             {
