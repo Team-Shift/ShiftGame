@@ -69,7 +69,7 @@ public class Custom2DController : MonoBehaviour
         
 
         //Shift
-        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        if(Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
         {
             CameraSwitch = !CameraSwitch;
             //manager.Shift();

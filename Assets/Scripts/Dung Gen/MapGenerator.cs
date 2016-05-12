@@ -20,7 +20,8 @@ public class MapGenerator : MonoBehaviour
     List<Coord> allRoomCoords;
     Queue<Coord> shuffleRoomCoords;
     Queue<Coord> shuffleOpenRoomCoords;
-    public List<Coord> currentOpenCoords;
+
+    private List<Coord> currentOpenCoords;
 
     //Transform[,] roomMap;
     public Transform[,] roomLayout;
