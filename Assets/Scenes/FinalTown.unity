@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.74264705, g: 0.67930365, b: 0.5842885, a: 1}
   m_AmbientEquatorColor: {r: 0.5955882, g: 0.56170124, b: 0.37224263, a: 1}
   m_AmbientGroundColor: {r: 0.86764705, g: 0.13397494, b: 0.13397494, a: 1}
-  m_AmbientIntensity: 1.29
+  m_AmbientIntensity: 1.64
   m_AmbientMode: 3
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -293,7 +293,7 @@ Light:
   serializedVersion: 6
   m_Type: 1
   m_Color: {r: 0.9852941, g: 0.89335996, b: 0.65203285, a: 1}
-  m_Intensity: 0.14
+  m_Intensity: 0.09
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -430,7 +430,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!82 &567276015
 AudioSource:
   m_ObjectHideFlags: 0
@@ -869,7 +869,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 457340, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 11466528, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
       propertyPath: player
@@ -879,6 +879,18 @@ Prefab:
       propertyPath: DirLight
       value: 
       objectReference: {fileID: 521473842}
+    - target: {fileID: 2078248, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078248, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078248, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
   m_IsPrefabParent: 0
