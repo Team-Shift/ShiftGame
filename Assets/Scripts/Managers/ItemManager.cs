@@ -23,7 +23,12 @@ public static class ItemManager
         BankedItems = new Dictionary<string, Item>();
         LoadItems();
         //********************* FOR TESTING ****************//
-        UnlockAllItems();
+        //UnlockAllItems();
+        UnlockItem("Bow");
+        UnlockItem("Axe");
+        UnlockItem("Healing Potion");
+        UnlockItem("WoodSword");
+        UnlockItem("Sword");
         //**************************************************//
     }
 
@@ -79,12 +84,12 @@ public static class ItemManager
         return ItemDictionary[key];
     }
 
-    public static void UnlockItem(Item unlocked_item)
+    public static void UnlockItem(string itemName)
     {
         // only add if item doesnt exist
-        if (ItemDictionary[unlocked_item.itemName] == null)
+        if (ItemDictionary[itemName] == null)
         {
-            UnlockedItems.Add(unlocked_item.itemName, ItemDictionary[unlocked_item.itemName]);
+            UnlockedItems.Add(itemName, ItemDictionary[itemName]);
             //Debug.Log(UnlockedItems.Count);
         }
     }

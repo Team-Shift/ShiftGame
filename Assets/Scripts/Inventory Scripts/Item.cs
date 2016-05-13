@@ -80,7 +80,7 @@ public class Item  :  MonoBehaviour{
                 //playerInv.AddItem(ItemManager.GetItem(itemName));
                 hud.ChangeUIIcon(ItemManager.GetItem(itemName));
                 // mark item as unlocked/ add to drop list
-                ItemManager.UnlockItem(this);
+                //ItemManager.UnlockItem(this);
                 ItemManager.DestroyItem(gameObject);
                 reccentlyPickupUp = true;
                 // if item is floating
