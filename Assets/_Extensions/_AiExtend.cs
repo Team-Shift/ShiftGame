@@ -9,7 +9,7 @@ public static class _AiExtend {
 
     public static void LoadScene(this Transform self, int SceneIndex)
     {
-        cameraFade.lerpAlpha();
+        //cameraFade.lerpAlpha();
         SceneManager.LoadScene(SceneIndex);
     }
 

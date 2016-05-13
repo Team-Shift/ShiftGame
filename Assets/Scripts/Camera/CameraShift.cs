@@ -71,7 +71,7 @@ public class CameraShift : MonoBehaviour {
 
         if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
         {
-            if (canShift > 30)
+            if (canShift > 50)
             {
                 if (_changing)
                 {
