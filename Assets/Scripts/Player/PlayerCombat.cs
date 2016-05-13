@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerCombat : MonoBehaviour {
     
@@ -95,7 +95,8 @@ public class PlayerCombat : MonoBehaviour {
 
         if (Health <= 0)
         {
-            this.transform.LoadScene(1);
+            SceneManager.LoadScene("FinalTown");
+            //this.transform.LoadScene(1);
         }
     }
 

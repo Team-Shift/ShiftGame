@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody))]
@@ -58,7 +58,8 @@ public class Custom2DController : MonoBehaviour
         {
             anim.SetFloat("DeathIndex", 1);
             anim.SetTrigger("Death");
-            this.transform.LoadScene(1);
+            SceneManager.LoadScene("FinalTown");
+            //this.transform.LoadScene(1);
         }
 
         //Movement
