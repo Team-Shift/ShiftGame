@@ -30,6 +30,12 @@ public class HealthUI : MonoBehaviour {
         {
             HeartFillList.Add(((GUITexture)Instantiate(HeartFillTexture, new Vector2(i * XOffset + .07f, YOffset), Quaternion.identity)));
         }
+
+        // ToDo This is bad get rid of it as well
+        foreach (var texture in HeartFillList)
+        {
+            DontDestroyOnLoad(texture);
+        }
     }
 
     public void SpawnHeartContainer(int HeartAmount)
@@ -38,6 +44,12 @@ public class HealthUI : MonoBehaviour {
         for (int i = 0; i < HeartAmount; i++)
         {
             HeartContainerList.Add(((GUITexture)Instantiate(HeartContainerTexture, new Vector2(i * XOffset + .07f, YOffset), Quaternion.identity)));
+        }
+
+        // ToDo This is bad get rid of it as well
+        foreach (var texture in HeartContainerList)
+        {
+            DontDestroyOnLoad(texture);
         }
     }
 

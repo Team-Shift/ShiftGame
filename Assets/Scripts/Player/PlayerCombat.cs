@@ -95,6 +95,11 @@ public class PlayerCombat : MonoBehaviour {
 
         if (Health <= 0)
         {
+            //ToDo More hacking shit please remove
+            foreach (var everything in FindObjectsOfType<GameObject>())
+            {
+                Destroy(everything);
+            }
             SceneManager.LoadScene("FinalTown");
             //this.transform.LoadScene(1);
         }

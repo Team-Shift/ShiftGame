@@ -34,6 +34,7 @@ public class Intro : MonoBehaviour {
             if (currentSlide == slides.Length)
             {
                 SceneManager.LoadScene("FinalTown");
+                yield break;
                 //currentSlide = 0;
             }
         }

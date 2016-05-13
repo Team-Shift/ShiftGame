@@ -1,21 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PortalManager : MonoBehaviour {
 
-    public Image img;
-
-    void Start()
+    private void OnTriggerEnter(Collider col)
     {
-        img.color = Color.Lerp(img.color, Color.black, Time.deltaTime * 10);
-    }
-
-    void OnTriggerEnter()
-    {
-        if (img.color.a < 0.5f)
+        if (col.gameObject.tag == "Player")
         {
-            this.transform.LoadScene(2);
+            SceneManager.LoadScene("Alpha_Static");
         }
     }
 

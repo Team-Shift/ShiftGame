@@ -4,7 +4,7 @@ using System.Collections;
 public class InvHUD : MonoBehaviour {
 
     public GameObject[] inv;
-	// Use this for initialization
+	// Use this for initializatio
 	void Start () {
         inv = new GameObject[transform.childCount];
         for(int i =0; i < transform.childCount; i++)
