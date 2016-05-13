@@ -59,8 +59,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181804}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 1.9009112, y: -1.3006215, z: 7.9528637}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0.682, y: 0.99999976, z: -0.071}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 498004}
@@ -211,6 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockedItems: []
   itemName: Bow
+  ySpawn: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

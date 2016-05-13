@@ -54,6 +54,7 @@ public class Inventory : MonoBehaviour {
             newWeapon.item = i;
             newWeapon.quantity = 1;
             invItems[0] = newWeapon;
+            //(invItems[0].item as iEquipable).OnUse(gameObject);
             Debug.Log("adding cur weap");
         }
     }
@@ -175,7 +176,7 @@ public class Inventory : MonoBehaviour {
                     {
                         //Debug.Log(invItems[4].item.itemName);
                         // ***** put parent on locator *****
-                        GameObject g = ItemManager.SpawnItem(invItems[4].item.itemName, new Vector3(i.transform.position.x, ySpawn, i.transform.position.z));
+                        GameObject g = ItemManager.SpawnItem(invItems[4].item.itemName, new Vector3(i.transform.position.x, gameObject.transform.position.y, i.transform.position.z));
                         SetFloatingParent(g);
 
                         g.GetComponent<Item>().reccentlyPickupUp = true;
@@ -208,7 +209,7 @@ public class Inventory : MonoBehaviour {
         //Transform tCurrWeap = weaponLoc.GetComponentInChildren<Transform>();
 
         // spawn the current weapon
-        GameObject dropWeap  = ItemManager.SpawnItem(invItems[0].item.itemName, new Vector3(pickupItem.transform.position.x, ySpawn + 0.2f, pickupItem.transform.position.z));
+        GameObject dropWeap  = ItemManager.SpawnItem(invItems[0].item.itemName, new Vector3(pickupItem.transform.position.x, gameObject.transform.position.y + 0.2f, pickupItem.transform.position.z));
         if (dropWeap.GetComponent<Item>().itemName != "Bow")
         {
             dropWeap.transform.rotation = Quaternion.Euler(new Vector3(270, 0, 0));
@@ -239,7 +240,7 @@ public class Inventory : MonoBehaviour {
     {
         Debug.Log("Setting parent");
         // prefab
-        GameObject g = GameObject.Instantiate(floatingObject, new Vector3(item.transform.position.x, ySpawn, item.transform.position.z), Quaternion.identity) as GameObject;
+        GameObject g = GameObject.Instantiate(floatingObject, new Vector3(item.transform.position.x, gameObject.transform.position.y, item.transform.position.z), Quaternion.identity) as GameObject;
 
         foreach(Transform t in g.GetComponentsInChildren<Transform>())
         {

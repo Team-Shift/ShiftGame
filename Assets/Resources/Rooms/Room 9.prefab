@@ -5456,7 +5456,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 19.034452, y: 0, z: -26.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 426708}
@@ -17068,7 +17068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 5
+  startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
   hurtSound: {fileID: 0}
   xOffset: 0
@@ -17238,7 +17238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 5
+  startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
   hurtSound: {fileID: 0}
   xOffset: 0
@@ -17284,7 +17284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 5
+  startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
   hurtSound: {fileID: 0}
   xOffset: 0
@@ -17416,7 +17416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 5
+  startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
   hurtSound: {fileID: 0}
   xOffset: 0

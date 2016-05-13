@@ -16,11 +16,12 @@ public class Custom2DController : MonoBehaviour
     public float speed = 6.0f;
     [HideInInspector]
     private Vector3 moveDirection = Vector3.zero;
-    [HideInInspector]
+    //[HideInInspector]
     public bool CameraSwitch = false;
     private Animator anim;
+    private float cameraPitch;
+    private float cameraYaw;
 
-    
     public float pushUpForce = 10;
     private bool jump = true;
     public float jumpTimeLeft = 1f;
@@ -30,25 +31,29 @@ public class Custom2DController : MonoBehaviour
     public FacingDirection playerDir;
 
     public GameObject dust;
-
+    //public Camera camShift;
     //Combat
 
+    int count;
 
     // Use this for initialization
     void Start()
     {
+        count = 0;
         playerDir = FacingDirection.Forward;
         //currentHeld = CurrentItemType.None;
         anim = player.GetComponent<Animator>();
         CameraSwitch = false;
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
         pivotPoint = GameObject.Find("PivotPoint");
+        //camShift = FindObjectOfType<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        count++;
+        
         if (player.transform.position.y <= -10)
         {
             anim.SetFloat("DeathIndex", 1);
@@ -66,24 +71,30 @@ public class Custom2DController : MonoBehaviour
             Move3D();
         }
 
-        
-
         //Shift
-        if(Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+
+        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
         {
-            CameraSwitch = !CameraSwitch;
-            //manager.Shift();
-            if (CameraSwitch == false)
-            {         
-                    player.layer = LayerMask.NameToLayer("AvoidLight2D");
-            }
-            else
+            if (count > 75)
             {
-                player.layer = LayerMask.NameToLayer("Default");
+                Debug.Log("switching");
+                CameraSwitch = !CameraSwitch;
+                //manager.Shift();
+                if (CameraSwitch == false)
+                {
+                    player.layer = LayerMask.NameToLayer("AvoidLight2D");
+                }
+                else
+                {
+                    player.layer = LayerMask.NameToLayer("Default");
+                }
+                count = 0;
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
@@ -162,33 +173,15 @@ public class Custom2DController : MonoBehaviour
 
         float forwardBack = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         float strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        float turning = Input.GetAxis("Mouse X") * turnSpeed * Time.deltaTime;
-        float leaning = Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
+        cameraYaw += Input.GetAxis("Mouse X") * turnSpeed * Time.deltaTime;
+        cameraPitch -= Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
 
         player.transform.Translate(Vector3.forward * forwardBack + Vector3.right * strafe, Space.Self);
 
-        player.transform.Rotate(Vector3.up * turning);
+        player.transform.Rotate(Vector3.up * cameraYaw);
 
-        if (pivotPoint.transform.rotation.x < 30 && pivotPoint.transform.rotation.x > -30)
-        {
-            /*
-            {TODO}
-            Need to figure out how to clamp the camera from moving up and down too far
-            */
-
-            //if (pivotPoint.transform.rotation.x <= -30)
-            //{
-            //    pivotPoint.transform.rotation = Quaternion.Euler(-30, pivotPoint.transform.rotation.y, pivotPoint.transform.rotation.x);
-            //}
-
-            //else if (pivotPoint.transform.rotation.x >= 30)
-            //{
-            //    pivotPoint.transform.rotation = Quaternion.Euler(30, pivotPoint.transform.rotation.y, pivotPoint.transform.rotation.x);
-            //}
-
-            pivotPoint.transform.Rotate(Vector3.left * leaning);
-        }
-
+        cameraPitch = Mathf.Clamp(cameraPitch + 90.0f, 60, 120) - 90.0f;
+        transform.eulerAngles = new Vector3(cameraPitch, cameraYaw, 0);
         //end of new code
 
 

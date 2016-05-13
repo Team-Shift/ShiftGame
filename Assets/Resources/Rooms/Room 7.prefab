@@ -3612,7 +3612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &192276
 GameObject:
   m_ObjectHideFlags: 1
@@ -7347,7 +7347,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5ff37d4e3b6b97b44a58aef2012a15a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -8569,7 +8569,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5ff37d4e3b6b97b44a58aef2012a15a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -8621,7 +8621,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5ff37d4e3b6b97b44a58aef2012a15a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -8647,7 +8647,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5ff37d4e3b6b97b44a58aef2012a15a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -8699,7 +8699,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5ff37d4e3b6b97b44a58aef2012a15a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -8907,7 +8907,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5ff37d4e3b6b97b44a58aef2012a15a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -9219,7 +9219,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5ff37d4e3b6b97b44a58aef2012a15a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -9479,7 +9479,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5ff37d4e3b6b97b44a58aef2012a15a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -9609,7 +9609,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5ff37d4e3b6b97b44a58aef2012a15a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -10025,7 +10025,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5ff37d4e3b6b97b44a58aef2012a15a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -10077,7 +10077,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5ff37d4e3b6b97b44a58aef2012a15a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -10285,7 +10285,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5ff37d4e3b6b97b44a58aef2012a15a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -10545,7 +10545,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5ff37d4e3b6b97b44a58aef2012a15a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -16066,7 +16066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 5
+  startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
   hurtSound: {fileID: 0}
   xOffset: 0
@@ -16096,7 +16096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 5
+  startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
   hurtSound: {fileID: 0}
   xOffset: 0
@@ -16113,7 +16113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 5
+  startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
   hurtSound: {fileID: 0}
   xOffset: 0
@@ -16129,7 +16129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17258435be8c5e34fa0c52f2bdd20377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVel: 10
+  maxVel: 60
   shouldSeek: 0
   objToSeek: {x: 0, y: 0, z: 0}
 --- !u!114 &11431062
@@ -16156,7 +16156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17258435be8c5e34fa0c52f2bdd20377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVel: 10
+  maxVel: 60
   shouldSeek: 0
   objToSeek: {x: 0, y: 0, z: 0}
 --- !u!114 &11439568
@@ -16197,7 +16197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17258435be8c5e34fa0c52f2bdd20377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVel: 10
+  maxVel: 60
   shouldSeek: 0
   objToSeek: {x: 0, y: 0, z: 0}
 --- !u!114 &11456582
@@ -16295,7 +16295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  startHealth: 5
+  startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
   hurtSound: {fileID: 0}
   xOffset: 0
@@ -16413,7 +16413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17258435be8c5e34fa0c52f2bdd20377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVel: 10
+  maxVel: 60
   shouldSeek: 0
   objToSeek: {x: 0, y: 0, z: 0}
 --- !u!114 &11499502
