@@ -235,7 +235,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     // Select random room prefab from array to assign
                     // Only if not in the center room
-                    if (newRoom != map[currentDungeon.dungeonCenter.x, currentDungeon.dungeonCenter.y])
+                    if (newRoom != map[currentDungeon.dungeonCenter.x, currentDungeon.dungeonCenter.y] && newRoom != map[PossibleBossRooms[randomBossIndex].x, PossibleBossRooms[randomBossIndex].y])
                     {
                         int randomIndex = prng.Next(0, rooms.Length);
                         newRoom.prefab = rooms[randomIndex];
