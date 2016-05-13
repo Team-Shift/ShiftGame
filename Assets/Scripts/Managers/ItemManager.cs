@@ -86,11 +86,11 @@ public static class ItemManager
 
     public static void UnlockItem(string itemName)
     {
+        UnlockedItems.Add(itemName, ItemDictionary[itemName]);
         // only add if item doesnt exist
         if (ItemDictionary[itemName] == null)
         {
-            UnlockedItems.Add(itemName, ItemDictionary[itemName]);
-            //Debug.Log(UnlockedItems.Count);
+            
         }
     }
 

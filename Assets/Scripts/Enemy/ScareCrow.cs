@@ -10,6 +10,8 @@ public class ScareCrow : MonoBehaviour
     public float difficultyMult = 1.0f;
     Animator anim;
     BoxCollider hitBox;
+    public GameObject hitPart;
+    public GameObject shield;
 
     //For telling the boss where he should be/ teleport to
     [HideInInspector]
@@ -63,6 +65,7 @@ public class ScareCrow : MonoBehaviour
         {
             battle = true;
             hitBox.enabled = true;
+            Destroy(shield);
         }
 
         if (battle == true)
@@ -77,7 +80,9 @@ public class ScareCrow : MonoBehaviour
             if (teleportTime <= 0)
             {
                 anim.SetTrigger("Teleport");
-                Teleport();
+                Debug.Log("teleporting");
+                Invoke("Teleport", 5);
+                //Teleport();
                 teleportTime += 5;
                 shotType = Random.Range(0, 4);
             }
@@ -96,6 +101,7 @@ public class ScareCrow : MonoBehaviour
         if (other.tag == "HitBox" || other.tag == "Weapon")
         {
             health--;
+            Instantiate(hitPart, transform.position, Quaternion.identity);
         }
     }
 
@@ -299,6 +305,7 @@ public class ScareCrow : MonoBehaviour
 
         //Vector3 playerYPos = new Vector3(player.gameObject.transform.position.x, transform.position.y, player.gameObject.transform.position.z);
         transform.LookAt(center);
+        Debug.Log("Done teleporting");
     }
     //=====================================================================
 }

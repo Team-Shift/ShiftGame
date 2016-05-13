@@ -80,6 +80,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &121708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 416178}
+  m_Layer: 0
+  m_Name: RoomCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &121740
 GameObject:
   m_ObjectHideFlags: 1
@@ -90,6 +105,36 @@ GameObject:
   - 4: {fileID: 492878}
   m_Layer: 0
   m_Name: scarecrow_boss:scarecrow_left_wrist
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &132812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 427536}
+  m_Layer: 0
+  m_Name: pathNode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &134266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 477202}
+  m_Layer: 0
+  m_Name: pathNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,6 +232,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 438396}
   - 95: {fileID: 9528160}
+  - 65: {fileID: 6529348}
+  - 114: {fileID: 11418192}
   m_Layer: 0
   m_Name: ScarecrowBoss
   m_TagString: Untagged
@@ -226,6 +273,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &154992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 491708}
+  m_Layer: 0
+  m_Name: pathNode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &157058
 GameObject:
   m_ObjectHideFlags: 1
@@ -255,6 +317,21 @@ GameObject:
   - 23: {fileID: 2302638}
   m_Layer: 0
   m_Name: scarecrow_boss:obj_scarecrow_scythe:Mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &164170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 463020}
+  m_Layer: 0
+  m_Name: pathNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -476,6 +553,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 432440}
   m_RootOrder: 1
+--- !u!4 &416178
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121708}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: -1.43, y: 0, z: 3.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438396}
+  m_RootOrder: 4
 --- !u!4 &419198
 Transform:
   m_ObjectHideFlags: 1
@@ -489,6 +578,18 @@ Transform:
   - {fileID: 448592}
   m_Father: {fileID: 452254}
   m_RootOrder: 0
+--- !u!4 &427536
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132812}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 4.18, y: 1.1423725, z: 2.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438396}
+  m_RootOrder: 6
 --- !u!4 &428722
 Transform:
   m_ObjectHideFlags: 1
@@ -535,14 +636,19 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147168}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.698944, y: 1.0018637, z: 19.645727}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalPosition: {x: 17, y: 0, z: -5.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 436512}
   - {fileID: 491900}
   - {fileID: 492006}
   - {fileID: 452254}
+  - {fileID: 416178}
+  - {fileID: 463020}
+  - {fileID: 427536}
+  - {fileID: 491708}
+  - {fileID: 477202}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &443522
@@ -638,6 +744,18 @@ Transform:
   - {fileID: 419198}
   m_Father: {fileID: 438396}
   m_RootOrder: 3
+--- !u!4 &463020
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164170}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: -4.84, y: 1.1423725, z: 3.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438396}
+  m_RootOrder: 5
 --- !u!4 &464000
 Transform:
   m_ObjectHideFlags: 1
@@ -675,6 +793,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 448592}
   m_RootOrder: 0
+--- !u!4 &477202
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.03, y: 1.1423725, z: 6.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438396}
+  m_RootOrder: 8
 --- !u!4 &485230
 Transform:
   m_ObjectHideFlags: 1
@@ -700,6 +830,18 @@ Transform:
   - {fileID: 464000}
   m_Father: {fileID: 448592}
   m_RootOrder: 1
+--- !u!4 &491708
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.05, y: 1.1423725, z: -0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438396}
+  m_RootOrder: 7
 --- !u!4 &491900
 Transform:
   m_ObjectHideFlags: 1
@@ -1317,6 +1459,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146904}
   m_Mesh: {fileID: 4300020, guid: 403da313d93644d4094d75cd22d76db1, type: 3}
+--- !u!65 &6529348
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147168}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.9946842, z: 1}
+  m_Center: {x: 0, y: 0.97172844, z: -0}
 --- !u!95 &9528160
 Animator:
   serializedVersion: 3
@@ -1334,6 +1488,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11418192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91dbc6d1df81c040ba9d7851bb034da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  battle: 0
+  health: 5
+  difficultyMult: 0.3
+  hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  pathList: []
+  center: {x: 0, y: 0, z: 0}
+  showPath: 0
+  teleportTime: 5
+  ghost: {fileID: 154112, guid: f902ed327c1e81a4e975424e7ef3fd5c, type: 2}
 --- !u!137 &13722356
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
