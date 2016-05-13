@@ -27,7 +27,7 @@ public class CameraShift : MonoBehaviour {
 
 
     //Shift Stuff
-    int canShift;                               // if player unlocks shift ability
+    public int canShift;                               // if player unlocks shift ability
     public Light DirLight;                              //Change Culling Mask On Lights
 
     // get players pos
@@ -71,17 +71,17 @@ public class CameraShift : MonoBehaviour {
 
         if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
         {
-            if (canShift > 30)
+            if (canShift > 75)
             {
-                if (_changing)
-                {
-                    ChangeProjection = false;
-                }
-                else if (ChangeProjection)
-                {
-                    _changing = true;
+                //if (_changing)
+                //{
+                //    ChangeProjection = false;
+                //}
+                //else if (ChangeProjection)
+                //{
+                _changing = true;
                     _currentT = 0.0f;
-                }
+                //}
 
                 if (isOthos)
                 {
@@ -97,7 +97,7 @@ public class CameraShift : MonoBehaviour {
                 // disable fading after full fade duration
                 //StartCoroutine("ShiftFade");
                 // perspective cam position
-
+                canShift = 0;
             }
                 //if(!isOthos)
                 //{
@@ -115,7 +115,7 @@ public class CameraShift : MonoBehaviour {
                 //if (canFade)
                 //    lerpAlpha();
 
-                canShift = 0;
+                
             
         }
         if (isOthos)
