@@ -12,7 +12,7 @@ public class Inventory : MonoBehaviour {
     }
     
     /* {[0]WEAPON, [1]ARMOR, [2]ABILITY, [3]CONSUMABLE1, [4]CONSUMABLE2, [5]BOOK} */
-    [HideInInspector]
+    //[HideInInspector]
     public s_Items[] invItems;
 
     [HideInInspector]
@@ -130,7 +130,7 @@ public class Inventory : MonoBehaviour {
 
                     // store in inventory
                     s_Items newWeapon = new s_Items();
-                    newWeapon.item = i;
+                    newWeapon.item = ItemManager.GetItem(i.itemName);
                     newWeapon.quantity = 1;
                     invItems[0] = newWeapon;
 

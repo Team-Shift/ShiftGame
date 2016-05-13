@@ -10,7 +10,8 @@ public static class _AiExtend {
     public static void LoadScene(this Transform self, int SceneIndex)
     {
         //cameraFade.lerpAlpha();
-        SceneManager.LoadScene(SceneIndex);
+        //SceneManager.LoadScene(SceneIndex);
+        SceneManager.LoadScene("FinalTown");
     }
 
     public static void PrintText(this Transform self, string Text)

@@ -47,7 +47,7 @@ public class InvHUD : MonoBehaviour {
         }
         else
         {
-            //Debug.Log("another spot");
+            Debug.Log("WEAPON");
             // any other itemType
             inv[(int)i.itype].GetComponent<GUITexture>().texture = i.sprite;
         }
