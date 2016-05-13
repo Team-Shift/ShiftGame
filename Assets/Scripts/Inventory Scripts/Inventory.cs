@@ -49,13 +49,13 @@ public class Inventory : MonoBehaviour {
         foreach (Transform tCurrWeap in weaponLoc.GetComponentInChildren<Transform>())
         {
             Item i = tCurrWeap.gameObject.GetComponent<Item>();
-            Debug.Log(i.itemName);
+            //Debug.Log(i.itemName);
             s_Items newWeapon = new s_Items();
             newWeapon.item = i;
             newWeapon.quantity = 1;
             invItems[0] = newWeapon;
             //(invItems[0].item as iEquipable).OnUse(gameObject);
-            Debug.Log("adding cur weap");
+            //Debug.Log("adding cur weap");
         }
     }
 
@@ -215,7 +215,10 @@ public class Inventory : MonoBehaviour {
             dropWeap.transform.rotation = Quaternion.Euler(new Vector3(270, 0, 0));
         }
         else
-            dropWeap.transform.Translate(new Vector3(0, .3f, 0));
+        {
+            dropWeap.transform.position = new Vector3(pickupItem.transform.position.x, gameObject.transform.position.y , pickupItem.transform.position.z);
+            //dropWeap.transform.Translate(new Vector3(0, .3f, 0));
+        }
         dropWeap.GetComponent<Item>().reccentlyPickupUp = true;
         dropWeap.GetComponent<Collider>().enabled = true;
         SetFloatingParent(dropWeap);
@@ -238,7 +241,7 @@ public class Inventory : MonoBehaviour {
 
     public void SetFloatingParent(GameObject item)
     {
-        Debug.Log("Setting parent");
+        //Debug.Log("Setting parent");
         // prefab
         GameObject g = GameObject.Instantiate(floatingObject, new Vector3(item.transform.position.x, gameObject.transform.position.y, item.transform.position.z), Quaternion.identity) as GameObject;
 

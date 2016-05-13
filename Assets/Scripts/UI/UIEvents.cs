@@ -85,9 +85,19 @@ public class UIEvents : MonoBehaviour
 
     ///Menu Stuff
 
-    public void StartGame()
+    public void LoadTown()
     {
-        SceneManager.LoadScene("Town");
+        SceneManager.LoadScene("FinalTown");
+    }
+
+    public void LoadIntro()
+    {
+        SceneManager.LoadScene("Intro testing");
+    }
+
+    public void LoadDungeon()
+    {
+        SceneManager.LoadScene("Alpha_Static");
     }
 
     public void SettingPopUp()

@@ -77,7 +77,7 @@ public class Custom2DController : MonoBehaviour
         {
             if (count > 75)
             {
-                Debug.Log("switching");
+                //Debug.Log("switching");
                 CameraSwitch = !CameraSwitch;
                 //manager.Shift();
                 if (CameraSwitch == false)

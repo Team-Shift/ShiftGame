@@ -39,12 +39,12 @@ public class ChestDrop : MonoBehaviour {
         {
             itemName = unlockedItems[Random.Range(0, unlockedItems.Count - 1)].itemName;
         }
-        
+
         // set floating parent
         //GameObject g = Resources.Load("itemFloating") as GameObject;
-        
+        //Debug.Log(gameObject.name);
         GameObject g = GameObject.Instantiate(Resources.Load("itemFloating"), gameObject.transform.position + new Vector3(0,.5f,0), Quaternion.identity) as GameObject;
-        Debug.Log(g);
+        //Debug.Log(g);
         foreach (Transform t in g.GetComponentsInChildren<Transform>())
         {
             if (t.name == "item_Particle")
@@ -52,7 +52,8 @@ public class ChestDrop : MonoBehaviour {
                 GameObject itemSpawned = ItemManager.SpawnItem(itemName, gameObject.transform.position + new Vector3(0, .5f, 0));
                 if(itemName == "Bow")
                 {
-                    itemSpawned.transform.Translate(new Vector3 (0, .3f, 0));
+                    itemSpawned.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + .7f, gameObject.transform.position.z);
+                    //itemSpawned.transform.Translate(new Vector3 (0, 0, 0));
                 }
                 itemSpawned.transform.SetParent(t);
             }

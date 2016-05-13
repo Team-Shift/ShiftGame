@@ -109,13 +109,13 @@ public class Item  :  MonoBehaviour{
 
     void DestroyParent()
     {
-        Transform parent = gameObject.transform.parent;
-        if (parent.name != null)
+        if (gameObject.transform.parent != null)
         {
+            Transform parent = gameObject.transform.parent;
             while (parent.transform.parent != null && parent.transform.parent.name != "itemFloating(Clone)" && parent.transform.parent.name != "itemFloating")
             {
                 parent = parent.transform.parent;
-                Debug.Log(parent.name);
+                //Debug.Log(parent.name);
             }
             Destroy(parent.gameObject);
         }

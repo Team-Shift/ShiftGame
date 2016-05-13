@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Intro : MonoBehaviour {
 
@@ -32,7 +33,8 @@ public class Intro : MonoBehaviour {
             currentSlide += 1;
             if (currentSlide == slides.Length)
             {
-                currentSlide = 0;
+                SceneManager.LoadScene("FinalTown");
+                //currentSlide = 0;
             }
         }
         else if (direction == false)
