@@ -123,6 +123,7 @@ public class CameraShift : MonoBehaviour {
             Vector3 v = new Vector3(playerPosX, playerPosY + 50, playerPosZ - 40);
             gameObject.transform.position = v;
             gameObject.transform.rotation = Quaternion.Euler(50f, 0, 0);
+            DirLight.cullingMask = ~(1 << 8);
         }
         else
         {
@@ -131,6 +132,7 @@ public class CameraShift : MonoBehaviour {
             gameObject.transform.position = v;
             gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
             //cam.orthographic = true;
+            DirLight.cullingMask = ~(1 << 9);
         }
     }
 
