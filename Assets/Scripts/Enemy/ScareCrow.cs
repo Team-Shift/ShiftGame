@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class ScareCrow : MonoBehaviour
 {
@@ -78,6 +79,12 @@ public class ScareCrow : MonoBehaviour
                 battle = false;
                 anim.SetTrigger("Death");
                 //Destroy(gameObject);
+                //ToDo More hacking shit please remove
+                foreach (var everything in FindObjectsOfType<GameObject>())
+                {
+                    Destroy(everything);
+                }
+                SceneManager.LoadScene("FinalTown");
             }
 
             if (teleportTime <= 0)
