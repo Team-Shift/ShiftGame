@@ -9,8 +9,8 @@ public class PortalManager : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("Scarecrow_BossRoom");
-            //SceneManager.LoadScene("Alpha_Static");
+            //SceneManager.LoadScene("Scarecrow_BossRoom");
+            SceneManager.LoadScene("Alpha_Static");
         }
     }
 

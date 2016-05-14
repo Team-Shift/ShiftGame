@@ -24,9 +24,9 @@ public class ScareCrow : MonoBehaviour
 
     //For instantiating the ghosts (bullets)
     public GameObject ghost;
-    float speedMulti = 1.0f;
+    float speedMulti;
     float rangeMulti = 1.0f;
-    float shootInterval = 1.0f;
+    float shootInterval;
     float baseX = 0.0f;
     float shootTimeAC = 1.0f;
     //============================
@@ -35,6 +35,9 @@ public class ScareCrow : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        shootInterval = 2.0f;
+        speedMulti = .5f;
+
         hitBox = gameObject.GetComponent<BoxCollider>();
         hitBox.enabled = false;
         anim = gameObject.GetComponent<Animator>();
