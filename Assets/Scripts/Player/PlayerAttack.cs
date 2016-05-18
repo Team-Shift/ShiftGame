@@ -41,14 +41,4 @@ public class PlayerAttack : MonoBehaviour {
         if(c)
             c.enabled = false;
     }
-
-    void EnableSwordTrail()
-    {
-        SwordTrail.SetActive(true);
-    }
-
-    void DisableSwordTrail()
-    {
-        SwordTrail.SetActive(false);
-    }
 }

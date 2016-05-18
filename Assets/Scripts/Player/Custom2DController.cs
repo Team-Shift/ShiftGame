@@ -13,6 +13,7 @@ public class Custom2DController : MonoBehaviour
     private GameObject pivotPoint;
     
     public float turnSpeed = 180f;
+    public int turnScalar;
     public float speed = 6.0f;
     [HideInInspector]
     private Vector3 moveDirection = Vector3.zero;
@@ -40,6 +41,7 @@ public class Custom2DController : MonoBehaviour
     void Start()
     {
         count = 0;
+        turnScalar = 8;
         playerDir = FacingDirection.Forward;
         //currentHeld = CurrentItemType.None;
         anim = player.GetComponent<Animator>();
@@ -53,7 +55,32 @@ public class Custom2DController : MonoBehaviour
     void Update()
     {
         count++;
-        
+
+        // ToDo Remove Debug for beta
+        if (Input.GetKeyUp(KeyCode.PageUp))
+        {
+            if (turnScalar >= 12)
+            {
+                turnScalar = 12;
+            }
+            else
+            {
+                turnScalar++;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.PageDown))
+        {
+            if (turnScalar <= 6)
+            {
+                turnScalar = 6;
+            }
+            else
+            {
+                turnScalar--;
+            }
+        }
+
         if (player.transform.position.y <= -10)
         {
             anim.SetFloat("DeathIndex", 1);
@@ -174,8 +201,8 @@ public class Custom2DController : MonoBehaviour
 
         float forwardBack = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         float strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        cameraYaw += Input.GetAxis("Mouse X") * turnSpeed * Time.deltaTime;
-        cameraPitch -= Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
+        cameraYaw += Input.GetAxis("Mouse X") * turnSpeed * turnScalar * Time.deltaTime;
+        cameraPitch -= Input.GetAxis("Mouse Y") * turnSpeed * turnScalar * Time.deltaTime;
 
         player.transform.Translate(Vector3.forward * forwardBack + Vector3.right * strafe, Space.Self);
 
