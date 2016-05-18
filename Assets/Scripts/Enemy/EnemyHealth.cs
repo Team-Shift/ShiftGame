@@ -42,7 +42,7 @@ public class EnemyHealth : MonoBehaviour {
 
     public void TakeDamage()
     {
-        enemySound.PlayOneShot(hurtSound);
+        //enemySound.PlayOneShot(hurtSound);
         Instantiate(hitPart, transform.position, Quaternion.identity);
         health -= player.GetComponent<PlayerCombat>().Attack;
     }

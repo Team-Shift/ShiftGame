@@ -318,4 +318,9 @@ public class ScareCrow : MonoBehaviour
         Debug.Log("Done teleporting");
     }
     //=====================================================================
+
+    public void EndFight()
+    {
+        SceneManager.LoadScene("FinalTown");
+    }
 }
