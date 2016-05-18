@@ -30,20 +30,18 @@ public class CameraShift : MonoBehaviour {
     public int canShift;                               // if player unlocks shift ability
     public Light DirLight;                              //Change Culling Mask On Lights
 
-    // get players pos
+    //players pos
     float playerPosX;
     float playerPosZ;
     float playerPosY;
 
     void Start()
     {
-        //pivotPoint = GameObject.Find("PivotPoint");
         foreach(Transform t in player.transform)
         {
             if(t.name == "PivotPoint")
             {
                 pivotPoint = t.gameObject;
-                //Debug.Log("Pivot Point Pos: " + pivotPoint.transform.position);
             }
         }
 
@@ -51,12 +49,9 @@ public class CameraShift : MonoBehaviour {
         canShift = 0;
         camActive = false;  // start in ortho
 
-
-
         // get camera
         cam = gameObject.GetComponent<Camera>();
         // get rend to change
-        //spriteRend = sprite.GetComponent<SpriteRenderer>();
         canFade = false;    // no fading to start
     }
 
@@ -73,12 +68,6 @@ public class CameraShift : MonoBehaviour {
         {
             if (canShift > 75)
             {
-                //if (_changing)
-                //{
-                //    ChangeProjection = false;
-                //}
-                //else if (ChangeProjection)
-                //{
                 _changing = true;
                     _currentT = 0.0f;
                 //}
@@ -88,61 +77,23 @@ public class CameraShift : MonoBehaviour {
                     isOthos = false;
                 }
                 else isOthos = true;
-
-                //canFade = true;
-
-                //startTime = Time.unscaledTime;
-                // change camera at half duration
-                //StartCoroutine("CameraChange");
-                // disable fading after full fade duration
-                //StartCoroutine("ShiftFade");
-                // perspective cam position
                 canShift = 0;
-            }
-                //if(!isOthos)
-                //{
-                //    Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 8.0f);
-                //    gameObject.transform.position = v;
-                //    gameObject.transform.rotation = Quaternion.Euler(50.0f, 0, 0);
-                //    //cam.orthographic = true;
-                //}
-                //else
-                //{
-                //cam.orthographic = false;
-                //}
-
-                // start fading in and out
-                //if (canFade)
-                //    lerpAlpha();
-
-                
-            
+            }                     
         }
         if (isOthos)
         {
             Vector3 v = new Vector3(playerPosX, playerPosY + 50, playerPosZ - 40);
             gameObject.transform.position = v;
             gameObject.transform.rotation = Quaternion.Euler(50f, 0, 0);
-            //DirLight.cullingMask = ~(1 << 8);
         }
         else
         {
             Vector3 v = new Vector3(playerPosX, playerPosY + 10.0f, playerPosZ - 4.0f);
-            //cam.nearClipPlane = 0.01f;
             gameObject.transform.position = v;
             gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
-            //cam.orthographic = true;
-            //DirLight.cullingMask = ~(1 << 9);
         }
     }
 
-
-    /*
-    ||===================================================================================||
-    *       DON'T TOUCH LATE UPDATE                                                       *
-    *       THIS ALLOWS TO PLAYER AND CAMERA TO ROATE THE SAME                            *
-    ||===================================================================================||
-    */
     private void LateUpdate()
     {
         //if (camActive == true)
@@ -153,7 +104,6 @@ public class CameraShift : MonoBehaviour {
             
             transform.rotation = (pivotPoint.transform.rotation);
             transform.position = pivotPoint.transform.position + offsetBack * -transform.forward;
-            //Debug.Log(pivotPoint.transform.position);
         }
 
 
@@ -201,60 +151,6 @@ public class CameraShift : MonoBehaviour {
             GetComponent<Camera>().ResetProjectionMatrix();
         }
     }
-    
-   /* void ChangeCamera()
-    {
-        // ortho -> persp
-        if (camActive)
-        {
-            camActive = false;
-
-            //Ortho Light -> Persp
-            DirLight.cullingMask = ~(1 << 8);
-        }
-        // persp -> ortho
-        else{
-            camActive = true;
-            DirLight.cullingMask = ~(1 << 9);
-        }
-    }*/
-
-    /*void lerpAlpha()
-    {
-        // change alpha depending on time
-        float lerp = Mathf.PingPong(Time.unscaledTime - startTime, duration)/duration;
-        s_fade.a = lerp;
-        spriteRend.color = s_fade;
-    }*/
-
-    /*IEnumerator CameraChange()
-    {
-        float timeToWait = duration;
-        while (timeToWait >= 0f)
-        {
-            timeToWait -= Time.unscaledDeltaTime;
-            yield return null;
-        }
-        ChangeCamera();
-    }
-    */
-
-    /*IEnumerator ShiftFade()
-    {
-        Time.timeScale = 0;
-        // stop changing alpha after duration*2
-        float timeToWait = duration + duration;
-        while (timeToWait >= 0f)
-        {
-            timeToWait -= Time.unscaledDeltaTime;
-            yield return null;
-            //yield return new WaitForSeconds(duration + duration);
-        }
-        
-        canFade = false;    
-        Time.timeScale = 1;
-    }
-    */
 
     private Matrix4x4 MatrixLerp(Matrix4x4 from, Matrix4x4 to, float t)
     {
@@ -267,3 +163,60 @@ public class CameraShift : MonoBehaviour {
         return newMatrix;
     }
 }
+
+
+//Code that's been taken out 
+
+/* void ChangeCamera()
+ {
+     // ortho -> persp
+     if (camActive)
+     {
+         camActive = false;
+
+         //Ortho Light -> Persp
+         DirLight.cullingMask = ~(1 << 8);
+     }
+     // persp -> ortho
+     else{
+         camActive = true;
+         DirLight.cullingMask = ~(1 << 9);
+     }
+ }*/
+
+/*void lerpAlpha()
+{
+    // change alpha depending on time
+    float lerp = Mathf.PingPong(Time.unscaledTime - startTime, duration)/duration;
+    s_fade.a = lerp;
+    spriteRend.color = s_fade;
+}*/
+
+/*IEnumerator CameraChange()
+{
+    float timeToWait = duration;
+    while (timeToWait >= 0f)
+    {
+        timeToWait -= Time.unscaledDeltaTime;
+        yield return null;
+    }
+    ChangeCamera();
+}
+*/
+
+/*IEnumerator ShiftFade()
+{
+    Time.timeScale = 0;
+    // stop changing alpha after duration*2
+    float timeToWait = duration + duration;
+    while (timeToWait >= 0f)
+    {
+        timeToWait -= Time.unscaledDeltaTime;
+        yield return null;
+        //yield return new WaitForSeconds(duration + duration);
+    }
+
+    canFade = false;    
+    Time.timeScale = 1;
+}
+*/
