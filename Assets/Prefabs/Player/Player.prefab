@@ -372,7 +372,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.98, y: 2.04, z: 3.02}
+  m_LocalPosition: {x: 16.91, y: 1.46, z: -9.32}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 444594}
@@ -700,7 +700,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: ebf96fc0c24743a4a8f4915b8268737c, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -779,7 +779,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131596}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: df148ac597d30974aa7a7847ca2eb437, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1012,7 +1012,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 131596}
   turnSpeed: 180
-  speed: 4
+  turnScalar: 0
+  speed: 2
   CameraSwitch: 1
   pushUpForce: 1000
   jumpTimeLeft: 0.5
@@ -1044,6 +1045,9 @@ MonoBehaviour:
   xOffset: 0.5
   yOffset: 0
   zOffset: 0.5
+  guiTxt: {fileID: 0}
+  textBoxTexture: {fileID: 0}
+  SpeechIndex: 0
 --- !u!114 &11464204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1067,6 +1071,7 @@ MonoBehaviour:
   meleeTimeLeft: 1
   worldLimit: -5
   Health: 3
+  Attack: 0
 --- !u!114 &11473828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1082,6 +1087,9 @@ MonoBehaviour:
   invSize: 5
   goldCount: 0
   goldPickupAmnt: 5
+  ySpawn: 0
+  floatingObject: {fileID: 0}
+  InvUI: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
