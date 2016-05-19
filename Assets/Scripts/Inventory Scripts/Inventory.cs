@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour {
     public float ySpawn;
 
     public GameObject floatingObject;
-    InvHUD InvUI;
+    public InvHUD InvUI;
 
     void Start()
     {

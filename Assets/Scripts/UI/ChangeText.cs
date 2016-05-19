@@ -12,6 +12,7 @@ public class ChangeText : MonoBehaviour {
 	void OnTriggerEnter()
 	{
 		intMan.changeText ();
+        
 		Destroy (gameObject);
 	}
 }

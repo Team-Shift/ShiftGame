@@ -9,7 +9,11 @@ public class IntroManager : MonoBehaviour {
 	public int count;
 	public string[] txtList;
 	public bool freezePos;
+    public GameObject canvas;
+    public GameObject HUD;
+    public GameObject invHUD;
 
+    private Animator anim;
 	private Vector3 positionToFreeze;
 
     GUIText txt;
@@ -19,13 +23,22 @@ public class IntroManager : MonoBehaviour {
         txt = tutText.GetComponentInChildren<GUIText>();
 
         count = 0;
-		txtList = new string[4] { "WASD to move", "press shift to change perspective" , "space to jump", "click left mouse to attack"};
+		txtList = new string[8] { "Use WASD to move.",
+            "Press [shift] to change perspective. Move the mouse to look around." ,
+            "Shift to 3D and press [space] to jump.",
+            "Switch perspectives to raise and lower platforms.",
+            "Pick up the sword.",
+            "Click left mouse to attack.",
+            "Pickup the potion.",
+            "Press '1' or '2' to use potion." };
 
         txt.text = "WASD to move";
         txt.color = Color.white;
 
 		positionToFreeze = player.transform.position;
 		freezePos = true;
+
+        anim = canvas.GetComponent<Animator>(); 
 	}
 
 	void Update()
@@ -36,30 +49,66 @@ public class IntroManager : MonoBehaviour {
 		}
 	}
 
+    void OnTriggerEnter()
+    {
+        player.transform.position = positionToFreeze;
+    }
+
     public void ToSlides()
     {
+        cam.active = true;
+        Debug.Log("toSlides");
 		freezePos = true;
 		positionToFreeze = player.transform.position;
         changeText();
         tutText.active = false;
-        cam.active = true;
+        
+        anim.SetBool("FadeOut", false);
+        if(count > 4)
+        {
+            HUD.active = false;
+        }
     }
 
     public void ToGame()
     {
-		cam.active = false;
-		freezePos = false;
-        tutText.active = true;
-        changeText();
+        if (count != 7)
+        {
+            cam.active = false;
+            freezePos = false;
+            tutText.active = true;
+            if (count > 4)
+            {
+                HUD.active = true;
+            }
+        }
+        else
+        {
+            Destroy(player);
+        }
     }
 
     public void changeText()
     {
-        txt.text = txtList[count];
-        if (count <= 4)
+        if (count < txtList.Length - 1)
         {
             count++;
         }
+        txt.text = txtList[count];
+    }
+
+    public void AddItemToInv(Item itemToAdd, int index)
+    {
+        Inventory.s_Items temp = new Inventory.s_Items();
+        temp.item = itemToAdd;
+        temp.quantity = 1;
+        player.GetComponent<Inventory>().invItems[index] = temp; 
+    }
+
+    public void EnableHUD()
+    {
+        HUD.active = true;
+        player.GetComponent<Inventory>().InvUI = invHUD.GetComponent<InvHUD>();
     }
 
 }

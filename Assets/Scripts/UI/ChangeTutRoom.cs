@@ -15,20 +15,16 @@ public class ChangeTutRoom : MonoBehaviour {
 		anim = gameObject.GetComponent<Animator> ();
 	}
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
-		anim.SetBool("FadeOut", true);
-		//StartCoroutine (WaitForFade());
-
-		Player.transform.position = exitPortal.transform.position;
-		intMan.ToSlides();
+        //anim.SetBool("FadeOut", true);
+        //StartCoroutine (WaitForFade());
+        Debug.Log("triggered");
+        if (other.tag == "Player")
+        {
+            Player.transform.position = exitPortal.transform.position;
+            intMan.ToSlides();
+        }
     }
 
-	public IEnumerator WaitForFade()
-	{
-		yield return new WaitForSeconds (1);
-		intMan.ToSlides();
-		Player.transform.position = exitPortal.transform.position;
-		anim.SetBool ("FadeOut", false);
-	}
 }

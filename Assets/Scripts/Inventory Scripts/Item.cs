@@ -78,7 +78,13 @@ public class Item  :  MonoBehaviour{
             {
                 playerInv.AddItem(this);
                 //playerInv.AddItem(ItemManager.GetItem(itemName));
+                Debug.Log(hud);
+                if(hud == null)
+                {
+                    hud = GameObject.FindObjectOfType<InvHUD>();
+                }
                 hud.ChangeUIIcon(ItemManager.GetItem(itemName));
+                
                 // mark item as unlocked/ add to drop list
                 //ItemManager.UnlockItem(this);
                 ItemManager.DestroyItem(gameObject);

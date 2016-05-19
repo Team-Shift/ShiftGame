@@ -80,11 +80,8 @@ public class ScareCrow : MonoBehaviour
                 anim.SetTrigger("Death");
                 //Destroy(gameObject);
                 //ToDo More hacking shit please remove
-                foreach (var everything in FindObjectsOfType<GameObject>())
-                {
-                    Destroy(everything);
-                }
-                SceneManager.LoadScene("FinalTown");
+                
+                //SceneManager.LoadScene("FinalTown");
             }
 
             if (teleportTime <= 0)
@@ -321,6 +318,10 @@ public class ScareCrow : MonoBehaviour
 
     public void EndFight()
     {
+        foreach (var everything in FindObjectsOfType<GameObject>())
+        {
+            Destroy(everything);
+        }
         SceneManager.LoadScene("FinalTown");
     }
 }

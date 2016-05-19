@@ -21,6 +21,14 @@ public class Intro : MonoBehaviour {
         slides[currentSlide].SetActive(true);
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
+        {
+            ChangeSlide(true);
+        }
+    }
+
     public void ChangeSlide(bool direction)
     {
         anim.SetBool("FadeOut", true);
@@ -53,7 +61,7 @@ public class Intro : MonoBehaviour {
             }
         }
         slides[currentSlide].SetActive(true);
-        anim.SetBool("FadeOut", false);
+        //anim.SetBool("FadeOut", false);
         yield return true;
     }
 }
