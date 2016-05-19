@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class Intro : MonoBehaviour {
+    public GameObject Manager;
+    IntroManager intMan;
 
     public GameObject[] slides;
     public Animator anim;
@@ -11,6 +13,8 @@ public class Intro : MonoBehaviour {
 
     void Start()
     {
+        intMan = FindObjectOfType<IntroManager>();
+        //intMan = GetComponent<IntroManager>();
         for(int i=0; i < slides.Length; i++)
         {
             slides[i].SetActive (false);
@@ -21,13 +25,16 @@ public class Intro : MonoBehaviour {
     public void ChangeSlide(bool direction)
     {
         anim.SetBool("FadeOut", true);
-        StartCoroutine (SlideWait(direction)); 
+        StartCoroutine (SlideWait(direction));
     }
 
     public IEnumerator SlideWait(bool direction)
     {
         yield return new WaitForSeconds (1);
         slides[currentSlide].SetActive(false);
+
+        intMan.ToGame();
+
         if (direction == true)
         {
             currentSlide += 1;

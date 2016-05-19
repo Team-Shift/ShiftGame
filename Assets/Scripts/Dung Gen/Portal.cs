@@ -15,7 +15,7 @@ public class Portal : MonoBehaviour {
 
     }
 
-    [HideInInspector]
+    //[HideInInspector]
     public Vector3 targetPosition;
     [HideInInspector]
     public Room.Direction targetDirection;
