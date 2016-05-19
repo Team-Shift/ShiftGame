@@ -12,12 +12,13 @@ public class PlayerProjectialControl : MonoBehaviour
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         playerScript = GameObject.Find("Player").GetComponent<Custom2DController>();
+        lifeSpan *= 10.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, lifeSpan);
+        Destroy(gameObject, lifeSpan * Time.deltaTime);
      }
 
     void FixedUpdate()
