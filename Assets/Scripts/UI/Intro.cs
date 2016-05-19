@@ -14,7 +14,6 @@ public class Intro : MonoBehaviour {
     void Start()
     {
         intMan = FindObjectOfType<IntroManager>();
-        //intMan = GetComponent<IntroManager>();
         for(int i=0; i < slides.Length; i++)
         {
             slides[i].SetActive (false);
