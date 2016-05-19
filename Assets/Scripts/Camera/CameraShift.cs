@@ -23,7 +23,7 @@ public class CameraShift : MonoBehaviour {
     public bool camActive;                              // false is ortho and true is persp
     float startTime;                                    // for pingPonging fade to start at 0
     public float duration = 0.5f;                       // how long to fade
-    public bool isOthos = true;
+    public bool isOrthos = true;
 
 
     //Shift Stuff
@@ -72,15 +72,15 @@ public class CameraShift : MonoBehaviour {
                     _currentT = 0.0f;
                 //}
 
-                if (isOthos)
+                if (isOrthos)
                 {
-                    isOthos = false;
+                    isOrthos = false;
                 }
-                else isOthos = true;
+                else isOrthos = true;
                 canShift = 0;
             }                     
         }
-        if (isOthos)
+        if (isOrthos)
         {
             Vector3 v = new Vector3(playerPosX, playerPosY + 50, playerPosZ - 40);
             gameObject.transform.position = v;
@@ -97,7 +97,7 @@ public class CameraShift : MonoBehaviour {
     private void LateUpdate()
     {
         //if (camActive == true)
-        if(!isOthos)
+        if(!isOrthos)
         {
             float offsetBack = 1;
             float turning = Input.GetAxis("Mouse X");
