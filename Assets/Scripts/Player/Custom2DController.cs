@@ -10,7 +10,6 @@ using UnityEngine.SceneManagement;
 public class Custom2DController : MonoBehaviour
 {
     public GameObject player;
-    private GameObject pivotPoint;
     
     public float turnSpeed = 180f;
     public int turnScalar;
@@ -41,14 +40,19 @@ public class Custom2DController : MonoBehaviour
     void Start()
     {
         count = 0;
-        turnScalar = 8;
+        turnScalar = 1;
         playerDir = FacingDirection.Forward;
         //currentHeld = CurrentItemType.None;
         anim = player.GetComponent<Animator>();
         CameraSwitch = false;
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
-        pivotPoint = GameObject.Find("PivotPoint");
         //camShift = FindObjectOfType<Camera>();
+
+        //Set target framerate to 60fps when running in editor
+        #if UNITY_EDITOR
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+        #endif
     }
 
     // Update is called once per frame
@@ -71,9 +75,9 @@ public class Custom2DController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.PageDown))
         {
-            if (turnScalar <= 6)
+            if (turnScalar <= 1)
             {
-                turnScalar = 6;
+                turnScalar = 1;
             }
             else
             {
@@ -205,8 +209,6 @@ public class Custom2DController : MonoBehaviour
         cameraPitch -= Input.GetAxis("Mouse Y") * turnSpeed * turnScalar * Time.deltaTime;
 
         player.transform.Translate(Vector3.forward * forwardBack + Vector3.right * strafe, Space.Self);
-
-        player.transform.Rotate(Vector3.up * cameraYaw);
 
         cameraPitch = Mathf.Clamp(cameraPitch + 90.0f, 60, 120) - 90.0f;
         transform.eulerAngles = new Vector3(cameraPitch, cameraYaw, 0);
