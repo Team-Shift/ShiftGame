@@ -208,7 +208,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11466528, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 218205600}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aad96d57e8a41846b0309aaaf632ad0, type: 3}
   m_Name: 
@@ -1411,6 +1411,11 @@ Prefab:
       propertyPath: turnSpeed
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 6540714, guid: 1ee86f70d54c4ce4bad4125c1523fb43, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: df148ac597d30974aa7a7847ca2eb437,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ee86f70d54c4ce4bad4125c1523fb43, type: 2}
   m_IsPrefabParent: 0
