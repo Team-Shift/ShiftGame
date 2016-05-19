@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Seek : MonoBehaviour {
-    public float maxVel = 10;
+public class Seek : MonoBehaviour
+{
+    public float maxVel;
     public bool shouldSeek;
     //GameObject player;
 

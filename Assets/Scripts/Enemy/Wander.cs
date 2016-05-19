@@ -8,7 +8,7 @@ public class Wander : MonoBehaviour {
     public List<Vector3> pathList;
     //[HideInInspector]
     public bool shouldWander;
-    public float speed = 2;
+    public float speed;
     public bool showPath;
     public bool isFloatingEnemy;
     
