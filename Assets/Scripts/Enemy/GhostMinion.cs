@@ -23,6 +23,11 @@ public class GhostMinion : MonoBehaviour
         if(col.gameObject.tag == "Player")
         {
             col.gameObject.GetComponent<PlayerCombat>().DamageFallback(gameObject.transform.position);
+            Destroy(gameObject);
+        }
+        if (col.tag == "Hitbox")
+        {
+            Destroy(gameObject);
         }
     }
 }

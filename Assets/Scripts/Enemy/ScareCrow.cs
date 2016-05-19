@@ -78,9 +78,10 @@ public class ScareCrow : MonoBehaviour
             {
                 battle = false;
                 anim.SetTrigger("Death");
+                Instantiate(Resources.Load("CongratsText"));
                 //Destroy(gameObject);
                 //ToDo More hacking shit please remove
-                
+
                 //SceneManager.LoadScene("FinalTown");
             }
 

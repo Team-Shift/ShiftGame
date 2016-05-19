@@ -194,13 +194,6 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
-        functionName: EnableSwordTrail
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 0.17935666
         functionName: enableCollider
         data: 
@@ -210,13 +203,6 @@ ModelImporter:
         messageOptions: 0
       - time: 0.6687305
         functionName: disableCollider
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: DisableSwordTrail
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

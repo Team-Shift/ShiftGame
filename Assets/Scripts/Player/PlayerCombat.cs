@@ -23,6 +23,7 @@ public class PlayerCombat : MonoBehaviour {
     //[HideInInspector]
     public int Health = 3;
     public int Attack;
+    bool isDead;
 
     private Animator anim;
     private Inventory inv;
@@ -37,11 +38,11 @@ public class PlayerCombat : MonoBehaviour {
         Health = 3;
         Attack = 1;
         inv = gameObject.GetComponent<Inventory>();
+        isDead = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-
         //Combat & Interation
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
@@ -95,14 +96,19 @@ public class PlayerCombat : MonoBehaviour {
 
         if (Health <= 0)
         {
-            //ToDo More hacking shit please remove
-            foreach (var everything in FindObjectsOfType<GameObject>())
-            {
-                Destroy(everything);
-            }
-            SceneManager.LoadScene("FinalTown");
-            //this.transform.LoadScene(1);
+            Instantiate(Resources.Load("DeathText"));
+            Invoke("SendToTown", 1);
         }
+    }
+
+    void SendToTown()
+    {
+        //ToDo More hacking shit please remove
+        foreach (var everything in FindObjectsOfType<GameObject>())
+        {
+            Destroy(everything);
+        }
+        SceneManager.LoadScene("FinalTown");
     }
 
     public void DamageFallback(Vector3 damageSource)

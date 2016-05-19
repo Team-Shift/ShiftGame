@@ -37,7 +37,8 @@ public class IntroManager : MonoBehaviour {
 
 		positionToFreeze = player.transform.position;
 		freezePos = true;
-
+        cam.active = false;
+        cam.active = true;
         anim = canvas.GetComponent<Animator>(); 
 	}
 
@@ -102,6 +103,7 @@ public class IntroManager : MonoBehaviour {
         Inventory.s_Items temp = new Inventory.s_Items();
         temp.item = itemToAdd;
         temp.quantity = 1;
+        Debug.Log(player.GetComponent<Inventory>().invItems.Length);
         player.GetComponent<Inventory>().invItems[index] = temp; 
     }
 
