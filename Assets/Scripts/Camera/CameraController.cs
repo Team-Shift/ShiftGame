@@ -10,10 +10,6 @@ public class CameraController : MonoBehaviour
     Camera cam;
     public bool isOrthos = true;
     bool isMoving = false;
-    public float timeTakenDuringLerp = 1f;
-    private float timeStartedLerping = 0.0f;
-    private Vector3 startPos;
-    private Vector3 endPos;
 
     //Stuff for Ortho Cam
     private Vector3 posOrtho;
@@ -28,8 +24,6 @@ public class CameraController : MonoBehaviour
     {
         player = GameObject.Find("Player");
         cam = GetComponent<Camera>();
-        startPos = new Vector3();
-        endPos = new Vector3();
 
         //Position and Rotation wanted
         posOrtho = new Vector3(0, 50f, -40f);
