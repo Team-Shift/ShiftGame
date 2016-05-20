@@ -37,6 +37,7 @@ public class CameraShift : MonoBehaviour {
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         foreach(Transform t in player.transform)
         {
             if(t.name == "PivotPoint")
