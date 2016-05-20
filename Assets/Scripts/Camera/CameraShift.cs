@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Camera))]
 public class CameraShift : MonoBehaviour {
@@ -58,6 +59,21 @@ public class CameraShift : MonoBehaviour {
 
     void Update()
     {
+
+        /*
+        Putting this little input here to make it so we can reset to main menu at any time
+        */
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            foreach (var everything in FindObjectsOfType<GameObject>())
+            {
+                Destroy(everything);
+            }
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene("MainMenu");
+        }
+
         canShift++;
 
         // get players pos
