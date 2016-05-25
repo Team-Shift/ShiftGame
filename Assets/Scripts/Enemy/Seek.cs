@@ -19,7 +19,7 @@ public class Seek : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         shouldSeek = false;
         //player = GameObject.FindGameObjectWithTag("Player");
-        objToSeek = GameObject.FindGameObjectWithTag("Player").transform.position;
+        objToSeek = GameObject.Find("Player").transform.position;
     }
 
     void Update()

@@ -19,7 +19,7 @@ public class ChangeTutRoom : MonoBehaviour {
     {
         //anim.SetBool("FadeOut", true);
         //StartCoroutine (WaitForFade());
-        Debug.Log("triggered");
+        //Debug.Log("triggered");
         if (other.tag == "Player")
         {
             Player.transform.position = exitPortal.transform.position;

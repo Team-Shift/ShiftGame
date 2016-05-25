@@ -97,6 +97,7 @@ GameObject:
   - 81: {fileID: 8190274}
   - 114: {fileID: 11464204}
   - 114: {fileID: 11411280}
+  - 114: {fileID: 11461396}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1031,6 +1032,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SwordTrail: {fileID: 166000}
+--- !u!114 &11461396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b924c3860f69b4cb24e4618d851b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invItems: []
+  invSize: 6
+  goldCount: 0
+  goldPickupAmnt: 5
+  ySpawn: 0
+  floatingObject: {fileID: 199624, guid: 88e139d0854429f469a0740a95d75a14, type: 2}
+  InvUI: {fileID: 0}
 --- !u!114 &11462788
 MonoBehaviour:
   m_ObjectHideFlags: 1

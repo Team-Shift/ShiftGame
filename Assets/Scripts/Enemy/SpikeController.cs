@@ -17,6 +17,7 @@ public class SpikeController : MonoBehaviour
 
     void FixedUpdate()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         Vector3 spikePos = gameObject.transform.position;
         Vector3 playerPos = player.gameObject.transform.position;
 

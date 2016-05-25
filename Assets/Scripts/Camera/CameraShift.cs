@@ -38,7 +38,9 @@ public class CameraShift : MonoBehaviour {
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("Player");
+        
+
         foreach(Transform t in player.transform)
         {
             if(t.name == "PivotPoint")
@@ -63,7 +65,7 @@ public class CameraShift : MonoBehaviour {
         /*
         Putting this little input here to make it so we can reset to main menu at any time
         */
-        if(Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             foreach (var everything in FindObjectsOfType<GameObject>())
             {

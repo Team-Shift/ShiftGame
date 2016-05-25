@@ -14,7 +14,7 @@ public class FloorController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Custom2DController>();
+        player = GameObject.Find("Player").GetComponent<Custom2DController>();
         floorPieces.AddRange(GameObject.FindGameObjectsWithTag("PuzzleFloor"));
         foreach(GameObject piece in floorPieces)
         {

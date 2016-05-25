@@ -42,20 +42,22 @@ public class Inventory : MonoBehaviour {
         {
             InvUI = GameObject.Find("ItemIcons").GetComponent<InvHUD>();
         }
-
+        
         GameObject weaponLoc = GameObject.FindGameObjectWithTag("Weapon");
         //Debug.Log(weaponLoc.name);
         // get weapon transform
         foreach (Transform tCurrWeap in weaponLoc.GetComponentInChildren<Transform>())
         {
-            Item i = tCurrWeap.gameObject.GetComponent<Item>();
+            //Debug.Log("adding cur weap");
+            //Item i = tCurrWeap.gameObject.GetComponent<Item>();
+            Item i = ItemManager.GetItem("WoodSword");
             //Debug.Log(i.itemName);
             s_Items newWeapon = new s_Items();
             newWeapon.item = i;
             newWeapon.quantity = 1;
             invItems[0] = newWeapon;
+            //Debug.Log(newWeapon.item.itemName);
             //(invItems[0].item as iEquipable).OnUse(gameObject);
-            //Debug.Log("adding cur weap");
         }
     }
 
