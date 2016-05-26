@@ -36,6 +36,9 @@ public class Custom2DController : MonoBehaviour
 
     int count;
 
+    //ToDo Remove or replace map position
+    public Vector2 playerMapPosition;
+
     // Use this for initialization
     void Start()
     {
@@ -47,6 +50,8 @@ public class Custom2DController : MonoBehaviour
         CameraSwitch = false;
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
         //camShift = FindObjectOfType<Camera>();
+        playerMapPosition = new Vector2(2,2);
+
 
         //Set target framerate to 60fps when running in editor
         #if UNITY_EDITOR

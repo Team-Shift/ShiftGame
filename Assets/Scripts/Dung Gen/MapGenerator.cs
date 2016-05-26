@@ -37,6 +37,7 @@ public class MapGenerator : MonoBehaviour
     //
     private List<Coord> PossibleBossRooms;
 
+
     void Awake()
     {
         GenerateMap();
