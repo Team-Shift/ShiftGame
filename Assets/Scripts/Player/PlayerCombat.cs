@@ -99,6 +99,13 @@ public class PlayerCombat : MonoBehaviour {
             Instantiate(Resources.Load("DeathText"));
             Invoke("SendToTown", 1);
         }
+
+        if (InputManager.playerInput.player.transform.position.y <= -10)
+        {
+            anim.SetFloat("DeathIndex", 1);
+            anim.SetTrigger("Death");
+            SceneManager.LoadScene("EmptyTown");
+        }
     }
 
     void SendToTown()

@@ -251,12 +251,7 @@ public class Custom2DController : MonoBehaviour
     void DustKickOff()
     {
         Instantiate(dust, player.transform.position, Quaternion.Inverse(player.transform.rotation));
-        //Debug.Log("Kicking off Dust");
     }
-
-    /*
-    * Combat
-    */
 
     
 
