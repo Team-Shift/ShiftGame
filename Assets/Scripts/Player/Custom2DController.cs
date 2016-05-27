@@ -42,6 +42,9 @@ public class Custom2DController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        GameEvents.Subscribe(HandleOnTeleportEvent, typeof(TeleportEvent));
+        GameEvents.Subscribe(HandlePostTeleportEvent, typeof(PostTeleportEvent));
+
         count = 0;
         turnScalar = 1;
         playerDir = FacingDirection.Forward;
@@ -58,6 +61,12 @@ public class Custom2DController : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         #endif
+    }
+
+    private void OnDestroy()
+    {
+        //GameEvents.UnsubscribeAll(HandleOnTeleportEvent);
+        GameEvents.Unsubscribe(HandleOnTeleportEvent, typeof(TeleportEvent));
     }
 
     // Update is called once per frame
@@ -258,8 +267,49 @@ public class Custom2DController : MonoBehaviour
         Instantiate(dust, player.transform.position, Quaternion.Inverse(player.transform.rotation));
     }
 
-    
+    void HandleOnTeleportEvent(IGameEvent gameEvent)
+    {
+        Debug.Log("Firing Off Teleport Event");
 
+        TeleportEvent teleport = gameEvent as TeleportEvent;
 
+        if (teleport != null)
+        {
+            // Move the player to portals target position
+            transform.position = teleport.TargetPosition;
+        }
+        else
+        {
+            Debug.Log("Invalid Invoke OnTeleport");   
+        }
+    }
 
+    void HandlePostTeleportEvent(IGameEvent gameEvent)
+    {
+        PostTeleportEvent teleport = gameEvent as PostTeleportEvent;
+
+        if (teleport != null)
+        {
+            // Update Players Map Position After Teleporting
+            switch (teleport.Direction)
+            {
+                case Room.Direction.North:
+                    playerMapPosition += new Vector2(0, 1);
+                    break;
+                case Room.Direction.East:
+                    playerMapPosition += new Vector2(1, 0);
+                    break;
+                case Room.Direction.South:
+                    playerMapPosition -= new Vector2(0, 1);
+                    break;
+                case Room.Direction.West:
+                    playerMapPosition -= new Vector2(1, 0);
+                    break;
+            }
+        }
+        else
+        {
+            Debug.Log("Invalid Invoke PostTeleport");
+        }
+    }
 }

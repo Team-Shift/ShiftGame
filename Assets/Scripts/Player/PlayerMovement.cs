@@ -32,7 +32,8 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        player = InputManager.playerInput.player;
+        //player = InputManager.playerInput.player;
+        player = gameObject;
         Debug.Log(player.name);
         anim = GetComponent<Animator>();
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
