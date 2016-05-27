@@ -50,7 +50,8 @@ ModelImporter:
     4300012: obj_3d_trap_redpanda_08:Mesh
     4300014: obj_3d_trap_redpanda_07:Mesh
     4300016: Mesh
-    7400000: Take 001
+    7400000: PandaTrapIdle
+    7400002: PandaTrapAttack
     9500000: //RootNode
     13700000: obj_3d_trap_redpanda_09:Mesh
   materials:
@@ -73,7 +74,110 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: PandaTrapIdle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_02:Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_02:Mesh/obj_3d_trap_redpanda_01:Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_04:Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_05:Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_05:Mesh/obj_3d_trap_redpanda_09:Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_06:Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_07:Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_08:Mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: PandaTrapAttack
+      takeName: Take 001
+      firstFrame: 31
+      lastFrame: 75
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.49469966
+        functionName: ShootProjectile
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_02:Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_02:Mesh/obj_3d_trap_redpanda_01:Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_04:Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_05:Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_05:Mesh/obj_3d_trap_redpanda_09:Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_06:Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_07:Mesh
+        weight: 1
+      - path: obj_3d_trap_redpanda_08:Mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
     isReadable: 1
   meshes:
     lODScreenPercentages: []
