@@ -42,33 +42,40 @@ public class Inventory : MonoBehaviour {
         {
             InvUI = GameObject.Find("ItemIcons").GetComponent<InvHUD>();
         }
-
+        
         GameObject weaponLoc = GameObject.FindGameObjectWithTag("Weapon");
         //Debug.Log(weaponLoc.name);
         // get weapon transform
         foreach (Transform tCurrWeap in weaponLoc.GetComponentInChildren<Transform>())
         {
-            Item i = tCurrWeap.gameObject.GetComponent<Item>();
+            //Debug.Log("adding cur weap");
+            //Item i = tCurrWeap.gameObject.GetComponent<Item>();
+            Item i = ItemManager.GetItem("WoodSword");
             //Debug.Log(i.itemName);
             s_Items newWeapon = new s_Items();
             newWeapon.item = i;
             newWeapon.quantity = 1;
             invItems[0] = newWeapon;
+            //Debug.Log(newWeapon.item.itemName);
             //(invItems[0].item as iEquipable).OnUse(gameObject);
-            //Debug.Log("adding cur weap");
         }
+
+        InputManager.playerInput.OnSwapItems.AddListener(HandleOnTabEvent);
+        InputManager.playerInput.OnAddGold.AddListener(HandleOnAddGoldEvent);
+        InputManager.playerInput.OnUseConsumable1.AddListener(HandleOnAlpha1Event);
+        InputManager.playerInput.OnUseConsumable2.AddListener(HandleOnAlpha2Event);
     }
 
-    void Update()
+    private void HandleOnTabEvent()
     {
-        // switch consumables
-        if(Input.GetKeyDown(KeyCode.Tab))
-        {
-            s_Items temp = invItems[3];
-            invItems[3] = invItems[4];
-            invItems[4] = temp;
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha1) && invItems[3].item != null)
+        s_Items temp = invItems[3];
+        invItems[3] = invItems[4];
+        invItems[4] = temp;
+    }
+
+    private void HandleOnAlpha1Event()
+    {
+        if (invItems[3].item != null)
         {
             // get from  DB
             Item i = ItemManager.GetItem(invItems[3].item.itemName);
@@ -81,8 +88,11 @@ public class Inventory : MonoBehaviour {
             // remove item on UI
             InvUI.inv[3].GetComponent<GUITexture>().texture = null;
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && invItems[4].item != null)
+    private void HandleOnAlpha2Event()
+    {
+        if (invItems[4].item != null)
         {
             Item i = ItemManager.GetItem(invItems[4].item.itemName);
             (i as iConsumable).OnUse(gameObject);
@@ -94,12 +104,54 @@ public class Inventory : MonoBehaviour {
             // remove item on UI
             InvUI.inv[4].GetComponent<GUITexture>().texture = null;
         }
+    }
 
-            // gold hack
-            if (Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.P))
-        {
-            goldCount = 99999;
-        }
+    private void HandleOnAddGoldEvent()
+    {
+        goldCount = 99999;
+    }
+
+    void Update()
+    {
+        //// switch consumables
+        //if(Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    s_Items temp = invItems[3];
+        //    invItems[3] = invItems[4];
+        //    invItems[4] = temp;
+        //}
+        //if(Input.GetKeyDown(KeyCode.Alpha1) && invItems[3].item != null)
+        //{
+        //    // get from  DB
+        //    Item i = ItemManager.GetItem(invItems[3].item.itemName);
+        //    (i as iConsumable).OnUse(gameObject);
+
+        //    // delete item from inv
+        //    invItems[3].item = null;
+        //    invItems[3].quantity--;
+
+        //    // remove item on UI
+        //    InvUI.inv[3].GetComponent<GUITexture>().texture = null;
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.Alpha2) && invItems[4].item != null)
+        //{
+        //    Item i = ItemManager.GetItem(invItems[4].item.itemName);
+        //    (i as iConsumable).OnUse(gameObject);
+
+        //    // delete item from inv
+        //    invItems[4].item = null;
+        //    invItems[4].quantity--;
+
+        //    // remove item on UI
+        //    InvUI.inv[4].GetComponent<GUITexture>().texture = null;
+        //}
+
+        //    // gold hack
+        //    if (Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.P))
+        //{
+        //    goldCount = 99999;
+        //}
         
     }
 

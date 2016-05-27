@@ -21,7 +21,7 @@ public class EnemyHealth : MonoBehaviour {
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("Player");
         playerScript = player.GetComponent<PlayerCombat>();
 
         enemySound = gameObject.GetComponent<AudioSource>();
@@ -35,7 +35,6 @@ public class EnemyHealth : MonoBehaviour {
     {
         if (other.tag == "Weapon")
         {
-            Debug.Log("losing health from " + other.name);
             TakeDamage();
         }
     }
@@ -69,7 +68,6 @@ public class EnemyHealth : MonoBehaviour {
 
         if (health <= 0)
         {
-            Debug.Log("enemy " + this.name + " has died.");
             Instantiate(hitPart, transform.position, Quaternion.identity);
             Destroy(this.transform.parent.gameObject);
             Destroy(this.gameObject);

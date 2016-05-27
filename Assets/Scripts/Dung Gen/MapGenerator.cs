@@ -37,6 +37,7 @@ public class MapGenerator : MonoBehaviour
     //
     private List<Coord> PossibleBossRooms;
 
+
     void Awake()
     {
         GenerateMap();
@@ -46,8 +47,10 @@ public class MapGenerator : MonoBehaviour
     {
         //Grabs the initial map from the array
         currentDungeon = dungeons[dungeonIndex];
-
+        
+        //ToDo Remove dependence on room layout for generation
         roomLayout = new Transform[currentDungeon.dungeonSize.x, currentDungeon.dungeonSize.y];
+
         map = new Room[currentDungeon.dungeonSize.x, currentDungeon.dungeonSize.y];
         PossibleBossRooms = new List<Coord>();
 

@@ -36,6 +36,9 @@ public class Custom2DController : MonoBehaviour
 
     int count;
 
+    //ToDo Remove or replace map position
+    public Vector2 playerMapPosition;
+
     // Use this for initialization
     void Start()
     {
@@ -47,6 +50,8 @@ public class Custom2DController : MonoBehaviour
         CameraSwitch = false;
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
         //camShift = FindObjectOfType<Camera>();
+        playerMapPosition = new Vector2(2,2);
+
 
         //Set target framerate to 60fps when running in editor
         #if UNITY_EDITOR
@@ -89,8 +94,7 @@ public class Custom2DController : MonoBehaviour
         {
             anim.SetFloat("DeathIndex", 1);
             anim.SetTrigger("Death");
-            SceneManager.LoadScene("FinalTown");
-            //this.transform.LoadScene(1);
+            SceneManager.LoadScene("EmptyTown");
         }
 
         //Movement
@@ -223,13 +227,13 @@ public class Custom2DController : MonoBehaviour
 
         if(strafe > 0)
         {
-            //anim.SetTrigger("LeftStrafe");
-            anim.SetFloat("x", -1);
+            anim.SetTrigger("LeftStrafe");
+            //anim.SetFloat("x", -1);
         }
         else if(strafe < 0)
         {
-            //anim.SetTrigger("RightStrafe");
-            anim.SetFloat("x", 1);
+            anim.SetTrigger("RightStrafe");
+            //anim.SetFloat("x", 1);
         }
 
         if(strafe == 0)
@@ -252,12 +256,7 @@ public class Custom2DController : MonoBehaviour
     void DustKickOff()
     {
         Instantiate(dust, player.transform.position, Quaternion.Inverse(player.transform.rotation));
-        //Debug.Log("Kicking off Dust");
     }
-
-    /*
-    * Combat
-    */
 
     
 

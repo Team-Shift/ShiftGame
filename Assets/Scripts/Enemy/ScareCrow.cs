@@ -323,6 +323,8 @@ public class ScareCrow : MonoBehaviour
         {
             Destroy(everything);
         }
-        SceneManager.LoadScene("FinalTown");
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        SceneManager.LoadScene("MainMenu");
     }
 }

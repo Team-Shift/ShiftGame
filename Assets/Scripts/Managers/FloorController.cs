@@ -7,25 +7,33 @@ public class FloorController : MonoBehaviour
     public float groundLevel = 0;
     private float posOffset = 0;
     private List<GameObject> floorPieces = new List<GameObject>();
-    
+    private List<GameObject> risenPieces = new List<GameObject>();
+
     private List<float> floorPieceLevels = new List<float>();
+    //private List<float> risenPieceLevels = new List<float>();
     public Custom2DController player;
+
+    private bool is2D = true;
 
     // Use this for initialization
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Custom2DController>();
+        player = GameObject.Find("Player").GetComponent<Custom2DController>();
         floorPieces.AddRange(GameObject.FindGameObjectsWithTag("PuzzleFloor"));
-        foreach(GameObject piece in floorPieces)
+        risenPieces.AddRange(GameObject.FindGameObjectsWithTag("RisenFloor"));
+        foreach (GameObject piece in floorPieces)
         {
             floorPieceLevels.Add(piece.transform.position.y);
         }
+
+        InputManager.playerInput.OnShift.AddListener(HandleOnShiftEvent);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(player.CameraSwitch == false)
+        //if(player.CameraSwitch == false)
+        if(is2D)
         {
             for (int i = 0; i < floorPieces.Count; i++)
             {
@@ -39,6 +47,7 @@ public class FloorController : MonoBehaviour
 
                         floorPieces[i].transform.position = new Vector3(floorPieces[i].transform.position.x, groundLevel, floorPieces[i].transform.position.z);
 
+                        //floorPieces[i].SetActive(false);
                         if (Mathf.Abs(playerPos.x - floorPiecePos.x) < posOffset && Mathf.Abs(playerPos.z - floorPiecePos.z) < posOffset)
                         {
                             Debug.Log("Putting the player back onto the ground");
@@ -51,14 +60,20 @@ public class FloorController : MonoBehaviour
                     Debug.LogError("Floor Piece: " + i + "does not exist!");
                 }
             }
+            for (int i = 0; i < risenPieces.Count; i++)
+            {
+                risenPieces[i].SetActive(false);
+            }
         }
 
-        else if (player.CameraSwitch == true)
+        //else if (player.CameraSwitch == true)
+        else if(!is2D)
         {
             for (int i = 0; i < floorPieces.Count; i++)
             {
                 if (floorPieces[i].transform.position.y < floorPieceLevels[i])
                 {
+                    //floorPieces[i].SetActive(true);
                     posOffset = floorPieces[i].GetComponent<BoxCollider>().size.x / 2;
                     Vector3 floorPiecePos = floorPieces[i].transform.position;
                     Vector3 playerPos = player.gameObject.transform.position;
@@ -77,6 +92,15 @@ public class FloorController : MonoBehaviour
                     floorPieces[i].transform.position = new Vector3(floorPieces[i].transform.position.x, floorPieceLevels[i], floorPieces[i].transform.position.z);
                 }
             }
+            for (int i = 0; i < risenPieces.Count; i++)
+            {
+                risenPieces[i].SetActive(true);
+            }
         }
+    }
+
+    private void HandleOnShiftEvent()
+    {
+        is2D = !is2D;
     }
 }

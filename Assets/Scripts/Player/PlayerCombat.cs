@@ -23,7 +23,6 @@ public class PlayerCombat : MonoBehaviour {
     //[HideInInspector]
     public int Health = 3;
     public int Attack;
-    bool isDead;
 
     private Animator anim;
     private Inventory inv;
@@ -38,33 +37,13 @@ public class PlayerCombat : MonoBehaviour {
         Health = 3;
         Attack = 1;
         inv = gameObject.GetComponent<Inventory>();
-        isDead = false;
+        InputManager.playerInput.OnAttack.AddListener(HandleOnAttackEvent);
     }
 	
 	// Update is called once per frame
 	void Update () {
         //Combat & Interation
-        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            //Debug.Log("attacking");
-            //Debug.Log(inv);
-            if (inv.invItems[0].item.itemName == "Bow")
-            {
-                RangedAttack();
-                //Debug.Log("bow");
-            }
-            else
-            {
-                //melee = !melee;
-                MeleeAttack();
-                //Debug.Log("meelee");
-            }
-            
-        }
-        //else if (Input.GetKeyDown(KeyCode.Mouse1))
-        //{
-        //    RangedAttack();
-        //}
+        
 
         if (shot == false)
         {
@@ -98,6 +77,28 @@ public class PlayerCombat : MonoBehaviour {
         {
             Instantiate(Resources.Load("DeathText"));
             Invoke("SendToTown", 1);
+        }
+
+        if (transform.position.y <= -10)
+        {
+            anim.SetFloat("DeathIndex", 1);
+            anim.SetTrigger("Death");
+            SceneManager.LoadScene("EmptyTown");
+        }
+    }
+
+    private void HandleOnAttackEvent()
+    {
+        if (inv.invItems[0].item.itemName == "Bow")
+        {
+            RangedAttack();
+            //Debug.Log("bow");
+        }
+        else
+        {
+            //melee = !melee;
+            MeleeAttack();
+            //Debug.Log("meelee");
         }
     }
 
