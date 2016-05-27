@@ -158,9 +158,14 @@ GameObject:
   - 4: {fileID: 435982}
   - 95: {fileID: 9533454}
   - 54: {fileID: 5473438}
-  - 114: {fileID: 11459602}
-  - 114: {fileID: 11446838}
   - 65: {fileID: 6583266}
+  - 114: {fileID: 11413082}
+  - 114: {fileID: 11463542}
+  - 114: {fileID: 11408938}
+  - 114: {fileID: 11461820}
+  - 114: {fileID: 11493222}
+  - 114: {fileID: 11443466}
+  - 114: {fileID: 11415284}
   m_Layer: 0
   m_Name: Temp_Player
   m_TagString: Player
@@ -213,7 +218,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.894136, y: 3.43, z: -9.521078}
+  m_LocalPosition: {x: 17.227207, y: 1.888, z: -8.545519}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 435944}
@@ -488,8 +493,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4463768, y: 1, z: 0.35815096}
-  m_Center: {x: -0.022081375, y: 0, z: 0.026855469}
+  m_Size: {x: 0.4463768, y: 0.4964733, z: 0.35815096}
+  m_Center: {x: -0.022081375, y: 0.25176334, z: 0.026855469}
 --- !u!65 &6586202
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -569,7 +574,25 @@ MonoBehaviour:
   guiTxt: {fileID: 0}
   textBoxTexture: {fileID: 0}
   SpeechIndex: 0
---- !u!114 &11446838
+--- !u!114 &11408938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b924c3860f69b4cb24e4618d851b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invItems: []
+  invSize: 6
+  goldCount: 0
+  goldPickupAmnt: 5
+  ySpawn: 0
+  floatingObject: {fileID: 199624, guid: 88e139d0854429f469a0740a95d75a14, type: 2}
+  InvUI: {fileID: 0}
+--- !u!114 &11413082
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -584,7 +607,23 @@ MonoBehaviour:
   player: {fileID: 0}
   shiftCoolDownTime: 10
   shiftTimer: 0
---- !u!114 &11459602
+--- !u!114 &11415284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224c47e7657c89544b5b908644c9d62d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeartFillTexture: {fileID: 13172374, guid: 00beb33bc9003f049aa88f4fc0b99128, type: 2}
+  HeartContainerTexture: {fileID: 13199914, guid: df921734038b9354bb793908929a4e63,
+    type: 2}
+  XOffset: 0.14
+  YOffset: 0.92
+--- !u!114 &11443466
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -601,7 +640,59 @@ MonoBehaviour:
   cameraPitch: 0
   cameraYaw: 0
   jumpForce: 10
-  jumpTimeLeft: 2
+  jumpTimeLeft: 1
+--- !u!114 &11461820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191286}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e8245b427dda64bba4e09ca1b41a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeartFillTexture: {fileID: 0}
+  HeartContainerTexture: {fileID: 0}
+  Health: 0
+  XOffset: 0.14
+  YOffset: 0.92
+--- !u!114 &11463542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwordTrail: {fileID: 100002, guid: 70c99346c06c202419e2c12fac666c2f, type: 2}
+--- !u!114 &11493222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b6d7f1eddde2a4380eb3e4df8b52df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangedTemp: {fileID: 186404, guid: 8f982843d0e044d408e9c21a41848cc3, type: 2}
+  meleeWeapon: {fileID: 0}
+  sword: {fileID: 0}
+  meleeSound: {fileID: 0}
+  bowSound: {fileID: 0}
+  hurtSound: {fileID: 0}
+  pushBackForce: 1000
+  shotTimeLeft: 1
+  melee: 1
+  meleeTimeLeft: 1
+  worldLimit: -5
+  Health: 3
+  Attack: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

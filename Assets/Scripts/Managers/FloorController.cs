@@ -11,6 +11,8 @@ public class FloorController : MonoBehaviour
     private List<float> floorPieceLevels = new List<float>();
     public Custom2DController player;
 
+    private bool is2D = true;
+
     // Use this for initialization
     void Start()
     {
@@ -20,12 +22,15 @@ public class FloorController : MonoBehaviour
         {
             floorPieceLevels.Add(piece.transform.position.y);
         }
+
+        InputManager.playerInput.OnShift.AddListener(HandleOnShiftEvent);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(player.CameraSwitch == false)
+        //if(player.CameraSwitch == false)
+        if(is2D)
         {
             for (int i = 0; i < floorPieces.Count; i++)
             {
@@ -53,7 +58,8 @@ public class FloorController : MonoBehaviour
             }
         }
 
-        else if (player.CameraSwitch == true)
+        //else if (player.CameraSwitch == true)
+        else if(!is2D)
         {
             for (int i = 0; i < floorPieces.Count; i++)
             {
@@ -78,5 +84,10 @@ public class FloorController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void HandleOnShiftEvent()
+    {
+        is2D = !is2D;
     }
 }

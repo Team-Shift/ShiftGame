@@ -8,7 +8,8 @@ public class CameraShift : MonoBehaviour {
     public float ProjectionChangeTime = 0.5f;
     public bool ChangeProjection = false;
 
-    private bool _changing = false;
+    [HideInInspector]
+    public bool _changing = false;
     private float _currentT = 0.0f;
 
     // player to follow
@@ -16,19 +17,15 @@ public class CameraShift : MonoBehaviour {
     private GameObject pivotPoint;
 
     // for fading in/out
-    Color s_fade;                                       // to change alpha
     public GameObject sprite;                           // black sprite
-    SpriteRenderer spriteRend;                          // to get/set spriterenderer color
     Camera cam;                                         // camera    
-    bool canFade;                                       // used to fade in update
     public bool camActive;                              // false is ortho and true is persp
-    float startTime;                                    // for pingPonging fade to start at 0
     public float duration = 0.5f;                       // how long to fade
     public bool isOrthos = true;
 
 
     //Shift Stuff
-    public int canShift;                               // if player unlocks shift ability
+    //public int canShift;                               // if player unlocks shift ability
     public Light DirLight;                              //Change Culling Mask On Lights
 
     //players pos
@@ -38,7 +35,7 @@ public class CameraShift : MonoBehaviour {
 
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Temp_Player");
         
 
         foreach(Transform t in player.transform)
@@ -50,55 +47,25 @@ public class CameraShift : MonoBehaviour {
         }
 
         // changes if unlocked in game
-        canShift = 0;
+        //canShift = 0;
         camActive = false;  // start in ortho
 
         // get camera
         cam = gameObject.GetComponent<Camera>();
         // get rend to change
-        canFade = false;    // no fading to start
-    }
 
+        InputManager.playerInput.OnShift.AddListener(HandleOnShiftEvent);
+    }
     void Update()
     {
 
-        /*
-        Putting this little input here to make it so we can reset to main menu at any time
-        */
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            foreach (var everything in FindObjectsOfType<GameObject>())
-            {
-                Destroy(everything);
-            }
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            SceneManager.LoadScene("MainMenu");
-        }
-
-        canShift++;
+        //canShift++;
 
         // get players pos
         playerPosX = player.transform.position.x;
         playerPosZ = player.transform.position.z;
         playerPosY = player.transform.position.y;
 
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
-        {
-            if (canShift > 75)
-            {
-                _changing = true;
-                    _currentT = 0.0f;
-                //}
-
-                if (isOrthos)
-                {
-                    isOrthos = false;
-                }
-                else isOrthos = true;
-                canShift = 0;
-            }                     
-        }
         if (isOrthos)
         {
             Vector3 v = new Vector3(playerPosX, playerPosY + 50, playerPosZ - 40);
@@ -111,6 +78,16 @@ public class CameraShift : MonoBehaviour {
             gameObject.transform.position = v;
             gameObject.transform.rotation = Quaternion.Euler(20.0f, 0, 0);
         }
+    }
+
+    private void HandleOnShiftEvent()
+    {
+        _changing = true;
+        if (isOrthos)
+        {
+            isOrthos = false;
+        }
+        else isOrthos = true;
     }
 
     private void LateUpdate()

@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private bool jump = true;
     [SerializeField]
     public float jumpTimeLeft = 1f;
+    [HideInInspector]
+    private bool is2D = true;
 
     [HideInInspector]
     private GameObject player;
@@ -34,6 +36,14 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(player.name);
         anim = GetComponent<Animator>();
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
+        InputManager.playerInput.OnShift.AddListener(HandleOnShiftEvent);
+        InputManager.playerInput.OnTurnScalarUp.AddListener(HandleOnPageUpEvent);
+        InputManager.playerInput.OnTurnScalarDown.AddListener(HandleOnPageDownEvent);
+        InputManager.playerInput.OnMoveForward.AddListener(HandleOnMoveForward);
+        InputManager.playerInput.OnMoveBackward.AddListener(HandleOnMoveBackward);
+        InputManager.playerInput.OnMoveLeft.AddListener(HandleOnMoveLeft);
+        InputManager.playerInput.OnMoveRight.AddListener(HandleOnMoveRight);
+        InputManager.playerInput.OnJump.AddListener(HandleOnJumpEvent);
 
         //Set target framerate to 60fps when running in editor
         #if UNITY_EDITOR
@@ -45,16 +55,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Update Turn Scalar
-        if(Input.GetKeyDown(KeyCode.PageUp))
-        {
-            UpdateTurnScalar(1);
-        }
-        if(Input.GetKeyDown(KeyCode.PageDown))
-        {
-            UpdateTurnScalar(-1);
-        }
-
         //Update Jumping
         if (jump == false)
         {
@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (InputManager.playerInput.is2D)
+        if (is2D)
         {
             Move2D();
         }
@@ -78,6 +78,61 @@ public class PlayerMovement : MonoBehaviour
             Move3D();
         }
     }
+
+    //Subscriber Event Handlers
+    private void HandleOnShiftEvent()
+    {
+        is2D = !is2D;
+    }
+    private void HandleOnPageUpEvent()
+    {
+        UpdateTurnScalar(1);
+    }
+    private void HandleOnPageDownEvent()
+    {
+        UpdateTurnScalar(-1);
+    }
+    private void HandleOnJumpEvent()
+    {
+        if (jump && !is2D)
+        {
+            player.GetComponent<Rigidbody>().AddForce(new Vector3(0, jumpForce * 10, 0));
+            jump = false;
+        }
+    }
+    private void HandleOnMoveForward()
+    {
+        if (is2D)
+        {
+            anim.SetFloat("y", 1);
+            player.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
+        }
+    }
+    private void HandleOnMoveBackward()
+    {
+        if (is2D)
+        {
+            anim.SetFloat("y", 1);
+            player.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+        }
+    }
+    private void HandleOnMoveLeft()
+    {
+        if (is2D)
+        {
+            anim.SetFloat("y", 1);
+            player.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
+        }
+    }
+    private void HandleOnMoveRight()
+    {
+        if (is2D)
+        {
+            anim.SetFloat("y", 1);
+            player.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
+        }
+    }
+
 
     private void UpdateTurnScalar(int changeAmount)
     {
@@ -124,28 +179,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.Translate(moveDirection * Time.deltaTime * moveSpeed, Space.World);
-
-        //Animation and visual code
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            anim.SetFloat("y", 1);
-            player.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
-        }
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            anim.SetFloat("y", 1);
-            player.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
-        }
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            anim.SetFloat("y", 1);
-            player.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
-        }
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            anim.SetFloat("y", 1);
-            player.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
-        }
     }
 
     void Move3D()
@@ -174,14 +207,6 @@ public class PlayerMovement : MonoBehaviour
 
         cameraPitch = Mathf.Clamp(cameraPitch + 90.0f, 60, 120) - 90.0f;
         transform.eulerAngles = new Vector3(cameraPitch, cameraYaw, 0);
-        //end of new code
-
-
-        if (Input.GetKeyDown(KeyCode.Space) && jump == true)
-        {
-            player.GetComponent<Rigidbody>().AddForce(new Vector3(0, jumpForce * 10, 0));
-            jump = false;
-        }
 
         //Animation visual code
         if (strafe > 0)
