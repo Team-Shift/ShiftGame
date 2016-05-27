@@ -16,6 +16,8 @@ public class MiniMap : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        GameEvents.Subscribe(HandlePostTeleportEvent, typeof(PostTeleportEvent));
+
         roomWidth = 15;
         roomHeight = 15;
         playerController = GameObject.FindWithTag("Player").GetComponent<Custom2DController>();
@@ -25,7 +27,7 @@ public class MiniMap : MonoBehaviour
 
 	void LateUpdate ()
 	{
-        miniMap[(int)playerController.playerMapPosition.x, (int)playerController.playerMapPosition.y].color = Color.red;
+        
     }
 
     //ToDo Apply Proper positioning of the map UI Element
@@ -56,5 +58,27 @@ public class MiniMap : MonoBehaviour
                 }
             }
         }
+    }
+
+    void ColorRoom(Vector2 MapCoord, Color color)
+    {
+        miniMap[(int) MapCoord.x, (int) MapCoord.y].color = color;
+    }
+
+    void ClearMap()
+    {
+        foreach (var room in miniMap)
+        {
+            if (room != null)
+            {
+                room.color = Color.white;
+            }
+        }
+    }
+
+    void HandlePostTeleportEvent(IGameEvent gameEvent)
+    {
+        ClearMap();
+        ColorRoom(playerController.playerMapPosition, Color.red);
     }
 }

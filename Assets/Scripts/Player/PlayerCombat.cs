@@ -100,7 +100,7 @@ public class PlayerCombat : MonoBehaviour {
             Invoke("SendToTown", 1);
         }
 
-        if (InputManager.playerInput.player.transform.position.y <= -10)
+        if (gameObject.transform.position.y <= -10)
         {
             anim.SetFloat("DeathIndex", 1);
             anim.SetTrigger("Death");
