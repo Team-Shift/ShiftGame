@@ -7,7 +7,8 @@ public class FloorController : MonoBehaviour
     public float groundLevel = 0;
     private float posOffset = 0;
     private List<GameObject> floorPieces = new List<GameObject>();
-    
+    private List<GameObject> risenPieces = new List<GameObject>();
+
     private List<float> floorPieceLevels = new List<float>();
     public Custom2DController player;
 
@@ -16,6 +17,7 @@ public class FloorController : MonoBehaviour
     {
         player = GameObject.Find("Player").GetComponent<Custom2DController>();
         floorPieces.AddRange(GameObject.FindGameObjectsWithTag("PuzzleFloor"));
+        risenPieces.AddRange(GameObject.FindGameObjectsWithTag("RisenFloor"));
         foreach(GameObject piece in floorPieces)
         {
             floorPieceLevels.Add(piece.transform.position.y);
@@ -51,6 +53,10 @@ public class FloorController : MonoBehaviour
                     Debug.LogError("Floor Piece: " + i + "does not exist!");
                 }
             }
+            for (int i = 0; i < risenPieces.Count; i++)
+            {
+                risenPieces[i].SetActive(false);
+            }
         }
 
         else if (player.CameraSwitch == true)
@@ -76,6 +82,10 @@ public class FloorController : MonoBehaviour
 
                     floorPieces[i].transform.position = new Vector3(floorPieces[i].transform.position.x, floorPieceLevels[i], floorPieces[i].transform.position.z);
                 }
+            }
+            for (int i = 0; i < risenPieces.Count; i++)
+            {
+                risenPieces[i].SetActive(true);
             }
         }
     }
