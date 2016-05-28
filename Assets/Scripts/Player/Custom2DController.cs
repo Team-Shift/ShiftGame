@@ -98,13 +98,13 @@ public class Custom2DController : MonoBehaviour
                 turnScalar--;
             }
         }
+        //if (player.transform.position.y <= -10)
+        //{
+        //    //anim.SetFloat("DeathIndex", 1);
+        //    anim.SetTrigger("Death");
+        //    //SceneManager.LoadScene("EmptyTown");
+        //}
 
-        if (player.transform.position.y <= -10)
-        {
-            anim.SetFloat("DeathIndex", 1);
-            anim.SetTrigger("Death");
-            SceneManager.LoadScene("EmptyTown");
-        }
 
         //Movement
         if (CameraSwitch == false)

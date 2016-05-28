@@ -96,21 +96,30 @@ public class PlayerCombat : MonoBehaviour {
 
         if (Health <= 0)
         {
-            Instantiate(Resources.Load("DeathText"));
-            Invoke("SendToTown", 1);
+            anim.SetTrigger("Death");
+            //Invoke("SendToTown", 1);
         }
 
         if (gameObject.transform.position.y <= -10)
         {
-            anim.SetFloat("DeathIndex", 1);
+            //anim.SetFloat("DeathIndex", 1);
             anim.SetTrigger("Death");
-            SceneManager.LoadScene("EmptyTown");
+            
+            //SceneManager.LoadScene("EmptyTown");
         }
+    }
+
+    public void DeathStuff()
+    {
+        Debug.Log("DeathStuff");
+        Instantiate(Resources.Load("DeathText"));
+        //ToDo More hacking shit please remove
+        
+        Invoke("SendToTown", 2);
     }
 
     void SendToTown()
     {
-        //ToDo More hacking shit please remove
         foreach (var everything in FindObjectsOfType<GameObject>())
         {
             Destroy(everything);
