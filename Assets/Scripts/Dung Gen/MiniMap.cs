@@ -25,9 +25,9 @@ public class MiniMap : MonoBehaviour
         InitMap();
 	}
 
-	void LateUpdate ()
-	{
-        
+    void OnDestroy()
+    {
+        GameEvents.UnsubscribeAll(HandlePostTeleportEvent);
     }
 
     //ToDo Apply Proper positioning of the map UI Element
