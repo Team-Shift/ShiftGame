@@ -3,11 +3,11 @@ using UnityEngine.Events;
 using System.Collections;
 
 //Everything required to make a player
-[RequireComponent(typeof(PlayerMovement))]
-[RequireComponent(typeof(PlayerCombat))]
-[RequireComponent(typeof(Inventory))]
-[RequireComponent(typeof(PlayerAttack))]
-[RequireComponent(typeof(HeartHealthUI))]
+//[RequireComponent(typeof(PlayerMovement))]
+//[RequireComponent(typeof(PlayerCombat))]
+//[RequireComponent(typeof(Inventory))]
+//[RequireComponent(typeof(PlayerAttack))]
+//[RequireComponent(typeof(HeartHealthUI))]
 public class InputManager : MonoBehaviour
 {
     public static InputManager playerInput;
@@ -44,12 +44,15 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private float shiftTimer = 0.0f;
     private bool canShift = true;
+    
+    public bool is2D { get; private set; }
 
     // Use this for initialization
     void Start()
     {
         shiftTimer = shiftCoolDownTime;
         player = gameObject;
+        is2D = true;
 
         if(!playerInput)
         {
@@ -74,14 +77,19 @@ public class InputManager : MonoBehaviour
             {
                 OnShift.Invoke();
                 canShift = !canShift;
+                is2D = !is2D;
             }
         }
 
+        #region Debug-ApplicationStuff
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
-
+        if (Input.GetKeyDown(KeyCode.O) && Input.GetKeyDown(KeyCode.P))
+        {
+            OnAddGold.Invoke();
+        }
         if (Input.GetKeyDown(KeyCode.PageUp))
         {
             OnTurnScalarUp.Invoke();
@@ -90,10 +98,9 @@ public class InputManager : MonoBehaviour
         {
             OnTurnScalarDown.Invoke();
         }
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            OnJump.Invoke();
-        }
+        #endregion
+
+        #region PlayerCommands
         if(Input.GetKeyDown(KeyCode.Tab))
         {
             OnSwapItems.Invoke();
@@ -106,11 +113,14 @@ public class InputManager : MonoBehaviour
         {
             OnUseConsumable2.Invoke();
         }
-        if(Input.GetKeyDown(KeyCode.O) && Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            OnAddGold.Invoke();
+            OnAttack.Invoke();
         }
+        #endregion
 
+        #region PlayerMovement
+        // ToDo Replace Keycodes with Input Axis
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             OnMoveForward.Invoke();
@@ -127,10 +137,12 @@ public class InputManager : MonoBehaviour
         {
             OnMoveRight.Invoke();
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            OnAttack.Invoke();
+            OnJump.Invoke();
         }
+        #endregion
+
     }
 
     void FixedUpdate()

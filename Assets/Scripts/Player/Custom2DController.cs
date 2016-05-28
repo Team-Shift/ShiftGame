@@ -42,8 +42,15 @@ public class Custom2DController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        // Game Event Subscriptions
         GameEvents.Subscribe(HandleOnTeleportEvent, typeof(TeleportEvent));
         GameEvents.Subscribe(HandlePostTeleportEvent, typeof(PostTeleportEvent));
+
+        //Input Manager Subscriptions
+        InputManager.playerInput.OnTurnScalarUp.AddListener(HandleOnScaleUpEvent);
+        InputManager.playerInput.OnTurnScalarDown.AddListener(HandleOnScaleDownEvent);
+        InputManager.playerInput.OnShift.AddListener(HandleOnShiftEvent);
+        InputManager.playerInput.OnMoveForward.AddListener(HandleOnMoveForwardEvent);
 
         count = 0;
         turnScalar = 1;
@@ -74,37 +81,12 @@ public class Custom2DController : MonoBehaviour
     {
         count++;
 
-        // ToDo Remove Debug for beta
-        if (Input.GetKeyUp(KeyCode.PageUp))
+        if (player.transform.position.y <= -10)
         {
-            if (turnScalar >= 12)
-            {
-                turnScalar = 12;
-            }
-            else
-            {
-                turnScalar++;
-            }
+            anim.SetFloat("DeathIndex", 1);
+            anim.SetTrigger("Death");
+            SceneManager.LoadScene("EmptyTown");
         }
-
-        if (Input.GetKeyUp(KeyCode.PageDown))
-        {
-            if (turnScalar <= 1)
-            {
-                turnScalar = 1;
-            }
-            else
-            {
-                turnScalar--;
-            }
-        }
-        //if (player.transform.position.y <= -10)
-        //{
-        //    //anim.SetFloat("DeathIndex", 1);
-        //    anim.SetTrigger("Death");
-        //    //SceneManager.LoadScene("EmptyTown");
-        //}
-
 
         //Movement
         if (CameraSwitch == false)
@@ -116,33 +98,6 @@ public class Custom2DController : MonoBehaviour
             Move3D();
         }
 
-        //Shift
-
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
-        {
-            if (count > 75)
-            {
-                //Debug.Log("switching");
-                CameraSwitch = !CameraSwitch;
-                //manager.Shift();
-                if (CameraSwitch == false)
-                {
-                    player.layer = LayerMask.NameToLayer("AvoidLight2D");
-                }
-                else
-                {
-                    player.layer = LayerMask.NameToLayer("Default");
-                }
-                count = 0;
-            }
-        }
-
-
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
 
         if (jump == false)
         {
@@ -165,29 +120,27 @@ public class Custom2DController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
+        // ToDo Movement to Event Handlers
+        #region PhysicalMovementOfPlayer
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-
-        if(moveDirection.x != 0 || moveDirection.z != 0)
+        if (moveDirection.x != 0 || moveDirection.z != 0)
         {
             //Setting Y parameter to 1        Y Parameter 0 = Idle  1 = Walk
             anim.SetFloat("y", 1);
             //anim.SetBool("walk", true);
         }
-        else if(moveDirection.x == 0 || moveDirection.z == 0)
+        else if (moveDirection.x == 0 || moveDirection.z == 0)
         {
             anim.SetFloat("y", 0);
             //anim.SetBool("walk", false);
         }
 
         transform.Translate(moveDirection * Time.deltaTime * speed, Space.World);
+        #endregion
 
-        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            anim.SetFloat("y", 1);
-            //anim.SetBool("walk", true);
-            playerDir = FacingDirection.Forward;
-            player.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
-        }
+        // Move Forward Moved to Handler
+        // ToDo Move the rest of movement if it works
+        #region AnimationOfPlayerMovement
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             anim.SetFloat("y", 1);
@@ -209,6 +162,8 @@ public class Custom2DController : MonoBehaviour
             playerDir = FacingDirection.Right;
             player.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
         }
+        #endregion
+
     }
 
     void Move3D()
@@ -269,8 +224,6 @@ public class Custom2DController : MonoBehaviour
 
     void HandleOnTeleportEvent(IGameEvent gameEvent)
     {
-        Debug.Log("Firing Off Teleport Event");
-
         TeleportEvent teleport = gameEvent as TeleportEvent;
 
         if (teleport != null)
@@ -310,6 +263,68 @@ public class Custom2DController : MonoBehaviour
         else
         {
             Debug.Log("Invalid Invoke PostTeleport");
+        }
+    }
+
+
+    // Input Handlers
+    // Scale Camera Rotation Speed
+    void HandleOnScaleUpEvent()
+    {
+        if (turnScalar >= 12)
+        {
+            turnScalar = 12;
+        }
+        else
+        {
+            turnScalar++;
+        }
+    }
+
+    void HandleOnScaleDownEvent()
+    {
+        if (turnScalar <= 1)
+        {
+            turnScalar = 1;
+        }
+        else
+        {
+            turnScalar--;
+        }
+    }
+
+    // Camera Shift
+    void HandleOnShiftEvent()
+    {
+        //Debug.Log("switching");
+        CameraSwitch = !CameraSwitch;
+        //manager.Shift();
+        if (CameraSwitch == false)
+        {
+            player.layer = LayerMask.NameToLayer("AvoidLight2D");
+        }
+        else
+        {
+            player.layer = LayerMask.NameToLayer("Default");
+        }
+    }
+
+    // ToDo Implement Back/Left/Right Events
+    void HandleOnMoveForwardEvent()
+    {
+        if (InputManager.playerInput.is2D)
+        {
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                anim.SetFloat("y", 1);
+                //anim.SetBool("walk", true);
+                playerDir = FacingDirection.Forward;
+                player.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
+            }
+        }
+        else
+        {
+            Debug.Log("You're attempting to move in 3D forward");
         }
     }
 }
