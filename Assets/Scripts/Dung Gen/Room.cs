@@ -168,7 +168,7 @@ public class Room{
                 }
                 else
                 {
-                    Debug.LogError("No Neighbor Portal Found!");
+                    Debug.LogError("No Neighbor Portal Found on room:" + neighbor.prefab.name + "!");
                 }
             }
         }
