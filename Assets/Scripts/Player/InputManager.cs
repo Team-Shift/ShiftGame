@@ -10,7 +10,8 @@ using System.Collections;
 //[RequireComponent(typeof(HeartHealthUI))]
 public class InputManager : MonoBehaviour
 {
-    public static InputManager playerInput;
+    private static InputManager instance = null;
+
     [HideInInspector]
     public UnityEvent OnShift = new UnityEvent();
     [HideInInspector]
@@ -53,17 +54,22 @@ public class InputManager : MonoBehaviour
         shiftTimer = shiftCoolDownTime;
         player = gameObject;
         is2D = true;
+    }
 
-        if(!playerInput)
+    public static InputManager Instance
+    {
+        get
         {
-            playerInput = this;
-            DontDestroyOnLoad(gameObject);
+            if (instance == null)
+            {
+                instance = (InputManager) FindObjectOfType(typeof (InputManager));
+                if (instance == null)
+                {
+                    instance = (new GameObject("InputManager")).AddComponent<InputManager>();
+                }
+            }
+            return instance;
         }
-        else if(playerInput != this)
-        {
-            Destroy(gameObject);
-        }
-
     }
 
     // Update is called once per frame

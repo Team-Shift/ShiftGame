@@ -37,14 +37,14 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(player.name);
         anim = GetComponent<Animator>();
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
-        InputManager.playerInput.OnShift.AddListener(HandleOnShiftEvent);
-        InputManager.playerInput.OnTurnScalarUp.AddListener(HandleOnPageUpEvent);
-        InputManager.playerInput.OnTurnScalarDown.AddListener(HandleOnPageDownEvent);
-        InputManager.playerInput.OnMoveForward.AddListener(HandleOnMoveForward);
-        InputManager.playerInput.OnMoveBackward.AddListener(HandleOnMoveBackward);
-        InputManager.playerInput.OnMoveLeft.AddListener(HandleOnMoveLeft);
-        InputManager.playerInput.OnMoveRight.AddListener(HandleOnMoveRight);
-        InputManager.playerInput.OnJump.AddListener(HandleOnJumpEvent);
+        InputManager.Instance.OnShift.AddListener(HandleOnShiftEvent);
+        InputManager.Instance.OnTurnScalarUp.AddListener(HandleOnPageUpEvent);
+        InputManager.Instance.OnTurnScalarDown.AddListener(HandleOnPageDownEvent);
+        InputManager.Instance.OnMoveForward.AddListener(HandleOnMoveForward);
+        InputManager.Instance.OnMoveBackward.AddListener(HandleOnMoveBackward);
+        InputManager.Instance.OnMoveLeft.AddListener(HandleOnMoveLeft);
+        InputManager.Instance.OnMoveRight.AddListener(HandleOnMoveRight);
+        InputManager.Instance.OnJump.AddListener(HandleOnJumpEvent);
 
         //Set target framerate to 60fps when running in editor
         #if UNITY_EDITOR
