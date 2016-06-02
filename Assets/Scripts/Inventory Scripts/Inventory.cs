@@ -232,6 +232,10 @@ public class Inventory : MonoBehaviour {
         {
             pickUp.transform.localRotation = Quaternion.Euler(new Vector3(30, 140, 180));
         }
+        if (pickupItem.itemName == "ChickenBow")
+        {
+            pickUp.transform.localRotation = Quaternion.Euler(new Vector3(30, 70, 180));
+        }
         else
             pickUp.transform.localRotation = Quaternion.Euler(new Vector3(270, 0, 0));
         pickUp.GetComponent<Item>().reccentlyPickupUp = true;

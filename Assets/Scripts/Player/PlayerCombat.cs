@@ -48,7 +48,7 @@ public class PlayerCombat : MonoBehaviour {
         {
             //Debug.Log("attacking");
             //Debug.Log(inv);
-            if (inv.invItems[0].item.itemName == "Bow")
+            if (inv.invItems[0].item.itemName == "Bow" || inv.invItems[0].item.itemName == "ChickenBow")
             {
                 RangedAttack();
                 //Debug.Log("bow");
