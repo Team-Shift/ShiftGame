@@ -49,10 +49,10 @@ public class ChestDrop : MonoBehaviour {
         {
             if (t.name == "item_Particle")
             {
-                GameObject itemSpawned = ItemManager.SpawnItem(itemName, gameObject.transform.position + new Vector3(0, .5f, 0));
+                GameObject itemSpawned = ItemManager.SpawnItem(itemName, g.transform.position/* + new Vector3(0, .5f, 0)*/);
                 if(itemName == "Bow")
                 {
-                    itemSpawned.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + .7f, gameObject.transform.position.z);
+                    itemSpawned.transform.position = new Vector3(g.transform.position.x, g.transform.position.y + .7f, g.transform.position.z);
                     //itemSpawned.transform.Translate(new Vector3 (0, 0, 0));
                 }
                 itemSpawned.transform.SetParent(t);

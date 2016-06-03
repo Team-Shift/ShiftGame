@@ -212,13 +212,13 @@ public class Inventory : MonoBehaviour {
 
         // spawn the current weapon
         GameObject dropWeap  = ItemManager.SpawnItem(invItems[0].item.itemName, new Vector3(pickupItem.transform.position.x, gameObject.transform.position.y + 0.2f, pickupItem.transform.position.z));
-        if (dropWeap.GetComponent<Item>().itemName != "Bow")
+        if (dropWeap.GetComponent<Item>().itemName != "Bow" && dropWeap.GetComponent<Item>().itemName != "ChickenBow")
         {
             dropWeap.transform.rotation = Quaternion.Euler(new Vector3(270, 0, 0));
         }
         else
         {
-            dropWeap.transform.position = new Vector3(pickupItem.transform.position.x, gameObject.transform.position.y , pickupItem.transform.position.z);
+            dropWeap.transform.position = new Vector3(pickupItem.transform.position.x, gameObject.transform.position.y +.3f, pickupItem.transform.position.z);
             //dropWeap.transform.Translate(new Vector3(0, .3f, 0));
         }
         dropWeap.GetComponent<Item>().reccentlyPickupUp = true;
@@ -230,11 +230,13 @@ public class Inventory : MonoBehaviour {
         pickUp.transform.SetParent(weaponLoc.transform);
         if(pickupItem.itemName == "Bow")
         {
-            pickUp.transform.localRotation = Quaternion.Euler(new Vector3(30, 140, 180));
+            pickUp.transform.localRotation = Quaternion.Euler(new Vector3(40, 80, 0));
+            Debug.Log("Bow");
         }
-        if (pickupItem.itemName == "ChickenBow")
+        else if (pickupItem.itemName == "ChickenBow")
         {
             pickUp.transform.localRotation = Quaternion.Euler(new Vector3(30, 70, 180));
+            Debug.Log("Bow");
         }
         else
             pickUp.transform.localRotation = Quaternion.Euler(new Vector3(270, 0, 0));
