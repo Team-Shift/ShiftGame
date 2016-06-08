@@ -47,10 +47,10 @@ public class Custom2DController : MonoBehaviour
         GameEvents.Subscribe(HandlePostTeleportEvent, typeof(PostTeleportEvent));
 
         //Input Manager Subscriptions
-        InputManager.playerInput.OnTurnScalarUp.AddListener(HandleOnScaleUpEvent);
-        InputManager.playerInput.OnTurnScalarDown.AddListener(HandleOnScaleDownEvent);
-        InputManager.playerInput.OnShift.AddListener(HandleOnShiftEvent);
-        InputManager.playerInput.OnMoveForward.AddListener(HandleOnMoveForwardEvent);
+        InputManager.Instance.OnTurnScalarUp.AddListener(HandleOnScaleUpEvent);
+        InputManager.Instance.OnTurnScalarDown.AddListener(HandleOnScaleDownEvent);
+        InputManager.Instance.OnShift.AddListener(HandleOnShiftEvent);
+        InputManager.Instance.OnMoveForward.AddListener(HandleOnMoveForwardEvent);
 
         count = 0;
         turnScalar = 1;
@@ -312,7 +312,7 @@ public class Custom2DController : MonoBehaviour
     // ToDo Implement Back/Left/Right Events
     void HandleOnMoveForwardEvent()
     {
-        if (InputManager.playerInput.is2D)
+        if (InputManager.Instance.is2D)
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
