@@ -43010,6 +43010,17 @@ MeshFilter:
 GameObject:
   m_PrefabParentObject: {fileID: 130236, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
   m_PrefabInternal: {fileID: 783080359}
+--- !u!114 &1853273801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1853273788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b928d09bd98ad7469fbafea73bd0579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1861856755
 GameObject:
   m_ObjectHideFlags: 0

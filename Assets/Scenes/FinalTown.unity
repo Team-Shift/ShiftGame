@@ -1009,21 +1009,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 485586, guid: a32c9aebc4c0ff749be74fc91ca39a54, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a32c9aebc4c0ff749be74fc91ca39a54, type: 2}
   m_IsPrefabParent: 0
---- !u!131 &298550671 stripped
-GUITexture:
-  m_PrefabParentObject: {fileID: 13176822, guid: a32c9aebc4c0ff749be74fc91ca39a54,
-    type: 2}
-  m_PrefabInternal: {fileID: 298550670}
---- !u!132 &298550672 stripped
-GUIText:
-  m_PrefabParentObject: {fileID: 13203914, guid: a32c9aebc4c0ff749be74fc91ca39a54,
-    type: 2}
-  m_PrefabInternal: {fileID: 298550670}
 --- !u!1 &303612358 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 167548, guid: 78e73381f7d667647946fafc0daec68d, type: 2}
@@ -1879,147 +1869,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.89999986, y: 1.9999999, z: 0.8999998}
   m_Center: {x: 0, y: 0.99999994, z: -0.0000038146973}
---- !u!1001 &544348169
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 498626, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 26.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 498626, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 14.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 498626, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -36.73
-      objectReference: {fileID: 0}
-    - target: {fileID: 498626, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 498626, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 498626, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 498626, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 498626, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 11475734, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-      propertyPath: guiTxt
-      value: 
-      objectReference: {fileID: 298550672}
-    - target: {fileID: 11475734, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-      propertyPath: textBoxTexture
-      value: 
-      objectReference: {fileID: 298550671}
-    - target: {fileID: 11439660, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-      propertyPath: InvUI
-      value: 
-      objectReference: {fileID: 2022235500}
-    - target: {fileID: 11451058, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-      propertyPath: shotTimeLeft
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-  m_IsPrefabParent: 0
---- !u!1 &544348170 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 130236, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-  m_PrefabInternal: {fileID: 544348169}
---- !u!114 &544348171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 544348170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cebd26a821a0434390948dd2e010f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnShift:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnTurnScalarUp:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnTurnScalarDown:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnMoveForward:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnMoveBackward:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnMoveLeft:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnMoveRight:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnAttack:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnJump:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnSwapItems:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnUseConsumable1:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnUseConsumable2:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnAddGold:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  player: {fileID: 0}
-  shiftCoolDownTime: 3
-  shiftTimer: 0
 --- !u!1 &566193956 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 107512, guid: 78e73381f7d667647946fafc0daec68d, type: 2}
@@ -4541,7 +4390,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1 &1444594439 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 171854, guid: 78e73381f7d667647946fafc0daec68d, type: 2}
@@ -5954,12 +5803,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.89999986, y: 1.9999999, z: 0.89999986}
   m_Center: {x: 0, y: 0.99999994, z: 0}
---- !u!114 &2022235500 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11417488, guid: 436f020ff37ef1c4c95234eaee8d62b6,
-    type: 2}
-  m_PrefabInternal: {fileID: 372040510}
-  m_Script: {fileID: 11500000, guid: 2fc67551125e33a4e9b493afbb1c30b6, type: 3}
 --- !u!1 &2039675891 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 179694, guid: 78e73381f7d667647946fafc0daec68d, type: 2}

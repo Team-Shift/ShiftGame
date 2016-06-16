@@ -11,7 +11,7 @@ public class PlayerSpawn : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-	    player = GameObject.Find("Player");
+	    player = GameObject.FindGameObjectWithTag("Player");
 
 	    player.transform.position = gameObject.transform.position;
 	}
