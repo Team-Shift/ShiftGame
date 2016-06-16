@@ -27,7 +27,7 @@ public class Item  :  MonoBehaviour{
     void Start()
     {
         canPickup = false;
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
 
         playerInv = player.GetComponent<Inventory>();
         hud = GameObject.FindObjectOfType<InvHUD>();

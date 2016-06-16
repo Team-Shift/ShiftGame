@@ -38,7 +38,7 @@ public class CameraShift : MonoBehaviour {
 
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         
 
         foreach(Transform t in player.transform)
