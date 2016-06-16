@@ -35,11 +35,17 @@ public class IntroManager : MonoBehaviour {
         txt.text = "WASD to move";
         txt.color = Color.white;
 
+        player = GameObject.FindGameObjectWithTag("Player");
 		positionToFreeze = player.transform.position;
 		freezePos = true;
         cam.active = false;
         cam.active = true;
-        anim = canvas.GetComponent<Animator>(); 
+        anim = canvas.GetComponent<Animator>();
+
+        //
+        HUD = GameObject.Find("InventorySlots");
+	    invHUD = HUD.GetComponentInChildren<InvHUD>().gameObject;
+        HUD.SetActive(false);
 	}
 
 	void Update()
@@ -85,7 +91,7 @@ public class IntroManager : MonoBehaviour {
         }
         else
         {
-            Destroy(player);
+            //Destroy(player);
         }
     }
 

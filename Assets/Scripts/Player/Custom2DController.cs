@@ -68,6 +68,11 @@ public class Custom2DController : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         #endif
+
+        if (gameObject.GetComponent<AudioSource>())
+        {
+            gameObject.GetComponent<AudioSource>().Play();
+        }
     }
 
     private void OnDestroy()

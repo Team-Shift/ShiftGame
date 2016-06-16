@@ -122,7 +122,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 457340, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11466528, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
       propertyPath: player
@@ -187,7 +187,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 498626, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
@@ -201,17 +201,6 @@ Light:
   m_PrefabParentObject: {fileID: 10812460, guid: a9b7ca4861008234499dd21aaad067de,
     type: 2}
   m_PrefabInternal: {fileID: 1137319918}
---- !u!114 &1137319921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1137319919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b928d09bd98ad7469fbafea73bd0579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1417572524
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +228,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!114 &1417572526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,21 +279,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 192832, guid: 436f020ff37ef1c4c95234eaee8d62b6, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 436f020ff37ef1c4c95234eaee8d62b6, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &2019775627 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 101712, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
-  m_PrefabInternal: {fileID: 194271438}
---- !u!114 &2019775628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2019775627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b928d09bd98ad7469fbafea73bd0579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

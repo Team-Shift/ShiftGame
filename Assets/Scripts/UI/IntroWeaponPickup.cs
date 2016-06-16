@@ -10,11 +10,15 @@ public class IntroWeaponPickup : MonoBehaviour {
         intMan = manager.GetComponent<IntroManager>();
     }
 	
-	void OnTriggerEnter()
+	void OnTriggerEnter(Collider other)
     {
-        weapon.active = true;
+	    if (other.tag == "Player")
+	    {
+	        Weapon playerWeapon = other.gameObject.GetComponentInChildren<Weapon>(true);
+            playerWeapon.gameObject.SetActive(true);
+	    }
         intMan.EnableHUD();
         intMan.AddItemToInv(ItemManager.GetItem("WoodSword"), 0);
-        gameObject.active = false;
+        gameObject.SetActive(false);
     }
 }

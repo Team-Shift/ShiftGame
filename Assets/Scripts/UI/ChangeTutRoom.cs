@@ -13,6 +13,7 @@ public class ChangeTutRoom : MonoBehaviour {
 	void Start () {
         intMan = manager.GetComponent<IntroManager>();
 		anim = gameObject.GetComponent<Animator> ();
+        Player = GameObject.FindWithTag("Player");
 	}
 
     void OnTriggerEnter(Collider other)
@@ -22,7 +23,7 @@ public class ChangeTutRoom : MonoBehaviour {
         //Debug.Log("triggered");
         if (other.tag == "Player")
         {
-            Player.transform.position = exitPortal.transform.position;
+            other.transform.position = exitPortal.transform.position;
             intMan.ToSlides();
         }
     }

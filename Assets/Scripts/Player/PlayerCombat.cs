@@ -118,13 +118,14 @@ public class PlayerCombat : MonoBehaviour {
         Invoke("SendToTown", 2);
     }
 
+    //ToDo Please Remove Destruction of Everything
     void SendToTown()
     {
         foreach (var everything in FindObjectsOfType<GameObject>())
         {
             Destroy(everything);
         }
-        SceneManager.LoadScene("FinalTown");
+        SceneManager.LoadScene("Loader");
     }
 
     public void DamageFallback(Vector3 damageSource)
