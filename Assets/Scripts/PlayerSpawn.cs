@@ -11,7 +11,7 @@ public class PlayerSpawn : MonoBehaviour {
     public GameObject playerInventory;
 
     // Use this for initialization
-    void Start ()
+    void Awake ()
 	{
 	    if (GameObject.FindGameObjectWithTag("Player") == null)
 	    {
@@ -31,7 +31,11 @@ public class PlayerSpawn : MonoBehaviour {
         }
 
         playerCamera.gameObject.GetComponent<CameraShift>().player = player;
-        player.transform.position = gameObject.transform.position;
         player.gameObject.GetComponentInChildren<Weapon>(true).gameObject.SetActive(true);
+    }
+
+    void Start()
+    {
+        player.transform.position = gameObject.transform.position;
     }
 }

@@ -3390,6 +3390,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &185908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 445608}
+  - 114: {fileID: 11490888}
+  m_Layer: 0
+  m_Name: Player_Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &186054
 GameObject:
   m_ObjectHideFlags: 1
@@ -5265,6 +5281,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 413432}
   m_RootOrder: 0
+--- !u!4 &445608
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185908}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 1.166, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 462506}
+  m_RootOrder: 6
 --- !u!4 &446334
 Transform:
   m_ObjectHideFlags: 1
@@ -5654,7 +5682,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.23882, y: 13.8107195, z: 8.08116}
+  m_LocalPosition: {x: 61.885605, y: 108.18433, z: -59.526306}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 419612}
@@ -5663,6 +5691,7 @@ Transform:
   - {fileID: 450622}
   - {fileID: 494826}
   - {fileID: 433694}
+  - {fileID: 445608}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &462840
@@ -17279,6 +17308,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
   targetDirection: 0
+--- !u!114 &11490888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec60ceae7995de42b139c1fe346a5ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 130236, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
+  playerCamera: {fileID: 101712, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
+  playerInventory: {fileID: 192832, guid: 436f020ff37ef1c4c95234eaee8d62b6, type: 2}
 --- !u!198 &19813582
 ParticleSystem:
   m_ObjectHideFlags: 1
