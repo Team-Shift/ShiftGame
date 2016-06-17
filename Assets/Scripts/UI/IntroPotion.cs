@@ -13,6 +13,6 @@ public class IntroPotion : MonoBehaviour {
 	void OnTriggerEnter()
     {
         intMan.AddItemToInv(ItemManager.GetItem("Healing Potion"), index);
-        gameObject.active = false;
+        gameObject.SetActive(false);
     }
 }

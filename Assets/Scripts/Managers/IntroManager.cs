@@ -38,8 +38,8 @@ public class IntroManager : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
 		positionToFreeze = player.transform.position;
 		freezePos = true;
-        cam.active = false;
-        cam.active = true;
+        cam.SetActive(false);
+        cam.SetActive(true);
         anim = canvas.GetComponent<Animator>();
 
         //
@@ -63,17 +63,17 @@ public class IntroManager : MonoBehaviour {
 
     public void ToSlides()
     {
-        cam.active = true;
+        cam.SetActive(true);
         Debug.Log("toSlides");
 		freezePos = true;
 		positionToFreeze = player.transform.position;
         changeText();
-        tutText.active = false;
+        tutText.SetActive(false);
         
         anim.SetBool("FadeOut", false);
         if(count > 4)
         {
-            HUD.active = false;
+            HUD.SetActive(false);
         }
     }
 
@@ -81,12 +81,12 @@ public class IntroManager : MonoBehaviour {
     {
         if (count != 7)
         {
-            cam.active = false;
+            cam.SetActive(false);
             freezePos = false;
-            tutText.active = true;
+            tutText.SetActive(true);
             if (count > 4)
             {
-                HUD.active = true;
+                HUD.SetActive(true);
             }
         }
         else
@@ -115,7 +115,7 @@ public class IntroManager : MonoBehaviour {
 
     public void EnableHUD()
     {
-        HUD.active = true;
+        HUD.SetActive(true);
         player.GetComponent<Inventory>().InvUI = invHUD.GetComponent<InvHUD>();
     }
 
