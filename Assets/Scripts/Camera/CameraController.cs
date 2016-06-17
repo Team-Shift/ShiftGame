@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         cam = GetComponent<Camera>();
 
         //Position and Rotation wanted

@@ -11,7 +11,7 @@ public class PlayerProjectialControl : MonoBehaviour
     void Start()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        playerScript = GameObject.Find("Player").GetComponent<Custom2DController>();
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Custom2DController>();
         lifeSpan *= 10.0f;
     }
 

@@ -21,7 +21,7 @@ public class EnemyHealth : MonoBehaviour {
 
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerCombat>();
 
         enemySound = gameObject.GetComponent<AudioSource>();

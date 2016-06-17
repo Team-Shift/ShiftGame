@@ -14,8 +14,9 @@ public class EnemyDamageScript : MonoBehaviour
 
     void Start()
     {
-        playerScript = GameObject.Find("Player").GetComponent<PlayerCombat>();
-        player = GameObject.Find("Player");
+        
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<PlayerCombat>();
     }
 
     void Update()
