@@ -104,7 +104,7 @@ public class PlayerCombat : MonoBehaviour {
         {
             //anim.SetFloat("DeathIndex", 1);
             anim.SetTrigger("Death");
-            
+            SendToTown();
             //SceneManager.LoadScene("EmptyTown");
         }
     }
@@ -113,7 +113,6 @@ public class PlayerCombat : MonoBehaviour {
     {
         Debug.Log("DeathStuff");
         Instantiate(Resources.Load("DeathText"));
-        //ToDo More hacking shit please remove
         
         Invoke("SendToTown", 2);
     }
@@ -125,7 +124,7 @@ public class PlayerCombat : MonoBehaviour {
         {
             Destroy(everything);
         }
-        SceneManager.LoadScene("Loader");
+        SceneManager.LoadScene("FinalTown");
     }
 
     public void DamageFallback(Vector3 damageSource)
