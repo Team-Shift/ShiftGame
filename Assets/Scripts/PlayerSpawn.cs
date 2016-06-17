@@ -37,5 +37,6 @@ public class PlayerSpawn : MonoBehaviour {
     void Start()
     {
         player.transform.position = gameObject.transform.position;
+        player.gameObject.GetComponent<HealthUI>().enabled = true;
     }
 }

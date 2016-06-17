@@ -97,6 +97,7 @@ public class PlayerCombat : MonoBehaviour {
         if (Health <= 0)
         {
             anim.SetTrigger("Death");
+            SendToTown();
             //Invoke("SendToTown", 1);
         }
 
