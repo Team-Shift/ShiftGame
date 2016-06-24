@@ -44,7 +44,7 @@ public class InputManager : MonoBehaviour
     public float shiftCoolDownTime = 0.0f;
     [SerializeField]
     private float shiftTimer = 0.0f;
-    private bool canShift = true;
+    public bool canShift = true;
     
     public bool is2D { get; private set; }
 

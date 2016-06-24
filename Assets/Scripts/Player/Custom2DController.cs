@@ -84,7 +84,7 @@ public class Custom2DController : MonoBehaviour
     {
         count++;
 
-        if (player.transform.position.y <= -10)
+        if (transform.position.y <= -10)
         {
             anim.SetFloat("DeathIndex", 1);
             anim.SetTrigger("Death");
@@ -92,11 +92,11 @@ public class Custom2DController : MonoBehaviour
         }
 
         //Movement
-        if (CameraSwitch == false)
+        if (InputManager.Instance.is2D)
         {
             Move2D();
         }
-        else if (CameraSwitch == true)
+        else
         {
             Move3D();
         }
@@ -299,10 +299,7 @@ public class Custom2DController : MonoBehaviour
     // Camera Shift
     void HandleOnShiftEvent()
     {
-        //Debug.Log("switching");
-        CameraSwitch = !CameraSwitch;
-        //manager.Shift();
-        if (CameraSwitch == false)
+        if (!InputManager.Instance.is2D)
         {
             player.layer = LayerMask.NameToLayer("AvoidLight2D");
         }
