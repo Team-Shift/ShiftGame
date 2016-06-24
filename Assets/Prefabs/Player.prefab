@@ -937,7 +937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 130236}
   turnSpeed: 180
-  turnScalar: 0
+  turnScalar: 1
   speed: 4
   CameraSwitch: 1
   pushUpForce: 1000
@@ -1142,7 +1142,7 @@ MonoBehaviour:
       PublicKeyToken=null
   player: {fileID: 0}
   shiftCoolDownTime: 3
-  shiftTimer: 0
+  shiftTimer: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

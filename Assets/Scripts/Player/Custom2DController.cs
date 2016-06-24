@@ -12,7 +12,7 @@ public class Custom2DController : MonoBehaviour
     public GameObject player;
     
     public float turnSpeed = 180f;
-    public int turnScalar;
+    public int turnScalar = 1;
     public float speed = 6.0f;
     [HideInInspector]
     private Vector3 moveDirection = Vector3.zero;
@@ -34,7 +34,7 @@ public class Custom2DController : MonoBehaviour
     //public Camera camShift;
     //Combat
 
-    int count;
+    int count = 0;
 
     //ToDo Remove or replace map position
     public Vector2 playerMapPosition;
@@ -52,8 +52,6 @@ public class Custom2DController : MonoBehaviour
         InputManager.Instance.OnShift.AddListener(HandleOnShiftEvent);
         InputManager.Instance.OnMoveForward.AddListener(HandleOnMoveForwardEvent);
 
-        count = 0;
-        turnScalar = 1;
         playerDir = FacingDirection.Forward;
         //currentHeld = CurrentItemType.None;
         anim = player.GetComponent<Animator>();
@@ -65,8 +63,8 @@ public class Custom2DController : MonoBehaviour
 
         //Set target framerate to 60fps when running in editor
         #if UNITY_EDITOR
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
+        //QualitySettings.vSyncCount = 0;
+        //Application.targetFrameRate = 60;
         #endif
 
         if (gameObject.GetComponent<AudioSource>())
@@ -178,8 +176,8 @@ public class Custom2DController : MonoBehaviour
 
         float forwardBack = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         float strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        cameraYaw += Input.GetAxis("Mouse X") * turnSpeed * turnScalar * Time.deltaTime;
-        cameraPitch -= Input.GetAxis("Mouse Y") * turnSpeed * turnScalar * Time.deltaTime;
+        cameraYaw += Input.GetAxis("Mouse X") * turnSpeed * Time.deltaTime;
+        cameraPitch -= Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
 
         player.transform.Translate(Vector3.forward * forwardBack + Vector3.right * strafe, Space.Self);
 
