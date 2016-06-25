@@ -58,6 +58,12 @@ public class CameraShift : MonoBehaviour {
         cam = gameObject.GetComponent<Camera>();
         // get rend to change
         canFade = false;    // no fading to start
+
+        //
+
+        // get players pos
+
+        playerOffset = new Vector3(playerPosX, playerPosY + 50, playerPosZ - 40);
     }
 
     void Update()
@@ -76,16 +82,14 @@ public class CameraShift : MonoBehaviour {
             Cursor.visible = true;
             SceneManager.LoadScene("MainMenu");
         }
-
-        // get players pos
         playerPosX = player.transform.position.x;
         playerPosZ = player.transform.position.z;
         playerPosY = player.transform.position.y;
 
+
         if (InputManager.Instance.is2D)
         {
             playerOffset = new Vector3(playerPosX, playerPosY + 50, playerPosZ - 40);
-            
             transform.rotation = Quaternion.Euler(50f, 0, 0);
         }
         else
@@ -94,6 +98,7 @@ public class CameraShift : MonoBehaviour {
             transform.rotation = Quaternion.Euler(20.0f, 0, 0);
         }
         transform.position = playerOffset;
+
     }
 
     private void LateUpdate()

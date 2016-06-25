@@ -11,7 +11,7 @@ public class Custom2DController : MonoBehaviour
 {
     public GameObject player;
     
-    public float turnSpeed = 180f;
+    public float turnSpeed = 1f;
     public int turnScalar = 1;
     public float speed = 6.0f;
     [HideInInspector]

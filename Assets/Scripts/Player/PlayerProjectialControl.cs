@@ -3,8 +3,8 @@ using System.Collections;
 
 public class PlayerProjectialControl : MonoBehaviour
 {
-    public float lifeSpan = 0;
-    public float xOffset = 0, yOffset = 0, zOffset = 0;
+    public float lifeSpan;
+    public float xOffset, yOffset, zOffset;
     private GameObject[] enemies;
     private Custom2DController playerScript;
 
@@ -18,7 +18,7 @@ public class PlayerProjectialControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, lifeSpan * Time.deltaTime);
+        Destroy(gameObject, lifeSpan);
      }
 
     void FixedUpdate()
