@@ -16,9 +16,11 @@ public class Custom2DController : MonoBehaviour
     public float speed = 6.0f;
     [HideInInspector]
     private Vector3 moveDirection = Vector3.zero;
-    //[HideInInspector]
-    public bool CameraSwitch = false;
+    //[HideInInspector]=
     private Animator anim;
+
+    private float goalPitch;
+    private float goalYaw;
     private float cameraPitch;
     private float cameraYaw;
 
@@ -55,7 +57,6 @@ public class Custom2DController : MonoBehaviour
         playerDir = FacingDirection.Forward;
         //currentHeld = CurrentItemType.None;
         anim = player.GetComponent<Animator>();
-        CameraSwitch = false;
         gameObject.GetComponent<Rigidbody>().freezeRotation = true;
         //camShift = FindObjectOfType<Camera>();
         playerMapPosition = new Vector2(2,2);
@@ -176,12 +177,19 @@ public class Custom2DController : MonoBehaviour
 
         float forwardBack = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         float strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        cameraYaw += Input.GetAxis("Mouse X") * turnSpeed * Time.deltaTime;
-        cameraPitch -= Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
+
+        goalYaw   += Input.GetAxis("Mouse X") * turnSpeed * Time.deltaTime;
+        goalPitch -= Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
+        cameraPitch  = Mathf.Clamp(cameraPitch + 90.0f, 60, 120) - 90.0f;
+
+        cameraYaw   = Mathf.Lerp(cameraYaw  , goalYaw  , .2f);
+        cameraPitch = Mathf.Lerp(cameraPitch, goalPitch, .2f);
+
+        
 
         player.transform.Translate(Vector3.forward * forwardBack + Vector3.right * strafe, Space.Self);
 
-        cameraPitch = Mathf.Clamp(cameraPitch + 90.0f, 60, 120) - 90.0f;
+        
         transform.eulerAngles = new Vector3(cameraPitch, cameraYaw, 0);
         //end of new code
 

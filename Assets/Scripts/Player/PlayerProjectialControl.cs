@@ -33,7 +33,7 @@ public class PlayerProjectialControl : MonoBehaviour
 
                 yOffset = enemyPos.y * -.84f;
 
-                if (playerScript.CameraSwitch == false)
+                if (InputManager.Instance.is2D)
                 {
                     if (Mathf.Abs(enemyPos.x - thisProjectilePos.x) <= xOffset && Mathf.Abs(enemyPos.z - thisProjectilePos.z) <= zOffset)
                     {
