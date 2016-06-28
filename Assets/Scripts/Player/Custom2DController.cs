@@ -178,8 +178,8 @@ public class Custom2DController : MonoBehaviour
         float forwardBack = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         float strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 
-        goalYaw   += Input.GetAxis("Mouse X") * turnSpeed * Time.deltaTime;
-        goalPitch -= Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
+        goalYaw   += Input.GetAxis("Mouse X") * turnSpeed * turnScalar * Time.deltaTime;
+        goalPitch -= Input.GetAxis("Mouse Y") * turnSpeed * turnScalar * Time.deltaTime;
         cameraPitch  = Mathf.Clamp(cameraPitch + 90.0f, 60, 120) - 90.0f;
 
         cameraYaw   = Mathf.Lerp(cameraYaw  , goalYaw  , .2f);
