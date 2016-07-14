@@ -27,7 +27,7 @@ public class FloorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.CameraSwitch == false)
+        if(InputManager.Instance.is2D)
         {
             for (int i = 0; i < floorPieces.Count; i++)
             {
@@ -70,7 +70,7 @@ public class FloorController : MonoBehaviour
             }
         }
 
-        else if (player.CameraSwitch == true)
+        else
         {
             for (int i = 0; i < floorPieces.Count; i++)
             {

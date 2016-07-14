@@ -41,7 +41,7 @@ public class PlayerDamagingEnemy : MonoBehaviour {
                 EnemyHealth enemyStatus = enemy.GetComponent<EnemyHealth>();
 
                 yOffset = enemyPos.y * -.5f;
-                if (player.GetComponent<Custom2DController>().CameraSwitch == false && playerScript.melee == false)
+                if (InputManager.Instance.is2D == false && playerScript.melee == false)
                 {
                     //if ((enemyPos.x <= thisProjectilePos.x + xOffset && enemyPos.x >= thisProjectilePos.x - xOffset) && (enemyPos.z <= (thisProjectilePos.z + yOffset) + zOffset && enemyPos.z >= (thisProjectilePos.z + yOffset) - zOffset))
                     if (Mathf.Abs(enemyPos.x - playerSword.x) <= xOffset && Mathf.Abs(enemyPos.z - (playerSword.z + yOffset)) <= zOffset)

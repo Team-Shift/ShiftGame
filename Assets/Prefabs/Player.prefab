@@ -498,7 +498,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.255, y: 27.4, z: 104.137}
+  m_LocalPosition: {x: -6.255, y: 27.4, z: 104.558}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 450244}
@@ -937,7 +937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 130236}
   turnSpeed: 180
-  turnScalar: 0
+  turnScalar: 1
   speed: 4
   CameraSwitch: 1
   pushUpForce: 1000
@@ -1141,8 +1141,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   player: {fileID: 0}
-  shiftCoolDownTime: 3
+  shiftCoolDownTime: 2
   shiftTimer: 0
+  canShift: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

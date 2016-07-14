@@ -188,7 +188,7 @@ public class PlayerCombat : MonoBehaviour {
         }
 
         Custom2DController.FacingDirection playerDir = gameObject.GetComponent<Custom2DController>().playerDir;
-        if (gameObject.GetComponent<Custom2DController>().CameraSwitch == false)
+        if (InputManager.Instance.is2D)
         {
             if (playerDir == Custom2DController.FacingDirection.Forward && shot == true)
             {

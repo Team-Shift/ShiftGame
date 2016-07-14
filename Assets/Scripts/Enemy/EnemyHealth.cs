@@ -54,7 +54,7 @@ public class EnemyHealth : MonoBehaviour {
         yOffset = GetYOffset();
 
         //2d
-        if (player.GetComponent<Custom2DController>().CameraSwitch == false)
+        if (InputManager.Instance.is2D)
         {
             //if ((player.transform.position.x <= transform.position.x + xOffset && player.transform.position.x >= transform.position.x - xOffset) && (player.transform.position.z <= transform.position.z + zOffset && player.transform.position.z >= transform.position.z - zOffset))
             if (Mathf.Abs(playerPos.x - enemyPos.x) < xOffset && Mathf.Abs(playerPos.z - (enemyPos.z + yOffset)) < zOffset)

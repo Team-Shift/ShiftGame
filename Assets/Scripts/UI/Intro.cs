@@ -47,6 +47,7 @@ public class Intro : MonoBehaviour {
             currentSlide += 1;
             if (currentSlide == slides.Length)
             {
+                intMan.EnableHUD();
                 SceneManager.LoadScene("FinalTown");
                 yield break;
                 //currentSlide = 0;

@@ -28,7 +28,7 @@ public class Seek : MonoBehaviour
         {
             targetPos = new Vector2(objToSeek.x, objToSeek.z);
             //targetPos = new Vector2(player.transform.position.x, player.transform.position.z);
-            vel = new Vector3(rb.velocity.x, rb.velocity.z);
+            vel = new Vector3(rb.velocity.x , rb.velocity.z) * Time.deltaTime;
 
             Vector2 v = new Vector2(targetPos.x - gameObject.transform.position.x, targetPos.y - gameObject.transform.position.z);
             desiredVel = v * maxVel * Time.deltaTime;

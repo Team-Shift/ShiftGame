@@ -31,7 +31,7 @@ public class EnemyDamageScript : MonoBehaviour
 
         yOffset = fireBallPos.y * .84f;
 
-        if (player.GetComponent<Custom2DController>().CameraSwitch == false)
+        if (InputManager.Instance.is2D)
         {
             //if ((player.transform.position.x <= transform.position.x + xOffset && player.transform.position.x >= transform.position.x - xOffset) && (player.transform.position.z <= transform.position.z + zOffset && player.transform.position.z >= transform.position.z - zOffset))
             //if( (playerPos.x <= fireBallPos.x + xOffset && playerPos.x >= fireBallPos.x - xOffset) && (playerPos.z <= (fireBallPos.z + yOffset) + zOffset && playerPos.z >= (fireBallPos.z + yOffset) - zOffset) )
