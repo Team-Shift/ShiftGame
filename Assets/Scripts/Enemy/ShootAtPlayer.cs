@@ -7,7 +7,7 @@ public class ShootAtPlayer : MonoBehaviour {
     public Animator anim;
     //[HideInInspector]
     public bool alwaysShoot;
-    [HideInInspector]
+    //[HideInInspector]
     public bool shouldRotate;
 
     private bool inRange;

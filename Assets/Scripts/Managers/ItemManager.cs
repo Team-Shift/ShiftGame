@@ -29,6 +29,7 @@ public static class ItemManager
         UnlockItem("Healing Potion");
         UnlockItem("WoodSword");
         UnlockItem("Sword");
+        UnlockItem("HotDogSword");
         //**************************************************//
     }
 
