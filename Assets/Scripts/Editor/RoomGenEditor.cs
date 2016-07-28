@@ -6,10 +6,10 @@ public class RoomGenEditor:EditorWindow {
 
 	string myString = "Hello World";
 	bool shouldEdit;
-	bool myBool = true;
-	float myFloat = 1.23f;
 
 	int x,y;
+	string roomName;
+	public static CreateRoom instance;
 
 	// Add menu item named "My Window" to the Window menu
 	[MenuItem("Create/Make Room")]
@@ -22,19 +22,18 @@ public class RoomGenEditor:EditorWindow {
 
 	void OnGUI()
 	{
-		
 		GUILayout.Label ("Tiles Settings", EditorStyles.boldLabel);
+		roomName = EditorGUILayout.TextField ("Name of Room", roomName);
 		x = EditorGUILayout.IntField ("Num Y Tiles", x);
 		y = EditorGUILayout.IntField ("Num Y Tiles", y);
 
 		shouldEdit = EditorGUILayout.BeginToggleGroup ("Edit Room", shouldEdit);
-
-		//myBool = EditorGUILayout.Toggle ("Toggle", myBool);
-		//myFloat = EditorGUILayout.Slider ("Slider", myFloat, -3, 3);
+		// draw layout of room 
 		EditorGUILayout.EndToggleGroup ();
 
 		if (GUILayout.Button ("Create")) {
-			Debug.Log ("it worked");
+			instance = new CreateRoom();
+			instance.createTiles (roomName,x, y);
 		}
 	}
 }
