@@ -16,17 +16,18 @@ public class RoomGenEditor:EditorWindow {
 
 	int selected = 2;
 
-	// Add menu item named "My Window" to the Window menu
+	// Add menu item 
 	[MenuItem("Create/Make Room")]
 	public static void ShowWindow()
 	{
 		//Show existing window instance. If one doesn't exist, make one.
 		EditorWindow.GetWindow(typeof(RoomGenEditor));
 		CreateRoom cr;
-		InitArray (tiles);
+		// reset to array to false
+		ResetArray (tiles);
 	}
 
-	static void InitArray(bool [,] arr)
+	static void ResetArray(bool [,] arr)
 	{
 		for (int j = 0; j < MAXVALUE; j++) {
 			for (int i = 0; i < MAXVALUE; i++) {

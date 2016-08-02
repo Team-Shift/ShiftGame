@@ -6,13 +6,14 @@ public class CreateRoom : MonoBehaviour {
 	public void createTiles(string name, int xTiles, int yTiles, bool[,]toggles)
 	{
 		GameObject newRoom = GameObject.Find(name);
+		// auto delete if working on same room
 		if(newRoom)
 		{
 			DestroyImmediate (newRoom);
-			Debug.Log ("destorying obj");
 		}
 		newRoom = new GameObject ();
 		newRoom.name = name;
+		// create tiles
 		for (int i = 0; i < xTiles; i++) 
 		{
 			for (int j = 0; j < yTiles; j++) 
@@ -23,10 +24,12 @@ public class CreateRoom : MonoBehaviour {
 				}
 			}
 		}
+		//create hallways
 		GameObject north = Object.Instantiate (Resources.Load ("North_Hallway"), new Vector3 (Mathf.CeilToInt (xTiles / 2), 0, -2), Quaternion.identity) as GameObject;
 		GameObject south = Object.Instantiate (Resources.Load ("South_Hallway"), new Vector3 (Mathf.CeilToInt (xTiles / 2), 0, yTiles+2), Quaternion.identity) as GameObject;
 		GameObject west = Object.Instantiate (Resources.Load ("West_Hallway"), new Vector3 (-2, 0, Mathf.CeilToInt (yTiles / 2)), Quaternion.identity) as GameObject;
 		GameObject east = Object.Instantiate (Resources.Load ("East_Hallway"), new Vector3 (yTiles+2, 0, Mathf.CeilToInt (yTiles / 2)), Quaternion.identity) as GameObject;
+		// parent and rotate
 		north.transform.SetParent (newRoom.transform);
 		south.transform.localRotation= Quaternion.Euler (0, 180, 0);
 		south.transform.SetParent (newRoom.transform);
