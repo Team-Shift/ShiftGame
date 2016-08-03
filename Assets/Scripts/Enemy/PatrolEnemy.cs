@@ -7,6 +7,8 @@ public class PatrolEnemy : MonoBehaviour {
     Transform playerPos;
     Collider c;
     Animator anim;
+
+	public float atkRange = 0.7f;
     // Use this for initialization
     void Start()
     {
@@ -23,9 +25,10 @@ public class PatrolEnemy : MonoBehaviour {
         if(s.shouldSeek)
         {
             Vector3 dir = playerPos.position - gameObject.transform.position;
-            if (dir.magnitude <= 0.7f)
+			if (dir.magnitude <= atkRange)
             {
                 anim.SetBool("canAttack", true);
+				if(dir.magnitude <= .2f)
                 s.shouldSeek = false;
             }
             else
