@@ -10,6 +10,7 @@ public class PlayerSpawn : MonoBehaviour {
     public GameObject playerCamera;
     public GameObject playerInventory;
 
+
     // Use this for initialization
     void Awake ()
 	{
@@ -32,6 +33,7 @@ public class PlayerSpawn : MonoBehaviour {
 
         playerCamera.gameObject.GetComponent<CameraShift>().player = player;
         player.gameObject.GetComponentInChildren<Weapon>(true).gameObject.SetActive(true);
+
     }
 
     void Start()
