@@ -30,34 +30,43 @@ public class ChestDrop : MonoBehaviour {
         {
             anim.SetBool("canOpen", true);
         }
+		Debug.Log (gameObject.transform.eulerAngles.y);
     }
 
-    public void SpawnItem()
-    {
-        // choose random item
-        if (string.IsNullOrEmpty(itemName))
-        {
-            itemName = unlockedItems[Random.Range(0, unlockedItems.Count - 1)].itemName;
-        }
+	public void SpawnItem()
+	{
+		// choose random item
+		if (string.IsNullOrEmpty(itemName))
+		{
+			itemName = unlockedItems[Random.Range(0, unlockedItems.Count - 1)].itemName;
+		}
 
-        // set floating parent
-        //GameObject g = Resources.Load("itemFloating") as GameObject;
-        //Debug.Log(gameObject.name);
-        GameObject g = GameObject.Instantiate(Resources.Load("itemFloating"), gameObject.transform.position + new Vector3(0,.5f,0), Quaternion.identity) as GameObject;
-        //Debug.Log(g);
-        foreach (Transform t in g.GetComponentsInChildren<Transform>())
-        {
-            if (t.name == "item_Particle")
-            {
-                GameObject itemSpawned = ItemManager.SpawnItem(itemName, g.transform.position/* + new Vector3(0, .5f, 0)*/);
-                if(itemName == "Bow")
-                {
-                    itemSpawned.transform.position = new Vector3(g.transform.position.x, g.transform.position.y + .7f, g.transform.position.z);
-                    //itemSpawned.transform.Translate(new Vector3 (0, 0, 0));
-                }
-                itemSpawned.transform.SetParent(t);
-            }
-        }
-        spawned = true;
-    }
+		// set floating parent
+		//GameObject g = Resources.Load("itemFloating") as GameObject;
+		//Debug.Log(gameObject.name);
+		GameObject g = GameObject.Instantiate(Resources.Load("itemFloating"), gameObject.transform.position, Quaternion.identity) as GameObject;
+		//Debug.Log(g);
+		g.transform.Translate(new Vector3(0,0, -.75f));
+		g.transform.RotateAround (transform.position, Vector3.up, transform.eulerAngles.y + 180);
+		foreach (Transform t in g.GetComponentsInChildren<Transform>())
+		{
+			if (t.name == "item_Particle")
+			{
+				GameObject itemSpawned = ItemManager.SpawnItem(itemName, g.transform.position + new Vector3(0, .25f, 0));
+				if (itemName == "Bow") {
+					itemSpawned.transform.localRotation = Quaternion.Euler (new Vector3 (40, 80, 0));
+					Debug.Log ("Bow");
+				} else if (itemName == "ChickenBow") {
+					itemSpawned.transform.localRotation = Quaternion.Euler (new Vector3 (30, 70, 180));
+					Debug.Log ("Bow");
+				} else {
+					if (itemName != "Healing Potion") {
+						itemSpawned.transform.localRotation = Quaternion.Euler (new Vector3 (270, 0, 0));
+					}
+				}
+				itemSpawned.transform.SetParent(t);
+			}
+		}
+		spawned = true;
+	}
 }
