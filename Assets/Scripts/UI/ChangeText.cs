@@ -4,15 +4,27 @@ using System.Collections;
 public class ChangeText : MonoBehaviour {
 	public GameObject Manager;
 	IntroManager intMan;
+	TownManager townMan;
+
+	public bool isTown;
 	// Use this for initialization
 	void Start () {
-		intMan = Manager.GetComponent<IntroManager> ();
+		if (isTown) {
+			townMan = Manager.GetComponent<TownManager> ();
+		} else {
+			intMan = Manager.GetComponent<IntroManager> ();
+		}
+
 	}
 	
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player") {
-			intMan.changeText ();
+			if (isTown) {
+				townMan.changetext ();
+			} else if (!isTown) {
+				intMan.changeText ();
+			}
         
 			Destroy (gameObject);
 		}

@@ -7,6 +7,7 @@ public class PlayerCombat : MonoBehaviour {
     public GameObject rangedTemp;
     public GameObject meleeWeapon;
     public GameObject sword;
+	TownManager townMan;
 
     private AudioSource playerSound;
     public AudioClip meleeSound;
@@ -24,7 +25,6 @@ public class PlayerCombat : MonoBehaviour {
     public int Health = 3;
     public int Attack;
     bool isDead;
-	public static int deathCount = 0;
 
     private Animator anim;
     private Inventory inv;
@@ -33,12 +33,12 @@ public class PlayerCombat : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+		townMan = GameObject.Find ("TownCutSceneManager").GetComponent<TownManager>();
         playerSound = gameObject.GetComponent<AudioSource>();
         anim = gameObject.GetComponent<Animator>();
         hearts = gameObject.GetComponent<HealthUI>();
         Health = 3;
         Attack = 1;
-		Debug.Log (deathCount);
         inv = gameObject.GetComponent<Inventory>();
         isDead = false;
     }
@@ -123,7 +123,7 @@ public class PlayerCombat : MonoBehaviour {
     //ToDo Please Remove Destruction of Everything
     void SendToTown()
     {
-		deathCount++;
+		townMan.IncreaseDeathCount ();
         foreach (var everything in FindObjectsOfType<GameObject>())
         {
             Destroy(everything);

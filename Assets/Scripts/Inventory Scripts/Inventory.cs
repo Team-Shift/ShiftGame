@@ -227,6 +227,7 @@ public class Inventory : MonoBehaviour {
 
         // pickup new weapon from DB
         GameObject pickUp = ItemManager.SpawnItem(pickupItem.itemName, weaponLoc.transform.position);
+		Debug.Log (pickUp.name);
         pickUp.transform.SetParent(weaponLoc.transform);
 		if (pickupItem.itemName == "Bow") {
 			pickUp.transform.localRotation = Quaternion.Euler (new Vector3 (40, 80, 0));
@@ -234,7 +235,8 @@ public class Inventory : MonoBehaviour {
 		} else if (pickupItem.itemName == "ChickenBow") {
 			pickUp.transform.localRotation = Quaternion.Euler (new Vector3 (30, 70, 180));
 			Debug.Log ("Bow");
-		} else {
+		}
+		else {
 			pickUp.transform.localRotation = Quaternion.Euler (new Vector3 (270, 0, 0));
 		}
         pickUp.GetComponent<Item>().reccentlyPickupUp = true;
