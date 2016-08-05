@@ -23,16 +23,17 @@ public class IntroManager : MonoBehaviour {
         txt = tutText.GetComponentInChildren<GUIText>();
 
         count = 0;
-		txtList = new string[8] { "Use WASD to move.",
-            "Press [shift] to change perspective. Move the mouse to look around." ,
-            "Shift to 3D and press [space] to jump.",
-            "Switch perspectives to raise and lower platforms.",
-            "Pick up the sword.",
-            "Click left mouse to attack.",
-            "Pickup the potion.",
+		txtList = new string[8] { "Help! Please help my village!",
+            "Follow me. Only you can save us!" ,
+			"The evil witch has taken the 3rd dimmension from us.\n" +
+			"Press[shift]to switch to 3D and find a way over the gap.",
+            "There's a wall in our way! Press [shift] again\nto change the world back to 2D.",
+            "Help! It one of the lost souls. Take this sword.",
+            "Click [left mouse] to attack and release the villagers soul.",
+            "Thanks! This way to the village.",
             "Press '1' or '2' to use potion." };
 
-        txt.text = "WASD to move";
+		txt.text = "Help! Please help my village!";
         txt.color = Color.white;
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -46,6 +47,7 @@ public class IntroManager : MonoBehaviour {
         HUD = GameObject.Find("InventorySlots");
 	    invHUD = HUD.GetComponentInChildren<InvHUD>().gameObject;
         HUD.SetActive(false);
+		count = 0;
 	}
 
 	void Update()
@@ -64,10 +66,10 @@ public class IntroManager : MonoBehaviour {
     public void ToSlides()
     {
         cam.SetActive(true);
-        Debug.Log("toSlides");
+        //Debug.Log("toSlides");
 		freezePos = true;
 		positionToFreeze = player.transform.position;
-        changeText();
+        //changeText();
         tutText.SetActive(false);
         
         anim.SetBool("FadeOut", false);

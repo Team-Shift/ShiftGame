@@ -8,6 +8,7 @@ public class Intro : MonoBehaviour {
 
     public GameObject[] slides;
     public Animator anim;
+	bool canChange;
 
     int currentSlide = 0;
 
@@ -19,11 +20,12 @@ public class Intro : MonoBehaviour {
             slides[i].SetActive (false);
         }
         slides[currentSlide].SetActive(true);
+		canChange = true;
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
+		if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return) && canChange)
         {
             ChangeSlide(true);
         }
@@ -31,6 +33,7 @@ public class Intro : MonoBehaviour {
 
     public void ChangeSlide(bool direction)
     {
+		canChange = false;
         anim.SetBool("FadeOut", true);
         StartCoroutine (SlideWait(direction));
     }
@@ -38,17 +41,20 @@ public class Intro : MonoBehaviour {
     public IEnumerator SlideWait(bool direction)
     {
         yield return new WaitForSeconds (1);
-        slides[currentSlide].SetActive(false);
+        //slides[currentSlide].SetActive(false);
 
-        intMan.ToGame();
+        //intMan.ToGame();
+		intMan.ToSlides();
 
         if (direction == true)
         {
+			slides [currentSlide].SetActive (false);
             currentSlide += 1;
             if (currentSlide == slides.Length)
             {
-                intMan.EnableHUD();
-                SceneManager.LoadScene("FinalTown");
+                //intMan.EnableHUD();
+				intMan.ToGame();
+                //SceneManager.LoadScene("FinalTown");
                 yield break;
                 //currentSlide = 0;
             }
@@ -62,6 +68,7 @@ public class Intro : MonoBehaviour {
             }
         }
         slides[currentSlide].SetActive(true);
+		canChange = true;
         //anim.SetBool("FadeOut", false);
         yield return true;
     }

@@ -16,9 +16,10 @@ public class IntroWeaponPickup : MonoBehaviour {
 	    {
 	        Weapon playerWeapon = other.gameObject.GetComponentInChildren<Weapon>(true);
             playerWeapon.gameObject.SetActive(true);
+			intMan.EnableHUD();
+			intMan.AddItemToInv(ItemManager.GetItem("WoodSword"), 0);
+			gameObject.SetActive(false);
 	    }
-        intMan.EnableHUD();
-        intMan.AddItemToInv(ItemManager.GetItem("WoodSword"), 0);
-        gameObject.SetActive(false);
+        
     }
 }

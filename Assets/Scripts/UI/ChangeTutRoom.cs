@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ChangeTutRoom : MonoBehaviour {
     //public GameObject cam;
@@ -20,12 +21,20 @@ public class ChangeTutRoom : MonoBehaviour {
     {
         //anim.SetBool("FadeOut", true);
         //StartCoroutine (WaitForFade());
-        //Debug.Log("triggered");
+		//Debug.Log(other.name);
         if (other.tag == "Player")
         {
-            other.transform.position = exitPortal.transform.position;
-            intMan.ToSlides();
+			if (intMan.count >= 6) {
+				SceneManager.LoadScene ("FinalTown");
+			} else {
+				other.transform.position = exitPortal.transform.position;
+				Debug.Log (other.name);
+			}
+            //intMan.ToSlides();
         }
+		else if (other.tag == "NPC") {
+			Debug.Log ("destroy!!!");
+			Destroy (other.gameObject);
+		}
     }
-
 }

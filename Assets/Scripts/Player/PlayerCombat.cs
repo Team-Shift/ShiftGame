@@ -24,6 +24,7 @@ public class PlayerCombat : MonoBehaviour {
     public int Health = 3;
     public int Attack;
     bool isDead;
+	public static int deathCount = 0;
 
     private Animator anim;
     private Inventory inv;
@@ -37,6 +38,7 @@ public class PlayerCombat : MonoBehaviour {
         hearts = gameObject.GetComponent<HealthUI>();
         Health = 3;
         Attack = 1;
+		Debug.Log (deathCount);
         inv = gameObject.GetComponent<Inventory>();
         isDead = false;
     }
@@ -121,6 +123,7 @@ public class PlayerCombat : MonoBehaviour {
     //ToDo Please Remove Destruction of Everything
     void SendToTown()
     {
+		deathCount++;
         foreach (var everything in FindObjectsOfType<GameObject>())
         {
             Destroy(everything);

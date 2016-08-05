@@ -9,10 +9,12 @@ public class ChangeText : MonoBehaviour {
 		intMan = Manager.GetComponent<IntroManager> ();
 	}
 	
-	void OnTriggerEnter()
+	void OnTriggerEnter(Collider other)
 	{
-		intMan.changeText ();
+		if (other.tag == "Player") {
+			intMan.changeText ();
         
-		Destroy (gameObject);
+			Destroy (gameObject);
+		}
 	}
 }
