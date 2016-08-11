@@ -33,7 +33,7 @@ public class PlayerCombat : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		townMan = GameObject.Find ("TownCutSceneManager").GetComponent<TownManager>();
+		//townMan = GameObject.Find ("TownCutSceneManager").GetComponent<TownManager>();
         playerSound = gameObject.GetComponent<AudioSource>();
         anim = gameObject.GetComponent<Animator>();
         hearts = gameObject.GetComponent<HealthUI>();
@@ -123,7 +123,7 @@ public class PlayerCombat : MonoBehaviour {
     //ToDo Please Remove Destruction of Everything
     void SendToTown()
     {
-		townMan.IncreaseDeathCount ();
+		//townMan.IncreaseDeathCount ();
         foreach (var everything in FindObjectsOfType<GameObject>())
         {
             Destroy(everything);

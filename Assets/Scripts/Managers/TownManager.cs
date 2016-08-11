@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TownManager : MonoBehaviour {
 
-	public static int deathCount = 0;
+	public static int deathCount = -1;
 	public GameObject NPCvillager;
 	public GameObject NPCghost;
 	Light ghostFlash;
@@ -20,7 +20,7 @@ public class TownManager : MonoBehaviour {
 		g_text =  townTxt.GetComponentInChildren<GUIText> ();
 		ghostSpeed = NPCghost.GetComponent<Wander> ().speed;
 		ghostFlash = NPCghost.GetComponent<Light> ();
-
+		deathCount++;
 		// no cutscene stuff
 		if (deathCount >= 1) {
 			NPCvillager.SetActive (false);
@@ -50,9 +50,9 @@ public class TownManager : MonoBehaviour {
 		StartCoroutine (ChangeTextTimer (3.5f));
 	}
 
-	public void IncreaseDeathCount()
+	public int getDeathCount()
 	{
-		deathCount++;
+		return deathCount;
 	}
 
 	// sorry for the horrible naming 
