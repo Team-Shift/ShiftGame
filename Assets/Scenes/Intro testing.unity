@@ -2025,7 +2025,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 485586, guid: a32c9aebc4c0ff749be74fc91ca39a54, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a32c9aebc4c0ff749be74fc91ca39a54, type: 2}
@@ -8397,7 +8397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561140bfba6c84fd499671b892abddca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npc: {fileID: 0}
+  npc: {fileID: 356961613}
   needs2D: 0
 --- !u!54 &356961620
 Rigidbody:
@@ -14094,7 +14094,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 481180, guid: 436f020ff37ef1c4c95234eaee8d62b6, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 192832, guid: 436f020ff37ef1c4c95234eaee8d62b6, type: 2}
       propertyPath: m_IsActive
@@ -25727,7 +25727,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400446, guid: 58a946c8c01ac794ea0861e1afeb3148, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11421480, guid: 58a946c8c01ac794ea0861e1afeb3148, type: 2}
       propertyPath: groundLevel
@@ -42275,7 +42275,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 457340, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 11466528, guid: 8fe501afa7a07c54e8c1bf5bc2d0c479, type: 2}
       propertyPath: player
@@ -46668,11 +46668,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 498626, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
       propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 11483616, guid: a9b7ca4861008234499dd21aaad067de, type: 2}
-      propertyPath: shiftCoolDownTime
-      value: 63
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9b7ca4861008234499dd21aaad067de, type: 2}

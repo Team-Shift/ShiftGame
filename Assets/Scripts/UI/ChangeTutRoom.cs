@@ -34,7 +34,7 @@ public class ChangeTutRoom : MonoBehaviour {
         }
 		else if (other.tag == "NPC") {
 			Debug.Log ("destroy!!!");
-			Destroy (other.gameObject);
+			other.gameObject.SetActive (false);
 		}
     }
 }

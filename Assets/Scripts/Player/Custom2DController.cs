@@ -182,8 +182,10 @@ public class Custom2DController : MonoBehaviour
         goalPitch -= Input.GetAxis("Mouse Y") * turnSpeed * turnScalar * Time.deltaTime;
         cameraPitch  = Mathf.Clamp(cameraPitch + 90.0f, 60, 120) - 90.0f;
 
-        cameraYaw   = Mathf.Lerp(cameraYaw  , goalYaw  , .2f);
-        cameraPitch = Mathf.Lerp(cameraPitch, goalPitch, .2f);
+		cameraYaw = goalYaw;
+		cameraPitch = goalPitch;
+        //cameraYaw   = Mathf.Lerp(cameraYaw  , goalYaw  , .2f);
+        //cameraPitch = Mathf.Lerp(cameraPitch, goalPitch, .2f);
 
         
 
@@ -199,17 +201,18 @@ public class Custom2DController : MonoBehaviour
             player.GetComponent<Rigidbody>().AddForce(new Vector3(0, 10000, 0));
             jump = false;
         }
-
-        if(strafe > 0)
-        {
-            anim.SetTrigger("LeftStrafe");
-            //anim.SetFloat("x", -1);
-        }
-        else if(strafe < 0)
-        {
-            anim.SetTrigger("RightStrafe");
-            //anim.SetFloat("x", 1);
-        }
+		Debug.Log (strafe);
+		if (strafe > 0) {
+			anim.SetTrigger ("RightStrafe");
+			anim.SetFloat("x", 1);
+		} else if (strafe < 0) {
+			anim.SetTrigger ("LeftStrafe");
+			anim.SetFloat("x", -1);
+		} else 
+		{
+			strafe = 0;
+			anim.SetFloat ("x", 0);
+		}
 
         if(strafe == 0)
         {
