@@ -12,6 +12,10 @@ public class PortalManager : MonoBehaviour {
             //SceneManager.LoadScene("Scarecrow_BossRoom");
             SceneManager.LoadScene("Alpha_Static");
         }
+		else if(col.tag == "NPC")
+		{
+			Destroy (col.gameObject);
+		}
     }
 
 }

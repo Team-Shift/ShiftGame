@@ -19,13 +19,22 @@ public class ChangeText : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other)
 	{
+		//Debug.Log ("entered change text");
 		if (other.tag == "Player") {
 			if (isTown) {
 				townMan.changetext ();
+				//Debug.Log ("changed text");
 			} else if (!isTown) {
 				intMan.changeText ();
 			}
         
+			//Destroy (gameObject);
+		}
+	}
+
+	void OnTriggerExit(Collider other)
+	{
+		if (other.tag == "Player") {
 			Destroy (gameObject);
 		}
 	}
