@@ -98,18 +98,18 @@ public class PlayerCombat : MonoBehaviour {
 
         if (Health <= 0)
         {
-            anim.SetTrigger("Death");
-            SendToTown();
+            //anim.SetTrigger("Death");
+            //SendToTown();
             //Invoke("SendToTown", 1);
         }
 
-        if (gameObject.transform.position.y <= -10)
-        {
+        //if (gameObject.transform.position.y <= -10)
+        //{
             //anim.SetFloat("DeathIndex", 1);
-            anim.SetTrigger("Death");
-            SendToTown();
+            //anim.SetTrigger("Death");
+            //SendToTown();
             //SceneManager.LoadScene("EmptyTown");
-        }
+        //}
     }
 
     public void DeathStuff()

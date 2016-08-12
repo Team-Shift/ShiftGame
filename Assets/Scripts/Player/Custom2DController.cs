@@ -85,12 +85,17 @@ public class Custom2DController : MonoBehaviour
     {
         count++;
 
-        if (transform.position.y <= -10)
+        if(transform.position.y <= -5)
         {
-            anim.SetFloat("DeathIndex", 1);
-            anim.SetTrigger("Death");
-            SceneManager.LoadScene("EmptyTown");
+            StartCoroutine("PlayerDeath");
         }
+
+        //if (transform.position.y <= -10)
+        //{
+        //    anim.SetFloat("DeathIndex", 1);
+        //    anim.SetTrigger("Death");
+        //    SceneManager.LoadScene("EmptyTown");
+        //}
 
         //Movement
         if (InputManager.Instance.is2D)
@@ -366,4 +371,11 @@ public class Custom2DController : MonoBehaviour
     //        Debug.Log("You're attempting to move in 3D forward");
     //    }
     //}
+
+    IEnumerator PlayerDeath()
+    {
+        anim.SetBool("Death", true);
+        yield return new WaitForSeconds(50f);
+        SceneManager.LoadScene("FinalTown");
+    }
 }

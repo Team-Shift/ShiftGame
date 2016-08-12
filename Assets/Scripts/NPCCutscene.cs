@@ -12,7 +12,7 @@ public class NPCCutscene : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 
 		wanderNPC = npc.GetComponent<Wander>();
-		Debug.Log (npc.name);
+		//Debug.Log (npc.name);
 		manager = GameObject.Find ("TownCutSceneManager").GetComponent<TownManager>();
 	}
 
@@ -26,7 +26,7 @@ public class NPCCutscene : MonoBehaviour {
 	void OnTriggerEnter(Collider col)
 	{
 		if (col.tag == "NPC") {
-			Debug.Log ("enterd to stop");
+			//Debug.Log ("enterd to stop");
 			//Debug.Log (npc.GetComponent<Wander> ().shouldWander);
 			wanderNPC.enabled = false;
 
