@@ -78,7 +78,7 @@ public class Item  :  MonoBehaviour{
             {
                 playerInv.AddItem(this);
                 //playerInv.AddItem(ItemManager.GetItem(itemName));
-                Debug.Log(hud);
+                //Debug.Log(hud);
                 if(hud == null)
                 {
                     hud = GameObject.FindObjectOfType<InvHUD>();

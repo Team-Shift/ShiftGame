@@ -30,7 +30,6 @@ public class ChestDrop : MonoBehaviour {
         {
             anim.SetBool("canOpen", true);
         }
-		Debug.Log (gameObject.transform.eulerAngles.y);
     }
 
 	public void SpawnItem()

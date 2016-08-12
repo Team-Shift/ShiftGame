@@ -76,7 +76,7 @@ public class InputManager : MonoBehaviour
     //THIS IS THE ONLY PLACE WHERE ANY USER INPUT SHOULD BE TAKEN
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetButtonUp("Fire3"))
         {
             //Do everything needed on shift and then set shift to false
             if (canShift)

@@ -46,7 +46,7 @@ public class PlayerCombat : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Combat & Interation
-        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetButton("Fire1"))
         {
             //Debug.Log("attacking");
             //Debug.Log(inv);
