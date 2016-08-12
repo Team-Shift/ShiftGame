@@ -9,7 +9,7 @@ public class NPCCutscene : MonoBehaviour {
 
 	void Start()
 	{
-		anim = npc.GetComponent<Animator> ();
+		anim = GetComponent<Animator> ();
 
 		wanderNPC = npc.GetComponent<Wander>();
 		Debug.Log (npc.name);

@@ -54,7 +54,7 @@ public class MiniMap : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Value is null at" + x + y);
+                    //Debug.Log("Value is null at" + x + y);
                 }
             }
         }

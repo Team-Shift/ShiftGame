@@ -25,7 +25,7 @@ public class Intro : MonoBehaviour {
 
     void Update()
     {
-		if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return) && canChange)
+		if(Input.GetButton("Fire1") && canChange)
         {
             ChangeSlide(true);
         }

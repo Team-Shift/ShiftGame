@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerAttack : MonoBehaviour {
-
+public class PlayerAttack : MonoBehaviour { 
 
     Collider c;
 

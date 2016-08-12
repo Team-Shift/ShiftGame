@@ -52,7 +52,7 @@ public class Custom2DController : MonoBehaviour
         InputManager.Instance.OnTurnScalarUp.AddListener(HandleOnScaleUpEvent);
         InputManager.Instance.OnTurnScalarDown.AddListener(HandleOnScaleDownEvent);
         InputManager.Instance.OnShift.AddListener(HandleOnShiftEvent);
-        InputManager.Instance.OnMoveForward.AddListener(HandleOnMoveForwardEvent);
+        //InputManager.Instance.OnMoveForward.AddListener(HandleOnMoveForwardEvent);
 
         playerDir = FacingDirection.Forward;
         //currentHeld = CurrentItemType.None;
@@ -118,55 +118,82 @@ public class Custom2DController : MonoBehaviour
     /*
     * Movement
     */
-    void Move2D()
-    {
+    void Move2D(){
         //SO I CAN MOVE MY GODDAMN MOUSE IN 2D DON'T FUCKING COMMENT IT OUT FUCKERS IT DOESNT MAKE THE GAME ANY WORSE THEN IT ALREADY IS >:U 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        // ToDo Movement to Event Handlers
-        #region PhysicalMovementOfPlayer
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        if (moveDirection.x != 0 || moveDirection.z != 0)
-        {
-            //Setting Y parameter to 1        Y Parameter 0 = Idle  1 = Walk
+        this.transform.position += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * speed * Time.deltaTime;
+
+        if (Input.GetAxis("Horizontal") != 0){
             anim.SetFloat("y", 1);
-            //anim.SetBool("walk", true);
-        }
-        else if (moveDirection.x == 0 || moveDirection.z == 0)
-        {
-            anim.SetFloat("y", 0);
-            //anim.SetBool("walk", false);
+
+            if(Input.GetAxis("Horizontal") < 0){
+                this.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
+            }
+            else{
+                this.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
+            }
         }
 
-        transform.Translate(moveDirection * Time.deltaTime * speed, Space.World);
-        #endregion
+        if(Input.GetAxis("Vertical") != 0){
+            anim.SetFloat("y", 1);
 
-        // Move Forward Moved to Handler
-        // ToDo Move the rest of movement if it works
-        #region AnimationOfPlayerMovement
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            anim.SetFloat("y", 1);
-            //anim.SetBool("walk", true);
-            playerDir = FacingDirection.Left;
-            player.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
+            if (Input.GetAxis("Vertical") < 0){
+                this.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+            }
+            else{
+                this.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
+            }
         }
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            anim.SetFloat("y", 1);
-            //anim.SetBool("walk", true);
-            playerDir = FacingDirection.Backward;
-            player.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
-        }
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            anim.SetFloat("y", 1);
-            //anim.SetBool("walk", true);
-            playerDir = FacingDirection.Right;
-            player.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
-        }
-        #endregion
+
+        if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0) { anim.SetFloat("y", 0); }
+
+        /* Garbage Code*/
+
+        //// ToDo Movement to Event Handlers
+        //#region PhysicalMovementOfPlayer
+        //moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        //if (moveDirection.x != 0 || moveDirection.z != 0)
+        //{
+        //    //Setting Y parameter to 1        Y Parameter 0 = Idle  1 = Walk
+        //    anim.SetFloat("y", 1);
+        //    //anim.SetBool("walk", true);
+        //}
+        //else if (moveDirection.x == 0 || moveDirection.z == 0)
+        //{
+        //    anim.SetFloat("y", 0);
+        //    //anim.SetBool("walk", false);
+        //}
+
+        //transform.Translate(moveDirection * Time.deltaTime * speed, Space.World);
+        //#endregion
+
+        //// Move Forward Moved to Handler
+        //// ToDo Move the rest of movement if it works
+        //#region AnimationOfPlayerMovement
+        //if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        //{
+        //    anim.SetFloat("y", 1);
+        //    //anim.SetBool("walk", true);
+        //    playerDir = FacingDirection.Left;
+        //    player.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
+        //}
+        //if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        //{
+        //    anim.SetFloat("y", 1);
+        //    //anim.SetBool("walk", true);
+        //    playerDir = FacingDirection.Backward;
+        //    player.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+        //}
+        //if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        //{
+        //    anim.SetFloat("y", 1);
+        //    //anim.SetBool("walk", true);
+        //    playerDir = FacingDirection.Right;
+        //    player.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
+        //}
+        //#endregion
 
     }
 
@@ -187,7 +214,6 @@ public class Custom2DController : MonoBehaviour
         //cameraYaw   = Mathf.Lerp(cameraYaw  , goalYaw  , .2f);
         //cameraPitch = Mathf.Lerp(cameraPitch, goalPitch, .2f);
 
-        
 
         player.transform.Translate(Vector3.forward * forwardBack + Vector3.right * strafe, Space.Self);
 
@@ -196,12 +222,12 @@ public class Custom2DController : MonoBehaviour
         //end of new code
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && jump == true)
+        if (Input.GetButton("Jump") && jump == true)
         {
             player.GetComponent<Rigidbody>().AddForce(new Vector3(0, 10000, 0));
             jump = false;
         }
-		Debug.Log (strafe);
+		//Debug.Log (strafe);
 		if (strafe > 0) {
 			anim.SetTrigger ("RightStrafe");
 			anim.SetFloat("x", 1);
@@ -320,22 +346,24 @@ public class Custom2DController : MonoBehaviour
         }
     }
 
-    // ToDo Implement Back/Left/Right Events
-    void HandleOnMoveForwardEvent()
-    {
-        if (InputManager.Instance.is2D)
-        {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                anim.SetFloat("y", 1);
-                //anim.SetBool("walk", true);
-                playerDir = FacingDirection.Forward;
-                player.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
-            }
-        }
-        else
-        {
-            Debug.Log("You're attempting to move in 3D forward");
-        }
-    }
+    
+    //Why the fuck do we still have this
+    //// ToDo Implement Back/Left/Right Events
+    //void HandleOnMoveForwardEvent()
+    //{
+    //    if (InputManager.Instance.is2D)
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+    //        {
+    //            anim.SetFloat("y", 1);
+    //            //anim.SetBool("walk", true);
+    //            playerDir = FacingDirection.Forward;
+    //            player.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("You're attempting to move in 3D forward");
+    //    }
+    //}
 }

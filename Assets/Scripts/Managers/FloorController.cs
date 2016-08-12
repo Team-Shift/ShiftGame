@@ -55,7 +55,7 @@ public class FloorController : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log(floorPieces[i].name + "Does not have a box collider");
+                            //Debug.Log(floorPieces[i].name + "Does not have a box collider");
                         }
                     }
                 }
