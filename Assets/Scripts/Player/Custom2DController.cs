@@ -212,10 +212,17 @@ public class Custom2DController : MonoBehaviour
 
         goalYaw   += Input.GetAxis("Mouse X") * turnSpeed * turnScalar * Time.deltaTime;
         goalPitch -= Input.GetAxis("Mouse Y") * turnSpeed * turnScalar * Time.deltaTime;
-        cameraPitch  = Mathf.Clamp(cameraPitch + 90.0f, 60, 120) - 90.0f;
+        //cameraPitch  = Mathf.Clamp(cameraPitch + 90.0f, 60, 120) - 90.0f;
 
 		cameraYaw = goalYaw;
 		cameraPitch = goalPitch;
+		//clamp isnt working.....
+		if (cameraPitch < -50) {
+			cameraPitch = -50;
+		}
+		if (cameraPitch > 20) {
+			cameraPitch = 20;
+		}
         //cameraYaw   = Mathf.Lerp(cameraYaw  , goalYaw  , .2f);
         //cameraPitch = Mathf.Lerp(cameraPitch, goalPitch, .2f);
 
