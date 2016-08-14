@@ -83,7 +83,8 @@ public class ScareCrow : MonoBehaviour
 
             if (teleportTime <= 0)
             {
-                anim.SetTrigger("Teleport");
+                //anim.SetTrigger("Teleport");
+				anim.SetBool("shouldTeleport", true);
                 Debug.Log("teleporting");
                 Invoke("Teleport", 5);
                 //Teleport();
@@ -309,6 +310,7 @@ public class ScareCrow : MonoBehaviour
 
         //Vector3 playerYPos = new Vector3(player.gameObject.transform.position.x, transform.position.y, player.gameObject.transform.position.z);
         transform.LookAt(center);
+		anim.SetBool ("shouldTeleport", false);
         Debug.Log("Done teleporting");
     }
     //=====================================================================

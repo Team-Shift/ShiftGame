@@ -43,17 +43,18 @@ public class EnemyDamageScript : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerEnter(Collider other)
     {
         //Debug.Log("hitting");
-        if (col.gameObject.tag == "Player")
-        {
-            Debug.Log("Gameobject dead");
-            if(isProjectile)
-                Destroy(gameObject);
-            playerScript.DamageFallback(transform.position);
-
-        }
+		if (other.tag == "Player") {
+			if (isProjectile) {
+				Destroy (gameObject);
+			}
+			playerScript.DamageFallback (transform.position);
+			//Debug.Log ("hitting player");
+		} else if (other.tag == "Enemy") {
+			//Debug.Log ("tk");
+		}
 
     }
 }

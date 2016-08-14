@@ -33,10 +33,11 @@ public class EnemyHealth : MonoBehaviour {
     // triggers when hitting sphere collider.... (might need to separate colliders)
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Weapon")
-        {
-            TakeDamage();
-        }
+		Debug.Log (other.tag);
+		if (other.tag == "Hitbox" && other.tag != "Enemy") {
+			TakeDamage ();
+			Debug.Log ("damage by " + other.name);
+		}
     }
 
     public void TakeDamage()

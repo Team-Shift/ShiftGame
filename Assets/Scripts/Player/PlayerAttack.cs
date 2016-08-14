@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour {
         }
 
        //GameObject g =  GameObject.FindGameObjectWithTag("Hitbox");
-        c.gameObject.tag = "Weapon";
+        //c.gameObject.tag = "Weapon";
 
         
        //c = g.GetComponent<Collider>();
