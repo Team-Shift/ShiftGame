@@ -25,16 +25,20 @@ public class PatrolEnemy : MonoBehaviour {
         if(s.shouldSeek)
         {
             Vector3 dir = playerPos.position - gameObject.transform.position;
+			//attack range
 			if (dir.magnitude <= atkRange)
             {
                 anim.SetBool("canAttack", true);
-				if(dir.magnitude <= .2f)
-                s.shouldSeek = false;
+				// seek range
+				if (dir.magnitude <= .2f) {
+					s.shouldSeek = false;
+				}
             }
             else
             {
                 anim.SetBool("canAttack", false);
                 s.shouldSeek = true;
+				//s.shouldRotate = true;
             }
         }
     }

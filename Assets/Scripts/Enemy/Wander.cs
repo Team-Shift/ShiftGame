@@ -44,10 +44,21 @@ public class Wander : MonoBehaviour {
             //rotate to path node
             gameObject.transform.LookAt(pathList[index]);
             
-            //Debug.Log(dir.magnitude);
-            // increment index
-            if (dir.magnitude <= 1.0f) index++;
-            if (index >= pathList.Count) index = 0;
+
+			// if multiple nodes increment index
+			if (dir.magnitude <= 1.0f) {
+				//if only one path node (guard area)
+				if (pathList.Count <= 1) {
+					shouldWander = false;
+					// to always look one way
+					gameObject.transform.rotation = Quaternion.Euler (0, 180, 0);
+				} else {
+					index++;
+					if (index >= pathList.Count)
+						index = 0;
+				}
+			}
+
         }
 	}
 

@@ -6,14 +6,13 @@ public class Seek : MonoBehaviour
     public float maxVel;
     public bool shouldSeek;
     //GameObject player;
-
     public Vector3 objToSeek;
 
     private Vector2 targetPos;
     private Rigidbody rb;
     private Vector2 desiredVel;
     private Vector2 vel;
-    
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
@@ -31,12 +30,10 @@ public class Seek : MonoBehaviour
             vel = new Vector3(rb.velocity.x , rb.velocity.z) * Time.deltaTime;
 
             Vector2 v = new Vector2(targetPos.x - gameObject.transform.position.x, targetPos.y - gameObject.transform.position.z);
-            desiredVel = v * maxVel * Time.deltaTime;
+			desiredVel = v * maxVel * Time.deltaTime;
+			Vector2 steering = desiredVel - vel;
 
-            Vector2 steering = desiredVel - vel;
-           
-            //gameObject.transform.LookAt(new Vector3(targetPos.x, 0, targetPos.y), Vector3.forward);
-            gameObject.transform.LookAt(objToSeek, Vector3.up);
+			gameObject.transform.LookAt (objToSeek, Vector3.up);
 
             steering = steering / rb.mass;
 
