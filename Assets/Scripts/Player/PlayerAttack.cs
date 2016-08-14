@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerAttack : MonoBehaviour { 
 
-    Collider c;
+    public Collider c;
 
     void Start()
     {

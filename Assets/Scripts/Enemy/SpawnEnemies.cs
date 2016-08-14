@@ -18,7 +18,7 @@ public class SpawnEnemies : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.G)) 
+		if (Input.GetKeyDown (KeyCode.N)) 
 		{
 			SpawnGhosts ();
 		}
@@ -26,26 +26,26 @@ public class SpawnEnemies : MonoBehaviour {
 		{
 			SpawnBats ();
 		}
-		if (Input.GetKeyDown (KeyCode.I)) 
+		if (Input.GetKeyDown (KeyCode.M)) 
 		{
-			SpawnSpiders ();
+			SpawnTurrets ();
 		}
 	}
 
 	void SpawnGhosts()
 	{
-		Instantiate (ghost, new Vector3(player.transform.position.x + 2, player.transform.position.y, player.transform.position.z), Quaternion.identity);
-		Instantiate (ghost, new Vector3(player.transform.position.x - 2, player.transform.position.y, player.transform.position.z), Quaternion.identity);
-		//Instantiate (ghost, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 2), Quaternion.identity);
+		Instantiate (ghost, new Vector3(player.transform.position.x + 3, player.transform.position.y, player.transform.position.z), Quaternion.identity);
+		Instantiate (ghost, new Vector3(player.transform.position.x - 3, player.transform.position.y, player.transform.position.z), Quaternion.identity);
+		Instantiate (ghost, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 3), Quaternion.identity);
 	}
 
 	void SpawnBats()
 	{
-		Instantiate (bat, new Vector3(player.transform.position.x + 5, player.transform.position.y, player.transform.position.z), Quaternion.identity);
-		Instantiate (bat, new Vector3(player.transform.position.x - 5, player.transform.position.y, player.transform.position.z), Quaternion.identity);
+		Instantiate (bat, new Vector3(transform.position.x + 2.5f, player.transform.position.y, transform.position.z), Quaternion.Euler(0,180,0));
+		Instantiate (bat, new Vector3(transform.position.x - 2.5f, player.transform.position.y, transform.position.z), Quaternion.Euler(0,180,0));
 	}
 
-	void SpawnSpiders ()
+	void SpawnTurrets ()
 	{
 		Instantiate (spider, new Vector3(transform.position.x + 3, player.transform.position.y, transform.position.z), Quaternion.Euler(0,180,0));
 		Instantiate (spider, new Vector3(transform.position.x - 3, player.transform.position.y, transform.position.z), Quaternion.Euler(0,180,0));
