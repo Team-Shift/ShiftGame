@@ -24,8 +24,8 @@ public class SpikeController : MonoBehaviour
         if (Mathf.Abs(playerPos.x - spikePos.x) < posOffset && Mathf.Abs(playerPos.z - spikePos.z) < posOffset && playerPos.y > spikePos.y)
         {
             //Activate animation
-            Debug.Log("Player Is Hit");
-                anim.SetTrigger("Hit");
+            //Debug.Log("Player Is Hit");
+            anim.SetTrigger("Hit");
         }
     }
 

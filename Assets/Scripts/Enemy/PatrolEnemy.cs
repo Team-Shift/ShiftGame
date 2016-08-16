@@ -72,5 +72,4 @@ public class PatrolEnemy : MonoBehaviour {
             w.shouldWander = true;
         }
     }
-
 }

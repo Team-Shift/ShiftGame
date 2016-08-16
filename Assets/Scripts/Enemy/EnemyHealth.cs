@@ -10,6 +10,10 @@ public class EnemyHealth : MonoBehaviour {
     public int health;
     public int startHealth = 5;
     public GameObject hitPart;
+	public GameObject itemToDrop;
+	// 1 out of int chance of getting dropping
+	public int dropRate;
+
    // public GameObject parent;
     private AudioSource enemySound;
     public AudioClip hurtSound;
@@ -35,6 +39,12 @@ public class EnemyHealth : MonoBehaviour {
         
         //parent = this.gameObject.transform.parent.gameObject;
         health = startHealth;
+
+		//if drop rate is unnassigned
+		if (dropRate == null || dropRate==0) {
+			//Debug.Log ("not assigned");
+			dropRate = 50;
+		}
     }
 
     // triggers when hitting sphere collider.... (might need to separate colliders)
@@ -90,6 +100,11 @@ public class EnemyHealth : MonoBehaviour {
         if (health <= 0)
         {
             Instantiate(hitPart, transform.position, Quaternion.identity);
+			int num = Random.Range (1, dropRate);
+			//Debug.Log (num);
+			if (num == 1) {
+				Instantiate (itemToDrop, new Vector3(transform.position.x,1,transform.position.z), Quaternion.identity);
+			}
             Destroy(this.transform.parent.gameObject);
             Destroy(this.gameObject);
         }

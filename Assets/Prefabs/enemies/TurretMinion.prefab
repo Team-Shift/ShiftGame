@@ -46,7 +46,7 @@ Transform:
   m_GameObject: {fileID: 112864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.340424, y: 0.99999994, z: -11.090878}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 474418}
@@ -196,8 +196,9 @@ MonoBehaviour:
   shouldRotate: 1
   yPosLock: -1
   projectile: {fileID: 179974, guid: 71a1486ace4ad7e4cae66d9e20f9919a, type: 2}
-  yOffset: 0.5
+  yOffset: 0.75
   rotOffset: 90
+  zOffset: 0
   isFlyingEnemy: 0
 --- !u!114 &11462916
 MonoBehaviour:
@@ -213,9 +214,13 @@ MonoBehaviour:
   health: 0
   startHealth: 3
   hitPart: {fileID: 102868, guid: 211d77e1743e74a5a903566336361e4c, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 0}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!135 &13590878
 SphereCollider:
   m_ObjectHideFlags: 1

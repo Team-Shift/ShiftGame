@@ -33,7 +33,7 @@ public class Seek : MonoBehaviour
 			desiredVel = v * maxVel * Time.deltaTime;
 			Vector2 steering = desiredVel - vel;
 
-			gameObject.transform.LookAt (objToSeek, Vector3.up);
+			gameObject.transform.LookAt (new Vector3(objToSeek.x,this.transform.position.y, objToSeek.z), Vector3.up);
 
             steering = steering / rb.mass;
 

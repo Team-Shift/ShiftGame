@@ -600,6 +600,8 @@ MonoBehaviour:
   health: 0
   startHealth: 1
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 128996, guid: b8e7233a0aec24de0929ef3d51229f31, type: 2}
+  dropRate: 6
   hurtSound: {fileID: 0}
   isBat: 0
   xOffset: 0
@@ -644,7 +646,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.60601425
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0.59, z: 0}
 --- !u!135 &13592290
 SphereCollider:
