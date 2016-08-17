@@ -46,7 +46,7 @@ public class PlayerDamagingEnemy : MonoBehaviour {
                     //if ((enemyPos.x <= thisProjectilePos.x + xOffset && enemyPos.x >= thisProjectilePos.x - xOffset) && (enemyPos.z <= (thisProjectilePos.z + yOffset) + zOffset && enemyPos.z >= (thisProjectilePos.z + yOffset) - zOffset))
                     if (Mathf.Abs(enemyPos.x - playerSword.x) <= xOffset && Mathf.Abs(enemyPos.z - (playerSword.z + yOffset)) <= zOffset)
                     {
-                        Debug.Log("Enemy Hit: " + enemy.name);
+                        //Debug.Log("Enemy Hit: " + enemy.name);
                         if (enemy.GetComponent<EnemyHealth>())
                         {
                             enemy.GetComponent<EnemyHealth>().TakeDamage();
