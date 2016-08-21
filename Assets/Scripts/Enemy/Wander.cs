@@ -17,7 +17,7 @@ public class Wander : MonoBehaviour {
     void Start () {
 
         if(isFloatingEnemy)
-            gameObject.transform.Translate(0, 1, 0);
+            gameObject.transform.Translate(0, 2, 0);
         // get all child game objects with name pathNode
         foreach(Transform t in GetComponentsInChildren<Transform>())
         {
@@ -44,10 +44,21 @@ public class Wander : MonoBehaviour {
             //rotate to path node
             gameObject.transform.LookAt(pathList[index]);
             
-            //Debug.Log(dir.magnitude);
-            // increment index
-            if (dir.magnitude <= 1.0f) index++;
-            if (index >= pathList.Count) index = 0;
+
+			// if multiple nodes increment index
+			if (dir.magnitude <= 1.0f) {
+				//if only one path node (guard area)
+				if (pathList.Count <= 1) {
+					shouldWander = false;
+					// to always look one way
+					gameObject.transform.rotation = Quaternion.Euler (0, 180, 0);
+				} else {
+					index++;
+					if (index >= pathList.Count)
+						index = 0;
+				}
+			}
+
         }
 	}
 

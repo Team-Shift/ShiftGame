@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerAttack : MonoBehaviour { 
 
-    Collider c;
+    public Collider c;
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour {
         }
 
        //GameObject g =  GameObject.FindGameObjectWithTag("Hitbox");
-        c.gameObject.tag = "Weapon";
+        //c.gameObject.tag = "Weapon";
 
         
        //c = g.GetComponent<Collider>();

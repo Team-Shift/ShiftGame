@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class FloorController : MonoBehaviour
 {
     public float groundLevel = 0;
-    private float posOffset = 0;
+    public  float posOffset = 0;
     private List<GameObject> floorPieces = new List<GameObject>();
     private List<GameObject> risenPieces = new List<GameObject>();
 
@@ -47,7 +47,7 @@ public class FloorController : MonoBehaviour
                             if (Mathf.Abs(playerPos.x - floorPiecePos.x) < posOffset &&
                                 Mathf.Abs(playerPos.z - floorPiecePos.z) < posOffset)
                             {
-                                Debug.Log("Putting the player back onto the ground");
+                                //Debug.Log("Putting the player back onto the ground");
                                 player.gameObject.transform.position =
                                     new Vector3(player.gameObject.transform.position.x, groundLevel + 1,
                                         player.gameObject.transform.position.z);
@@ -61,7 +61,7 @@ public class FloorController : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogError("Floor Piece: " + i + "does not exist!");
+                    //Debug.LogError("Floor Piece: " + i + "does not exist!");
                 }
             }
             for (int i = 0; i < risenPieces.Count; i++)
@@ -70,13 +70,14 @@ public class FloorController : MonoBehaviour
             }
         }
 
+		// 2d to 3d (raise platforms)
         else
         {
             for (int i = 0; i < floorPieces.Count; i++)
             {
                 if (floorPieces[i].transform.position.y < floorPieceLevels[i])
                 {
-                    posOffset = floorPieces[i].GetComponent<BoxCollider>().size.x / 2;
+                    posOffset = floorPieces[i].GetComponent<BoxCollider>().size.x ;
                     Vector3 floorPiecePos = floorPieces[i].transform.position;
                     Vector3 playerPos = player.gameObject.transform.position;
 
@@ -88,7 +89,7 @@ public class FloorController : MonoBehaviour
 
                         player.gameObject.transform.position = new Vector3(player.gameObject.transform.position.x, player.gameObject.transform.position.y + (pushUp + playerSizeOffset + 1), player.gameObject.transform.position.z);
                                             
-                        
+						//Debug.Log (player.transform.position.y);
                     }
 
                     floorPieces[i].transform.position = new Vector3(floorPieces[i].transform.position.x, floorPieceLevels[i], floorPieces[i].transform.position.z);

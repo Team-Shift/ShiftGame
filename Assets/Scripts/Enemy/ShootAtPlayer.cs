@@ -16,6 +16,7 @@ public class ShootAtPlayer : MonoBehaviour {
     public GameObject projectile;
     public float yOffset;
     public float rotOffset;
+	public float zOffset;
     public bool isFlyingEnemy;
 
     void Start()
@@ -27,9 +28,10 @@ public class ShootAtPlayer : MonoBehaviour {
         }
         if (!isFlyingEnemy)
         {
-            shouldRotate = false;
+            //shouldRotate = false;
         }
         alwaysShoot = false;
+		objToFollow = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -42,9 +44,15 @@ public class ShootAtPlayer : MonoBehaviour {
             if (shouldRotate)
             {
                 // rotate turret to follow
-                Transform t = objToFollow.transform;
-                //t.position = new Vector3(t.position.x , t.position.y, t.position.z);
-                gameObject.transform.LookAt(t);
+				Transform t = objToFollow.transform;
+				//Debug.Log (t.position);
+                //t.position = new Vector3(-t.position.x , t.position.y, -t.position.z);
+				//t.position = new Vector3(t.position.x, t.position.y, -t.position.z);
+				if (!isFlyingEnemy) {
+					gameObject.transform.LookAt (new Vector3(t.position.x, this.transform.position.y, t.position.z));
+				} else {
+					gameObject.transform.LookAt (t);
+				}
             }
         }
         else if(alwaysShoot) anim.SetBool("canShoot", true);
@@ -64,7 +72,7 @@ public class ShootAtPlayer : MonoBehaviour {
                 shouldRotate = true;
             }
             //Debug.Log("inRange");
-            objToFollow = GameObject.FindGameObjectWithTag("Player");
+            
         }
         // lock y
     }
@@ -99,8 +107,10 @@ public class ShootAtPlayer : MonoBehaviour {
     {
         Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + yOffset, gameObject.transform.position.z);
 
+
         Quaternion rot = gameObject.transform.rotation;
-        rot *= Quaternion.Euler(0, rotOffset, 0); // rotating wierdly 
+		rot *= Quaternion.Euler(0, rotOffset, zOffset); // rotating wierdly 
+
         // instantiate fire
         Instantiate(projectile, pos, rot);
     }
