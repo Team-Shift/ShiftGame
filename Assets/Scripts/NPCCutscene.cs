@@ -10,6 +10,9 @@ public class NPCCutscene : MonoBehaviour {
 	void Start()
 	{
 		anim = GetComponent<Animator> ();
+		if (!anim) {
+			anim = npc.GetComponent<Animator> ();
+		}
 
 		wanderNPC = npc.GetComponent<Wander>();
 		//Debug.Log (npc.name);
@@ -31,7 +34,9 @@ public class NPCCutscene : MonoBehaviour {
 			wanderNPC.enabled = false;
 
 			manager.changetext ();
-			anim.SetBool ("shouldWalk", false);
+			if (anim) {
+				anim.SetBool ("shouldWalk", false);
+			}
 			npc.transform.Rotate (new Vector3(0,90,0));
 
 			// spawn item

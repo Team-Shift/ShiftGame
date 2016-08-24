@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BossAttackPattern : MonoBehaviour {
 	EnemyHealth bossHealth;
 	SpawnEnemies spawning;
 	bool spawnedTurrets;
-
+	public BoxCollider col;
 	bool shouldRotate;
-
+	bool shouldDie;
 	Animator anim;
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,19 @@ public class BossAttackPattern : MonoBehaviour {
 
 		shouldRotate = true;
 		spawnedTurrets = false;
+		shouldDie = true;
+	}
+
+	void DestroyObject()
+	{
+		//Destroy(this.transform.parent.gameObject);
+		GetComponentInChildren<BoxCollider> ().enabled = false;
+		GameObject [] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+		foreach(GameObject g in enemies)
+		{
+			Destroy (g);
+		}
+		Destroy(this.gameObject);
 	}
 	
 	// Update is called once per frame
@@ -25,6 +39,13 @@ public class BossAttackPattern : MonoBehaviour {
 		if (bossHealth.health < (bossHealth.startHealth / 2) && !spawnedTurrets) {
 			spawning.SpawnTurrets ();
 			spawnedTurrets = true;
+		}
+		if (bossHealth.health <= 1 && shouldDie) {
+			gameObject.GetComponent<Animator> ().SetTrigger ("Death");
+			shouldDie = false;
+			col.enabled = false;
+			Instantiate (Resources.Load("CongratsText"));
+			Invoke ("DestroyObject", 2.0f);
 		}
 	}
 

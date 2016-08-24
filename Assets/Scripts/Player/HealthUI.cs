@@ -28,7 +28,7 @@ public class HealthUI : MonoBehaviour {
     {
         for (int i = 0; i < HeartAmount; i++)
         {
-            HeartFillList.Add(((GUITexture)Instantiate(HeartFillTexture, new Vector2(i * XOffset + .07f, YOffset), Quaternion.identity)));
+            HeartFillList.Add(((GUITexture)Instantiate(HeartFillTexture, new Vector3(i * XOffset + .07f, YOffset, 2), Quaternion.identity)));
         }
 
         // ToDo This is bad get rid of it as well
@@ -67,7 +67,7 @@ public class HealthUI : MonoBehaviour {
         {
             //Health++;
             int HeartFillIndex = HeartFillList.Count;
-            HeartFillList.Add(((GUITexture)Instantiate(HeartFillTexture, new Vector3(HeartFillIndex * XOffset + .07f, YOffset, 1), Quaternion.identity)));
+            HeartFillList.Add(((GUITexture)Instantiate(HeartFillTexture, new Vector3(HeartFillIndex * XOffset + .07f, YOffset, 2), Quaternion.identity)));
         }
     }
 

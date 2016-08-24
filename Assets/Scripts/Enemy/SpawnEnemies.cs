@@ -10,6 +10,10 @@ public class SpawnEnemies : MonoBehaviour {
 	public float spawnInterval;
 	private float spawnTimer;
 	private float playerYPos;
+	private bool startFight;
+
+	public GameObject ghost1;
+	public GameObject ghost2;
 
 	public List<GameObject> spawnedEnemies;
 
@@ -18,6 +22,7 @@ public class SpawnEnemies : MonoBehaviour {
 
 	void Start () {
 		spawnTimer = 0;
+		startFight = false;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerYPos = player.transform.position.y + .1f;
 
@@ -26,47 +31,65 @@ public class SpawnEnemies : MonoBehaviour {
 		ghost.GetComponent<Wander> ().enabled = false;
 		ghost.GetComponent<SphereCollider> ().radius = 8;
 	}
-	
+
+	public void Awake()
+	{
+		BossManager.OnStart += this.startBossFight;
+	}
+
+	public void startBossFight()
+	{
+		startFight = true;
+		ghost1.SetActive (true);
+		ghost2.SetActive (true);
+	}
+
 	// Update is called once per frame
 	void Update () {
-
-		spawnTimer += Time.deltaTime;
-		// change to spawn on commands
-		if (Input.GetKeyDown (KeyCode.N)) 
-		{
-			SpawnGhosts ();
-		}
-		if (Input.GetKeyDown (KeyCode.B)) 
-		{
-			SpawnBats ();
-		}
-		if (Input.GetKeyDown (KeyCode.M)) 
-		{
-			SpawnTurrets ();
-		}
-		// spawn next set of enemies
-		if (spawnTimer > spawnInterval) 
-		{
-			spawnTimer = 0;
-			// reset timer
-			// only spawn if all enemies are dead
-			if (AllEnemiesDead()) {
-				if (player.transform.position.y >= playerYPos) {
-					SpawnBats ();
-				} else {
-					SpawnGhosts ();
-				}
-				//SpawnGhosts ();
+		if (startFight) {
+			spawnTimer += Time.deltaTime;
+			// change to spawn on commands
+			if (Input.GetKeyDown (KeyCode.N)) {
+				SpawnGhosts ();
 			}
+			if (Input.GetKeyDown (KeyCode.B)) {
+				SpawnBats ();
+			}
+			if (Input.GetKeyDown (KeyCode.M)) {
+				SpawnTurrets ();
+			}
+			// spawn next set of enemies
+			if (spawnTimer > spawnInterval) {
+				spawnTimer = 0;
+				// reset timer
+				// only spawn if all enemies are dead
+				if (AllEnemiesDead ()) {
+					int temp = Random.Range (0, 2);
+					if (temp == 1) {
+						SpawnBats ();
+					} else {
+						SpawnGhosts ();
+					}
+					//SpawnGhosts ();
+				}
 
+			}
 		}
 	}
 
 	void SpawnGhosts()
 	{
-		spawnedEnemies.Add(Instantiate (ghost, new Vector3(player.transform.position.x + 3, playerYPos, player.transform.position.z), Quaternion.identity)as GameObject);
-		spawnedEnemies.Add(Instantiate (ghost, new Vector3(player.transform.position.x - 3, playerYPos, player.transform.position.z), Quaternion.identity)as GameObject);
-		spawnedEnemies.Add(Instantiate (ghost, new Vector3(player.transform.position.x, playerYPos, player.transform.position.z + 3), Quaternion.identity)as GameObject);
+		if (player.transform.position.x < 19) {
+			spawnedEnemies.Add (Instantiate (ghost, new Vector3 (player.transform.position.x + 3, playerYPos, player.transform.position.z), Quaternion.identity)as GameObject);
+		}
+		if (player.transform.position.x > 15) {
+			spawnedEnemies.Add (Instantiate (ghost, new Vector3 (player.transform.position.x - 3, playerYPos, player.transform.position.z), Quaternion.identity)as GameObject);
+		}
+		if (player.transform.position.z < -7) {
+			spawnedEnemies.Add (Instantiate (ghost, new Vector3 (player.transform.position.x, playerYPos, player.transform.position.z + 3), Quaternion.identity)as GameObject);
+		} else {
+			spawnedEnemies.Add (Instantiate (ghost, new Vector3 (player.transform.position.x, playerYPos, player.transform.position.z - 3), Quaternion.identity)as GameObject);
+		}
 	}
 
 	void SpawnBats()
@@ -77,8 +100,8 @@ public class SpawnEnemies : MonoBehaviour {
 
 	public void SpawnTurrets ()
 	{
-		Instantiate (spider, new Vector3(transform.position.x + 4, playerYPos, transform.position.z), Quaternion.Euler(0,180,0));
-		Instantiate (spider, new Vector3(transform.position.x - 4, playerYPos, transform.position.z), Quaternion.Euler(0,180,0));
+		Instantiate (spider, new Vector3(transform.position.x + 4, playerYPos, transform.position.z - 2), Quaternion.Euler(0,180,0));
+		Instantiate (spider, new Vector3(transform.position.x - 4, playerYPos, transform.position.z -2), Quaternion.Euler(0,180,0));
 	}
 
 	bool AllEnemiesDead()

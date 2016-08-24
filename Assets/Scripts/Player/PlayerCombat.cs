@@ -22,9 +22,9 @@ public class PlayerCombat : MonoBehaviour {
     public float worldLimit = 0;
 
     //[HideInInspector]
-    public int Health = 3;
+    public int Health = 5;
     public int Attack;
-    bool isDead;
+    bool shouldDie;
 
     private Animator anim;
     private Inventory inv;
@@ -37,11 +37,16 @@ public class PlayerCombat : MonoBehaviour {
         playerSound = gameObject.GetComponent<AudioSource>();
         anim = gameObject.GetComponent<Animator>();
         hearts = gameObject.GetComponent<HealthUI>();
-        Health = 3;
+        Health = 5;
         Attack = 1;
         inv = gameObject.GetComponent<Inventory>();
-        isDead = false;
+        shouldDie = true;
     }
+
+	void Awake()
+	{
+		shouldDie = true;
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -98,9 +103,9 @@ public class PlayerCombat : MonoBehaviour {
 
         if (Health <= 0)
         {
-            //anim.SetTrigger("Death");
+            anim.SetTrigger("Death");
             //SendToTown();
-            //Invoke("SendToTown", 1);
+            Invoke("SendToTown", 1);
         }
 
         //if (gameObject.transform.position.y <= -10)
@@ -123,12 +128,23 @@ public class PlayerCombat : MonoBehaviour {
     //ToDo Please Remove Destruction of Everything
     void SendToTown()
     {
+		
 		//townMan.IncreaseDeathCount ();
-        foreach (var everything in FindObjectsOfType<GameObject>())
-        {
-            Destroy(everything);
-        }
-        SceneManager.LoadScene("FinalTown");
+        //foreach (var everything in FindObjectsOfType<GameObject>())
+        //{
+            //Destroy(everything);
+        //}
+		if (shouldDie) {
+			Health = 5;
+			for (int i = 0; i < Health; i++) {
+				hearts.DamageHeart ();
+			}
+			hearts.SpawnHeart (5);
+			shouldDie = false;
+			Instantiate(Resources.Load("DeathText"));
+			SceneManager.LoadScene("FinalTown");
+		}
+        
     }
 
     public void DamageFallback(Vector3 damageSource)

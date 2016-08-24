@@ -17,10 +17,12 @@ public class PlayerSpawn : MonoBehaviour {
 	    if (GameObject.FindGameObjectWithTag("Player") == null)
 	    {
 	        player = Instantiate(playerPrefab);
+			player.GetComponent<PlayerCombat> ().Health = 5;
         }
 	    else
 	    {
 	        player = GameObject.FindGameObjectWithTag("Player");
+			player.GetComponent<PlayerCombat> ().Health = 5;
 	    }
         if (GameObject.FindGameObjectWithTag("MainCamera") == null)
         {
@@ -34,11 +36,34 @@ public class PlayerSpawn : MonoBehaviour {
         playerCamera.gameObject.GetComponent<CameraShift>().player = player;
         player.gameObject.GetComponentInChildren<Weapon>(true).gameObject.SetActive(true);
 
+
     }
 
     void Start()
     {
+		if (GameObject.FindGameObjectWithTag("Player") == null)
+		{
+			player = Instantiate(playerPrefab);
+			player.GetComponent<PlayerCombat> ().Health = 5;
+			//player.GetComponent<HealthUI> ().SpawnHeart (5);
+		}
+		else
+		{
+			player = GameObject.FindGameObjectWithTag("Player");
+			player.GetComponent<PlayerCombat> ().Health = 5;
+			player.GetComponent<Animator> ().SetTrigger ("Attack");
+			//player.GetComponent<HealthUI> ().SpawnHeart (5);
+		}
+
         player.transform.position = gameObject.transform.position;
         player.gameObject.GetComponent<HealthUI>().enabled = true;
+
+		//GameObject.Find("Camera").GetComponent<Camera> ().orthographic = true;
+		//playerCamera.GetComponent<Camera> ().orthographic = true;
+		//if (InputManager.Instance.is2D) {
+		//	playerCamera.GetComponent<Camera> ().orthographic = true;
+		//} else {
+		//	playerCamera.GetComponent<Camera> ().orthographic = false;
+		//}
     }
 }
