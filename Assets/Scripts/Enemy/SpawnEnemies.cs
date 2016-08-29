@@ -21,6 +21,7 @@ public class SpawnEnemies : MonoBehaviour {
 	// Use this for initialization
 
 	void Start () {
+		BossManager.OnStart += this.startBossFight;
 		spawnTimer = 0;
 		startFight = false;
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -34,14 +35,24 @@ public class SpawnEnemies : MonoBehaviour {
 
 	public void Awake()
 	{
+		startFight = false;
 		BossManager.OnStart += this.startBossFight;
 	}
 
 	public void startBossFight()
 	{
 		startFight = true;
-		ghost1.SetActive (true);
-		ghost2.SetActive (true);
+		if (ghost1) {
+			ghost1.SetActive (true);
+		} else {
+			//Debug.Log ("not found");
+			ghost1 = GameObject.Find ("GiantGhost");
+		}
+		if (ghost2) {
+			ghost2.SetActive (true);
+		} else {
+			ghost2 = GameObject.Find ("GiantGhost(1)");
+		}
 	}
 
 	// Update is called once per frame

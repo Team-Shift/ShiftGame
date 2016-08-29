@@ -39,8 +39,10 @@ public class ShootAtPlayer : MonoBehaviour {
         
         if (inRange)
         {
-            // play turret anim
-            anim.SetBool("canShoot", true);
+			if (anim) {
+				// play turret anim
+				anim.SetBool ("canShoot", true);
+			}
             if (shouldRotate)
             {
                 // rotate turret to follow

@@ -24,7 +24,7 @@ public class PlayerCombat : MonoBehaviour {
     //[HideInInspector]
     public int Health = 5;
     public int Attack;
-    bool shouldDie;
+    public bool shouldDie;
 
     private Animator anim;
     private Inventory inv;
@@ -98,13 +98,17 @@ public class PlayerCombat : MonoBehaviour {
 
         if (gameObject.transform.position.y <= worldLimit)
         {
-            Health = 0;
+            //Health = 0;
+			shouldDie = true;
+			Invoke ("SendToTown", 1);
         }
 
         if (Health <= 0)
         {
-            anim.SetTrigger("Death");
+			//Debug.Log ("died");
+            //anim.SetTrigger("Death");
             //SendToTown();
+			shouldDie = true;
             Invoke("SendToTown", 1);
         }
 
@@ -119,7 +123,7 @@ public class PlayerCombat : MonoBehaviour {
 
     public void DeathStuff()
     {
-        Debug.Log("DeathStuff");
+        //Debug.Log("DeathStuff");
         Instantiate(Resources.Load("DeathText"));
         
         Invoke("SendToTown", 2);
@@ -128,17 +132,19 @@ public class PlayerCombat : MonoBehaviour {
     //ToDo Please Remove Destruction of Everything
     void SendToTown()
     {
-		
+		//Debug.Log ("sendig to town");
 		//townMan.IncreaseDeathCount ();
         //foreach (var everything in FindObjectsOfType<GameObject>())
         //{
             //Destroy(everything);
         //}
 		if (shouldDie) {
-			Health = 5;
+			//Debug.Log ("reset player pref");
+			//Debug.Log (Health);
 			for (int i = 0; i < Health; i++) {
 				hearts.DamageHeart ();
 			}
+			Health = 5;
 			hearts.SpawnHeart (5);
 			shouldDie = false;
 			Instantiate(Resources.Load("DeathText"));

@@ -38,10 +38,10 @@ public class Inventory : MonoBehaviour {
         invItems = new s_Items[invSize];
         goldCount = 0;
         ySpawn = -1.3f;    // ground level
-        if (GameObject.Find("ItemIcons").GetComponent<InvHUD>())
-        {
-            InvUI = GameObject.Find("ItemIcons").GetComponent<InvHUD>();
-        }
+        //if (GameObject.Find("ItemIcons").GetComponent<InvHUD>())
+        //{
+        InvUI = GameObject.Find("ItemIcons").GetComponent<InvHUD>();
+        //}
         
         GameObject weaponLoc = GameObject.FindGameObjectWithTag("Weapon");
         //Debug.Log(weaponLoc.name);
@@ -63,6 +63,9 @@ public class Inventory : MonoBehaviour {
 
     void Update()
     {
+		if (!InvUI) {
+			InvUI = GameObject.Find("ItemIcons").GetComponent<InvHUD>();
+		}
         // switch consumables
         if(Input.GetKeyDown(KeyCode.Tab))
         {

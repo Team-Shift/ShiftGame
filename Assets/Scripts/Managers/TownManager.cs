@@ -26,15 +26,14 @@ public class TownManager : MonoBehaviour {
 			NPCvillager.SetActive (false);
 			NPCghost.SetActive (false);
 			townTxt.SetActive (false);
-		} else {
-			txtList = new string[5] {"Welcome to my village.", 
+		} 
+		txtList = new string[5] {"Welcome to my village.", 
 				"Follow me to my house so I can give you something.",
 				"Take this potion and press [1] or [2] to heal yourself.",
 				"Aaaaahhhhhh!",
 				"Help!"
-			};
-			g_text.text = txtList [txtIndex];
-		}
+		};
+		g_text.text = txtList [txtIndex];
 	}
 	
 	// Update is called once per frame

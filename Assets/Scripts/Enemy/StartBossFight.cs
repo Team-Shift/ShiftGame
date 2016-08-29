@@ -11,6 +11,7 @@ public class StartBossFight : MonoBehaviour {
 	BossManager man;
 	// Use this for initialization
 	void Start () {
+		BossManager.OnStart += this.startBossFight;
 		bossAnim = boss.GetComponent<Animator> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
 	}
@@ -23,7 +24,11 @@ public class StartBossFight : MonoBehaviour {
 
 	public void startBossFight()
 	{
-		GetComponent<BoxCollider> ().enabled = false;
+		if (GetComponent<BoxCollider> ().enabled) {
+			GetComponent<BoxCollider> ().enabled = false;
+		} else {
+			gameObject.GetComponent<BoxCollider> ().enabled = false;
+		}
 		//Debug.Log ("trigger subscriber");
 	}
 
@@ -43,6 +48,7 @@ public class StartBossFight : MonoBehaviour {
 	IEnumerator waitForAnimation()
 	{
 		yield return new WaitForSeconds (10);
+		BossManager.OnStart += this.startBossFight;
 		BossManager.startBossFight ();
 		player.GetComponent<Custom2DController> ().enabled = true;
 		textBox.SetActive (false);
