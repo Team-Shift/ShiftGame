@@ -11,6 +11,8 @@ public class BossManager : MonoBehaviour {
 	{
 		if (OnStart != null) {
 			OnStart ();
+		} else {
+			Debug.Log ("is null");
 		}
 	}
 

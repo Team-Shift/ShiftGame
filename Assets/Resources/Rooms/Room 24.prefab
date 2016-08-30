@@ -5223,7 +5223,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 438572}
   m_Layer: 0
-  m_Name: 0Shifts Room 3
+  m_Name: Room 24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76423,9 +76423,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 8300000, guid: 586d9cf54140fb54a9c08b4196294e9a, type: 3}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11405804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76562,9 +76566,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 0}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11425170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76632,9 +76640,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 0}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11432236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76658,7 +76670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordTrail: {fileID: 0}
+  c: {fileID: 0}
 --- !u!114 &11437606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76824,7 +76836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordTrail: {fileID: 0}
+  c: {fileID: 0}
 --- !u!114 &11455092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76890,7 +76902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordTrail: {fileID: 0}
+  c: {fileID: 0}
 --- !u!114 &11459626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76969,6 +76981,7 @@ MonoBehaviour:
   projectile: {fileID: 177004, guid: 4f5c6e6051d7507478ee32ab96d52ba0, type: 2}
   yOffset: 0.5
   rotOffset: 270
+  zOffset: 0
   isFlyingEnemy: 0
 --- !u!114 &11463876
 MonoBehaviour:
@@ -76984,9 +76997,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 8300000, guid: 586d9cf54140fb54a9c08b4196294e9a, type: 3}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11466456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77001,9 +77018,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 0}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11467022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77110,7 +77131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordTrail: {fileID: 0}
+  c: {fileID: 0}
 --- !u!114 &11479558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77152,9 +77173,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 0}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11484396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77179,7 +77204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordTrail: {fileID: 0}
+  c: {fileID: 0}
 --- !u!114 &11485164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77198,6 +77223,7 @@ MonoBehaviour:
   projectile: {fileID: 177004, guid: 4f5c6e6051d7507478ee32ab96d52ba0, type: 2}
   yOffset: 0.5
   rotOffset: 270
+  zOffset: 0
   isFlyingEnemy: 0
 --- !u!114 &11485958
 MonoBehaviour:
@@ -77265,7 +77291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordTrail: {fileID: 0}
+  c: {fileID: 0}
 --- !u!114 &11492422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77293,9 +77319,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 0}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11495334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77323,9 +77353,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 0}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11499148
 MonoBehaviour:
   m_ObjectHideFlags: 1

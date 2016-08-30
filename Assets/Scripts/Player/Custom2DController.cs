@@ -383,6 +383,6 @@ public class Custom2DController : MonoBehaviour
     {
         anim.SetBool("Death", true);
         yield return new WaitForSeconds(50f);
-        SceneManager.LoadScene("FinalTown");
+        //SceneManager.LoadScene("FinalTown");
     }
 }

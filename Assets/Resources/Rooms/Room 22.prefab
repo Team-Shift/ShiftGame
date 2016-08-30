@@ -9327,7 +9327,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 450740}
   m_Layer: 0
-  m_Name: 0Shifts Room 2
+  m_Name: Room 22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53542,9 +53542,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 0}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11419322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53589,9 +53593,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 8300000, guid: 586d9cf54140fb54a9c08b4196294e9a, type: 3}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11427046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53621,9 +53629,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 0}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11430836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53676,7 +53688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordTrail: {fileID: 0}
+  c: {fileID: 0}
 --- !u!114 &11444968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53707,9 +53719,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 0}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11449266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53734,7 +53750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordTrail: {fileID: 0}
+  c: {fileID: 0}
 --- !u!114 &11451048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53764,9 +53780,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 8300000, guid: 586d9cf54140fb54a9c08b4196294e9a, type: 3}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11456738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53785,6 +53805,7 @@ MonoBehaviour:
   projectile: {fileID: 177004, guid: 4f5c6e6051d7507478ee32ab96d52ba0, type: 2}
   yOffset: 0.5
   rotOffset: 270
+  zOffset: 0
   isFlyingEnemy: 0
 --- !u!114 &11472638
 MonoBehaviour:
@@ -53828,6 +53849,7 @@ MonoBehaviour:
   projectile: {fileID: 177004, guid: 4f5c6e6051d7507478ee32ab96d52ba0, type: 2}
   yOffset: 0.5
   rotOffset: 270
+  zOffset: 0
   isFlyingEnemy: 0
 --- !u!114 &11475842
 MonoBehaviour:
@@ -53840,7 +53862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordTrail: {fileID: 0}
+  c: {fileID: 0}
 --- !u!114 &11478916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53875,6 +53897,7 @@ MonoBehaviour:
   projectile: {fileID: 177004, guid: 4f5c6e6051d7507478ee32ab96d52ba0, type: 2}
   yOffset: 0.5
   rotOffset: 270
+  zOffset: 0
   isFlyingEnemy: 0
 --- !u!114 &11482448
 MonoBehaviour:
@@ -53894,6 +53917,7 @@ MonoBehaviour:
   projectile: {fileID: 177004, guid: 4f5c6e6051d7507478ee32ab96d52ba0, type: 2}
   yOffset: 0.5
   rotOffset: 270
+  zOffset: 0
   isFlyingEnemy: 0
 --- !u!114 &11483272
 MonoBehaviour:
@@ -53922,9 +53946,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 8300000, guid: 586d9cf54140fb54a9c08b4196294e9a, type: 3}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11496254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53939,9 +53967,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 8300000, guid: 586d9cf54140fb54a9c08b4196294e9a, type: 3}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!135 &13512490
 SphereCollider:
   m_ObjectHideFlags: 1

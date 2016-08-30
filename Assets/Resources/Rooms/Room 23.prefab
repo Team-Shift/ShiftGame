@@ -7959,7 +7959,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 429686}
   m_Layer: 0
-  m_Name: 0Shifts Room 1
+  m_Name: Room 23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42228,6 +42228,7 @@ MonoBehaviour:
   projectile: {fileID: 141264, guid: d9f7a69cb40f1c1449befa0f92f88a68, type: 2}
   yOffset: 0
   rotOffset: 0
+  zOffset: 0
   isFlyingEnemy: 1
 --- !u!114 &11430728
 MonoBehaviour:
@@ -42247,6 +42248,7 @@ MonoBehaviour:
   projectile: {fileID: 141264, guid: d9f7a69cb40f1c1449befa0f92f88a68, type: 2}
   yOffset: -1
   rotOffset: 90
+  zOffset: 0
   isFlyingEnemy: 0
 --- !u!114 &11433908
 MonoBehaviour:
@@ -42271,7 +42273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordTrail: {fileID: 0}
+  c: {fileID: 0}
 --- !u!114 &11444510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -42327,9 +42329,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 0}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11458026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -42359,9 +42365,13 @@ MonoBehaviour:
   health: 0
   startHealth: 1
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 8300000, guid: 586d9cf54140fb54a9c08b4196294e9a, type: 3}
+  isBat: 0
   xOffset: 1
   zOffset: 0.7
+  zCol: 0
 --- !u!114 &11470950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -42386,7 +42396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordTrail: {fileID: 0}
+  c: {fileID: 0}
 --- !u!114 &11482836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -42428,9 +42438,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 0}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11496452
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -6349,7 +6349,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.507862, y: 0, z: 1.2997934}
+  m_LocalPosition: {x: -40.890354, y: -2.02424, z: 92.46057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -21437,9 +21437,13 @@ MonoBehaviour:
   health: 0
   startHealth: 2
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 0}
+  isBat: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11494488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21452,7 +21456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockedItems: []
-  itemName: Bow
+  itemName: 
   ySpawn: 0
 --- !u!114 &11499108
 MonoBehaviour:
@@ -21465,7 +21469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordTrail: {fileID: 0}
+  c: {fileID: 0}
 --- !u!135 &13538346
 SphereCollider:
   m_ObjectHideFlags: 1

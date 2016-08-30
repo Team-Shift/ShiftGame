@@ -20683,6 +20683,8 @@ GameObject:
   - 4: {fileID: 1227566737}
   - 65: {fileID: 1227566736}
   - 114: {fileID: 1227566738}
+  - 114: {fileID: 1227566739}
+  - 114: {fileID: 1227566740}
   m_Layer: 0
   m_Name: start
   m_TagString: Untagged
@@ -20728,6 +20730,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: {fileID: 791374088}
   textBox: {fileID: 1745595668}
+--- !u!114 &1227566739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1227566735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b928d09bd98ad7469fbafea73bd0579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1227566740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1227566735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d944f0d76bb38e4ba9856496667bef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1228639617
 GameObject:
   m_ObjectHideFlags: 0

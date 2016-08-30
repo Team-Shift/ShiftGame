@@ -148,9 +148,12 @@ public class PlayerCombat : MonoBehaviour {
 			hearts.SpawnHeart (5);
 			shouldDie = false;
 			Instantiate(Resources.Load("DeathText"));
+			Debug.Log ("IN THE TOWN");
 			SceneManager.LoadScene("FinalTown");
+
 		}
-        
+		Debug.Log("send to town");
+		shouldDie = false;
     }
 
     public void DamageFallback(Vector3 damageSource)

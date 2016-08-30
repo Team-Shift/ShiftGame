@@ -8,27 +8,32 @@ public class StartBossFight : MonoBehaviour {
 	Animator bossAnim;
 	public GameObject textBox;
 
+	BoxCollider col;
+
 	BossManager man;
 	// Use this for initialization
 	void Start () {
+		//Debug.Log ("on start");
 		BossManager.OnStart += this.startBossFight;
 		bossAnim = boss.GetComponent<Animator> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
+		col = gameObject.GetComponent<BoxCollider>();
 	}
 
 	public void Awake()
 	{
+		//Debug.Log ("on awake");
+		col = gameObject.GetComponent<BoxCollider>();
 		BossManager.OnStart += this.startBossFight;
 		//Debug.Log ("adding an event");
 	}
 
 	public void startBossFight()
 	{
-		if (GetComponent<BoxCollider> ().enabled) {
-			GetComponent<BoxCollider> ().enabled = false;
-		} else {
-			gameObject.GetComponent<BoxCollider> ().enabled = false;
-		}
+		Debug.Log ("disable box collider");
+		this.gameObject.GetComponent<BoxCollider> ().enabled = false;
+		//col = this.gameObject.GetComponent<BoxCollider>();
+		//col.enabled = false;
 		//Debug.Log ("trigger subscriber");
 	}
 
@@ -48,7 +53,8 @@ public class StartBossFight : MonoBehaviour {
 	IEnumerator waitForAnimation()
 	{
 		yield return new WaitForSeconds (10);
-		BossManager.OnStart += this.startBossFight;
+		//BossManager.OnStart += this.startBossFight;
+		Debug.Log ("tryna start fight");
 		BossManager.startBossFight ();
 		player.GetComponent<Custom2DController> ().enabled = true;
 		textBox.SetActive (false);
