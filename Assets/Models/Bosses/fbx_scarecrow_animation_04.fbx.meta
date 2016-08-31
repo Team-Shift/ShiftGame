@@ -518,15 +518,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.9504646
-        functionName: EndFight
-        data: 
-        objectReferenceParameter: {fileID: 147168, guid: f101664d0c6891044aa96366b9c1f68b,
-          type: 2}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask:
       - path: 
         weight: 1

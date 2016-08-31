@@ -9132,7 +9132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.29736, y: -0.7561183, z: 26.14589}
+  m_LocalPosition: {x: 15.456638, y: 22.687313, z: -30.657642}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -28184,7 +28184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5850d97a80082f48a4d0868cf26d627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordTrail: {fileID: 0}
+  c: {fileID: 0}
 --- !u!114 &11455050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28196,7 +28196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17258435be8c5e34fa0c52f2bdd20377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVel: 60
+  maxVel: 2
   shouldSeek: 0
   objToSeek: {x: 0, y: 0, z: 0}
 --- !u!114 &11469092
@@ -28213,9 +28213,14 @@ MonoBehaviour:
   health: 0
   startHealth: 5
   hitPart: {fileID: 102868, guid: 9e9cd260de3fe7148b637469850a6aaa, type: 2}
+  itemToDrop: {fileID: 0}
+  dropRate: 0
   hurtSound: {fileID: 0}
+  isBat: 0
+  isBoss: 0
   xOffset: 0
   zOffset: 0
+  zCol: 0
 --- !u!114 &11485952
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -30,7 +30,6 @@ public class StartBossFight : MonoBehaviour {
 
 	public void startBossFight()
 	{
-		Debug.Log ("disable box collider");
 		this.gameObject.GetComponent<BoxCollider> ().enabled = false;
 		//col = this.gameObject.GetComponent<BoxCollider>();
 		//col.enabled = false;
@@ -53,8 +52,6 @@ public class StartBossFight : MonoBehaviour {
 	IEnumerator waitForAnimation()
 	{
 		yield return new WaitForSeconds (10);
-		//BossManager.OnStart += this.startBossFight;
-		Debug.Log ("tryna start fight");
 		BossManager.startBossFight ();
 		player.GetComponent<Custom2DController> ().enabled = true;
 		textBox.SetActive (false);

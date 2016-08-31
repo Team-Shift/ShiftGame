@@ -37,28 +37,28 @@ public class ShootAtPlayer : MonoBehaviour {
     void Update()
     {
         
-        if (inRange)
-        {
+		if (inRange) {
 			if (anim) {
 				// play turret anim
 				anim.SetBool ("canShoot", true);
 			}
-            if (shouldRotate)
-            {
-                // rotate turret to follow
+			if (shouldRotate) {
+				// rotate turret to follow
 				Transform t = objToFollow.transform;
 				//Debug.Log (t.position);
-                //t.position = new Vector3(-t.position.x , t.position.y, -t.position.z);
+				//t.position = new Vector3(-t.position.x , t.position.y, -t.position.z);
 				//t.position = new Vector3(t.position.x, t.position.y, -t.position.z);
 				if (!isFlyingEnemy) {
-					gameObject.transform.LookAt (new Vector3(t.position.x, this.transform.position.y, t.position.z));
+					gameObject.transform.LookAt (new Vector3 (t.position.x, this.transform.position.y, t.position.z));
 				} else {
 					gameObject.transform.LookAt (t);
 				}
-            }
-        }
-        else if(alwaysShoot) anim.SetBool("canShoot", true);
-        else anim.SetBool("canShoot", false);
+			}
+		} else if (alwaysShoot && !anim)
+			anim.SetBool ("canShoot", true);
+		else if(!anim){
+			anim.SetBool ("canShoot", false);
+		}
         
     }
 

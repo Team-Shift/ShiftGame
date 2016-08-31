@@ -43,6 +43,12 @@ public class PlayerCombat : MonoBehaviour {
         shouldDie = true;
     }
 
+	void ResetStats()
+	{
+		Health = 5;
+		Attack = 1;
+	}
+
 	void Awake()
 	{
 		shouldDie = true;
@@ -144,15 +150,17 @@ public class PlayerCombat : MonoBehaviour {
 			for (int i = 0; i < Health; i++) {
 				hearts.DamageHeart ();
 			}
+			Destroy (GameObject.Find("InventorySlots"));
+			//Destroy (this.gameObject);
+			inv.ResetInv();
+			ResetStats ();
 			Health = 5;
 			hearts.SpawnHeart (5);
 			shouldDie = false;
 			Instantiate(Resources.Load("DeathText"));
-			Debug.Log ("IN THE TOWN");
 			SceneManager.LoadScene("FinalTown");
 
 		}
-		Debug.Log("send to town");
 		shouldDie = false;
     }
 

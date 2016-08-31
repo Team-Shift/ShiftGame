@@ -35,31 +35,40 @@ public class Inventory : MonoBehaviour {
 
     void Start()
     {
-        invItems = new s_Items[invSize];
+		ResetInv ();
         goldCount = 0;
         ySpawn = -1.3f;    // ground level
         //if (GameObject.Find("ItemIcons").GetComponent<InvHUD>())
-        //{
         InvUI = GameObject.Find("ItemIcons").GetComponent<InvHUD>();
-        //}
-        
-        GameObject weaponLoc = GameObject.FindGameObjectWithTag("Weapon");
-        //Debug.Log(weaponLoc.name);
-        // get weapon transform
-        foreach (Transform tCurrWeap in weaponLoc.GetComponentInChildren<Transform>())
-        {
-            //Debug.Log("adding cur weap");
-            //Item i = tCurrWeap.gameObject.GetComponent<Item>();
-            Item i = ItemManager.GetItem("WoodSword");
-            //Debug.Log(i.itemName);
-            s_Items newWeapon = new s_Items();
-            newWeapon.item = i;
-            newWeapon.quantity = 1;
-            invItems[0] = newWeapon;
-            //Debug.Log(newWeapon.item.itemName);
-            //(invItems[0].item as iEquipable).OnUse(gameObject);
-        }
     }
+
+	public void ResetInv()
+	{
+		invItems = new s_Items[invSize];
+		// on model
+		GameObject weaponLoc = GameObject.FindGameObjectWithTag("Weapon");
+		foreach (Transform tCurrWeap in weaponLoc.GetComponentInChildren<Transform>())
+		{
+			Destroy(tCurrWeap.gameObject);
+		}
+		GameObject sword = ItemManager.SpawnItem ("WoodSword",weaponLoc.transform.position);
+		sword.transform.SetParent (weaponLoc.transform);
+		sword.transform.localRotation = Quaternion.Euler (new Vector3 (270, 0, 0));
+		// in inv
+		foreach (Transform tCurrWeap in weaponLoc.GetComponentInChildren<Transform>())
+		{
+			//Debug.Log("adding cur weap");
+			//Item i = tCurrWeap.gameObject.GetComponent<Item>();
+			Item i = ItemManager.GetItem("WoodSword");
+			//Debug.Log(i.itemName);
+			s_Items newWeapon = new s_Items();
+			newWeapon.item = i;
+			newWeapon.quantity = 1;
+			invItems[0] = newWeapon;
+			//Debug.Log(newWeapon.item.itemName);
+			//(invItems[0].item as iEquipable).OnUse(gameObject);
+		}
+	}
 
     void Update()
     {

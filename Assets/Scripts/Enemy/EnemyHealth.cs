@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour {
     public AudioClip hurtSound;
 
 	public bool isBat;
+	public bool isBoss;
     public float xOffset;
     public float zOffset;
     private float yOffset;
@@ -44,6 +45,9 @@ public class EnemyHealth : MonoBehaviour {
 		if (dropRate == null || dropRate==0) {
 			//Debug.Log ("not assigned");
 			dropRate = 50;
+		}
+		if (!itemToDrop) {
+			itemToDrop = Resources.Load ("Items/Healing Potion")as GameObject;
 		}
     }
 
@@ -97,16 +101,17 @@ public class EnemyHealth : MonoBehaviour {
             }
         }
 
-        if (health <= 0)
+		if (health <= 0 && !isBoss)
         {
-            Instantiate(hitPart, transform.position, Quaternion.identity);
+            
 			int num = Random.Range (1, dropRate);
 			//Debug.Log (num);
 			if (num == 1) {
 				Instantiate (itemToDrop, new Vector3(transform.position.x,1,transform.position.z), Quaternion.identity);
 			}
-            Destroy(this.transform.parent.gameObject);
-            Destroy(this.gameObject);
+			Instantiate(hitPart, transform.position, Quaternion.identity);
+			Destroy (this.transform.parent.gameObject);
+			Destroy (this.gameObject);
         }
     }
 

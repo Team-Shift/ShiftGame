@@ -76,7 +76,14 @@ public class Item  :  MonoBehaviour{
             }
             if (canPickup)
             {
+				if (!playerInv) {
+					Debug.Log (playerInv);
+					Debug.Log (player);
+					player = GameObject.FindGameObjectWithTag ("Player");
+					playerInv = player.GetComponent<Inventory>();
+				}
                 playerInv.AddItem(this);
+
                 //playerInv.AddItem(ItemManager.GetItem(itemName));
                 //Debug.Log(hud);
                 if(hud == null)

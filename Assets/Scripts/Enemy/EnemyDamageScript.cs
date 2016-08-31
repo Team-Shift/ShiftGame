@@ -51,9 +51,6 @@ public class EnemyDamageScript : MonoBehaviour
 				Destroy (gameObject);
 			}
 			playerScript.DamageFallback (transform.position);
-			Debug.Log ("hitting player");
-		} else if (other.tag == "Enemy") {
-			Debug.Log ("tk");
 		}
 
     }

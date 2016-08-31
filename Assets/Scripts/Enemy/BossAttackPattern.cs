@@ -19,18 +19,29 @@ public class BossAttackPattern : MonoBehaviour {
 		shouldRotate = true;
 		spawnedTurrets = false;
 		shouldDie = true;
+
+		BossManager.OnBossDead += this.EndBossFight;
 	}
 
-	void DestroyObject()
+	void Awake()
+	{
+		BossManager.OnBossDead += this.EndBossFight;
+	}
+
+	void DestroyAllEnemies()
 	{
 		//Destroy(this.transform.parent.gameObject);
 		GetComponentInChildren<BoxCollider> ().enabled = false;
 		GameObject [] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 		foreach(GameObject g in enemies)
 		{
-			Destroy (g);
+			if (g.name != "ScarecrowBoss") {
+				Destroy (g);
+				//Destroy (g.transform.parent.gameObject);
+
+			}
 		}
-		Destroy(this.gameObject);
+		//Destroy(this.gameObject);
 	}
 	
 	// Update is called once per frame
@@ -40,13 +51,20 @@ public class BossAttackPattern : MonoBehaviour {
 			spawning.SpawnTurrets ();
 			spawnedTurrets = true;
 		}
-		if (bossHealth.health <= 1 && shouldDie) {
-			gameObject.GetComponent<Animator> ().SetTrigger ("Death");
-			shouldDie = false;
-			col.enabled = false;
-			Instantiate (Resources.Load("CongratsText"));
-			Invoke ("DestroyObject", 2.0f);
+		if (bossHealth.health < 1 && shouldDie) {
+			BossManager.EndBossFight ();
 		}
+	}
+
+	public void EndBossFight()
+	{
+		shouldRotate = false;
+		gameObject.GetComponent<Animator> ().SetTrigger ("Death");
+		shouldDie = false;
+		col.enabled = false;
+		Instantiate (Resources.Load("CongratsText"));
+		DestroyAllEnemies ();
+		spawning.enabled = false;
 	}
 
 	void OnTriggerEnter(Collider other)
