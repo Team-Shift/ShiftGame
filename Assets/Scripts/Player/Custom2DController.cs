@@ -154,6 +154,19 @@ public class Custom2DController : MonoBehaviour
 
         if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0) { anim.SetFloat("y", 0); }
 
+
+		if (Input.GetAxis ("Horizontal") <= -.01f) {
+			playerDir = FacingDirection.Left;
+		}
+		else if (Input.GetAxis ("Horizontal") >= .01f) {
+			playerDir = FacingDirection.Right;
+		}
+		else if (Input.GetAxis ("Vertical") <= -.01f) {
+			playerDir = FacingDirection.Backward;
+		}
+		else if (Input.GetAxis ("Vertical") >= .01f) {
+			playerDir = FacingDirection.Forward;
+		}
         /* Garbage Code*/
 
         //// ToDo Movement to Event Handlers

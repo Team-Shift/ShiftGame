@@ -236,7 +236,7 @@ public class PlayerCombat : MonoBehaviour {
             {
                 playerSound.PlayOneShot(bowSound);
                 GameObject projectial = Instantiate(rangedTemp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - .3f), gameObject.transform.rotation) as GameObject;
-                projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
+				projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
             else if (playerDir == Custom2DController.FacingDirection.Left && shot == true)
             {
@@ -250,7 +250,6 @@ public class PlayerCombat : MonoBehaviour {
                 GameObject projectial = Instantiate(rangedTemp, new Vector3(gameObject.transform.position.x + .3f, gameObject.transform.position.y, gameObject.transform.position.z), gameObject.transform.rotation) as GameObject;
                 projectial.GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Time.deltaTime);
             }
-
         }
 
         else
