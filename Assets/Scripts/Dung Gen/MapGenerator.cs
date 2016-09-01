@@ -12,6 +12,7 @@ public class MapGenerator : MonoBehaviour
 
     //For Debug Purposes
     public GameObject roomPrefab;
+	private GameObject[] rooms;
 
     public bool isSeeded;
 
@@ -57,7 +58,7 @@ public class MapGenerator : MonoBehaviour
         System.Random prng = new System.Random(currentDungeon.seed);
 
         //Generate array of room prefabs
-        GameObject[] rooms = Resources.LoadAll("Rooms").Select(o => o as GameObject).ToArray();
+        rooms = Resources.LoadAll("Rooms").Select(o => o as GameObject).ToArray();
 
         //Create array of rooms and assign room types
         for (int x = 0; x < currentDungeon.dungeonSize.x; x++)
@@ -240,16 +241,21 @@ public class MapGenerator : MonoBehaviour
                     // Only if not in the center room
                     if (newRoom != map[currentDungeon.dungeonCenter.x, currentDungeon.dungeonCenter.y] && newRoom != map[PossibleBossRooms[randomBossIndex].x, PossibleBossRooms[randomBossIndex].y])
                     {
-                        int randomIndex = prng.Next(0, rooms.Length);
+						//this function is not working properly
+                        //int randomIndex = prng.Next(0, rooms.Length);
+						int randomIndex = UnityEngine.Random.Range(0,rooms.Length);
+						//Debug.Log(randomIndex);
+						//int randomINdex = Random.R
                         newRoom.prefab = rooms[randomIndex];
                     }
 
-
+					//Debug.Log(newRoom.prefab.name);
                     //Instantiate and initialize room
                     GameObject newRoomObject = Instantiate(newRoom.prefab);
                     newRoom.roomInst = newRoomObject;
                     newRoom.Init();
-                    newRoomObject.name = ("RoomPosition(" + x + "," + y + ")");
+                    //newRoomObject.name = ("RoomPosition(" + x + "," + y + ")");
+					newRoomObject.name = (newRoom.prefab.name + "("+ x + "," + y + ")");
 
                     newRoomObject.transform.SetParent(dungeonHolder, false);
                     newRoomObject.transform.localPosition = newRoom.roomPosition;

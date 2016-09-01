@@ -8353,7 +8353,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.489481, y: -9.05656, z: 111.13266}
+  m_LocalPosition: {x: 131.37148, y: -0.8606124, z: 95.32218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -28428,6 +28428,7 @@ MonoBehaviour:
   dropRate: 0
   hurtSound: {fileID: 0}
   isBat: 0
+  isBoss: 0
   xOffset: 0
   zOffset: 0
   zCol: 0
@@ -28499,6 +28500,7 @@ MonoBehaviour:
   dropRate: 0
   hurtSound: {fileID: 0}
   isBat: 0
+  isBoss: 0
   xOffset: 0
   zOffset: 0
   zCol: 0
@@ -28538,7 +28540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17258435be8c5e34fa0c52f2bdd20377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVel: 60
+  maxVel: 2
   shouldSeek: 0
   objToSeek: {x: 0, y: 0, z: 0}
 --- !u!114 &11445270
@@ -28614,6 +28616,7 @@ MonoBehaviour:
   dropRate: 0
   hurtSound: {fileID: 0}
   isBat: 0
+  isBoss: 0
   xOffset: 0
   zOffset: 0
   zCol: 0
@@ -28628,7 +28631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17258435be8c5e34fa0c52f2bdd20377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVel: 60
+  maxVel: 2
   shouldSeek: 0
   objToSeek: {x: 0, y: 0, z: 0}
 --- !u!114 &11461756
@@ -28742,7 +28745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17258435be8c5e34fa0c52f2bdd20377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVel: 60
+  maxVel: 2
   shouldSeek: 0
   objToSeek: {x: 0, y: 0, z: 0}
 --- !u!135 &13532286

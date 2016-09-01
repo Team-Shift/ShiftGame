@@ -7880,7 +7880,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 103.846436, y: 20.095425, z: 2.1790514}
+  m_LocalPosition: {x: 132.30919, y: 2.4142647, z: 83.70357}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -28753,6 +28753,7 @@ MonoBehaviour:
   dropRate: 0
   hurtSound: {fileID: 0}
   isBat: 0
+  isBoss: 0
   xOffset: 0
   zOffset: 0
   zCol: 0
@@ -28839,7 +28840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17258435be8c5e34fa0c52f2bdd20377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVel: 1
+  maxVel: 2
   shouldSeek: 0
   objToSeek: {x: 0, y: 0, z: 0}
 --- !u!114 &11478818
@@ -28860,6 +28861,7 @@ MonoBehaviour:
   dropRate: 0
   hurtSound: {fileID: 0}
   isBat: 0
+  isBoss: 0
   xOffset: 0
   zOffset: 0
   zCol: 0
@@ -28899,7 +28901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17258435be8c5e34fa0c52f2bdd20377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVel: 1
+  maxVel: 2
   shouldSeek: 0
   objToSeek: {x: 0, y: 0, z: 0}
 --- !u!114 &11497332
