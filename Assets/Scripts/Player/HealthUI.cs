@@ -73,7 +73,9 @@ public class HealthUI : MonoBehaviour {
 
     public void DamageHeart()
     {
-        Destroy(HeartFillList[HeartFillList.Count - 1].gameObject);
+		if ((HeartFillList.Count - 1) > 0) {
+			Destroy (HeartFillList [HeartFillList.Count - 1].gameObject);
+		}
         HeartFillList.RemoveAt(HeartFillList.Count - 1);
     }
 
